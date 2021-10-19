@@ -254,7 +254,7 @@ class CodeWriter:
                     self.out_file.write(TAB + "D=A+D" + NEWLINE)
                 self.pop_to_segment()
 
-    def static_pointer_push_pop(self, command, seg):
+    def pointer_push_pop_(self, command, seg):
         if command == "C_PUSH":
             self.out_file.write(TAB + "@" + seg + NEWLINE)
             self.out_file.write(TAB + "D=M" + NEWLINE)
