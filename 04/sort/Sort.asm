@@ -127,9 +127,6 @@ M=D
 @SMALL_LOOP
 0;JMP
 
-
-
-
 (END)
 @END
 0;JMP
