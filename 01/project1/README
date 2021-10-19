@@ -1,0 +1,40 @@
+ronkatz29,mamanelad
+===============================================================================
+Ron Katz, ID 207049164, ron.katz@mail.huji.ac.il
+Elad Maman, ID 314877853, elad.maman@mail.huji.ac.il
+===============================================================================
+
+                           Project 1 - Boolean Logic
+                           -------------------------
+  
+  
+Submitted Files
+---------------
+README - This file.
+And.hdl - 1-bit And chip
+Not.hdl -  1-bit Not chip
+Or.hdl - 1-bit Or chip
+Xor.hdl - 1-bit Xor chip
+Mux.hdl - 1-bit Multiplexer chip
+DMux.hdl - 1-bit DeMultiplexer chip
+Not16.hdl - 16-bit Not chip
+And16.hdl - 16-bit And chip
+Or16.hdl - 16-bit Or chip
+Mux16.hdl - 16-bit Multiplexer chip
+Or8Way.hdl - 8 way 1-bit Or chip
+Mux4Way16.hdl - 4 way 16-bit Multiplexer chip
+Mux8Way16.hdl - 8 way 16-bit DeMultiplexer chip
+DMux4Way.hdl - 4 way 1-bit DeMultiplexer chip
+DMux8Way.hdl - 8 way 1-bit DeMultiplexer chip
+Include other files required by your project, if there are any.
+
+Remarks
+-------
+* The README file must contain the following:
+- In the first line: login(s) of the author(s), 
+separated by commas and nothing else! 
+If you work alone, do not include a comma. 
+Logins should be identical to the names of your home folders and are 
+case-sensitive.
+- Name(s), email(s) and ID(s) of the project's author(s).
+- Any remarks you have about your submission.

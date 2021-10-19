@@ -1,0 +1,78 @@
+// This file is part of nand2tetris, as taught in The Hebrew University,
+// and was written by Aviv Yaish, and is published under the Creative 
+// Common Attribution-NonCommercial-ShareAlike 3.0 Unported License 
+// https://creativecommons.org/licenses/by-nc-sa/3.0/
+
+// This chip is an extension of the regular CPU that uses the extended ALU.
+// If instruction[15]==0 or (instruction[14] and instruction[13] equals 1)
+// the CpuMul behave exactly as the same as the regular CPU.
+// If the instruction is a c-instruction and instruction[14] == 0, the chip will 
+// behave as follows:
+//  Instruction  | 12 | 11 | 10 |
+// ______________________________
+// dest=D<<;jump | 0  | 1  | 1  |
+// dest=A<<;jump | 0  | 1  | 0  |
+// dest=M<<;jump | 1  | 1  | 0  |
+// dest=D>>;jump | 0  | 0  | 1  |
+// dest=A>>;jump | 0  | 0  | 0  |
+// dest=M>>;jump | 1  | 0  | 0  |
+
+CHIP CpuMul {
+    IN  inM[16],         // M value input  (M = contents of RAM[A])
+        instruction[16], // Instruction for execution
+        reset;           // Signals whether to re-start the current
+                         // program (reset=1) or continue executing
+                         // the current program (reset=0).
+    OUT outM[16],        // M value output
+        writeM,          // Write into M? 
+        addressM[15],    // Address in data memory (of M)
+        pc[15];          // address of next instruction
+    
+    PARTS:
+    // Put you code here:
+    
+    //Cheack if its A or C instraction
+    DMux(in=true, sel=instruction[15], a=Ainst, b=Cinst);
+    //GIVING NAMES TO THE ALU COMMANDE BITS
+    Or(a=instruction[11], b=false, out=zx);
+    Or(a=instruction[10], b=false, out=nx);
+    Or(a=instruction[9], b=false, out=zy);
+    Or(a=instruction[8], b=false, out=ny);
+    Or(a=instruction[7], b=false, out=f);
+    Or(a=instruction[6], b=false, out=no);
+
+
+    
+    //A REGISTER
+    Mux16(a=ALUout, b=instruction, sel=Ainst, out=MUX1);
+    Or(a= Ainst, b= instruction[5], out=LoadA);
+    ARegister(in=MUX1, load=LoadA, out=OutA);
+
+    //D REGISTER
+    And(a=Cinst, b=instruction[4], out=LoadD);
+    DRegister(in=ALUout, load=LoadD, out=OutD);
+
+    //ALU
+    Mux16(a=OutA , b=inM, sel=instruction[12], out=MUX2);
+    ExtendAlu(x=OutD, y=MUX2, instruction=instruction[6..14], out=ALUout, zr=zrout, ng=ngout);
+
+    
+
+    //jump
+    Not(in=zrout, out=notzrout);
+    Not(in=ngout, out=notngout);
+    And(a=notzrout, b=notngout, out=positive);
+    And(a=instruction[2], b=ngout, out=jlt);
+    And(a=instruction[1], b=zrout, out=jz);
+    And(a=instruction[0], b=positive, out=jpos);
+    Or(a=jlt, b=jz, out=jltz);
+    Or(a=jltz, b=jpos, out=mabyejump);
+    And(a=Cinst, b=mabyejump, out= jump);
+
+
+    //outputs
+    PC(in=OutA, load=jump, inc=true, reset=reset, out[0..14]=pc);
+    And(a=Cinst, b=instruction[3], out=writeM);
+    And16(a=ALUout, b=true, out=outM);
+    And16(a=OutA, b=true, out[0..14]=addressM);
+}

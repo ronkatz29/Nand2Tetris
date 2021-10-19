@@ -1,0 +1,33 @@
+ronkatz29,mamanelad
+===============================================================================
+Ron Katz, ID 207049164, ron.katz@mail.huji.ac.il
+Elad Maman, ID 314877853, elad.maman@mail.huji.ac.il
+===============================================================================
+
+                           Project 3 - Sequential Logic
+                           ----------------------------
+  
+
+Submitted Files
+---------------
+README - This file.
+a/Bit.hdl - one bit register chip
+a/PC.hdl - 6-bit program counter
+a/RAM8.hdl - 16-bit 8-register memory
+a/RAM64.hdl - 16-bit 64-register memory
+a/Register.hdl - 16-bit register chip
+b/RAM4K.hdl - 16-bit 4096-register memory
+b/RAM16K.hdl - 16-bit 13384-register memory
+b/RAM512.hdl -  16-bit 512-register memory
+Include other files required by your project, if there are any.
+
+Remarks
+-------
+* The README file must contain the following:
+- In the first line: login(s) of the author(s), 
+separated by commas and nothing else! 
+If you work alone, do not include a comma. 
+Logins should be identical to the names of your home folders and are 
+case-sensitive.
+- Name(s), email(s) and ID(s) of the project's author(s).
+- Any remarks you have about your submission.

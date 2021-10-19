@@ -1,0 +1,30 @@
+ronkatz29,mamanelad
+===============================================================================
+Ron Katz, ID 207049164, ron.katz@mail.huji.ac.il
+Elad Maman, ID 314877853, elad.maman@mail.huji.ac.il
+===============================================================================
+
+                           Project 5 - Computer Architecture
+                           ---------------------------------
+  
+
+Submitted Files
+---------------
+README - This file.
+ExtendAlu.hdl - extension of the project 2 ALU
+CpuMul.hdl - cpu permitting to shift
+CPU.hdl - central Processing Unit
+Memory.hdl - rand access memory space
+Computer.hdl - Hack computer
+Include other files required by your project, if there are any.
+
+Remarks
+-------
+* The README file must contain the following:
+- In the first line: login(s) of the author(s), 
+separated by commas and nothing else! 
+If you work alone, do not include a comma. 
+Logins should be identical to the names of your home folders and are 
+case-sensitive.
+- Name(s), email(s) and ID(s) of the project's author(s).
+- Any remarks you have about your submission.
