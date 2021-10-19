@@ -61,9 +61,11 @@ class CodeWriter:
         Args:
             filename (str): The name of the VM file.
         """
-        print("The translation of " + filename + " is started")
+
+        # print("The translation of " + + " is started")
 
     def write_init(self):
+        self.out_file.write("//Init command" + NEWLINE)
         self.out_file.write(TAB + "@256" + NEWLINE)
         self.out_file.write(TAB + "D=A" + NEWLINE)
         self.out_file.write(TAB + "@" +SP + NEWLINE)
@@ -293,11 +295,16 @@ class CodeWriter:
 
     def write_call_function(self, func_name, num_arguments):
         dic = ["RETURN_ADDRESS_" + str(self.counter), LCL, ARG, THIS, THAT]
-
+        flag = 0
         # saving the call frame
         for address in dic:
             self.out_file.write(TAB + "@" + address + NEWLINE)
-            self.out_file.write(TAB + "D=M" + NEWLINE)
+            if flag == 0:
+                self.out_file.write(TAB + "D=A" + NEWLINE)
+                flag = 1
+            else:
+                self.out_file.write(TAB + "D=M" + NEWLINE)
+
             self.push_to_stack()
 
         # ARG = SP - 5 - nargs
@@ -326,27 +333,27 @@ class CodeWriter:
 
     def write_start_function(self, func_name, num_arguments):
         self.out_file.write("(" + func_name + ")" + NEWLINE)
-        self.out_file.write(TAB + "@" + ZERO + NEWLINE)
-        self.out_file.write(TAB + "D=A" + NEWLINE)
         for i in range(num_arguments):
+            self.out_file.write(TAB + "@" + ZERO + NEWLINE)
+            self.out_file.write(TAB + "D=A" + NEWLINE)
             self.push_to_stack()
 
     def write_return(self):
         # endframe = LCL
         self.out_file.write(TAB + "@" + LCL + NEWLINE)
         self.out_file.write(TAB + "D=M" + NEWLINE)
-        self.out_file.write(TAB + "@" + "endframe"  + NEWLINE)
+        self.out_file.write(TAB + "@" + "endframe" + NEWLINE)
         self.out_file.write(TAB + "M=D" + NEWLINE)
 
         # get the return address
         # retAddr = *(endFream - 5)
-        self.out_file.write(TAB + "@" + "endframe"   + NEWLINE)
+        self.out_file.write(TAB + "@" + "endframe" + NEWLINE)
         self.out_file.write(TAB + "D=M" + NEWLINE)
         self.out_file.write(TAB + "@" + FRAME_SIZE + NEWLINE)
         self.out_file.write(TAB + "D=D-A" + NEWLINE)
         self.out_file.write(TAB + "A=D" + NEWLINE)
         self.out_file.write(TAB + "D=M" + NEWLINE)
-        self.out_file.write(TAB + "@" + "retaddr"  + NEWLINE)
+        self.out_file.write(TAB + "@" + "retaddr" + NEWLINE)
         self.out_file.write(TAB + "M=D" + NEWLINE)
 
         # *ARG = POP()
@@ -364,7 +371,7 @@ class CodeWriter:
         self.out_file.write(TAB + "M=D" + NEWLINE)
 
         # restore caller frame
-        dic = [THAT, THIS, ARG ,LCL]
+        dic = [THAT, THIS, ARG, LCL]
         counter = 1
         for address in dic:
             self.out_file.write(TAB + "@" + "endframe" + NEWLINE)
@@ -379,6 +386,7 @@ class CodeWriter:
 
         # goto return address
         self.out_file.write(TAB + "@" + "retaddr" + NEWLINE)
+        self.out_file.write(TAB + "A=M" + NEWLINE)
         self.out_file.write(TAB + "0;JMP" + NEWLINE)
 
     def close(self) -> None:
