@@ -17,10 +17,13 @@
 
 
 
+//Set color to be zero 
+@color
+M=0
+
 
 (MAIN)
     //set i == RAM[SCREEN]
-    
     @SCREEN
     D=A
     @i
@@ -35,15 +38,25 @@
 
 
 (SET_BLACK)
-    @color
+    @color//Check what is the current color 
+    D=M
+    @MAIN
+    D;JLT
+    
+    @color //set color to be black 
     M=-1
-    @Fill
+    @FILL
     0;JMP
 
 (SET_WHITE)
-    @color
+    @color //Check what is the current color 
+    D=M
+    @MAIN
+    D;JEQ
+   
+    @color //set color to be white
     M=0
-    @Fill
+    @FILL
     0;JMP
 
 
