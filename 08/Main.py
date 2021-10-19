@@ -27,7 +27,6 @@ def translate_file(
 
     real_commends = 0
     parser = Parser(input_file)
-    code_writer.set_file_name(filename)
     # //need to see how to do the init function just one time in the start of the program
     while parser.has_more_commands():
         parser.advance()
@@ -72,7 +71,7 @@ if "__main__" == __name__:
 
     with open(output_path, 'w') as output_file:
         code_writer = CodeWriter(output_file)
-        # code_writer.write_init()
+        code_writer.write_init()
 
         for input_path in files_to_translate:
             filename, extension = os.path.splitext(input_path)
@@ -80,5 +79,5 @@ if "__main__" == __name__:
                 continue
             with open(input_path, 'r') as input_file:
                 name, ext = os.path.splitext(os.path.basename(input_file.name))
-                print(name)
+                code_writer.set_file_name(name)
                 translate_file(input_file, output_file, code_writer)

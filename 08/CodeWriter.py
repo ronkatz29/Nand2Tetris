@@ -53,6 +53,7 @@ class CodeWriter:
         """
         self.out_file = output_stream
         self.counter = 0  # counter for the jump commands
+        self.file_name_ = "";
 
     def set_file_name(self, filename: str) -> None:
         """Informs the code writer that the translation of a new VM file is 
@@ -61,8 +62,8 @@ class CodeWriter:
         Args:
             filename (str): The name of the VM file.
         """
-
-        # print("The translation of " + + " is started")
+        print("The translation of " + filename + " is started")
+        self.file_name_ = filename
 
     def write_init(self):
         self.out_file.write("//Init command" + NEWLINE)
@@ -227,12 +228,12 @@ class CodeWriter:
         seg = ram_p[segment]
 
         if segment == "static":
-            self.static_pointer_push_pop(command, seg)
+            self.static_push_pop(command, seg, str(index))
 
         elif segment == "pointer":
             if index == 1:
                 seg = "THAT"
-            self.static_pointer_push_pop(command, seg)
+            self.pointer_push_pop(command, seg)
         else:
             if command == "C_PUSH":
                 self.out_file.write(TAB + "@" + str(index) + NEWLINE)
@@ -261,6 +262,20 @@ class CodeWriter:
         else:
             self.out_file.write(TAB + "@" + seg + NEWLINE)
             self.out_file.write(TAB + "D=A" + NEWLINE)
+            self.pop_to_segment()
+
+    def static_push_pop(self, command, seg, ind):
+        if command == "C_PUSH":
+            self.out_file.write(TAB + "@" + self.file_name_ + ind + NEWLINE)
+            self.out_file.write(TAB + "D=A" + NEWLINE)
+            self.out_file.write(TAB + "@" + self.file_name_ + ind + NEWLINE)
+            self.out_file.write(TAB + "A=M+D" + NEWLINE)
+            self.out_file.write(TAB + "D=M" + NEWLINE)
+            self.push_to_stack()
+        else:
+            self.out_file.write(TAB + "@" + self.file_name_ + ind + NEWLINE)
+            self.out_file.write(TAB + "D=A" + NEWLINE)
+            self.out_file.write(TAB + "D=M+D" + NEWLINE)
             self.pop_to_segment()
 
     def push_to_stack(self):
