@@ -20,6 +20,7 @@
 
 (MAIN)
     //set i == RAM[SCREEN]
+    
     @SCREEN
     D=A
     @i
