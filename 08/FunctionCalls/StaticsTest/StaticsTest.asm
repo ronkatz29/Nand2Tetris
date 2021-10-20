@@ -71,7 +71,6 @@
 //pop static 0
 	@Class10
 	D=A
-	D=M+D
 	@addr
 	M=D
 	@SP
@@ -96,7 +95,6 @@
 //pop static 1
 	@Class11
 	D=A
-	D=M+D
 	@addr
 	M=D
 	@SP
@@ -179,9 +177,6 @@
 
 //push static 0
 	@Class10
-	D=A
-	@Class10
-	A=M+D
 	D=M
 	@SP
 	A=M
@@ -191,9 +186,6 @@
 
 //push static 1
 	@Class11
-	D=A
-	@Class11
-	A=M+D
 	D=M
 	@SP
 	A=M
@@ -567,7 +559,6 @@
 //pop static 0
 	@Class20
 	D=A
-	D=M+D
 	@addr
 	M=D
 	@SP
@@ -592,7 +583,6 @@
 //pop static 1
 	@Class21
 	D=A
-	D=M+D
 	@addr
 	M=D
 	@SP
@@ -675,9 +665,6 @@
 
 //push static 0
 	@Class20
-	D=A
-	@Class20
-	A=M+D
 	D=M
 	@SP
 	A=M
@@ -687,9 +674,6 @@
 
 //push static 1
 	@Class21
-	D=A
-	@Class21
-	A=M+D
 	D=M
 	@SP
 	A=M

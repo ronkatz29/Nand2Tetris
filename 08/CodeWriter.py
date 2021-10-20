@@ -254,7 +254,7 @@ class CodeWriter:
                     self.out_file.write(TAB + "D=A+D" + NEWLINE)
                 self.pop_to_segment()
 
-    def pointer_push_pop_(self, command, seg):
+    def pointer_push_pop(self, command, seg):
         if command == "C_PUSH":
             self.out_file.write(TAB + "@" + seg + NEWLINE)
             self.out_file.write(TAB + "D=M" + NEWLINE)
@@ -267,15 +267,11 @@ class CodeWriter:
     def static_push_pop(self, command, seg, ind):
         if command == "C_PUSH":
             self.out_file.write(TAB + "@" + self.file_name_ + ind + NEWLINE)
-            self.out_file.write(TAB + "D=A" + NEWLINE)
-            self.out_file.write(TAB + "@" + self.file_name_ + ind + NEWLINE)
-            self.out_file.write(TAB + "A=M+D" + NEWLINE)
             self.out_file.write(TAB + "D=M" + NEWLINE)
             self.push_to_stack()
         else:
             self.out_file.write(TAB + "@" + self.file_name_ + ind + NEWLINE)
             self.out_file.write(TAB + "D=A" + NEWLINE)
-            self.out_file.write(TAB + "D=M+D" + NEWLINE)
             self.pop_to_segment()
 
     def push_to_stack(self):
