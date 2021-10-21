@@ -53,7 +53,7 @@ class CodeWriter:
         """
         self.out_file = output_stream
         self.counter = 0  # counter for the jump commands
-        self.file_name_ = "";
+        self.file_name_ = ""
 
     def set_file_name(self, filename: str) -> None:
         """Informs the code writer that the translation of a new VM file is 
@@ -228,7 +228,7 @@ class CodeWriter:
         seg = ram_p[segment]
 
         if segment == "static":
-            self.static_push_pop(command, seg, str(index))
+            self.static_push_pop(command,  str(index))
 
         elif segment == "pointer":
             if index == 1:
@@ -264,7 +264,7 @@ class CodeWriter:
             self.out_file.write(TAB + "D=A" + NEWLINE)
             self.pop_to_segment()
 
-    def static_push_pop(self, command, seg, ind):
+    def static_push_pop(self, command, ind):
         if command == "C_PUSH":
             self.out_file.write(TAB + "@" + self.file_name_ + ind + NEWLINE)
             self.out_file.write(TAB + "D=M" + NEWLINE)
@@ -276,10 +276,10 @@ class CodeWriter:
 
     def push_to_stack(self):
         self.out_file.write(TAB + "@" + SP + NEWLINE)
-        self.out_file.write(TAB + "A=M" + NEWLINE)
-        self.out_file.write(TAB + "M=D" + NEWLINE)
-        self.out_file.write(TAB + "@" + SP + NEWLINE)
         self.out_file.write(TAB + "M=M+1" + NEWLINE)
+        self.out_file.write(TAB + "A=M-1" + NEWLINE)
+        self.out_file.write(TAB + "M=D" + NEWLINE)
+
 
     def pop_to_segment(self):
         self.out_file.write(TAB + "@addr" + NEWLINE)
@@ -321,10 +321,12 @@ class CodeWriter:
         # ARG = SP - 5 - nargs
         self.out_file.write(TAB + "@" + SP + NEWLINE)
         self.out_file.write(TAB + "D=M" + NEWLINE)
+
         self.out_file.write(TAB + "@" + FRAME_SIZE + NEWLINE)
         self.out_file.write(TAB + "D=D-A" + NEWLINE)
         self.out_file.write(TAB + "@" + str(num_arguments) + NEWLINE)
         self.out_file.write(TAB + "D=D-A" + NEWLINE)
+
         self.out_file.write(TAB + "@" + ARG + NEWLINE)
         self.out_file.write(TAB + "M=D" + NEWLINE)
 
@@ -360,8 +362,10 @@ class CodeWriter:
         # retAddr = *(endFream - 5)
         self.out_file.write(TAB + "@" + "endframe" + NEWLINE)
         self.out_file.write(TAB + "D=M" + NEWLINE)
+
         self.out_file.write(TAB + "@" + FRAME_SIZE + NEWLINE)
         self.out_file.write(TAB + "D=D-A" + NEWLINE)
+
         self.out_file.write(TAB + "A=D" + NEWLINE)
         self.out_file.write(TAB + "D=M" + NEWLINE)
         self.out_file.write(TAB + "@" + "retaddr" + NEWLINE)
@@ -377,20 +381,31 @@ class CodeWriter:
 
         # SP = ARG + 1
         self.out_file.write(TAB + "@" + ARG + NEWLINE)
-        self.out_file.write(TAB + "D=M+1" + NEWLINE)
+        self.out_file.write(TAB + "D=M" + NEWLINE)
         self.out_file.write(TAB + "@" + SP + NEWLINE)
-        self.out_file.write(TAB + "M=D" + NEWLINE)
+        self.out_file.write(TAB + "M=D+1" + NEWLINE)
 
         # restore caller frame
         dic = [THAT, THIS, ARG, LCL]
         counter = 1
         for address in dic:
             self.out_file.write(TAB + "@" + "endframe" + NEWLINE)
+            # AM = M-1
+            # D= M
+            # @THAT
+            # M=D
+            self.out_file.write(TAB + "AM=M-1" + NEWLINE)
             self.out_file.write(TAB + "D=M" + NEWLINE)
-            self.out_file.write(TAB + "@" + str(counter) + NEWLINE)
-            self.out_file.write(TAB + "D=D-A" + NEWLINE)
-            self.out_file.write(TAB + "A=D" + NEWLINE)
-            self.out_file.write(TAB + "D=M" + NEWLINE)
+
+            # self.out_file.write(TAB + "AM=M-1" + address + NEWLINE)
+            # self.out_file.write(TAB + "D=M" + address + NEWLINE)
+
+            # self.out_file.write(TAB + "D=M" + NEWLINE)
+            # self.out_file.write(TAB + "@" + str(counter) + NEWLINE)
+            # self.out_file.write(TAB + "D=D-A" + NEWLINE)
+            # self.out_file.write(TAB + "A=D" + NEWLINE)
+            # self.out_file.write(TAB + "D=M" + NEWLINE)
+
             self.out_file.write(TAB + "@" + address + NEWLINE)
             self.out_file.write(TAB + "M=D" + NEWLINE)
             counter += 1

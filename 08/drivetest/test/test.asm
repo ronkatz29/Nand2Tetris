@@ -6,38 +6,33 @@
 	@RETURN_ADDRESS_0
 	D=A
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 	@LCL
 	D=M
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 	@ARG
 	D=M
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 	@THIS
 	D=M
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 	@THAT
 	D=M
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 	@SP
 	D=M
 	@5
@@ -53,61 +48,1561 @@
 	@Sys.init
 	0;JMP
 (RETURN_ADDRESS_0)
+//function Array.new 0
+(Array.new)
+
+//push argument 0
+	@0
+	D=A
+	@ARG
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//push constant 0
+	@0
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//gt
+	@SP
+	A=M-1
+	D=M
+	@FIRST_PLUS_1
+	D;JGT
+	@FIRST_MINUS_1
+	D;JLT
+	@SAME_SIGN_1
+	0;JMP
+(FIRST_PLUS_1)
+	@SP
+	A=M-1
+	A=A-1
+	D=M
+	@DIF_SIGN_LT_1
+	D;JLT
+	@SAME_SIGN_1
+	0;JMP
+(DIF_SIGN_LT_1)
+	@SP
+	AM=M-1
+	A=A-1
+	M=0
+	@CON_1
+	0;JMP
+(FIRST_MINUS_1)
+	@SP
+	A=M-1
+	A=A-1
+	D=M
+	@DIF_SIGN_GT_1
+	D;JGT
+	@SAME_SIGN_1
+	0;JMP
+(DIF_SIGN_GT_1)
+	@SP
+	AM=M-1
+	A=A-1
+	M=-1
+	@CON_1
+	0;JMP
+(SAME_SIGN_1)
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M-D
+	D=M
+	@GRATER_1
+	D;JGT
+	@LOWER_1
+	D;JLT
+	@SP
+	A=M-1
+	M=0
+	@CON_1
+	0;JMP
+(GRATER_1)
+	@SP
+	A=M-1
+	M=-1
+	@CON_1
+	0;JMP
+(LOWER_1)
+	@SP
+	A=M-1
+	M=0
+(CON_1)
+
+//not
+	@SP
+	A=M-1
+	M=!M
+
+//if-goto IF_TRUE0
+	@SP
+	AM=M-1
+	D=M
+	@IF_TRUE0
+	D;JNE
+
+//goto IF_FALSE0
+	@IF_FALSE0
+	0;JMP
+
+//label IF_TRUE0
+(IF_TRUE0)
+
+//push constant 2
+	@2
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//call Sys.error 1
+	@RETURN_ADDRESS_2
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@LCL
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@ARG
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@THIS
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@THAT
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@SP
+	D=M
+	@5
+	D=D-A
+	@1
+	D=D-A
+	@ARG
+	M=D
+	@SP
+	D=M
+	@LCL
+	M=D
+	@Sys.error
+	0;JMP
+(RETURN_ADDRESS_2)
+
+//pop temp 0
+	@0
+	D=A
+	@R5
+	D=A+D
+	@addr
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@addr
+	A=M
+	M=D
+
+//label IF_FALSE0
+(IF_FALSE0)
+
+//push argument 0
+	@0
+	D=A
+	@ARG
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//call Memory.alloc 1
+	@RETURN_ADDRESS_3
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@LCL
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@ARG
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@THIS
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@THAT
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@SP
+	D=M
+	@5
+	D=D-A
+	@1
+	D=D-A
+	@ARG
+	M=D
+	@SP
+	D=M
+	@LCL
+	M=D
+	@Memory.alloc
+	0;JMP
+(RETURN_ADDRESS_3)
+
+//return
+	@LCL
+	D=M
+	@endframe
+	M=D
+	@endframe
+	D=M
+	@5
+	D=D-A
+	A=D
+	D=M
+	@retaddr
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@ARG
+	A=M
+	M=D
+	@ARG
+	D=M
+	@SP
+	M=D+1
+	@endframe
+	AM=M-1
+	D=M
+	@THAT
+	M=D
+	@endframe
+	AM=M-1
+	D=M
+	@THIS
+	M=D
+	@endframe
+	AM=M-1
+	D=M
+	@ARG
+	M=D
+	@endframe
+	AM=M-1
+	D=M
+	@LCL
+	M=D
+	@retaddr
+	A=M
+	0;JMP
+
+//function Array.dispose 0
+(Array.dispose)
+
+//push argument 0
+	@0
+	D=A
+	@ARG
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//pop pointer 0
+	@THIS
+	D=A
+	@addr
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@addr
+	A=M
+	M=D
+
+//push pointer 0
+	@THIS
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//call Memory.deAlloc 1
+	@RETURN_ADDRESS_4
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@LCL
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@ARG
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@THIS
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@THAT
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@SP
+	D=M
+	@5
+	D=D-A
+	@1
+	D=D-A
+	@ARG
+	M=D
+	@SP
+	D=M
+	@LCL
+	M=D
+	@Memory.deAlloc
+	0;JMP
+(RETURN_ADDRESS_4)
+
+//pop temp 0
+	@0
+	D=A
+	@R5
+	D=A+D
+	@addr
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@addr
+	A=M
+	M=D
+
+//push constant 0
+	@0
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//return
+	@LCL
+	D=M
+	@endframe
+	M=D
+	@endframe
+	D=M
+	@5
+	D=D-A
+	A=D
+	D=M
+	@retaddr
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@ARG
+	A=M
+	M=D
+	@ARG
+	D=M
+	@SP
+	M=D+1
+	@endframe
+	AM=M-1
+	D=M
+	@THAT
+	M=D
+	@endframe
+	AM=M-1
+	D=M
+	@THIS
+	M=D
+	@endframe
+	AM=M-1
+	D=M
+	@ARG
+	M=D
+	@endframe
+	AM=M-1
+	D=M
+	@LCL
+	M=D
+	@retaddr
+	A=M
+	0;JMP
+
+//function Main.main 12
+(Main.main)
+	@0
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@0
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@0
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@0
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@0
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@0
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@0
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@0
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@0
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@0
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@0
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@0
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//push constant 1
+	@1
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//pop local 0
+	@0
+	D=A
+	@LCL
+	D=M+D
+	@addr
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@addr
+	A=M
+	M=D
+
+//push constant 2
+	@2
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//pop local 1
+	@1
+	D=A
+	@LCL
+	D=M+D
+	@addr
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@addr
+	A=M
+	M=D
+
+//push constant 3
+	@3
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//pop local 2
+	@2
+	D=A
+	@LCL
+	D=M+D
+	@addr
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@addr
+	A=M
+	M=D
+
+//push constant 4
+	@4
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//pop local 3
+	@3
+	D=A
+	@LCL
+	D=M+D
+	@addr
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@addr
+	A=M
+	M=D
+
+//push constant 5
+	@5
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//pop local 4
+	@4
+	D=A
+	@LCL
+	D=M+D
+	@addr
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@addr
+	A=M
+	M=D
+
+//push constant 6
+	@6
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//pop local 5
+	@5
+	D=A
+	@LCL
+	D=M+D
+	@addr
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@addr
+	A=M
+	M=D
+
+//push local 0
+	@0
+	D=A
+	@LCL
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//push local 1
+	@1
+	D=A
+	@LCL
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//add
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M+D
+
+//push local 2
+	@2
+	D=A
+	@LCL
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//add
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M+D
+
+//push local 3
+	@3
+	D=A
+	@LCL
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//add
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M+D
+
+//push local 4
+	@4
+	D=A
+	@LCL
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//add
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M+D
+
+//push local 5
+	@5
+	D=A
+	@LCL
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//add
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M+D
+
+//pop local 6
+	@6
+	D=A
+	@LCL
+	D=M+D
+	@addr
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@addr
+	A=M
+	M=D
+
+//push local 0
+	@0
+	D=A
+	@LCL
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//push local 1
+	@1
+	D=A
+	@LCL
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//call Math.multiply 2
+	@RETURN_ADDRESS_5
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@LCL
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@ARG
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@THIS
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@THAT
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@SP
+	D=M
+	@5
+	D=D-A
+	@2
+	D=D-A
+	@ARG
+	M=D
+	@SP
+	D=M
+	@LCL
+	M=D
+	@Math.multiply
+	0;JMP
+(RETURN_ADDRESS_5)
+
+//push local 2
+	@2
+	D=A
+	@LCL
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//push local 3
+	@3
+	D=A
+	@LCL
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//call Math.multiply 2
+	@RETURN_ADDRESS_6
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@LCL
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@ARG
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@THIS
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@THAT
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@SP
+	D=M
+	@5
+	D=D-A
+	@2
+	D=D-A
+	@ARG
+	M=D
+	@SP
+	D=M
+	@LCL
+	M=D
+	@Math.multiply
+	0;JMP
+(RETURN_ADDRESS_6)
+
+//add
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M+D
+
+//push local 4
+	@4
+	D=A
+	@LCL
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//push local 5
+	@5
+	D=A
+	@LCL
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//call Math.multiply 2
+	@RETURN_ADDRESS_7
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@LCL
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@ARG
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@THIS
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@THAT
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@SP
+	D=M
+	@5
+	D=D-A
+	@2
+	D=D-A
+	@ARG
+	M=D
+	@SP
+	D=M
+	@LCL
+	M=D
+	@Math.multiply
+	0;JMP
+(RETURN_ADDRESS_7)
+
+//add
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M+D
+
+//pop local 7
+	@7
+	D=A
+	@LCL
+	D=M+D
+	@addr
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@addr
+	A=M
+	M=D
+
+//push local 5
+	@5
+	D=A
+	@LCL
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//push local 1
+	@1
+	D=A
+	@LCL
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//call Math.divide 2
+	@RETURN_ADDRESS_8
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@LCL
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@ARG
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@THIS
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@THAT
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@SP
+	D=M
+	@5
+	D=D-A
+	@2
+	D=D-A
+	@ARG
+	M=D
+	@SP
+	D=M
+	@LCL
+	M=D
+	@Math.divide
+	0;JMP
+(RETURN_ADDRESS_8)
+
+//push local 4
+	@4
+	D=A
+	@LCL
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//push local 0
+	@0
+	D=A
+	@LCL
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//call Math.divide 2
+	@RETURN_ADDRESS_9
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@LCL
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@ARG
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@THIS
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@THAT
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@SP
+	D=M
+	@5
+	D=D-A
+	@2
+	D=D-A
+	@ARG
+	M=D
+	@SP
+	D=M
+	@LCL
+	M=D
+	@Math.divide
+	0;JMP
+(RETURN_ADDRESS_9)
+
+//add
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M+D
+
+//push local 1
+	@1
+	D=A
+	@LCL
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//call Math.divide 2
+	@RETURN_ADDRESS_10
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@LCL
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@ARG
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@THIS
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@THAT
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@SP
+	D=M
+	@5
+	D=D-A
+	@2
+	D=D-A
+	@ARG
+	M=D
+	@SP
+	D=M
+	@LCL
+	M=D
+	@Math.divide
+	0;JMP
+(RETURN_ADDRESS_10)
+
+//pop local 8
+	@8
+	D=A
+	@LCL
+	D=M+D
+	@addr
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@addr
+	A=M
+	M=D
+
+//push constant 5000
+	@5000
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//push local 6
+	@6
+	D=A
+	@LCL
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//call Memory.poke 2
+	@RETURN_ADDRESS_11
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@LCL
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@ARG
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@THIS
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@THAT
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@SP
+	D=M
+	@5
+	D=D-A
+	@2
+	D=D-A
+	@ARG
+	M=D
+	@SP
+	D=M
+	@LCL
+	M=D
+	@Memory.poke
+	0;JMP
+(RETURN_ADDRESS_11)
+
+//pop temp 0
+	@0
+	D=A
+	@R5
+	D=A+D
+	@addr
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@addr
+	A=M
+	M=D
+
+//push constant 5001
+	@5001
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//push local 7
+	@7
+	D=A
+	@LCL
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//call Memory.poke 2
+	@RETURN_ADDRESS_12
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@LCL
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@ARG
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@THIS
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@THAT
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@SP
+	D=M
+	@5
+	D=D-A
+	@2
+	D=D-A
+	@ARG
+	M=D
+	@SP
+	D=M
+	@LCL
+	M=D
+	@Memory.poke
+	0;JMP
+(RETURN_ADDRESS_12)
+
+//pop temp 0
+	@0
+	D=A
+	@R5
+	D=A+D
+	@addr
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@addr
+	A=M
+	M=D
+
+//push constant 5002
+	@5002
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//push local 8
+	@8
+	D=A
+	@LCL
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//call Memory.poke 2
+	@RETURN_ADDRESS_13
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@LCL
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@ARG
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@THIS
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@THAT
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@SP
+	D=M
+	@5
+	D=D-A
+	@2
+	D=D-A
+	@ARG
+	M=D
+	@SP
+	D=M
+	@LCL
+	M=D
+	@Memory.poke
+	0;JMP
+(RETURN_ADDRESS_13)
+
+//pop temp 0
+	@0
+	D=A
+	@R5
+	D=A+D
+	@addr
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@addr
+	A=M
+	M=D
+
+//push constant 0
+	@0
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//return
+	@LCL
+	D=M
+	@endframe
+	M=D
+	@endframe
+	D=M
+	@5
+	D=D-A
+	A=D
+	D=M
+	@retaddr
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@ARG
+	A=M
+	M=D
+	@ARG
+	D=M
+	@SP
+	M=D+1
+	@endframe
+	AM=M-1
+	D=M
+	@THAT
+	M=D
+	@endframe
+	AM=M-1
+	D=M
+	@THIS
+	M=D
+	@endframe
+	AM=M-1
+	D=M
+	@ARG
+	M=D
+	@endframe
+	AM=M-1
+	D=M
+	@LCL
+	M=D
+	@retaddr
+	A=M
+	0;JMP
+
 //function Math.init 1
 (Math.init)
 	@0
 	D=A
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 
 //push constant 16
 	@16
 	D=A
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 
 //call Array.new 1
-	@RETURN_ADDRESS_1
+	@RETURN_ADDRESS_14
 	D=A
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 	@LCL
 	D=M
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 	@ARG
 	D=M
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 	@THIS
 	D=M
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 	@THAT
 	D=M
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 	@SP
 	D=M
 	@5
@@ -122,7 +1617,7 @@
 	M=D
 	@Array.new
 	0;JMP
-(RETURN_ADDRESS_1)
+(RETURN_ADDRESS_14)
 
 //pop static 1
 	@Math1
@@ -140,47 +1635,41 @@
 	@16
 	D=A
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 
 //call Array.new 1
-	@RETURN_ADDRESS_2
+	@RETURN_ADDRESS_15
 	D=A
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 	@LCL
 	D=M
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 	@ARG
 	D=M
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 	@THIS
 	D=M
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 	@THAT
 	D=M
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 	@SP
 	D=M
 	@5
@@ -195,7 +1684,7 @@
 	M=D
 	@Array.new
 	0;JMP
-(RETURN_ADDRESS_2)
+(RETURN_ADDRESS_15)
 
 //pop static 0
 	@Math0
@@ -213,19 +1702,17 @@
 	@0
 	D=A
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 
 //push static 0
 	@Math0
 	D=M
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 
 //add
 	@SP
@@ -238,10 +1725,9 @@
 	@1
 	D=A
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 
 //pop temp 0
 	@0
@@ -276,10 +1762,9 @@
 	A=M+D
 	D=M
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 
 //pop that 0
 	@0
@@ -305,2308 +1790,17 @@
 	A=M+D
 	D=M
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 
 //push constant 15
 	@15
 	D=A
 	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//lt
-	@SP
-	A=M-1
-	D=M
-	@FIRST_PLUS_3
-	D;JGT
-	@FIRST_MINUS_3
-	D;JLT
-	@SAME_SIGN_3
-	0;JMP
-(FIRST_PLUS_3)
-	@SP
-	A=M-1
-	A=A-1
-	D=M
-	@DIF_SIGN_LT_3
-	D;JLT
-	@SAME_SIGN_3
-	0;JMP
-(DIF_SIGN_LT_3)
-	@SP
-	AM=M-1
-	A=A-1
-	M=-1
-	@CON_3
-	0;JMP
-(FIRST_MINUS_3)
-	@SP
-	A=M-1
-	A=A-1
-	D=M
-	@DIF_SIGN_GT_3
-	D;JGT
-	@SAME_SIGN_3
-	0;JMP
-(DIF_SIGN_GT_3)
-	@SP
-	AM=M-1
-	A=A-1
-	M=0
-	@CON_3
-	0;JMP
-(SAME_SIGN_3)
-	@SP
-	AM=M-1
-	D=M
-	A=A-1
-	M=M-D
-	D=M
-	@GRATER_3
-	D;JGT
-	@LOWER_3
-	D;JLT
-	@SP
-	A=M-1
-	M=0
-	@CON_3
-	0;JMP
-(GRATER_3)
-	@SP
-	A=M-1
-	M=0
-	@CON_3
-	0;JMP
-(LOWER_3)
-	@SP
-	A=M-1
-	M=-1
-(CON_3)
-
-//not
-	@SP
-	A=M-1
-	M=!M
-
-//if-goto WHILE_END0
-	@SP
-	AM=M-1
-	D=M
-	@WHILE_END0
-	D;JNE
-
-//push local 0
-	@0
-	D=A
-	@LCL
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//push constant 1
-	@1
-	D=A
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//add
-	@SP
-	AM=M-1
-	D=M
-	A=A-1
-	M=M+D
-
-//pop local 0
-	@0
-	D=A
-	@LCL
-	D=M+D
-	@addr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@addr
-	A=M
-	M=D
-
-//push local 0
-	@0
-	D=A
-	@LCL
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//push static 0
-	@Math0
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//add
-	@SP
-	AM=M-1
-	D=M
-	A=A-1
-	M=M+D
-
-//push local 0
-	@0
-	D=A
-	@LCL
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//push constant 1
-	@1
-	D=A
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//sub
-	@SP
-	AM=M-1
-	D=M
-	A=A-1
-	M=M-D
-
-//push static 0
-	@Math0
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//add
-	@SP
-	AM=M-1
-	D=M
-	A=A-1
-	M=M+D
-
-//pop pointer 1
-	@THAT
-	D=A
-	@addr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@addr
-	A=M
-	M=D
-
-//push that 0
-	@0
-	D=A
-	@THAT
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//push local 0
-	@0
-	D=A
-	@LCL
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//push constant 1
-	@1
-	D=A
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//sub
-	@SP
-	AM=M-1
-	D=M
-	A=A-1
-	M=M-D
-
-//push static 0
-	@Math0
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//add
-	@SP
-	AM=M-1
-	D=M
-	A=A-1
-	M=M+D
-
-//pop pointer 1
-	@THAT
-	D=A
-	@addr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@addr
-	A=M
-	M=D
-
-//push that 0
-	@0
-	D=A
-	@THAT
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//add
-	@SP
-	AM=M-1
-	D=M
-	A=A-1
-	M=M+D
-
-//pop temp 0
-	@0
-	D=A
-	@R5
-	D=A+D
-	@addr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@addr
-	A=M
-	M=D
-
-//pop pointer 1
-	@THAT
-	D=A
-	@addr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@addr
-	A=M
-	M=D
-
-//push temp 0
-	@0
-	D=A
-	@R5
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//pop that 0
-	@0
-	D=A
-	@THAT
-	D=M+D
-	@addr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@addr
-	A=M
-	M=D
-
-//goto WHILE_EXP0
-	@WHILE_EXP0
-	0;JMP
-
-//label WHILE_END0
-(WHILE_END0)
-
-//push constant 0
-	@0
-	D=A
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//return
-	@LCL
-	D=M
-	@endframe
-	M=D
-	@endframe
-	D=M
-	@5
-	D=D-A
-	A=D
-	D=M
-	@retaddr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@ARG
-	A=M
-	M=D
-	@ARG
-	D=M+1
-	@SP
-	M=D
-	@endframe
-	D=M
-	@1
-	D=D-A
-	A=D
-	D=M
-	@THAT
-	M=D
-	@endframe
-	D=M
-	@2
-	D=D-A
-	A=D
-	D=M
-	@THIS
-	M=D
-	@endframe
-	D=M
-	@3
-	D=D-A
-	A=D
-	D=M
-	@ARG
-	M=D
-	@endframe
-	D=M
-	@4
-	D=D-A
-	A=D
-	D=M
-	@LCL
-	M=D
-	@retaddr
-	A=M
-	0;JMP
-
-//function Math.abs 0
-(Math.abs)
-
-//push argument 0
-	@0
-	D=A
-	@ARG
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//push constant 0
-	@0
-	D=A
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//lt
-	@SP
-	A=M-1
-	D=M
-	@FIRST_PLUS_4
-	D;JGT
-	@FIRST_MINUS_4
-	D;JLT
-	@SAME_SIGN_4
-	0;JMP
-(FIRST_PLUS_4)
-	@SP
-	A=M-1
-	A=A-1
-	D=M
-	@DIF_SIGN_LT_4
-	D;JLT
-	@SAME_SIGN_4
-	0;JMP
-(DIF_SIGN_LT_4)
-	@SP
-	AM=M-1
-	A=A-1
-	M=-1
-	@CON_4
-	0;JMP
-(FIRST_MINUS_4)
-	@SP
-	A=M-1
-	A=A-1
-	D=M
-	@DIF_SIGN_GT_4
-	D;JGT
-	@SAME_SIGN_4
-	0;JMP
-(DIF_SIGN_GT_4)
-	@SP
-	AM=M-1
-	A=A-1
-	M=0
-	@CON_4
-	0;JMP
-(SAME_SIGN_4)
-	@SP
-	AM=M-1
-	D=M
-	A=A-1
-	M=M-D
-	D=M
-	@GRATER_4
-	D;JGT
-	@LOWER_4
-	D;JLT
-	@SP
-	A=M-1
-	M=0
-	@CON_4
-	0;JMP
-(GRATER_4)
-	@SP
-	A=M-1
-	M=0
-	@CON_4
-	0;JMP
-(LOWER_4)
-	@SP
-	A=M-1
-	M=-1
-(CON_4)
-
-//if-goto IF_TRUE0
-	@SP
-	AM=M-1
-	D=M
-	@IF_TRUE0
-	D;JNE
-
-//goto IF_FALSE0
-	@IF_FALSE0
-	0;JMP
-
-//label IF_TRUE0
-(IF_TRUE0)
-
-//push argument 0
-	@0
-	D=A
-	@ARG
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//neg
-	@SP
-	A=M-1
-	M=-M
-	D=A+1
-	@SP
-	M=D
-
-//pop argument 0
-	@0
-	D=A
-	@ARG
-	D=M+D
-	@addr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@addr
-	A=M
-	M=D
-
-//label IF_FALSE0
-(IF_FALSE0)
-
-//push argument 0
-	@0
-	D=A
-	@ARG
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//return
-	@LCL
-	D=M
-	@endframe
-	M=D
-	@endframe
-	D=M
-	@5
-	D=D-A
-	A=D
-	D=M
-	@retaddr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@ARG
-	A=M
-	M=D
-	@ARG
-	D=M+1
-	@SP
-	M=D
-	@endframe
-	D=M
-	@1
-	D=D-A
-	A=D
-	D=M
-	@THAT
-	M=D
-	@endframe
-	D=M
-	@2
-	D=D-A
-	A=D
-	D=M
-	@THIS
-	M=D
-	@endframe
-	D=M
-	@3
-	D=D-A
-	A=D
-	D=M
-	@ARG
-	M=D
-	@endframe
-	D=M
-	@4
-	D=D-A
-	A=D
-	D=M
-	@LCL
-	M=D
-	@retaddr
-	A=M
-	0;JMP
-
-//function Math.multiply 5
-(Math.multiply)
-	@0
-	D=A
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@0
-	D=A
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@0
-	D=A
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@0
-	D=A
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@0
-	D=A
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//push argument 0
-	@0
-	D=A
-	@ARG
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//push constant 0
-	@0
-	D=A
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//lt
-	@SP
-	A=M-1
-	D=M
-	@FIRST_PLUS_5
-	D;JGT
-	@FIRST_MINUS_5
-	D;JLT
-	@SAME_SIGN_5
-	0;JMP
-(FIRST_PLUS_5)
-	@SP
-	A=M-1
-	A=A-1
-	D=M
-	@DIF_SIGN_LT_5
-	D;JLT
-	@SAME_SIGN_5
-	0;JMP
-(DIF_SIGN_LT_5)
-	@SP
-	AM=M-1
-	A=A-1
-	M=-1
-	@CON_5
-	0;JMP
-(FIRST_MINUS_5)
-	@SP
-	A=M-1
-	A=A-1
-	D=M
-	@DIF_SIGN_GT_5
-	D;JGT
-	@SAME_SIGN_5
-	0;JMP
-(DIF_SIGN_GT_5)
-	@SP
-	AM=M-1
-	A=A-1
-	M=0
-	@CON_5
-	0;JMP
-(SAME_SIGN_5)
-	@SP
-	AM=M-1
-	D=M
-	A=A-1
-	M=M-D
-	D=M
-	@GRATER_5
-	D;JGT
-	@LOWER_5
-	D;JLT
-	@SP
-	A=M-1
-	M=0
-	@CON_5
-	0;JMP
-(GRATER_5)
-	@SP
-	A=M-1
-	M=0
-	@CON_5
-	0;JMP
-(LOWER_5)
-	@SP
-	A=M-1
-	M=-1
-(CON_5)
-
-//push argument 1
-	@1
-	D=A
-	@ARG
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//push constant 0
-	@0
-	D=A
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//gt
-	@SP
-	A=M-1
-	D=M
-	@FIRST_PLUS_6
-	D;JGT
-	@FIRST_MINUS_6
-	D;JLT
-	@SAME_SIGN_6
-	0;JMP
-(FIRST_PLUS_6)
-	@SP
-	A=M-1
-	A=A-1
-	D=M
-	@DIF_SIGN_LT_6
-	D;JLT
-	@SAME_SIGN_6
-	0;JMP
-(DIF_SIGN_LT_6)
-	@SP
-	AM=M-1
-	A=A-1
-	M=0
-	@CON_6
-	0;JMP
-(FIRST_MINUS_6)
-	@SP
-	A=M-1
-	A=A-1
-	D=M
-	@DIF_SIGN_GT_6
-	D;JGT
-	@SAME_SIGN_6
-	0;JMP
-(DIF_SIGN_GT_6)
-	@SP
-	AM=M-1
-	A=A-1
-	M=-1
-	@CON_6
-	0;JMP
-(SAME_SIGN_6)
-	@SP
-	AM=M-1
-	D=M
-	A=A-1
-	M=M-D
-	D=M
-	@GRATER_6
-	D;JGT
-	@LOWER_6
-	D;JLT
-	@SP
-	A=M-1
-	M=0
-	@CON_6
-	0;JMP
-(GRATER_6)
-	@SP
-	A=M-1
-	M=-1
-	@CON_6
-	0;JMP
-(LOWER_6)
-	@SP
-	A=M-1
-	M=0
-(CON_6)
-
-//and
-	@SP
-	AM=M-1
-	D=M
-	A=A-1
-	M=M&D
-
-//push argument 0
-	@0
-	D=A
-	@ARG
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//push constant 0
-	@0
-	D=A
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//gt
-	@SP
-	A=M-1
-	D=M
-	@FIRST_PLUS_7
-	D;JGT
-	@FIRST_MINUS_7
-	D;JLT
-	@SAME_SIGN_7
-	0;JMP
-(FIRST_PLUS_7)
-	@SP
-	A=M-1
-	A=A-1
-	D=M
-	@DIF_SIGN_LT_7
-	D;JLT
-	@SAME_SIGN_7
-	0;JMP
-(DIF_SIGN_LT_7)
-	@SP
-	AM=M-1
-	A=A-1
-	M=0
-	@CON_7
-	0;JMP
-(FIRST_MINUS_7)
-	@SP
-	A=M-1
-	A=A-1
-	D=M
-	@DIF_SIGN_GT_7
-	D;JGT
-	@SAME_SIGN_7
-	0;JMP
-(DIF_SIGN_GT_7)
-	@SP
-	AM=M-1
-	A=A-1
-	M=-1
-	@CON_7
-	0;JMP
-(SAME_SIGN_7)
-	@SP
-	AM=M-1
-	D=M
-	A=A-1
-	M=M-D
-	D=M
-	@GRATER_7
-	D;JGT
-	@LOWER_7
-	D;JLT
-	@SP
-	A=M-1
-	M=0
-	@CON_7
-	0;JMP
-(GRATER_7)
-	@SP
-	A=M-1
-	M=-1
-	@CON_7
-	0;JMP
-(LOWER_7)
-	@SP
-	A=M-1
-	M=0
-(CON_7)
-
-//push argument 1
-	@1
-	D=A
-	@ARG
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//push constant 0
-	@0
-	D=A
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//lt
-	@SP
-	A=M-1
-	D=M
-	@FIRST_PLUS_8
-	D;JGT
-	@FIRST_MINUS_8
-	D;JLT
-	@SAME_SIGN_8
-	0;JMP
-(FIRST_PLUS_8)
-	@SP
-	A=M-1
-	A=A-1
-	D=M
-	@DIF_SIGN_LT_8
-	D;JLT
-	@SAME_SIGN_8
-	0;JMP
-(DIF_SIGN_LT_8)
-	@SP
-	AM=M-1
-	A=A-1
-	M=-1
-	@CON_8
-	0;JMP
-(FIRST_MINUS_8)
-	@SP
-	A=M-1
-	A=A-1
-	D=M
-	@DIF_SIGN_GT_8
-	D;JGT
-	@SAME_SIGN_8
-	0;JMP
-(DIF_SIGN_GT_8)
-	@SP
-	AM=M-1
-	A=A-1
-	M=0
-	@CON_8
-	0;JMP
-(SAME_SIGN_8)
-	@SP
-	AM=M-1
-	D=M
-	A=A-1
-	M=M-D
-	D=M
-	@GRATER_8
-	D;JGT
-	@LOWER_8
-	D;JLT
-	@SP
-	A=M-1
-	M=0
-	@CON_8
-	0;JMP
-(GRATER_8)
-	@SP
-	A=M-1
-	M=0
-	@CON_8
-	0;JMP
-(LOWER_8)
-	@SP
-	A=M-1
-	M=-1
-(CON_8)
-
-//and
-	@SP
-	AM=M-1
-	D=M
-	A=A-1
-	M=M&D
-
-//or
-	@SP
-	AM=M-1
-	D=M
-	A=A-1
-	M=M|D
-
-//pop local 4
-	@4
-	D=A
-	@LCL
-	D=M+D
-	@addr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@addr
-	A=M
-	M=D
-
-//push argument 0
-	@0
-	D=A
-	@ARG
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//call Math.abs 1
-	@RETURN_ADDRESS_9
-	D=A
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@LCL
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@ARG
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@THIS
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@THAT
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@SP
-	D=M
-	@5
-	D=D-A
-	@1
-	D=D-A
-	@ARG
-	M=D
-	@SP
-	D=M
-	@LCL
-	M=D
-	@Math.abs
-	0;JMP
-(RETURN_ADDRESS_9)
-
-//pop argument 0
-	@0
-	D=A
-	@ARG
-	D=M+D
-	@addr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@addr
-	A=M
-	M=D
-
-//push argument 1
-	@1
-	D=A
-	@ARG
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//call Math.abs 1
-	@RETURN_ADDRESS_10
-	D=A
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@LCL
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@ARG
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@THIS
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@THAT
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@SP
-	D=M
-	@5
-	D=D-A
-	@1
-	D=D-A
-	@ARG
-	M=D
-	@SP
-	D=M
-	@LCL
-	M=D
-	@Math.abs
-	0;JMP
-(RETURN_ADDRESS_10)
-
-//pop argument 1
-	@1
-	D=A
-	@ARG
-	D=M+D
-	@addr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@addr
-	A=M
-	M=D
-
-//push argument 0
-	@0
-	D=A
-	@ARG
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//push argument 1
-	@1
-	D=A
-	@ARG
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//lt
-	@SP
-	A=M-1
-	D=M
-	@FIRST_PLUS_11
-	D;JGT
-	@FIRST_MINUS_11
-	D;JLT
-	@SAME_SIGN_11
-	0;JMP
-(FIRST_PLUS_11)
-	@SP
-	A=M-1
-	A=A-1
-	D=M
-	@DIF_SIGN_LT_11
-	D;JLT
-	@SAME_SIGN_11
-	0;JMP
-(DIF_SIGN_LT_11)
-	@SP
-	AM=M-1
-	A=A-1
-	M=-1
-	@CON_11
-	0;JMP
-(FIRST_MINUS_11)
-	@SP
-	A=M-1
-	A=A-1
-	D=M
-	@DIF_SIGN_GT_11
-	D;JGT
-	@SAME_SIGN_11
-	0;JMP
-(DIF_SIGN_GT_11)
-	@SP
-	AM=M-1
-	A=A-1
-	M=0
-	@CON_11
-	0;JMP
-(SAME_SIGN_11)
-	@SP
-	AM=M-1
-	D=M
-	A=A-1
-	M=M-D
-	D=M
-	@GRATER_11
-	D;JGT
-	@LOWER_11
-	D;JLT
-	@SP
-	A=M-1
-	M=0
-	@CON_11
-	0;JMP
-(GRATER_11)
-	@SP
-	A=M-1
-	M=0
-	@CON_11
-	0;JMP
-(LOWER_11)
-	@SP
-	A=M-1
-	M=-1
-(CON_11)
-
-//if-goto IF_TRUE0
-	@SP
-	AM=M-1
-	D=M
-	@IF_TRUE0
-	D;JNE
-
-//goto IF_FALSE0
-	@IF_FALSE0
-	0;JMP
-
-//label IF_TRUE0
-(IF_TRUE0)
-
-//push argument 0
-	@0
-	D=A
-	@ARG
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//pop local 1
-	@1
-	D=A
-	@LCL
-	D=M+D
-	@addr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@addr
-	A=M
-	M=D
-
-//push argument 1
-	@1
-	D=A
-	@ARG
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//pop argument 0
-	@0
-	D=A
-	@ARG
-	D=M+D
-	@addr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@addr
-	A=M
-	M=D
-
-//push local 1
-	@1
-	D=A
-	@LCL
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//pop argument 1
-	@1
-	D=A
-	@ARG
-	D=M+D
-	@addr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@addr
-	A=M
-	M=D
-
-//label IF_FALSE0
-(IF_FALSE0)
-
-//label WHILE_EXP0
-(WHILE_EXP0)
-
-//push local 2
-	@2
-	D=A
-	@LCL
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//push argument 1
-	@1
-	D=A
-	@ARG
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//lt
-	@SP
-	A=M-1
-	D=M
-	@FIRST_PLUS_12
-	D;JGT
-	@FIRST_MINUS_12
-	D;JLT
-	@SAME_SIGN_12
-	0;JMP
-(FIRST_PLUS_12)
-	@SP
-	A=M-1
-	A=A-1
-	D=M
-	@DIF_SIGN_LT_12
-	D;JLT
-	@SAME_SIGN_12
-	0;JMP
-(DIF_SIGN_LT_12)
-	@SP
-	AM=M-1
-	A=A-1
-	M=-1
-	@CON_12
-	0;JMP
-(FIRST_MINUS_12)
-	@SP
-	A=M-1
-	A=A-1
-	D=M
-	@DIF_SIGN_GT_12
-	D;JGT
-	@SAME_SIGN_12
-	0;JMP
-(DIF_SIGN_GT_12)
-	@SP
-	AM=M-1
-	A=A-1
-	M=0
-	@CON_12
-	0;JMP
-(SAME_SIGN_12)
-	@SP
-	AM=M-1
-	D=M
-	A=A-1
-	M=M-D
-	D=M
-	@GRATER_12
-	D;JGT
-	@LOWER_12
-	D;JLT
-	@SP
-	A=M-1
-	M=0
-	@CON_12
-	0;JMP
-(GRATER_12)
-	@SP
-	A=M-1
-	M=0
-	@CON_12
-	0;JMP
-(LOWER_12)
-	@SP
-	A=M-1
-	M=-1
-(CON_12)
-
-//not
-	@SP
-	A=M-1
-	M=!M
-
-//if-goto WHILE_END0
-	@SP
-	AM=M-1
-	D=M
-	@WHILE_END0
-	D;JNE
-
-//push local 3
-	@3
-	D=A
-	@LCL
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//push static 0
-	@Math0
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//add
-	@SP
-	AM=M-1
-	D=M
-	A=A-1
-	M=M+D
-
-//pop pointer 1
-	@THAT
-	D=A
-	@addr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@addr
-	A=M
-	M=D
-
-//push that 0
-	@0
-	D=A
-	@THAT
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//push argument 1
-	@1
-	D=A
-	@ARG
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//and
-	@SP
-	AM=M-1
-	D=M
-	A=A-1
-	M=M&D
-
-//push constant 0
-	@0
-	D=A
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//gt
-	@SP
-	A=M-1
-	D=M
-	@FIRST_PLUS_13
-	D;JGT
-	@FIRST_MINUS_13
-	D;JLT
-	@SAME_SIGN_13
-	0;JMP
-(FIRST_PLUS_13)
-	@SP
-	A=M-1
-	A=A-1
-	D=M
-	@DIF_SIGN_LT_13
-	D;JLT
-	@SAME_SIGN_13
-	0;JMP
-(DIF_SIGN_LT_13)
-	@SP
-	AM=M-1
-	A=A-1
-	M=0
-	@CON_13
-	0;JMP
-(FIRST_MINUS_13)
-	@SP
-	A=M-1
-	A=A-1
-	D=M
-	@DIF_SIGN_GT_13
-	D;JGT
-	@SAME_SIGN_13
-	0;JMP
-(DIF_SIGN_GT_13)
-	@SP
-	AM=M-1
-	A=A-1
-	M=-1
-	@CON_13
-	0;JMP
-(SAME_SIGN_13)
-	@SP
-	AM=M-1
-	D=M
-	A=A-1
-	M=M-D
-	D=M
-	@GRATER_13
-	D;JGT
-	@LOWER_13
-	D;JLT
-	@SP
-	A=M-1
-	M=0
-	@CON_13
-	0;JMP
-(GRATER_13)
-	@SP
-	A=M-1
-	M=-1
-	@CON_13
-	0;JMP
-(LOWER_13)
-	@SP
-	A=M-1
-	M=0
-(CON_13)
-
-//if-goto IF_TRUE1
-	@SP
-	AM=M-1
-	D=M
-	@IF_TRUE1
-	D;JNE
-
-//goto IF_FALSE1
-	@IF_FALSE1
-	0;JMP
-
-//label IF_TRUE1
-(IF_TRUE1)
-
-//push local 0
-	@0
-	D=A
-	@LCL
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//push argument 0
-	@0
-	D=A
-	@ARG
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//add
-	@SP
-	AM=M-1
-	D=M
-	A=A-1
-	M=M+D
-
-//pop local 0
-	@0
-	D=A
-	@LCL
-	D=M+D
-	@addr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@addr
-	A=M
-	M=D
-
-//push local 2
-	@2
-	D=A
-	@LCL
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
-
-//push local 3
-	@3
-	D=A
-	@LCL
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//push static 0
-	@Math0
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//add
-	@SP
-	AM=M-1
-	D=M
-	A=A-1
-	M=M+D
-
-//pop pointer 1
-	@THAT
-	D=A
-	@addr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@addr
-	A=M
-	M=D
-
-//push that 0
-	@0
-	D=A
-	@THAT
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//add
-	@SP
-	AM=M-1
-	D=M
-	A=A-1
-	M=M+D
-
-//pop local 2
-	@2
-	D=A
-	@LCL
-	D=M+D
-	@addr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@addr
-	A=M
-	M=D
-
-//label IF_FALSE1
-(IF_FALSE1)
-
-//push argument 0
-	@0
-	D=A
-	@ARG
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//push argument 0
-	@0
-	D=A
-	@ARG
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//add
-	@SP
-	AM=M-1
-	D=M
-	A=A-1
-	M=M+D
-
-//pop argument 0
-	@0
-	D=A
-	@ARG
-	D=M+D
-	@addr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@addr
-	A=M
-	M=D
-
-//push local 3
-	@3
-	D=A
-	@LCL
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//push constant 1
-	@1
-	D=A
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//add
-	@SP
-	AM=M-1
-	D=M
-	A=A-1
-	M=M+D
-
-//pop local 3
-	@3
-	D=A
-	@LCL
-	D=M+D
-	@addr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@addr
-	A=M
-	M=D
-
-//goto WHILE_EXP0
-	@WHILE_EXP0
-	0;JMP
-
-//label WHILE_END0
-(WHILE_END0)
-
-//push local 4
-	@4
-	D=A
-	@LCL
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//if-goto IF_TRUE2
-	@SP
-	AM=M-1
-	D=M
-	@IF_TRUE2
-	D;JNE
-
-//goto IF_FALSE2
-	@IF_FALSE2
-	0;JMP
-
-//label IF_TRUE2
-(IF_TRUE2)
-
-//push local 0
-	@0
-	D=A
-	@LCL
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//neg
-	@SP
-	A=M-1
-	M=-M
-	D=A+1
-	@SP
-	M=D
-
-//pop local 0
-	@0
-	D=A
-	@LCL
-	D=M+D
-	@addr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@addr
-	A=M
-	M=D
-
-//label IF_FALSE2
-(IF_FALSE2)
-
-//push local 0
-	@0
-	D=A
-	@LCL
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//return
-	@LCL
-	D=M
-	@endframe
-	M=D
-	@endframe
-	D=M
-	@5
-	D=D-A
-	A=D
-	D=M
-	@retaddr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@ARG
-	A=M
-	M=D
-	@ARG
-	D=M+1
-	@SP
-	M=D
-	@endframe
-	D=M
-	@1
-	D=D-A
-	A=D
-	D=M
-	@THAT
-	M=D
-	@endframe
-	D=M
-	@2
-	D=D-A
-	A=D
-	D=M
-	@THIS
-	M=D
-	@endframe
-	D=M
-	@3
-	D=D-A
-	A=D
-	D=M
-	@ARG
-	M=D
-	@endframe
-	D=M
-	@4
-	D=D-A
-	A=D
-	D=M
-	@LCL
-	M=D
-	@retaddr
-	A=M
-	0;JMP
-
-//function Math.divide 4
-(Math.divide)
-	@0
-	D=A
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@0
-	D=A
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@0
-	D=A
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@0
-	D=A
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//push argument 1
-	@1
-	D=A
-	@ARG
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//push constant 0
-	@0
-	D=A
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//eq
-	@SP
-	A=M-1
-	D=M
-	@FIRST_PLUS_14
-	D;JGT
-	@FIRST_MINUS_14
-	D;JLT
-	@SAME_SIGN_14
-	0;JMP
-(FIRST_PLUS_14)
-	@SP
-	A=M-1
-	A=A-1
-	D=M
-	@DIF_SIGN_LT_14
-	D;JLT
-	@SAME_SIGN_14
-	0;JMP
-(DIF_SIGN_LT_14)
-	@SP
-	AM=M-1
-	A=A-1
-	M=0
-	@CON_14
-	0;JMP
-(FIRST_MINUS_14)
-	@SP
-	A=M-1
-	A=A-1
-	D=M
-	@DIF_SIGN_GT_14
-	D;JGT
-	@SAME_SIGN_14
-	0;JMP
-(DIF_SIGN_GT_14)
-	@SP
-	AM=M-1
-	A=A-1
-	M=0
-	@CON_14
-	0;JMP
-(SAME_SIGN_14)
-	@SP
-	AM=M-1
-	D=M
-	A=A-1
-	M=M-D
-	D=M
-	@GRATER_14
-	D;JGT
-	@LOWER_14
-	D;JLT
-	@SP
-	A=M-1
-	M=-1
-	@CON_14
-	0;JMP
-(GRATER_14)
-	@SP
-	A=M-1
-	M=0
-	@CON_14
-	0;JMP
-(LOWER_14)
-	@SP
 	A=M-1
-	M=0
-(CON_14)
-
-//if-goto IF_TRUE0
-	@SP
-	AM=M-1
-	D=M
-	@IF_TRUE0
-	D;JNE
-
-//goto IF_FALSE0
-	@IF_FALSE0
-	0;JMP
-
-//label IF_TRUE0
-(IF_TRUE0)
-
-//push constant 3
-	@3
-	D=A
-	@SP
-	A=M
 	M=D
-	@SP
-	M=M+1
-
-//call Sys.error 1
-	@RETURN_ADDRESS_15
-	D=A
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@LCL
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@ARG
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@THIS
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@THAT
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@SP
-	D=M
-	@5
-	D=D-A
-	@1
-	D=D-A
-	@ARG
-	M=D
-	@SP
-	D=M
-	@LCL
-	M=D
-	@Sys.error
-	0;JMP
-(RETURN_ADDRESS_15)
-
-//pop temp 0
-	@0
-	D=A
-	@R5
-	D=A+D
-	@addr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@addr
-	A=M
-	M=D
-
-//label IF_FALSE0
-(IF_FALSE0)
-
-//push argument 0
-	@0
-	D=A
-	@ARG
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//push constant 0
-	@0
-	D=A
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
 
 //lt
 	@SP
@@ -2678,28 +1872,355 @@
 	M=-1
 (CON_16)
 
-//push argument 1
-	@1
+//not
+	@SP
+	A=M-1
+	M=!M
+
+//if-goto WHILE_END0
+	@SP
+	AM=M-1
+	D=M
+	@WHILE_END0
+	D;JNE
+
+//push local 0
+	@0
 	D=A
-	@ARG
+	@LCL
 	A=M+D
 	D=M
 	@SP
-	A=M
+	M=M+1
+	A=M-1
 	M=D
+
+//push constant 1
+	@1
+	D=A
 	@SP
 	M=M+1
+	A=M-1
+	M=D
+
+//add
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M+D
+
+//pop local 0
+	@0
+	D=A
+	@LCL
+	D=M+D
+	@addr
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@addr
+	A=M
+	M=D
+
+//push local 0
+	@0
+	D=A
+	@LCL
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//push static 0
+	@Math0
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//add
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M+D
+
+//push local 0
+	@0
+	D=A
+	@LCL
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//push constant 1
+	@1
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//sub
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M-D
+
+//push static 0
+	@Math0
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//add
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M+D
+
+//pop pointer 1
+	@THAT
+	D=A
+	@addr
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@addr
+	A=M
+	M=D
+
+//push that 0
+	@0
+	D=A
+	@THAT
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//push local 0
+	@0
+	D=A
+	@LCL
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//push constant 1
+	@1
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//sub
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M-D
+
+//push static 0
+	@Math0
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//add
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M+D
+
+//pop pointer 1
+	@THAT
+	D=A
+	@addr
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@addr
+	A=M
+	M=D
+
+//push that 0
+	@0
+	D=A
+	@THAT
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//add
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M+D
+
+//pop temp 0
+	@0
+	D=A
+	@R5
+	D=A+D
+	@addr
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@addr
+	A=M
+	M=D
+
+//pop pointer 1
+	@THAT
+	D=A
+	@addr
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@addr
+	A=M
+	M=D
+
+//push temp 0
+	@0
+	D=A
+	@R5
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//pop that 0
+	@0
+	D=A
+	@THAT
+	D=M+D
+	@addr
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@addr
+	A=M
+	M=D
+
+//goto WHILE_EXP0
+	@WHILE_EXP0
+	0;JMP
+
+//label WHILE_END0
+(WHILE_END0)
 
 //push constant 0
 	@0
 	D=A
 	@SP
-	A=M
+	M=M+1
+	A=M-1
+	M=D
+
+//return
+	@LCL
+	D=M
+	@endframe
+	M=D
+	@endframe
+	D=M
+	@5
+	D=D-A
+	A=D
+	D=M
+	@retaddr
 	M=D
 	@SP
-	M=M+1
+	AM=M-1
+	D=M
+	@ARG
+	A=M
+	M=D
+	@ARG
+	D=M
+	@SP
+	M=D+1
+	@endframe
+	AM=M-1
+	D=M
+	@THAT
+	M=D
+	@endframe
+	AM=M-1
+	D=M
+	@THIS
+	M=D
+	@endframe
+	AM=M-1
+	D=M
+	@ARG
+	M=D
+	@endframe
+	AM=M-1
+	D=M
+	@LCL
+	M=D
+	@retaddr
+	A=M
+	0;JMP
 
-//gt
+//function Math.abs 0
+(Math.abs)
+
+//push argument 0
+	@0
+	D=A
+	@ARG
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//push constant 0
+	@0
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//lt
 	@SP
 	A=M-1
 	D=M
@@ -2722,7 +2243,7 @@
 	@SP
 	AM=M-1
 	A=A-1
-	M=0
+	M=-1
 	@CON_17
 	0;JMP
 (FIRST_MINUS_17)
@@ -2738,7 +2259,7 @@
 	@SP
 	AM=M-1
 	A=A-1
-	M=-1
+	M=0
 	@CON_17
 	0;JMP
 (SAME_SIGN_17)
@@ -2760,21 +2281,28 @@
 (GRATER_17)
 	@SP
 	A=M-1
-	M=-1
+	M=0
 	@CON_17
 	0;JMP
 (LOWER_17)
 	@SP
 	A=M-1
-	M=0
+	M=-1
 (CON_17)
 
-//and
+//if-goto IF_TRUE0
 	@SP
 	AM=M-1
 	D=M
-	A=A-1
-	M=M&D
+	@IF_TRUE0
+	D;JNE
+
+//goto IF_FALSE0
+	@IF_FALSE0
+	0;JMP
+
+//label IF_TRUE0
+(IF_TRUE0)
 
 //push argument 0
 	@0
@@ -2783,21 +2311,146 @@
 	A=M+D
 	D=M
 	@SP
-	A=M
+	M=M+1
+	A=M-1
+	M=D
+
+//neg
+	@SP
+	A=M-1
+	M=-M
+	D=A+1
+	@SP
+	M=D
+
+//pop argument 0
+	@0
+	D=A
+	@ARG
+	D=M+D
+	@addr
 	M=D
 	@SP
+	AM=M-1
+	D=M
+	@addr
+	A=M
+	M=D
+
+//label IF_FALSE0
+(IF_FALSE0)
+
+//push argument 0
+	@0
+	D=A
+	@ARG
+	A=M+D
+	D=M
+	@SP
 	M=M+1
+	A=M-1
+	M=D
+
+//return
+	@LCL
+	D=M
+	@endframe
+	M=D
+	@endframe
+	D=M
+	@5
+	D=D-A
+	A=D
+	D=M
+	@retaddr
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@ARG
+	A=M
+	M=D
+	@ARG
+	D=M
+	@SP
+	M=D+1
+	@endframe
+	AM=M-1
+	D=M
+	@THAT
+	M=D
+	@endframe
+	AM=M-1
+	D=M
+	@THIS
+	M=D
+	@endframe
+	AM=M-1
+	D=M
+	@ARG
+	M=D
+	@endframe
+	AM=M-1
+	D=M
+	@LCL
+	M=D
+	@retaddr
+	A=M
+	0;JMP
+
+//function Math.multiply 5
+(Math.multiply)
+	@0
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@0
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@0
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@0
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@0
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//push argument 0
+	@0
+	D=A
+	@ARG
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
 
 //push constant 0
 	@0
 	D=A
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 
-//gt
+//lt
 	@SP
 	A=M-1
 	D=M
@@ -2820,7 +2473,7 @@
 	@SP
 	AM=M-1
 	A=A-1
-	M=0
+	M=-1
 	@CON_18
 	0;JMP
 (FIRST_MINUS_18)
@@ -2836,7 +2489,7 @@
 	@SP
 	AM=M-1
 	A=A-1
-	M=-1
+	M=0
 	@CON_18
 	0;JMP
 (SAME_SIGN_18)
@@ -2858,13 +2511,13 @@
 (GRATER_18)
 	@SP
 	A=M-1
-	M=-1
+	M=0
 	@CON_18
 	0;JMP
 (LOWER_18)
 	@SP
 	A=M-1
-	M=0
+	M=-1
 (CON_18)
 
 //push argument 1
@@ -2874,21 +2527,19 @@
 	A=M+D
 	D=M
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 
 //push constant 0
 	@0
 	D=A
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 
-//lt
+//gt
 	@SP
 	A=M-1
 	D=M
@@ -2911,7 +2562,7 @@
 	@SP
 	AM=M-1
 	A=A-1
-	M=-1
+	M=0
 	@CON_19
 	0;JMP
 (FIRST_MINUS_19)
@@ -2927,7 +2578,7 @@
 	@SP
 	AM=M-1
 	A=A-1
-	M=0
+	M=-1
 	@CON_19
 	0;JMP
 (SAME_SIGN_19)
@@ -2949,14 +2600,199 @@
 (GRATER_19)
 	@SP
 	A=M-1
-	M=0
+	M=-1
 	@CON_19
 	0;JMP
 (LOWER_19)
 	@SP
 	A=M-1
-	M=-1
+	M=0
 (CON_19)
+
+//and
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M&D
+
+//push argument 0
+	@0
+	D=A
+	@ARG
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//push constant 0
+	@0
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//gt
+	@SP
+	A=M-1
+	D=M
+	@FIRST_PLUS_20
+	D;JGT
+	@FIRST_MINUS_20
+	D;JLT
+	@SAME_SIGN_20
+	0;JMP
+(FIRST_PLUS_20)
+	@SP
+	A=M-1
+	A=A-1
+	D=M
+	@DIF_SIGN_LT_20
+	D;JLT
+	@SAME_SIGN_20
+	0;JMP
+(DIF_SIGN_LT_20)
+	@SP
+	AM=M-1
+	A=A-1
+	M=0
+	@CON_20
+	0;JMP
+(FIRST_MINUS_20)
+	@SP
+	A=M-1
+	A=A-1
+	D=M
+	@DIF_SIGN_GT_20
+	D;JGT
+	@SAME_SIGN_20
+	0;JMP
+(DIF_SIGN_GT_20)
+	@SP
+	AM=M-1
+	A=A-1
+	M=-1
+	@CON_20
+	0;JMP
+(SAME_SIGN_20)
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M-D
+	D=M
+	@GRATER_20
+	D;JGT
+	@LOWER_20
+	D;JLT
+	@SP
+	A=M-1
+	M=0
+	@CON_20
+	0;JMP
+(GRATER_20)
+	@SP
+	A=M-1
+	M=-1
+	@CON_20
+	0;JMP
+(LOWER_20)
+	@SP
+	A=M-1
+	M=0
+(CON_20)
+
+//push argument 1
+	@1
+	D=A
+	@ARG
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//push constant 0
+	@0
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//lt
+	@SP
+	A=M-1
+	D=M
+	@FIRST_PLUS_21
+	D;JGT
+	@FIRST_MINUS_21
+	D;JLT
+	@SAME_SIGN_21
+	0;JMP
+(FIRST_PLUS_21)
+	@SP
+	A=M-1
+	A=A-1
+	D=M
+	@DIF_SIGN_LT_21
+	D;JLT
+	@SAME_SIGN_21
+	0;JMP
+(DIF_SIGN_LT_21)
+	@SP
+	AM=M-1
+	A=A-1
+	M=-1
+	@CON_21
+	0;JMP
+(FIRST_MINUS_21)
+	@SP
+	A=M-1
+	A=A-1
+	D=M
+	@DIF_SIGN_GT_21
+	D;JGT
+	@SAME_SIGN_21
+	0;JMP
+(DIF_SIGN_GT_21)
+	@SP
+	AM=M-1
+	A=A-1
+	M=0
+	@CON_21
+	0;JMP
+(SAME_SIGN_21)
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M-D
+	D=M
+	@GRATER_21
+	D;JGT
+	@LOWER_21
+	D;JLT
+	@SP
+	A=M-1
+	M=0
+	@CON_21
+	0;JMP
+(GRATER_21)
+	@SP
+	A=M-1
+	M=0
+	@CON_21
+	0;JMP
+(LOWER_21)
+	@SP
+	A=M-1
+	M=-1
+(CON_21)
 
 //and
 	@SP
@@ -2972,151 +2808,10 @@
 	A=A-1
 	M=M|D
 
-//pop local 2
-	@2
+//pop local 4
+	@4
 	D=A
 	@LCL
-	D=M+D
-	@addr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@addr
-	A=M
-	M=D
-
-//push constant 0
-	@0
-	D=A
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//push static 1
-	@Math1
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//add
-	@SP
-	AM=M-1
-	D=M
-	A=A-1
-	M=M+D
-
-//push argument 1
-	@1
-	D=A
-	@ARG
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//call Math.abs 1
-	@RETURN_ADDRESS_20
-	D=A
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@LCL
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@ARG
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@THIS
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@THAT
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@SP
-	D=M
-	@5
-	D=D-A
-	@1
-	D=D-A
-	@ARG
-	M=D
-	@SP
-	D=M
-	@LCL
-	M=D
-	@Math.abs
-	0;JMP
-(RETURN_ADDRESS_20)
-
-//pop temp 0
-	@0
-	D=A
-	@R5
-	D=A+D
-	@addr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@addr
-	A=M
-	M=D
-
-//pop pointer 1
-	@THAT
-	D=A
-	@addr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@addr
-	A=M
-	M=D
-
-//push temp 0
-	@0
-	D=A
-	@R5
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//pop that 0
-	@0
-	D=A
-	@THAT
 	D=M+D
 	@addr
 	M=D
@@ -3134,47 +2829,41 @@
 	A=M+D
 	D=M
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 
 //call Math.abs 1
-	@RETURN_ADDRESS_21
+	@RETURN_ADDRESS_22
 	D=A
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 	@LCL
 	D=M
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 	@ARG
 	D=M
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 	@THIS
 	D=M
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 	@THAT
 	D=M
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 	@SP
 	D=M
 	@5
@@ -3189,7 +2878,7 @@
 	M=D
 	@Math.abs
 	0;JMP
-(RETURN_ADDRESS_21)
+(RETURN_ADDRESS_22)
 
 //pop argument 0
 	@0
@@ -3205,232 +2894,68 @@
 	A=M
 	M=D
 
-//label WHILE_EXP0
-(WHILE_EXP0)
-
-//push local 3
-	@3
+//push argument 1
+	@1
 	D=A
+	@ARG
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//call Math.abs 1
+	@RETURN_ADDRESS_23
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
 	@LCL
-	A=M+D
 	D=M
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
-
-//not
-	@SP
 	A=M-1
-	M=!M
-
-//not
-	@SP
-	A=M-1
-	M=!M
-
-//if-goto WHILE_END0
-	@SP
-	AM=M-1
+	M=D
+	@ARG
 	D=M
-	@WHILE_END0
-	D;JNE
-
-//push constant 32767
-	@32767
-	D=A
-	@SP
-	A=M
-	M=D
 	@SP
 	M=M+1
-
-//push local 0
-	@0
-	D=A
+	A=M-1
+	M=D
+	@THIS
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@THAT
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@SP
+	D=M
+	@5
+	D=D-A
+	@1
+	D=D-A
+	@ARG
+	M=D
+	@SP
+	D=M
 	@LCL
-	A=M+D
-	D=M
-	@SP
-	A=M
 	M=D
-	@SP
-	M=M+1
+	@Math.abs
+	0;JMP
+(RETURN_ADDRESS_23)
 
-//push static 1
-	@Math1
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//add
-	@SP
-	AM=M-1
-	D=M
-	A=A-1
-	M=M+D
-
-//pop pointer 1
-	@THAT
+//pop argument 1
+	@1
 	D=A
-	@addr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@addr
-	A=M
-	M=D
-
-//push that 0
-	@0
-	D=A
-	@THAT
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//sub
-	@SP
-	AM=M-1
-	D=M
-	A=A-1
-	M=M-D
-
-//push local 0
-	@0
-	D=A
-	@LCL
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//push static 1
-	@Math1
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//add
-	@SP
-	AM=M-1
-	D=M
-	A=A-1
-	M=M+D
-
-//pop pointer 1
-	@THAT
-	D=A
-	@addr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@addr
-	A=M
-	M=D
-
-//push that 0
-	@0
-	D=A
-	@THAT
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//lt
-	@SP
-	A=M-1
-	D=M
-	@FIRST_PLUS_22
-	D;JGT
-	@FIRST_MINUS_22
-	D;JLT
-	@SAME_SIGN_22
-	0;JMP
-(FIRST_PLUS_22)
-	@SP
-	A=M-1
-	A=A-1
-	D=M
-	@DIF_SIGN_LT_22
-	D;JLT
-	@SAME_SIGN_22
-	0;JMP
-(DIF_SIGN_LT_22)
-	@SP
-	AM=M-1
-	A=A-1
-	M=-1
-	@CON_22
-	0;JMP
-(FIRST_MINUS_22)
-	@SP
-	A=M-1
-	A=A-1
-	D=M
-	@DIF_SIGN_GT_22
-	D;JGT
-	@SAME_SIGN_22
-	0;JMP
-(DIF_SIGN_GT_22)
-	@SP
-	AM=M-1
-	A=A-1
-	M=0
-	@CON_22
-	0;JMP
-(SAME_SIGN_22)
-	@SP
-	AM=M-1
-	D=M
-	A=A-1
-	M=M-D
-	D=M
-	@GRATER_22
-	D;JGT
-	@LOWER_22
-	D;JLT
-	@SP
-	A=M-1
-	M=0
-	@CON_22
-	0;JMP
-(GRATER_22)
-	@SP
-	A=M-1
-	M=0
-	@CON_22
-	0;JMP
-(LOWER_22)
-	@SP
-	A=M-1
-	M=-1
-(CON_22)
-
-//pop local 3
-	@3
-	D=A
-	@LCL
+	@ARG
 	D=M+D
 	@addr
 	M=D
@@ -3440,312 +2965,6 @@
 	@addr
 	A=M
 	M=D
-
-//push local 3
-	@3
-	D=A
-	@LCL
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//not
-	@SP
-	A=M-1
-	M=!M
-
-//if-goto IF_TRUE1
-	@SP
-	AM=M-1
-	D=M
-	@IF_TRUE1
-	D;JNE
-
-//goto IF_FALSE1
-	@IF_FALSE1
-	0;JMP
-
-//label IF_TRUE1
-(IF_TRUE1)
-
-//push local 0
-	@0
-	D=A
-	@LCL
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//push constant 1
-	@1
-	D=A
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//add
-	@SP
-	AM=M-1
-	D=M
-	A=A-1
-	M=M+D
-
-//push static 1
-	@Math1
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//add
-	@SP
-	AM=M-1
-	D=M
-	A=A-1
-	M=M+D
-
-//push local 0
-	@0
-	D=A
-	@LCL
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//push static 1
-	@Math1
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//add
-	@SP
-	AM=M-1
-	D=M
-	A=A-1
-	M=M+D
-
-//pop pointer 1
-	@THAT
-	D=A
-	@addr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@addr
-	A=M
-	M=D
-
-//push that 0
-	@0
-	D=A
-	@THAT
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//push local 0
-	@0
-	D=A
-	@LCL
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//push static 1
-	@Math1
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//add
-	@SP
-	AM=M-1
-	D=M
-	A=A-1
-	M=M+D
-
-//pop pointer 1
-	@THAT
-	D=A
-	@addr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@addr
-	A=M
-	M=D
-
-//push that 0
-	@0
-	D=A
-	@THAT
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//add
-	@SP
-	AM=M-1
-	D=M
-	A=A-1
-	M=M+D
-
-//pop temp 0
-	@0
-	D=A
-	@R5
-	D=A+D
-	@addr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@addr
-	A=M
-	M=D
-
-//pop pointer 1
-	@THAT
-	D=A
-	@addr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@addr
-	A=M
-	M=D
-
-//push temp 0
-	@0
-	D=A
-	@R5
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//pop that 0
-	@0
-	D=A
-	@THAT
-	D=M+D
-	@addr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@addr
-	A=M
-	M=D
-
-//push local 0
-	@0
-	D=A
-	@LCL
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//push constant 1
-	@1
-	D=A
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//add
-	@SP
-	AM=M-1
-	D=M
-	A=A-1
-	M=M+D
-
-//push static 1
-	@Math1
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//add
-	@SP
-	AM=M-1
-	D=M
-	A=A-1
-	M=M+D
-
-//pop pointer 1
-	@THAT
-	D=A
-	@addr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@addr
-	A=M
-	M=D
-
-//push that 0
-	@0
-	D=A
-	@THAT
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
 
 //push argument 0
 	@0
@@ -3754,214 +2973,22 @@
 	A=M+D
 	D=M
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
-
-//gt
-	@SP
 	A=M-1
-	D=M
-	@FIRST_PLUS_23
-	D;JGT
-	@FIRST_MINUS_23
-	D;JLT
-	@SAME_SIGN_23
-	0;JMP
-(FIRST_PLUS_23)
-	@SP
-	A=M-1
-	A=A-1
-	D=M
-	@DIF_SIGN_LT_23
-	D;JLT
-	@SAME_SIGN_23
-	0;JMP
-(DIF_SIGN_LT_23)
-	@SP
-	AM=M-1
-	A=A-1
-	M=0
-	@CON_23
-	0;JMP
-(FIRST_MINUS_23)
-	@SP
-	A=M-1
-	A=A-1
-	D=M
-	@DIF_SIGN_GT_23
-	D;JGT
-	@SAME_SIGN_23
-	0;JMP
-(DIF_SIGN_GT_23)
-	@SP
-	AM=M-1
-	A=A-1
-	M=-1
-	@CON_23
-	0;JMP
-(SAME_SIGN_23)
-	@SP
-	AM=M-1
-	D=M
-	A=A-1
-	M=M-D
-	D=M
-	@GRATER_23
-	D;JGT
-	@LOWER_23
-	D;JLT
-	@SP
-	A=M-1
-	M=0
-	@CON_23
-	0;JMP
-(GRATER_23)
-	@SP
-	A=M-1
-	M=-1
-	@CON_23
-	0;JMP
-(LOWER_23)
-	@SP
-	A=M-1
-	M=0
-(CON_23)
-
-//pop local 3
-	@3
-	D=A
-	@LCL
-	D=M+D
-	@addr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@addr
-	A=M
 	M=D
 
-//push local 3
-	@3
-	D=A
-	@LCL
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//not
-	@SP
-	A=M-1
-	M=!M
-
-//if-goto IF_TRUE2
-	@SP
-	AM=M-1
-	D=M
-	@IF_TRUE2
-	D;JNE
-
-//goto IF_FALSE2
-	@IF_FALSE2
-	0;JMP
-
-//label IF_TRUE2
-(IF_TRUE2)
-
-//push local 0
-	@0
-	D=A
-	@LCL
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//push constant 1
+//push argument 1
 	@1
 	D=A
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//add
-	@SP
-	AM=M-1
-	D=M
-	A=A-1
-	M=M+D
-
-//pop local 0
-	@0
-	D=A
-	@LCL
-	D=M+D
-	@addr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@addr
-	A=M
-	M=D
-
-//label IF_FALSE2
-(IF_FALSE2)
-
-//label IF_FALSE1
-(IF_FALSE1)
-
-//goto WHILE_EXP0
-	@WHILE_EXP0
-	0;JMP
-
-//label WHILE_END0
-(WHILE_END0)
-
-//label WHILE_EXP1
-(WHILE_EXP1)
-
-//push local 0
-	@0
-	D=A
-	@LCL
+	@ARG
 	A=M+D
 	D=M
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
-
-//push constant 1
-	@1
-	D=A
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//neg
-	@SP
 	A=M-1
-	M=-M
-	D=A+1
-	@SP
 	M=D
 
-//gt
+//lt
 	@SP
 	A=M-1
 	D=M
@@ -3984,7 +3011,7 @@
 	@SP
 	AM=M-1
 	A=A-1
-	M=0
+	M=-1
 	@CON_24
 	0;JMP
 (FIRST_MINUS_24)
@@ -4000,7 +3027,7 @@
 	@SP
 	AM=M-1
 	A=A-1
-	M=-1
+	M=0
 	@CON_24
 	0;JMP
 (SAME_SIGN_24)
@@ -4022,78 +3049,28 @@
 (GRATER_24)
 	@SP
 	A=M-1
-	M=-1
+	M=0
 	@CON_24
 	0;JMP
 (LOWER_24)
 	@SP
 	A=M-1
-	M=0
+	M=-1
 (CON_24)
 
-//not
-	@SP
-	A=M-1
-	M=!M
-
-//if-goto WHILE_END1
+//if-goto IF_TRUE0
 	@SP
 	AM=M-1
 	D=M
-	@WHILE_END1
+	@IF_TRUE0
 	D;JNE
 
-//push local 0
-	@0
-	D=A
-	@LCL
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
+//goto IF_FALSE0
+	@IF_FALSE0
+	0;JMP
 
-//push static 1
-	@Math1
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//add
-	@SP
-	AM=M-1
-	D=M
-	A=A-1
-	M=M+D
-
-//pop pointer 1
-	@THAT
-	D=A
-	@addr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@addr
-	A=M
-	M=D
-
-//push that 0
-	@0
-	D=A
-	@THAT
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
+//label IF_TRUE0
+(IF_TRUE0)
 
 //push argument 0
 	@0
@@ -4102,12 +3079,103 @@
 	A=M+D
 	D=M
 	@SP
-	A=M
+	M=M+1
+	A=M-1
+	M=D
+
+//pop local 1
+	@1
+	D=A
+	@LCL
+	D=M+D
+	@addr
 	M=D
 	@SP
-	M=M+1
+	AM=M-1
+	D=M
+	@addr
+	A=M
+	M=D
 
-//gt
+//push argument 1
+	@1
+	D=A
+	@ARG
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//pop argument 0
+	@0
+	D=A
+	@ARG
+	D=M+D
+	@addr
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@addr
+	A=M
+	M=D
+
+//push local 1
+	@1
+	D=A
+	@LCL
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//pop argument 1
+	@1
+	D=A
+	@ARG
+	D=M+D
+	@addr
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@addr
+	A=M
+	M=D
+
+//label IF_FALSE0
+(IF_FALSE0)
+
+//label WHILE_EXP0
+(WHILE_EXP0)
+
+//push local 2
+	@2
+	D=A
+	@LCL
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//push argument 1
+	@1
+	D=A
+	@ARG
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//lt
 	@SP
 	A=M-1
 	D=M
@@ -4130,7 +3198,7 @@
 	@SP
 	AM=M-1
 	A=A-1
-	M=0
+	M=-1
 	@CON_25
 	0;JMP
 (FIRST_MINUS_25)
@@ -4146,7 +3214,7 @@
 	@SP
 	AM=M-1
 	A=A-1
-	M=-1
+	M=0
 	@CON_25
 	0;JMP
 (SAME_SIGN_25)
@@ -4168,13 +3236,13 @@
 (GRATER_25)
 	@SP
 	A=M-1
-	M=-1
+	M=0
 	@CON_25
 	0;JMP
 (LOWER_25)
 	@SP
 	A=M-1
-	M=0
+	M=-1
 (CON_25)
 
 //not
@@ -4182,415 +3250,89 @@
 	A=M-1
 	M=!M
 
-//if-goto IF_TRUE3
+//if-goto WHILE_END0
 	@SP
 	AM=M-1
 	D=M
-	@IF_TRUE3
+	@WHILE_END0
 	D;JNE
 
-//goto IF_FALSE3
-	@IF_FALSE3
-	0;JMP
-
-//label IF_TRUE3
-(IF_TRUE3)
-
-//push local 1
-	@1
+//push local 3
+	@3
 	D=A
 	@LCL
 	A=M+D
 	D=M
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
-
-//push local 0
-	@0
-	D=A
-	@LCL
-	A=M+D
-	D=M
-	@SP
-	A=M
+	A=M-1
 	M=D
-	@SP
-	M=M+1
 
 //push static 0
 	@Math0
 	D=M
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
-
-//add
-	@SP
-	AM=M-1
-	D=M
-	A=A-1
-	M=M+D
-
-//pop pointer 1
-	@THAT
-	D=A
-	@addr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@addr
-	A=M
-	M=D
-
-//push that 0
-	@0
-	D=A
-	@THAT
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//add
-	@SP
-	AM=M-1
-	D=M
-	A=A-1
-	M=M+D
-
-//pop local 1
-	@1
-	D=A
-	@LCL
-	D=M+D
-	@addr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@addr
-	A=M
-	M=D
-
-//push argument 0
-	@0
-	D=A
-	@ARG
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//push local 0
-	@0
-	D=A
-	@LCL
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//push static 1
-	@Math1
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//add
-	@SP
-	AM=M-1
-	D=M
-	A=A-1
-	M=M+D
-
-//pop pointer 1
-	@THAT
-	D=A
-	@addr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@addr
-	A=M
-	M=D
-
-//push that 0
-	@0
-	D=A
-	@THAT
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//sub
-	@SP
-	AM=M-1
-	D=M
-	A=A-1
-	M=M-D
-
-//pop argument 0
-	@0
-	D=A
-	@ARG
-	D=M+D
-	@addr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@addr
-	A=M
-	M=D
-
-//label IF_FALSE3
-(IF_FALSE3)
-
-//push local 0
-	@0
-	D=A
-	@LCL
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//push constant 1
-	@1
-	D=A
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//sub
-	@SP
-	AM=M-1
-	D=M
-	A=A-1
-	M=M-D
-
-//pop local 0
-	@0
-	D=A
-	@LCL
-	D=M+D
-	@addr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@addr
-	A=M
-	M=D
-
-//goto WHILE_EXP1
-	@WHILE_EXP1
-	0;JMP
-
-//label WHILE_END1
-(WHILE_END1)
-
-//push local 2
-	@2
-	D=A
-	@LCL
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//if-goto IF_TRUE4
-	@SP
-	AM=M-1
-	D=M
-	@IF_TRUE4
-	D;JNE
-
-//goto IF_FALSE4
-	@IF_FALSE4
-	0;JMP
-
-//label IF_TRUE4
-(IF_TRUE4)
-
-//push local 1
-	@1
-	D=A
-	@LCL
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//neg
-	@SP
 	A=M-1
-	M=-M
-	D=A+1
-	@SP
 	M=D
 
-//pop local 1
-	@1
-	D=A
-	@LCL
-	D=M+D
-	@addr
-	M=D
+//add
 	@SP
 	AM=M-1
 	D=M
-	@addr
-	A=M
-	M=D
+	A=A-1
+	M=M+D
 
-//label IF_FALSE4
-(IF_FALSE4)
-
-//push local 1
-	@1
-	D=A
-	@LCL
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//return
-	@LCL
-	D=M
-	@endframe
-	M=D
-	@endframe
-	D=M
-	@5
-	D=D-A
-	A=D
-	D=M
-	@retaddr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@ARG
-	A=M
-	M=D
-	@ARG
-	D=M+1
-	@SP
-	M=D
-	@endframe
-	D=M
-	@1
-	D=D-A
-	A=D
-	D=M
+//pop pointer 1
 	@THAT
+	D=A
+	@addr
 	M=D
-	@endframe
+	@SP
+	AM=M-1
 	D=M
-	@2
-	D=D-A
-	A=D
-	D=M
-	@THIS
-	M=D
-	@endframe
-	D=M
-	@3
-	D=D-A
-	A=D
-	D=M
-	@ARG
-	M=D
-	@endframe
-	D=M
-	@4
-	D=D-A
-	A=D
-	D=M
-	@LCL
-	M=D
-	@retaddr
+	@addr
 	A=M
-	0;JMP
+	M=D
 
-//function Math.sqrt 2
-(Math.sqrt)
+//push that 0
 	@0
 	D=A
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@0
-	D=A
-	@SP
-	A=M
-	M=D
+	@THAT
+	A=M+D
+	D=M
 	@SP
 	M=M+1
+	A=M-1
+	M=D
 
-//push argument 0
-	@0
+//push argument 1
+	@1
 	D=A
 	@ARG
 	A=M+D
 	D=M
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
+
+//and
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M&D
 
 //push constant 0
 	@0
 	D=A
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 
-//lt
+//gt
 	@SP
 	A=M-1
 	D=M
@@ -4613,7 +3355,7 @@
 	@SP
 	AM=M-1
 	A=A-1
-	M=-1
+	M=0
 	@CON_26
 	0;JMP
 (FIRST_MINUS_26)
@@ -4629,7 +3371,7 @@
 	@SP
 	AM=M-1
 	A=A-1
-	M=0
+	M=-1
 	@CON_26
 	0;JMP
 (SAME_SIGN_26)
@@ -4651,14 +3393,480 @@
 (GRATER_26)
 	@SP
 	A=M-1
-	M=0
+	M=-1
 	@CON_26
 	0;JMP
 (LOWER_26)
 	@SP
 	A=M-1
-	M=-1
+	M=0
 (CON_26)
+
+//if-goto IF_TRUE1
+	@SP
+	AM=M-1
+	D=M
+	@IF_TRUE1
+	D;JNE
+
+//goto IF_FALSE1
+	@IF_FALSE1
+	0;JMP
+
+//label IF_TRUE1
+(IF_TRUE1)
+
+//push local 0
+	@0
+	D=A
+	@LCL
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//push argument 0
+	@0
+	D=A
+	@ARG
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//add
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M+D
+
+//pop local 0
+	@0
+	D=A
+	@LCL
+	D=M+D
+	@addr
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@addr
+	A=M
+	M=D
+
+//push local 2
+	@2
+	D=A
+	@LCL
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//push local 3
+	@3
+	D=A
+	@LCL
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//push static 0
+	@Math0
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//add
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M+D
+
+//pop pointer 1
+	@THAT
+	D=A
+	@addr
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@addr
+	A=M
+	M=D
+
+//push that 0
+	@0
+	D=A
+	@THAT
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//add
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M+D
+
+//pop local 2
+	@2
+	D=A
+	@LCL
+	D=M+D
+	@addr
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@addr
+	A=M
+	M=D
+
+//label IF_FALSE1
+(IF_FALSE1)
+
+//push argument 0
+	@0
+	D=A
+	@ARG
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//push argument 0
+	@0
+	D=A
+	@ARG
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//add
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M+D
+
+//pop argument 0
+	@0
+	D=A
+	@ARG
+	D=M+D
+	@addr
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@addr
+	A=M
+	M=D
+
+//push local 3
+	@3
+	D=A
+	@LCL
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//push constant 1
+	@1
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//add
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M+D
+
+//pop local 3
+	@3
+	D=A
+	@LCL
+	D=M+D
+	@addr
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@addr
+	A=M
+	M=D
+
+//goto WHILE_EXP0
+	@WHILE_EXP0
+	0;JMP
+
+//label WHILE_END0
+(WHILE_END0)
+
+//push local 4
+	@4
+	D=A
+	@LCL
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//if-goto IF_TRUE2
+	@SP
+	AM=M-1
+	D=M
+	@IF_TRUE2
+	D;JNE
+
+//goto IF_FALSE2
+	@IF_FALSE2
+	0;JMP
+
+//label IF_TRUE2
+(IF_TRUE2)
+
+//push local 0
+	@0
+	D=A
+	@LCL
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//neg
+	@SP
+	A=M-1
+	M=-M
+	D=A+1
+	@SP
+	M=D
+
+//pop local 0
+	@0
+	D=A
+	@LCL
+	D=M+D
+	@addr
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@addr
+	A=M
+	M=D
+
+//label IF_FALSE2
+(IF_FALSE2)
+
+//push local 0
+	@0
+	D=A
+	@LCL
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//return
+	@LCL
+	D=M
+	@endframe
+	M=D
+	@endframe
+	D=M
+	@5
+	D=D-A
+	A=D
+	D=M
+	@retaddr
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@ARG
+	A=M
+	M=D
+	@ARG
+	D=M
+	@SP
+	M=D+1
+	@endframe
+	AM=M-1
+	D=M
+	@THAT
+	M=D
+	@endframe
+	AM=M-1
+	D=M
+	@THIS
+	M=D
+	@endframe
+	AM=M-1
+	D=M
+	@ARG
+	M=D
+	@endframe
+	AM=M-1
+	D=M
+	@LCL
+	M=D
+	@retaddr
+	A=M
+	0;JMP
+
+//function Math.divide 4
+(Math.divide)
+	@0
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@0
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@0
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@0
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//push argument 1
+	@1
+	D=A
+	@ARG
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//push constant 0
+	@0
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//eq
+	@SP
+	A=M-1
+	D=M
+	@FIRST_PLUS_27
+	D;JGT
+	@FIRST_MINUS_27
+	D;JLT
+	@SAME_SIGN_27
+	0;JMP
+(FIRST_PLUS_27)
+	@SP
+	A=M-1
+	A=A-1
+	D=M
+	@DIF_SIGN_LT_27
+	D;JLT
+	@SAME_SIGN_27
+	0;JMP
+(DIF_SIGN_LT_27)
+	@SP
+	AM=M-1
+	A=A-1
+	M=0
+	@CON_27
+	0;JMP
+(FIRST_MINUS_27)
+	@SP
+	A=M-1
+	A=A-1
+	D=M
+	@DIF_SIGN_GT_27
+	D;JGT
+	@SAME_SIGN_27
+	0;JMP
+(DIF_SIGN_GT_27)
+	@SP
+	AM=M-1
+	A=A-1
+	M=0
+	@CON_27
+	0;JMP
+(SAME_SIGN_27)
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M-D
+	D=M
+	@GRATER_27
+	D;JGT
+	@LOWER_27
+	D;JLT
+	@SP
+	A=M-1
+	M=-1
+	@CON_27
+	0;JMP
+(GRATER_27)
+	@SP
+	A=M-1
+	M=0
+	@CON_27
+	0;JMP
+(LOWER_27)
+	@SP
+	A=M-1
+	M=0
+(CON_27)
 
 //if-goto IF_TRUE0
 	@SP
@@ -4674,51 +3882,45 @@
 //label IF_TRUE0
 (IF_TRUE0)
 
-//push constant 4
-	@4
+//push constant 3
+	@3
 	D=A
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 
 //call Sys.error 1
-	@RETURN_ADDRESS_27
+	@RETURN_ADDRESS_28
 	D=A
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 	@LCL
 	D=M
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 	@ARG
 	D=M
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 	@THIS
 	D=M
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 	@THAT
 	D=M
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 	@SP
 	D=M
 	@5
@@ -4733,7 +3935,7 @@
 	M=D
 	@Sys.error
 	0;JMP
-(RETURN_ADDRESS_27)
+(RETURN_ADDRESS_28)
 
 //pop temp 0
 	@0
@@ -4752,337 +3954,6 @@
 //label IF_FALSE0
 (IF_FALSE0)
 
-//push constant 7
-	@7
-	D=A
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//pop local 0
-	@0
-	D=A
-	@LCL
-	D=M+D
-	@addr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@addr
-	A=M
-	M=D
-
-//label WHILE_EXP0
-(WHILE_EXP0)
-
-//push local 0
-	@0
-	D=A
-	@LCL
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//push constant 1
-	@1
-	D=A
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//neg
-	@SP
-	A=M-1
-	M=-M
-	D=A+1
-	@SP
-	M=D
-
-//gt
-	@SP
-	A=M-1
-	D=M
-	@FIRST_PLUS_28
-	D;JGT
-	@FIRST_MINUS_28
-	D;JLT
-	@SAME_SIGN_28
-	0;JMP
-(FIRST_PLUS_28)
-	@SP
-	A=M-1
-	A=A-1
-	D=M
-	@DIF_SIGN_LT_28
-	D;JLT
-	@SAME_SIGN_28
-	0;JMP
-(DIF_SIGN_LT_28)
-	@SP
-	AM=M-1
-	A=A-1
-	M=0
-	@CON_28
-	0;JMP
-(FIRST_MINUS_28)
-	@SP
-	A=M-1
-	A=A-1
-	D=M
-	@DIF_SIGN_GT_28
-	D;JGT
-	@SAME_SIGN_28
-	0;JMP
-(DIF_SIGN_GT_28)
-	@SP
-	AM=M-1
-	A=A-1
-	M=-1
-	@CON_28
-	0;JMP
-(SAME_SIGN_28)
-	@SP
-	AM=M-1
-	D=M
-	A=A-1
-	M=M-D
-	D=M
-	@GRATER_28
-	D;JGT
-	@LOWER_28
-	D;JLT
-	@SP
-	A=M-1
-	M=0
-	@CON_28
-	0;JMP
-(GRATER_28)
-	@SP
-	A=M-1
-	M=-1
-	@CON_28
-	0;JMP
-(LOWER_28)
-	@SP
-	A=M-1
-	M=0
-(CON_28)
-
-//not
-	@SP
-	A=M-1
-	M=!M
-
-//if-goto WHILE_END0
-	@SP
-	AM=M-1
-	D=M
-	@WHILE_END0
-	D;JNE
-
-//push local 1
-	@1
-	D=A
-	@LCL
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//push local 0
-	@0
-	D=A
-	@LCL
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//push static 0
-	@Math0
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//add
-	@SP
-	AM=M-1
-	D=M
-	A=A-1
-	M=M+D
-
-//pop pointer 1
-	@THAT
-	D=A
-	@addr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@addr
-	A=M
-	M=D
-
-//push that 0
-	@0
-	D=A
-	@THAT
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//add
-	@SP
-	AM=M-1
-	D=M
-	A=A-1
-	M=M+D
-
-//push local 1
-	@1
-	D=A
-	@LCL
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//push local 0
-	@0
-	D=A
-	@LCL
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//push static 0
-	@Math0
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//add
-	@SP
-	AM=M-1
-	D=M
-	A=A-1
-	M=M+D
-
-//pop pointer 1
-	@THAT
-	D=A
-	@addr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@addr
-	A=M
-	M=D
-
-//push that 0
-	@0
-	D=A
-	@THAT
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//add
-	@SP
-	AM=M-1
-	D=M
-	A=A-1
-	M=M+D
-
-//call Math.multiply 2
-	@RETURN_ADDRESS_29
-	D=A
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@LCL
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@ARG
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@THIS
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@THAT
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@SP
-	D=M
-	@5
-	D=D-A
-	@2
-	D=D-A
-	@ARG
-	M=D
-	@SP
-	D=M
-	@LCL
-	M=D
-	@Math.multiply
-	0;JMP
-(RETURN_ADDRESS_29)
-
 //push argument 0
 	@0
 	D=A
@@ -5090,10 +3961,106 @@
 	A=M+D
 	D=M
 	@SP
-	A=M
+	M=M+1
+	A=M-1
 	M=D
+
+//push constant 0
+	@0
+	D=A
 	@SP
 	M=M+1
+	A=M-1
+	M=D
+
+//lt
+	@SP
+	A=M-1
+	D=M
+	@FIRST_PLUS_29
+	D;JGT
+	@FIRST_MINUS_29
+	D;JLT
+	@SAME_SIGN_29
+	0;JMP
+(FIRST_PLUS_29)
+	@SP
+	A=M-1
+	A=A-1
+	D=M
+	@DIF_SIGN_LT_29
+	D;JLT
+	@SAME_SIGN_29
+	0;JMP
+(DIF_SIGN_LT_29)
+	@SP
+	AM=M-1
+	A=A-1
+	M=-1
+	@CON_29
+	0;JMP
+(FIRST_MINUS_29)
+	@SP
+	A=M-1
+	A=A-1
+	D=M
+	@DIF_SIGN_GT_29
+	D;JGT
+	@SAME_SIGN_29
+	0;JMP
+(DIF_SIGN_GT_29)
+	@SP
+	AM=M-1
+	A=A-1
+	M=0
+	@CON_29
+	0;JMP
+(SAME_SIGN_29)
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M-D
+	D=M
+	@GRATER_29
+	D;JGT
+	@LOWER_29
+	D;JLT
+	@SP
+	A=M-1
+	M=0
+	@CON_29
+	0;JMP
+(GRATER_29)
+	@SP
+	A=M-1
+	M=0
+	@CON_29
+	0;JMP
+(LOWER_29)
+	@SP
+	A=M-1
+	M=-1
+(CON_29)
+
+//push argument 1
+	@1
+	D=A
+	@ARG
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//push constant 0
+	@0
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
 
 //gt
 	@SP
@@ -5165,235 +4132,12 @@
 	M=0
 (CON_30)
 
-//not
-	@SP
-	A=M-1
-	M=!M
-
-//if-goto IF_TRUE1
-	@SP
-	AM=M-1
-	D=M
-	@IF_TRUE1
-	D;JNE
-
-//goto IF_FALSE1
-	@IF_FALSE1
-	0;JMP
-
-//label IF_TRUE1
-(IF_TRUE1)
-
-//push local 1
-	@1
-	D=A
-	@LCL
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//push local 0
-	@0
-	D=A
-	@LCL
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//push static 0
-	@Math0
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//add
+//and
 	@SP
 	AM=M-1
 	D=M
 	A=A-1
-	M=M+D
-
-//pop pointer 1
-	@THAT
-	D=A
-	@addr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@addr
-	A=M
-	M=D
-
-//push that 0
-	@0
-	D=A
-	@THAT
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//add
-	@SP
-	AM=M-1
-	D=M
-	A=A-1
-	M=M+D
-
-//pop local 1
-	@1
-	D=A
-	@LCL
-	D=M+D
-	@addr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@addr
-	A=M
-	M=D
-
-//label IF_FALSE1
-(IF_FALSE1)
-
-//push local 0
-	@0
-	D=A
-	@LCL
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//push constant 1
-	@1
-	D=A
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//sub
-	@SP
-	AM=M-1
-	D=M
-	A=A-1
-	M=M-D
-
-//pop local 0
-	@0
-	D=A
-	@LCL
-	D=M+D
-	@addr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@addr
-	A=M
-	M=D
-
-//goto WHILE_EXP0
-	@WHILE_EXP0
-	0;JMP
-
-//label WHILE_END0
-(WHILE_END0)
-
-//push local 1
-	@1
-	D=A
-	@LCL
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//return
-	@LCL
-	D=M
-	@endframe
-	M=D
-	@endframe
-	D=M
-	@5
-	D=D-A
-	A=D
-	D=M
-	@retaddr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@ARG
-	A=M
-	M=D
-	@ARG
-	D=M+1
-	@SP
-	M=D
-	@endframe
-	D=M
-	@1
-	D=D-A
-	A=D
-	D=M
-	@THAT
-	M=D
-	@endframe
-	D=M
-	@2
-	D=D-A
-	A=D
-	D=M
-	@THIS
-	M=D
-	@endframe
-	D=M
-	@3
-	D=D-A
-	A=D
-	D=M
-	@ARG
-	M=D
-	@endframe
-	D=M
-	@4
-	D=D-A
-	A=D
-	D=M
-	@LCL
-	M=D
-	@retaddr
-	A=M
-	0;JMP
-
-//function Math.max 0
-(Math.max)
+	M=M&D
 
 //push argument 0
 	@0
@@ -5402,22 +4146,17 @@
 	A=M+D
 	D=M
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 
-//push argument 1
-	@1
+//push constant 0
+	@0
 	D=A
-	@ARG
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
 	@SP
 	M=M+1
+	A=M-1
+	M=D
 
 //gt
 	@SP
@@ -5489,49 +4228,6 @@
 	M=0
 (CON_31)
 
-//if-goto IF_TRUE0
-	@SP
-	AM=M-1
-	D=M
-	@IF_TRUE0
-	D;JNE
-
-//goto IF_FALSE0
-	@IF_FALSE0
-	0;JMP
-
-//label IF_TRUE0
-(IF_TRUE0)
-
-//push argument 0
-	@0
-	D=A
-	@ARG
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//pop argument 1
-	@1
-	D=A
-	@ARG
-	D=M+D
-	@addr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@addr
-	A=M
-	M=D
-
-//label IF_FALSE0
-(IF_FALSE0)
-
 //push argument 1
 	@1
 	D=A
@@ -5539,96 +4235,17 @@
 	A=M+D
 	D=M
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 
-//return
-	@LCL
-	D=M
-	@endframe
-	M=D
-	@endframe
-	D=M
-	@5
-	D=D-A
-	A=D
-	D=M
-	@retaddr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@ARG
-	A=M
-	M=D
-	@ARG
-	D=M+1
-	@SP
-	M=D
-	@endframe
-	D=M
-	@1
-	D=D-A
-	A=D
-	D=M
-	@THAT
-	M=D
-	@endframe
-	D=M
-	@2
-	D=D-A
-	A=D
-	D=M
-	@THIS
-	M=D
-	@endframe
-	D=M
-	@3
-	D=D-A
-	A=D
-	D=M
-	@ARG
-	M=D
-	@endframe
-	D=M
-	@4
-	D=D-A
-	A=D
-	D=M
-	@LCL
-	M=D
-	@retaddr
-	A=M
-	0;JMP
-
-//function Math.min 0
-(Math.min)
-
-//push argument 0
+//push constant 0
 	@0
 	D=A
-	@ARG
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
 	@SP
 	M=M+1
-
-//push argument 1
-	@1
-	D=A
-	@ARG
-	A=M+D
-	D=M
-	@SP
-	A=M
+	A=M-1
 	M=D
-	@SP
-	M=M+1
 
 //lt
 	@SP
@@ -5700,6 +4317,2416 @@
 	M=-1
 (CON_32)
 
+//and
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M&D
+
+//or
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M|D
+
+//pop local 2
+	@2
+	D=A
+	@LCL
+	D=M+D
+	@addr
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@addr
+	A=M
+	M=D
+
+//push constant 0
+	@0
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//push static 1
+	@Math1
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//add
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M+D
+
+//push argument 1
+	@1
+	D=A
+	@ARG
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//call Math.abs 1
+	@RETURN_ADDRESS_33
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@LCL
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@ARG
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@THIS
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@THAT
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@SP
+	D=M
+	@5
+	D=D-A
+	@1
+	D=D-A
+	@ARG
+	M=D
+	@SP
+	D=M
+	@LCL
+	M=D
+	@Math.abs
+	0;JMP
+(RETURN_ADDRESS_33)
+
+//pop temp 0
+	@0
+	D=A
+	@R5
+	D=A+D
+	@addr
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@addr
+	A=M
+	M=D
+
+//pop pointer 1
+	@THAT
+	D=A
+	@addr
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@addr
+	A=M
+	M=D
+
+//push temp 0
+	@0
+	D=A
+	@R5
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//pop that 0
+	@0
+	D=A
+	@THAT
+	D=M+D
+	@addr
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@addr
+	A=M
+	M=D
+
+//push argument 0
+	@0
+	D=A
+	@ARG
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//call Math.abs 1
+	@RETURN_ADDRESS_34
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@LCL
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@ARG
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@THIS
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@THAT
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@SP
+	D=M
+	@5
+	D=D-A
+	@1
+	D=D-A
+	@ARG
+	M=D
+	@SP
+	D=M
+	@LCL
+	M=D
+	@Math.abs
+	0;JMP
+(RETURN_ADDRESS_34)
+
+//pop argument 0
+	@0
+	D=A
+	@ARG
+	D=M+D
+	@addr
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@addr
+	A=M
+	M=D
+
+//label WHILE_EXP0
+(WHILE_EXP0)
+
+//push local 3
+	@3
+	D=A
+	@LCL
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//not
+	@SP
+	A=M-1
+	M=!M
+
+//not
+	@SP
+	A=M-1
+	M=!M
+
+//if-goto WHILE_END0
+	@SP
+	AM=M-1
+	D=M
+	@WHILE_END0
+	D;JNE
+
+//push constant 32767
+	@32767
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//push local 0
+	@0
+	D=A
+	@LCL
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//push static 1
+	@Math1
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//add
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M+D
+
+//pop pointer 1
+	@THAT
+	D=A
+	@addr
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@addr
+	A=M
+	M=D
+
+//push that 0
+	@0
+	D=A
+	@THAT
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//sub
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M-D
+
+//push local 0
+	@0
+	D=A
+	@LCL
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//push static 1
+	@Math1
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//add
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M+D
+
+//pop pointer 1
+	@THAT
+	D=A
+	@addr
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@addr
+	A=M
+	M=D
+
+//push that 0
+	@0
+	D=A
+	@THAT
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//lt
+	@SP
+	A=M-1
+	D=M
+	@FIRST_PLUS_35
+	D;JGT
+	@FIRST_MINUS_35
+	D;JLT
+	@SAME_SIGN_35
+	0;JMP
+(FIRST_PLUS_35)
+	@SP
+	A=M-1
+	A=A-1
+	D=M
+	@DIF_SIGN_LT_35
+	D;JLT
+	@SAME_SIGN_35
+	0;JMP
+(DIF_SIGN_LT_35)
+	@SP
+	AM=M-1
+	A=A-1
+	M=-1
+	@CON_35
+	0;JMP
+(FIRST_MINUS_35)
+	@SP
+	A=M-1
+	A=A-1
+	D=M
+	@DIF_SIGN_GT_35
+	D;JGT
+	@SAME_SIGN_35
+	0;JMP
+(DIF_SIGN_GT_35)
+	@SP
+	AM=M-1
+	A=A-1
+	M=0
+	@CON_35
+	0;JMP
+(SAME_SIGN_35)
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M-D
+	D=M
+	@GRATER_35
+	D;JGT
+	@LOWER_35
+	D;JLT
+	@SP
+	A=M-1
+	M=0
+	@CON_35
+	0;JMP
+(GRATER_35)
+	@SP
+	A=M-1
+	M=0
+	@CON_35
+	0;JMP
+(LOWER_35)
+	@SP
+	A=M-1
+	M=-1
+(CON_35)
+
+//pop local 3
+	@3
+	D=A
+	@LCL
+	D=M+D
+	@addr
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@addr
+	A=M
+	M=D
+
+//push local 3
+	@3
+	D=A
+	@LCL
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//not
+	@SP
+	A=M-1
+	M=!M
+
+//if-goto IF_TRUE1
+	@SP
+	AM=M-1
+	D=M
+	@IF_TRUE1
+	D;JNE
+
+//goto IF_FALSE1
+	@IF_FALSE1
+	0;JMP
+
+//label IF_TRUE1
+(IF_TRUE1)
+
+//push local 0
+	@0
+	D=A
+	@LCL
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//push constant 1
+	@1
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//add
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M+D
+
+//push static 1
+	@Math1
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//add
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M+D
+
+//push local 0
+	@0
+	D=A
+	@LCL
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//push static 1
+	@Math1
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//add
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M+D
+
+//pop pointer 1
+	@THAT
+	D=A
+	@addr
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@addr
+	A=M
+	M=D
+
+//push that 0
+	@0
+	D=A
+	@THAT
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//push local 0
+	@0
+	D=A
+	@LCL
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//push static 1
+	@Math1
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//add
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M+D
+
+//pop pointer 1
+	@THAT
+	D=A
+	@addr
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@addr
+	A=M
+	M=D
+
+//push that 0
+	@0
+	D=A
+	@THAT
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//add
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M+D
+
+//pop temp 0
+	@0
+	D=A
+	@R5
+	D=A+D
+	@addr
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@addr
+	A=M
+	M=D
+
+//pop pointer 1
+	@THAT
+	D=A
+	@addr
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@addr
+	A=M
+	M=D
+
+//push temp 0
+	@0
+	D=A
+	@R5
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//pop that 0
+	@0
+	D=A
+	@THAT
+	D=M+D
+	@addr
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@addr
+	A=M
+	M=D
+
+//push local 0
+	@0
+	D=A
+	@LCL
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//push constant 1
+	@1
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//add
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M+D
+
+//push static 1
+	@Math1
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//add
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M+D
+
+//pop pointer 1
+	@THAT
+	D=A
+	@addr
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@addr
+	A=M
+	M=D
+
+//push that 0
+	@0
+	D=A
+	@THAT
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//push argument 0
+	@0
+	D=A
+	@ARG
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//gt
+	@SP
+	A=M-1
+	D=M
+	@FIRST_PLUS_36
+	D;JGT
+	@FIRST_MINUS_36
+	D;JLT
+	@SAME_SIGN_36
+	0;JMP
+(FIRST_PLUS_36)
+	@SP
+	A=M-1
+	A=A-1
+	D=M
+	@DIF_SIGN_LT_36
+	D;JLT
+	@SAME_SIGN_36
+	0;JMP
+(DIF_SIGN_LT_36)
+	@SP
+	AM=M-1
+	A=A-1
+	M=0
+	@CON_36
+	0;JMP
+(FIRST_MINUS_36)
+	@SP
+	A=M-1
+	A=A-1
+	D=M
+	@DIF_SIGN_GT_36
+	D;JGT
+	@SAME_SIGN_36
+	0;JMP
+(DIF_SIGN_GT_36)
+	@SP
+	AM=M-1
+	A=A-1
+	M=-1
+	@CON_36
+	0;JMP
+(SAME_SIGN_36)
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M-D
+	D=M
+	@GRATER_36
+	D;JGT
+	@LOWER_36
+	D;JLT
+	@SP
+	A=M-1
+	M=0
+	@CON_36
+	0;JMP
+(GRATER_36)
+	@SP
+	A=M-1
+	M=-1
+	@CON_36
+	0;JMP
+(LOWER_36)
+	@SP
+	A=M-1
+	M=0
+(CON_36)
+
+//pop local 3
+	@3
+	D=A
+	@LCL
+	D=M+D
+	@addr
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@addr
+	A=M
+	M=D
+
+//push local 3
+	@3
+	D=A
+	@LCL
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//not
+	@SP
+	A=M-1
+	M=!M
+
+//if-goto IF_TRUE2
+	@SP
+	AM=M-1
+	D=M
+	@IF_TRUE2
+	D;JNE
+
+//goto IF_FALSE2
+	@IF_FALSE2
+	0;JMP
+
+//label IF_TRUE2
+(IF_TRUE2)
+
+//push local 0
+	@0
+	D=A
+	@LCL
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//push constant 1
+	@1
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//add
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M+D
+
+//pop local 0
+	@0
+	D=A
+	@LCL
+	D=M+D
+	@addr
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@addr
+	A=M
+	M=D
+
+//label IF_FALSE2
+(IF_FALSE2)
+
+//label IF_FALSE1
+(IF_FALSE1)
+
+//goto WHILE_EXP0
+	@WHILE_EXP0
+	0;JMP
+
+//label WHILE_END0
+(WHILE_END0)
+
+//label WHILE_EXP1
+(WHILE_EXP1)
+
+//push local 0
+	@0
+	D=A
+	@LCL
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//push constant 1
+	@1
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//neg
+	@SP
+	A=M-1
+	M=-M
+	D=A+1
+	@SP
+	M=D
+
+//gt
+	@SP
+	A=M-1
+	D=M
+	@FIRST_PLUS_37
+	D;JGT
+	@FIRST_MINUS_37
+	D;JLT
+	@SAME_SIGN_37
+	0;JMP
+(FIRST_PLUS_37)
+	@SP
+	A=M-1
+	A=A-1
+	D=M
+	@DIF_SIGN_LT_37
+	D;JLT
+	@SAME_SIGN_37
+	0;JMP
+(DIF_SIGN_LT_37)
+	@SP
+	AM=M-1
+	A=A-1
+	M=0
+	@CON_37
+	0;JMP
+(FIRST_MINUS_37)
+	@SP
+	A=M-1
+	A=A-1
+	D=M
+	@DIF_SIGN_GT_37
+	D;JGT
+	@SAME_SIGN_37
+	0;JMP
+(DIF_SIGN_GT_37)
+	@SP
+	AM=M-1
+	A=A-1
+	M=-1
+	@CON_37
+	0;JMP
+(SAME_SIGN_37)
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M-D
+	D=M
+	@GRATER_37
+	D;JGT
+	@LOWER_37
+	D;JLT
+	@SP
+	A=M-1
+	M=0
+	@CON_37
+	0;JMP
+(GRATER_37)
+	@SP
+	A=M-1
+	M=-1
+	@CON_37
+	0;JMP
+(LOWER_37)
+	@SP
+	A=M-1
+	M=0
+(CON_37)
+
+//not
+	@SP
+	A=M-1
+	M=!M
+
+//if-goto WHILE_END1
+	@SP
+	AM=M-1
+	D=M
+	@WHILE_END1
+	D;JNE
+
+//push local 0
+	@0
+	D=A
+	@LCL
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//push static 1
+	@Math1
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//add
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M+D
+
+//pop pointer 1
+	@THAT
+	D=A
+	@addr
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@addr
+	A=M
+	M=D
+
+//push that 0
+	@0
+	D=A
+	@THAT
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//push argument 0
+	@0
+	D=A
+	@ARG
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//gt
+	@SP
+	A=M-1
+	D=M
+	@FIRST_PLUS_38
+	D;JGT
+	@FIRST_MINUS_38
+	D;JLT
+	@SAME_SIGN_38
+	0;JMP
+(FIRST_PLUS_38)
+	@SP
+	A=M-1
+	A=A-1
+	D=M
+	@DIF_SIGN_LT_38
+	D;JLT
+	@SAME_SIGN_38
+	0;JMP
+(DIF_SIGN_LT_38)
+	@SP
+	AM=M-1
+	A=A-1
+	M=0
+	@CON_38
+	0;JMP
+(FIRST_MINUS_38)
+	@SP
+	A=M-1
+	A=A-1
+	D=M
+	@DIF_SIGN_GT_38
+	D;JGT
+	@SAME_SIGN_38
+	0;JMP
+(DIF_SIGN_GT_38)
+	@SP
+	AM=M-1
+	A=A-1
+	M=-1
+	@CON_38
+	0;JMP
+(SAME_SIGN_38)
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M-D
+	D=M
+	@GRATER_38
+	D;JGT
+	@LOWER_38
+	D;JLT
+	@SP
+	A=M-1
+	M=0
+	@CON_38
+	0;JMP
+(GRATER_38)
+	@SP
+	A=M-1
+	M=-1
+	@CON_38
+	0;JMP
+(LOWER_38)
+	@SP
+	A=M-1
+	M=0
+(CON_38)
+
+//not
+	@SP
+	A=M-1
+	M=!M
+
+//if-goto IF_TRUE3
+	@SP
+	AM=M-1
+	D=M
+	@IF_TRUE3
+	D;JNE
+
+//goto IF_FALSE3
+	@IF_FALSE3
+	0;JMP
+
+//label IF_TRUE3
+(IF_TRUE3)
+
+//push local 1
+	@1
+	D=A
+	@LCL
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//push local 0
+	@0
+	D=A
+	@LCL
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//push static 0
+	@Math0
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//add
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M+D
+
+//pop pointer 1
+	@THAT
+	D=A
+	@addr
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@addr
+	A=M
+	M=D
+
+//push that 0
+	@0
+	D=A
+	@THAT
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//add
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M+D
+
+//pop local 1
+	@1
+	D=A
+	@LCL
+	D=M+D
+	@addr
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@addr
+	A=M
+	M=D
+
+//push argument 0
+	@0
+	D=A
+	@ARG
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//push local 0
+	@0
+	D=A
+	@LCL
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//push static 1
+	@Math1
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//add
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M+D
+
+//pop pointer 1
+	@THAT
+	D=A
+	@addr
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@addr
+	A=M
+	M=D
+
+//push that 0
+	@0
+	D=A
+	@THAT
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//sub
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M-D
+
+//pop argument 0
+	@0
+	D=A
+	@ARG
+	D=M+D
+	@addr
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@addr
+	A=M
+	M=D
+
+//label IF_FALSE3
+(IF_FALSE3)
+
+//push local 0
+	@0
+	D=A
+	@LCL
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//push constant 1
+	@1
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//sub
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M-D
+
+//pop local 0
+	@0
+	D=A
+	@LCL
+	D=M+D
+	@addr
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@addr
+	A=M
+	M=D
+
+//goto WHILE_EXP1
+	@WHILE_EXP1
+	0;JMP
+
+//label WHILE_END1
+(WHILE_END1)
+
+//push local 2
+	@2
+	D=A
+	@LCL
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//if-goto IF_TRUE4
+	@SP
+	AM=M-1
+	D=M
+	@IF_TRUE4
+	D;JNE
+
+//goto IF_FALSE4
+	@IF_FALSE4
+	0;JMP
+
+//label IF_TRUE4
+(IF_TRUE4)
+
+//push local 1
+	@1
+	D=A
+	@LCL
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//neg
+	@SP
+	A=M-1
+	M=-M
+	D=A+1
+	@SP
+	M=D
+
+//pop local 1
+	@1
+	D=A
+	@LCL
+	D=M+D
+	@addr
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@addr
+	A=M
+	M=D
+
+//label IF_FALSE4
+(IF_FALSE4)
+
+//push local 1
+	@1
+	D=A
+	@LCL
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//return
+	@LCL
+	D=M
+	@endframe
+	M=D
+	@endframe
+	D=M
+	@5
+	D=D-A
+	A=D
+	D=M
+	@retaddr
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@ARG
+	A=M
+	M=D
+	@ARG
+	D=M
+	@SP
+	M=D+1
+	@endframe
+	AM=M-1
+	D=M
+	@THAT
+	M=D
+	@endframe
+	AM=M-1
+	D=M
+	@THIS
+	M=D
+	@endframe
+	AM=M-1
+	D=M
+	@ARG
+	M=D
+	@endframe
+	AM=M-1
+	D=M
+	@LCL
+	M=D
+	@retaddr
+	A=M
+	0;JMP
+
+//function Math.sqrt 2
+(Math.sqrt)
+	@0
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@0
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//push argument 0
+	@0
+	D=A
+	@ARG
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//push constant 0
+	@0
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//lt
+	@SP
+	A=M-1
+	D=M
+	@FIRST_PLUS_39
+	D;JGT
+	@FIRST_MINUS_39
+	D;JLT
+	@SAME_SIGN_39
+	0;JMP
+(FIRST_PLUS_39)
+	@SP
+	A=M-1
+	A=A-1
+	D=M
+	@DIF_SIGN_LT_39
+	D;JLT
+	@SAME_SIGN_39
+	0;JMP
+(DIF_SIGN_LT_39)
+	@SP
+	AM=M-1
+	A=A-1
+	M=-1
+	@CON_39
+	0;JMP
+(FIRST_MINUS_39)
+	@SP
+	A=M-1
+	A=A-1
+	D=M
+	@DIF_SIGN_GT_39
+	D;JGT
+	@SAME_SIGN_39
+	0;JMP
+(DIF_SIGN_GT_39)
+	@SP
+	AM=M-1
+	A=A-1
+	M=0
+	@CON_39
+	0;JMP
+(SAME_SIGN_39)
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M-D
+	D=M
+	@GRATER_39
+	D;JGT
+	@LOWER_39
+	D;JLT
+	@SP
+	A=M-1
+	M=0
+	@CON_39
+	0;JMP
+(GRATER_39)
+	@SP
+	A=M-1
+	M=0
+	@CON_39
+	0;JMP
+(LOWER_39)
+	@SP
+	A=M-1
+	M=-1
+(CON_39)
+
+//if-goto IF_TRUE0
+	@SP
+	AM=M-1
+	D=M
+	@IF_TRUE0
+	D;JNE
+
+//goto IF_FALSE0
+	@IF_FALSE0
+	0;JMP
+
+//label IF_TRUE0
+(IF_TRUE0)
+
+//push constant 4
+	@4
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//call Sys.error 1
+	@RETURN_ADDRESS_40
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@LCL
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@ARG
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@THIS
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@THAT
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@SP
+	D=M
+	@5
+	D=D-A
+	@1
+	D=D-A
+	@ARG
+	M=D
+	@SP
+	D=M
+	@LCL
+	M=D
+	@Sys.error
+	0;JMP
+(RETURN_ADDRESS_40)
+
+//pop temp 0
+	@0
+	D=A
+	@R5
+	D=A+D
+	@addr
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@addr
+	A=M
+	M=D
+
+//label IF_FALSE0
+(IF_FALSE0)
+
+//push constant 7
+	@7
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//pop local 0
+	@0
+	D=A
+	@LCL
+	D=M+D
+	@addr
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@addr
+	A=M
+	M=D
+
+//label WHILE_EXP0
+(WHILE_EXP0)
+
+//push local 0
+	@0
+	D=A
+	@LCL
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//push constant 1
+	@1
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//neg
+	@SP
+	A=M-1
+	M=-M
+	D=A+1
+	@SP
+	M=D
+
+//gt
+	@SP
+	A=M-1
+	D=M
+	@FIRST_PLUS_41
+	D;JGT
+	@FIRST_MINUS_41
+	D;JLT
+	@SAME_SIGN_41
+	0;JMP
+(FIRST_PLUS_41)
+	@SP
+	A=M-1
+	A=A-1
+	D=M
+	@DIF_SIGN_LT_41
+	D;JLT
+	@SAME_SIGN_41
+	0;JMP
+(DIF_SIGN_LT_41)
+	@SP
+	AM=M-1
+	A=A-1
+	M=0
+	@CON_41
+	0;JMP
+(FIRST_MINUS_41)
+	@SP
+	A=M-1
+	A=A-1
+	D=M
+	@DIF_SIGN_GT_41
+	D;JGT
+	@SAME_SIGN_41
+	0;JMP
+(DIF_SIGN_GT_41)
+	@SP
+	AM=M-1
+	A=A-1
+	M=-1
+	@CON_41
+	0;JMP
+(SAME_SIGN_41)
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M-D
+	D=M
+	@GRATER_41
+	D;JGT
+	@LOWER_41
+	D;JLT
+	@SP
+	A=M-1
+	M=0
+	@CON_41
+	0;JMP
+(GRATER_41)
+	@SP
+	A=M-1
+	M=-1
+	@CON_41
+	0;JMP
+(LOWER_41)
+	@SP
+	A=M-1
+	M=0
+(CON_41)
+
+//not
+	@SP
+	A=M-1
+	M=!M
+
+//if-goto WHILE_END0
+	@SP
+	AM=M-1
+	D=M
+	@WHILE_END0
+	D;JNE
+
+//push local 1
+	@1
+	D=A
+	@LCL
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//push local 0
+	@0
+	D=A
+	@LCL
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//push static 0
+	@Math0
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//add
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M+D
+
+//pop pointer 1
+	@THAT
+	D=A
+	@addr
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@addr
+	A=M
+	M=D
+
+//push that 0
+	@0
+	D=A
+	@THAT
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//add
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M+D
+
+//push local 1
+	@1
+	D=A
+	@LCL
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//push local 0
+	@0
+	D=A
+	@LCL
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//push static 0
+	@Math0
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//add
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M+D
+
+//pop pointer 1
+	@THAT
+	D=A
+	@addr
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@addr
+	A=M
+	M=D
+
+//push that 0
+	@0
+	D=A
+	@THAT
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//add
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M+D
+
+//call Math.multiply 2
+	@RETURN_ADDRESS_42
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@LCL
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@ARG
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@THIS
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@THAT
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@SP
+	D=M
+	@5
+	D=D-A
+	@2
+	D=D-A
+	@ARG
+	M=D
+	@SP
+	D=M
+	@LCL
+	M=D
+	@Math.multiply
+	0;JMP
+(RETURN_ADDRESS_42)
+
+//push argument 0
+	@0
+	D=A
+	@ARG
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//gt
+	@SP
+	A=M-1
+	D=M
+	@FIRST_PLUS_43
+	D;JGT
+	@FIRST_MINUS_43
+	D;JLT
+	@SAME_SIGN_43
+	0;JMP
+(FIRST_PLUS_43)
+	@SP
+	A=M-1
+	A=A-1
+	D=M
+	@DIF_SIGN_LT_43
+	D;JLT
+	@SAME_SIGN_43
+	0;JMP
+(DIF_SIGN_LT_43)
+	@SP
+	AM=M-1
+	A=A-1
+	M=0
+	@CON_43
+	0;JMP
+(FIRST_MINUS_43)
+	@SP
+	A=M-1
+	A=A-1
+	D=M
+	@DIF_SIGN_GT_43
+	D;JGT
+	@SAME_SIGN_43
+	0;JMP
+(DIF_SIGN_GT_43)
+	@SP
+	AM=M-1
+	A=A-1
+	M=-1
+	@CON_43
+	0;JMP
+(SAME_SIGN_43)
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M-D
+	D=M
+	@GRATER_43
+	D;JGT
+	@LOWER_43
+	D;JLT
+	@SP
+	A=M-1
+	M=0
+	@CON_43
+	0;JMP
+(GRATER_43)
+	@SP
+	A=M-1
+	M=-1
+	@CON_43
+	0;JMP
+(LOWER_43)
+	@SP
+	A=M-1
+	M=0
+(CON_43)
+
+//not
+	@SP
+	A=M-1
+	M=!M
+
+//if-goto IF_TRUE1
+	@SP
+	AM=M-1
+	D=M
+	@IF_TRUE1
+	D;JNE
+
+//goto IF_FALSE1
+	@IF_FALSE1
+	0;JMP
+
+//label IF_TRUE1
+(IF_TRUE1)
+
+//push local 1
+	@1
+	D=A
+	@LCL
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//push local 0
+	@0
+	D=A
+	@LCL
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//push static 0
+	@Math0
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//add
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M+D
+
+//pop pointer 1
+	@THAT
+	D=A
+	@addr
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@addr
+	A=M
+	M=D
+
+//push that 0
+	@0
+	D=A
+	@THAT
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//add
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M+D
+
+//pop local 1
+	@1
+	D=A
+	@LCL
+	D=M+D
+	@addr
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@addr
+	A=M
+	M=D
+
+//label IF_FALSE1
+(IF_FALSE1)
+
+//push local 0
+	@0
+	D=A
+	@LCL
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//push constant 1
+	@1
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//sub
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M-D
+
+//pop local 0
+	@0
+	D=A
+	@LCL
+	D=M+D
+	@addr
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@addr
+	A=M
+	M=D
+
+//goto WHILE_EXP0
+	@WHILE_EXP0
+	0;JMP
+
+//label WHILE_END0
+(WHILE_END0)
+
+//push local 1
+	@1
+	D=A
+	@LCL
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//return
+	@LCL
+	D=M
+	@endframe
+	M=D
+	@endframe
+	D=M
+	@5
+	D=D-A
+	A=D
+	D=M
+	@retaddr
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@ARG
+	A=M
+	M=D
+	@ARG
+	D=M
+	@SP
+	M=D+1
+	@endframe
+	AM=M-1
+	D=M
+	@THAT
+	M=D
+	@endframe
+	AM=M-1
+	D=M
+	@THIS
+	M=D
+	@endframe
+	AM=M-1
+	D=M
+	@ARG
+	M=D
+	@endframe
+	AM=M-1
+	D=M
+	@LCL
+	M=D
+	@retaddr
+	A=M
+	0;JMP
+
+//function Math.max 0
+(Math.max)
+
+//push argument 0
+	@0
+	D=A
+	@ARG
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//push argument 1
+	@1
+	D=A
+	@ARG
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//gt
+	@SP
+	A=M-1
+	D=M
+	@FIRST_PLUS_44
+	D;JGT
+	@FIRST_MINUS_44
+	D;JLT
+	@SAME_SIGN_44
+	0;JMP
+(FIRST_PLUS_44)
+	@SP
+	A=M-1
+	A=A-1
+	D=M
+	@DIF_SIGN_LT_44
+	D;JLT
+	@SAME_SIGN_44
+	0;JMP
+(DIF_SIGN_LT_44)
+	@SP
+	AM=M-1
+	A=A-1
+	M=0
+	@CON_44
+	0;JMP
+(FIRST_MINUS_44)
+	@SP
+	A=M-1
+	A=A-1
+	D=M
+	@DIF_SIGN_GT_44
+	D;JGT
+	@SAME_SIGN_44
+	0;JMP
+(DIF_SIGN_GT_44)
+	@SP
+	AM=M-1
+	A=A-1
+	M=-1
+	@CON_44
+	0;JMP
+(SAME_SIGN_44)
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M-D
+	D=M
+	@GRATER_44
+	D;JGT
+	@LOWER_44
+	D;JLT
+	@SP
+	A=M-1
+	M=0
+	@CON_44
+	0;JMP
+(GRATER_44)
+	@SP
+	A=M-1
+	M=-1
+	@CON_44
+	0;JMP
+(LOWER_44)
+	@SP
+	A=M-1
+	M=0
+(CON_44)
+
 //if-goto IF_TRUE0
 	@SP
 	AM=M-1
@@ -5721,10 +6748,9 @@
 	A=M+D
 	D=M
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 
 //pop argument 1
 	@1
@@ -5750,10 +6776,9 @@
 	A=M+D
 	D=M
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 
 //return
 	@LCL
@@ -5775,38 +6800,26 @@
 	A=M
 	M=D
 	@ARG
-	D=M+1
-	@SP
-	M=D
-	@endframe
 	D=M
-	@1
-	D=D-A
-	A=D
+	@SP
+	M=D+1
+	@endframe
+	AM=M-1
 	D=M
 	@THAT
 	M=D
 	@endframe
-	D=M
-	@2
-	D=D-A
-	A=D
+	AM=M-1
 	D=M
 	@THIS
 	M=D
 	@endframe
-	D=M
-	@3
-	D=D-A
-	A=D
+	AM=M-1
 	D=M
 	@ARG
 	M=D
 	@endframe
-	D=M
-	@4
-	D=D-A
-	A=D
+	AM=M-1
 	D=M
 	@LCL
 	M=D
@@ -5814,8 +6827,8 @@
 	A=M
 	0;JMP
 
-//function Array.new 0
-(Array.new)
+//function Math.min 0
+(Math.min)
 
 //push argument 0
 	@0
@@ -5824,94 +6837,90 @@
 	A=M+D
 	D=M
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 
-//push constant 0
-	@0
+//push argument 1
+	@1
 	D=A
-	@SP
-	A=M
-	M=D
+	@ARG
+	A=M+D
+	D=M
 	@SP
 	M=M+1
+	A=M-1
+	M=D
 
-//gt
+//lt
 	@SP
 	A=M-1
 	D=M
-	@FIRST_PLUS_33
+	@FIRST_PLUS_45
 	D;JGT
-	@FIRST_MINUS_33
+	@FIRST_MINUS_45
 	D;JLT
-	@SAME_SIGN_33
+	@SAME_SIGN_45
 	0;JMP
-(FIRST_PLUS_33)
+(FIRST_PLUS_45)
 	@SP
 	A=M-1
 	A=A-1
 	D=M
-	@DIF_SIGN_LT_33
+	@DIF_SIGN_LT_45
 	D;JLT
-	@SAME_SIGN_33
+	@SAME_SIGN_45
 	0;JMP
-(DIF_SIGN_LT_33)
-	@SP
-	AM=M-1
-	A=A-1
-	M=0
-	@CON_33
-	0;JMP
-(FIRST_MINUS_33)
-	@SP
-	A=M-1
-	A=A-1
-	D=M
-	@DIF_SIGN_GT_33
-	D;JGT
-	@SAME_SIGN_33
-	0;JMP
-(DIF_SIGN_GT_33)
+(DIF_SIGN_LT_45)
 	@SP
 	AM=M-1
 	A=A-1
 	M=-1
-	@CON_33
+	@CON_45
 	0;JMP
-(SAME_SIGN_33)
+(FIRST_MINUS_45)
+	@SP
+	A=M-1
+	A=A-1
+	D=M
+	@DIF_SIGN_GT_45
+	D;JGT
+	@SAME_SIGN_45
+	0;JMP
+(DIF_SIGN_GT_45)
+	@SP
+	AM=M-1
+	A=A-1
+	M=0
+	@CON_45
+	0;JMP
+(SAME_SIGN_45)
 	@SP
 	AM=M-1
 	D=M
 	A=A-1
 	M=M-D
 	D=M
-	@GRATER_33
+	@GRATER_45
 	D;JGT
-	@LOWER_33
+	@LOWER_45
 	D;JLT
 	@SP
 	A=M-1
 	M=0
-	@CON_33
+	@CON_45
 	0;JMP
-(GRATER_33)
-	@SP
-	A=M-1
-	M=-1
-	@CON_33
-	0;JMP
-(LOWER_33)
+(GRATER_45)
 	@SP
 	A=M-1
 	M=0
-(CON_33)
-
-//not
+	@CON_45
+	0;JMP
+(LOWER_45)
 	@SP
 	A=M-1
-	M=!M
+	M=-1
+(CON_45)
 
 //if-goto IF_TRUE0
 	@SP
@@ -5927,51 +6936,736 @@
 //label IF_TRUE0
 (IF_TRUE0)
 
-//push constant 2
-	@2
+//push argument 0
+	@0
 	D=A
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//call Sys.error 1
-	@RETURN_ADDRESS_34
-	D=A
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@LCL
+	@ARG
+	A=M+D
 	D=M
 	@SP
-	A=M
+	M=M+1
+	A=M-1
+	M=D
+
+//pop argument 1
+	@1
+	D=A
+	@ARG
+	D=M+D
+	@addr
 	M=D
 	@SP
+	AM=M-1
+	D=M
+	@addr
+	A=M
+	M=D
+
+//label IF_FALSE0
+(IF_FALSE0)
+
+//push argument 1
+	@1
+	D=A
+	@ARG
+	A=M+D
+	D=M
+	@SP
 	M=M+1
+	A=M-1
+	M=D
+
+//return
+	@LCL
+	D=M
+	@endframe
+	M=D
+	@endframe
+	D=M
+	@5
+	D=D-A
+	A=D
+	D=M
+	@retaddr
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@ARG
+	A=M
+	M=D
 	@ARG
 	D=M
 	@SP
-	A=M
+	M=D+1
+	@endframe
+	AM=M-1
+	D=M
+	@THAT
 	M=D
+	@endframe
+	AM=M-1
+	D=M
+	@THIS
+	M=D
+	@endframe
+	AM=M-1
+	D=M
+	@ARG
+	M=D
+	@endframe
+	AM=M-1
+	D=M
+	@LCL
+	M=D
+	@retaddr
+	A=M
+	0;JMP
+
+//function Memory.init 0
+(Memory.init)
+
+//push constant 0
+	@0
+	D=A
 	@SP
 	M=M+1
+	A=M-1
+	M=D
+
+//pop static 0
+	@Memory0
+	D=A
+	@addr
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@addr
+	A=M
+	M=D
+
+//push constant 2048
+	@2048
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//push static 0
+	@Memory0
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//add
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M+D
+
+//push constant 14334
+	@14334
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//pop temp 0
+	@0
+	D=A
+	@R5
+	D=A+D
+	@addr
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@addr
+	A=M
+	M=D
+
+//pop pointer 1
+	@THAT
+	D=A
+	@addr
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@addr
+	A=M
+	M=D
+
+//push temp 0
+	@0
+	D=A
+	@R5
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//pop that 0
+	@0
+	D=A
+	@THAT
+	D=M+D
+	@addr
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@addr
+	A=M
+	M=D
+
+//push constant 2049
+	@2049
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//push static 0
+	@Memory0
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//add
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M+D
+
+//push constant 2050
+	@2050
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//pop temp 0
+	@0
+	D=A
+	@R5
+	D=A+D
+	@addr
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@addr
+	A=M
+	M=D
+
+//pop pointer 1
+	@THAT
+	D=A
+	@addr
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@addr
+	A=M
+	M=D
+
+//push temp 0
+	@0
+	D=A
+	@R5
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//pop that 0
+	@0
+	D=A
+	@THAT
+	D=M+D
+	@addr
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@addr
+	A=M
+	M=D
+
+//push constant 0
+	@0
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//return
+	@LCL
+	D=M
+	@endframe
+	M=D
+	@endframe
+	D=M
+	@5
+	D=D-A
+	A=D
+	D=M
+	@retaddr
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@ARG
+	A=M
+	M=D
+	@ARG
+	D=M
+	@SP
+	M=D+1
+	@endframe
+	AM=M-1
+	D=M
+	@THAT
+	M=D
+	@endframe
+	AM=M-1
+	D=M
+	@THIS
+	M=D
+	@endframe
+	AM=M-1
+	D=M
+	@ARG
+	M=D
+	@endframe
+	AM=M-1
+	D=M
+	@LCL
+	M=D
+	@retaddr
+	A=M
+	0;JMP
+
+//function Memory.peek 0
+(Memory.peek)
+
+//push argument 0
+	@0
+	D=A
+	@ARG
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//push static 0
+	@Memory0
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//add
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M+D
+
+//pop pointer 1
+	@THAT
+	D=A
+	@addr
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@addr
+	A=M
+	M=D
+
+//push that 0
+	@0
+	D=A
+	@THAT
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//return
+	@LCL
+	D=M
+	@endframe
+	M=D
+	@endframe
+	D=M
+	@5
+	D=D-A
+	A=D
+	D=M
+	@retaddr
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@ARG
+	A=M
+	M=D
+	@ARG
+	D=M
+	@SP
+	M=D+1
+	@endframe
+	AM=M-1
+	D=M
+	@THAT
+	M=D
+	@endframe
+	AM=M-1
+	D=M
+	@THIS
+	M=D
+	@endframe
+	AM=M-1
+	D=M
+	@ARG
+	M=D
+	@endframe
+	AM=M-1
+	D=M
+	@LCL
+	M=D
+	@retaddr
+	A=M
+	0;JMP
+
+//function Memory.poke 0
+(Memory.poke)
+
+//push argument 0
+	@0
+	D=A
+	@ARG
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//push static 0
+	@Memory0
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//add
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M+D
+
+//push argument 1
+	@1
+	D=A
+	@ARG
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//pop temp 0
+	@0
+	D=A
+	@R5
+	D=A+D
+	@addr
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@addr
+	A=M
+	M=D
+
+//pop pointer 1
+	@THAT
+	D=A
+	@addr
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@addr
+	A=M
+	M=D
+
+//push temp 0
+	@0
+	D=A
+	@R5
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//pop that 0
+	@0
+	D=A
+	@THAT
+	D=M+D
+	@addr
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@addr
+	A=M
+	M=D
+
+//push constant 0
+	@0
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//return
+	@LCL
+	D=M
+	@endframe
+	M=D
+	@endframe
+	D=M
+	@5
+	D=D-A
+	A=D
+	D=M
+	@retaddr
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@ARG
+	A=M
+	M=D
+	@ARG
+	D=M
+	@SP
+	M=D+1
+	@endframe
+	AM=M-1
+	D=M
+	@THAT
+	M=D
+	@endframe
+	AM=M-1
+	D=M
+	@THIS
+	M=D
+	@endframe
+	AM=M-1
+	D=M
+	@ARG
+	M=D
+	@endframe
+	AM=M-1
+	D=M
+	@LCL
+	M=D
+	@retaddr
+	A=M
+	0;JMP
+
+//function Memory.alloc 2
+(Memory.alloc)
+	@0
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@0
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//push argument 0
+	@0
+	D=A
+	@ARG
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//push constant 1
+	@1
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//lt
+	@SP
+	A=M-1
+	D=M
+	@FIRST_PLUS_46
+	D;JGT
+	@FIRST_MINUS_46
+	D;JLT
+	@SAME_SIGN_46
+	0;JMP
+(FIRST_PLUS_46)
+	@SP
+	A=M-1
+	A=A-1
+	D=M
+	@DIF_SIGN_LT_46
+	D;JLT
+	@SAME_SIGN_46
+	0;JMP
+(DIF_SIGN_LT_46)
+	@SP
+	AM=M-1
+	A=A-1
+	M=-1
+	@CON_46
+	0;JMP
+(FIRST_MINUS_46)
+	@SP
+	A=M-1
+	A=A-1
+	D=M
+	@DIF_SIGN_GT_46
+	D;JGT
+	@SAME_SIGN_46
+	0;JMP
+(DIF_SIGN_GT_46)
+	@SP
+	AM=M-1
+	A=A-1
+	M=0
+	@CON_46
+	0;JMP
+(SAME_SIGN_46)
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M-D
+	D=M
+	@GRATER_46
+	D;JGT
+	@LOWER_46
+	D;JLT
+	@SP
+	A=M-1
+	M=0
+	@CON_46
+	0;JMP
+(GRATER_46)
+	@SP
+	A=M-1
+	M=0
+	@CON_46
+	0;JMP
+(LOWER_46)
+	@SP
+	A=M-1
+	M=-1
+(CON_46)
+
+//if-goto IF_TRUE0
+	@SP
+	AM=M-1
+	D=M
+	@IF_TRUE0
+	D;JNE
+
+//goto IF_FALSE0
+	@IF_FALSE0
+	0;JMP
+
+//label IF_TRUE0
+(IF_TRUE0)
+
+//push constant 5
+	@5
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//call Sys.error 1
+	@RETURN_ADDRESS_47
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@LCL
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@ARG
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
 	@THIS
 	D=M
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 	@THAT
 	D=M
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 	@SP
 	D=M
 	@5
@@ -5986,7 +7680,7 @@
 	M=D
 	@Sys.error
 	0;JMP
-(RETURN_ADDRESS_34)
+(RETURN_ADDRESS_47)
 
 //pop temp 0
 	@0
@@ -6005,417 +7699,13 @@
 //label IF_FALSE0
 (IF_FALSE0)
 
-//push argument 0
-	@0
-	D=A
-	@ARG
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//call Memory.alloc 1
-	@RETURN_ADDRESS_35
+//push constant 2048
+	@2048
 	D=A
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
-	@LCL
-	D=M
-	@SP
-	A=M
+	A=M-1
 	M=D
-	@SP
-	M=M+1
-	@ARG
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@THIS
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@THAT
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@SP
-	D=M
-	@5
-	D=D-A
-	@1
-	D=D-A
-	@ARG
-	M=D
-	@SP
-	D=M
-	@LCL
-	M=D
-	@Memory.alloc
-	0;JMP
-(RETURN_ADDRESS_35)
-
-//return
-	@LCL
-	D=M
-	@endframe
-	M=D
-	@endframe
-	D=M
-	@5
-	D=D-A
-	A=D
-	D=M
-	@retaddr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@ARG
-	A=M
-	M=D
-	@ARG
-	D=M+1
-	@SP
-	M=D
-	@endframe
-	D=M
-	@1
-	D=D-A
-	A=D
-	D=M
-	@THAT
-	M=D
-	@endframe
-	D=M
-	@2
-	D=D-A
-	A=D
-	D=M
-	@THIS
-	M=D
-	@endframe
-	D=M
-	@3
-	D=D-A
-	A=D
-	D=M
-	@ARG
-	M=D
-	@endframe
-	D=M
-	@4
-	D=D-A
-	A=D
-	D=M
-	@LCL
-	M=D
-	@retaddr
-	A=M
-	0;JMP
-
-//function Array.dispose 0
-(Array.dispose)
-
-//push argument 0
-	@0
-	D=A
-	@ARG
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//pop pointer 0
-	@THIS
-	D=A
-	@addr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@addr
-	A=M
-	M=D
-
-//push pointer 0
-	@THIS
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//call Memory.deAlloc 1
-	@RETURN_ADDRESS_36
-	D=A
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@LCL
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@ARG
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@THIS
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@THAT
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@SP
-	D=M
-	@5
-	D=D-A
-	@1
-	D=D-A
-	@ARG
-	M=D
-	@SP
-	D=M
-	@LCL
-	M=D
-	@Memory.deAlloc
-	0;JMP
-(RETURN_ADDRESS_36)
-
-//pop temp 0
-	@0
-	D=A
-	@R5
-	D=A+D
-	@addr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@addr
-	A=M
-	M=D
-
-//push constant 0
-	@0
-	D=A
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//return
-	@LCL
-	D=M
-	@endframe
-	M=D
-	@endframe
-	D=M
-	@5
-	D=D-A
-	A=D
-	D=M
-	@retaddr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@ARG
-	A=M
-	M=D
-	@ARG
-	D=M+1
-	@SP
-	M=D
-	@endframe
-	D=M
-	@1
-	D=D-A
-	A=D
-	D=M
-	@THAT
-	M=D
-	@endframe
-	D=M
-	@2
-	D=D-A
-	A=D
-	D=M
-	@THIS
-	M=D
-	@endframe
-	D=M
-	@3
-	D=D-A
-	A=D
-	D=M
-	@ARG
-	M=D
-	@endframe
-	D=M
-	@4
-	D=D-A
-	A=D
-	D=M
-	@LCL
-	M=D
-	@retaddr
-	A=M
-	0;JMP
-
-//function Main.main 12
-(Main.main)
-	@0
-	D=A
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@0
-	D=A
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@0
-	D=A
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@0
-	D=A
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@0
-	D=A
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@0
-	D=A
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@0
-	D=A
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@0
-	D=A
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@0
-	D=A
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@0
-	D=A
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@0
-	D=A
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@0
-	D=A
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//push constant 1
-	@1
-	D=A
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//pop local 0
-	@0
-	D=A
-	@LCL
-	D=M+D
-	@addr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@addr
-	A=M
-	M=D
-
-//push constant 2
-	@2
-	D=A
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
 
 //pop local 1
 	@1
@@ -6431,1242 +7721,6 @@
 	A=M
 	M=D
 
-//push constant 3
-	@3
-	D=A
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//pop local 2
-	@2
-	D=A
-	@LCL
-	D=M+D
-	@addr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@addr
-	A=M
-	M=D
-
-//push constant 4
-	@4
-	D=A
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//pop local 3
-	@3
-	D=A
-	@LCL
-	D=M+D
-	@addr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@addr
-	A=M
-	M=D
-
-//push constant 5
-	@5
-	D=A
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//pop local 4
-	@4
-	D=A
-	@LCL
-	D=M+D
-	@addr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@addr
-	A=M
-	M=D
-
-//push constant 6
-	@6
-	D=A
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//pop local 5
-	@5
-	D=A
-	@LCL
-	D=M+D
-	@addr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@addr
-	A=M
-	M=D
-
-//push local 0
-	@0
-	D=A
-	@LCL
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//push local 1
-	@1
-	D=A
-	@LCL
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//add
-	@SP
-	AM=M-1
-	D=M
-	A=A-1
-	M=M+D
-
-//push local 2
-	@2
-	D=A
-	@LCL
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//add
-	@SP
-	AM=M-1
-	D=M
-	A=A-1
-	M=M+D
-
-//push local 3
-	@3
-	D=A
-	@LCL
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//add
-	@SP
-	AM=M-1
-	D=M
-	A=A-1
-	M=M+D
-
-//push local 4
-	@4
-	D=A
-	@LCL
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//add
-	@SP
-	AM=M-1
-	D=M
-	A=A-1
-	M=M+D
-
-//push local 5
-	@5
-	D=A
-	@LCL
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//add
-	@SP
-	AM=M-1
-	D=M
-	A=A-1
-	M=M+D
-
-//pop local 6
-	@6
-	D=A
-	@LCL
-	D=M+D
-	@addr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@addr
-	A=M
-	M=D
-
-//push local 0
-	@0
-	D=A
-	@LCL
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//push local 1
-	@1
-	D=A
-	@LCL
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//call Math.multiply 2
-	@RETURN_ADDRESS_37
-	D=A
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@LCL
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@ARG
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@THIS
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@THAT
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@SP
-	D=M
-	@5
-	D=D-A
-	@2
-	D=D-A
-	@ARG
-	M=D
-	@SP
-	D=M
-	@LCL
-	M=D
-	@Math.multiply
-	0;JMP
-(RETURN_ADDRESS_37)
-
-//push local 2
-	@2
-	D=A
-	@LCL
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//push local 3
-	@3
-	D=A
-	@LCL
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//call Math.multiply 2
-	@RETURN_ADDRESS_38
-	D=A
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@LCL
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@ARG
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@THIS
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@THAT
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@SP
-	D=M
-	@5
-	D=D-A
-	@2
-	D=D-A
-	@ARG
-	M=D
-	@SP
-	D=M
-	@LCL
-	M=D
-	@Math.multiply
-	0;JMP
-(RETURN_ADDRESS_38)
-
-//add
-	@SP
-	AM=M-1
-	D=M
-	A=A-1
-	M=M+D
-
-//push local 4
-	@4
-	D=A
-	@LCL
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//push local 5
-	@5
-	D=A
-	@LCL
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//call Math.multiply 2
-	@RETURN_ADDRESS_39
-	D=A
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@LCL
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@ARG
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@THIS
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@THAT
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@SP
-	D=M
-	@5
-	D=D-A
-	@2
-	D=D-A
-	@ARG
-	M=D
-	@SP
-	D=M
-	@LCL
-	M=D
-	@Math.multiply
-	0;JMP
-(RETURN_ADDRESS_39)
-
-//add
-	@SP
-	AM=M-1
-	D=M
-	A=A-1
-	M=M+D
-
-//pop local 7
-	@7
-	D=A
-	@LCL
-	D=M+D
-	@addr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@addr
-	A=M
-	M=D
-
-//push local 5
-	@5
-	D=A
-	@LCL
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//push local 1
-	@1
-	D=A
-	@LCL
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//call Math.divide 2
-	@RETURN_ADDRESS_40
-	D=A
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@LCL
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@ARG
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@THIS
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@THAT
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@SP
-	D=M
-	@5
-	D=D-A
-	@2
-	D=D-A
-	@ARG
-	M=D
-	@SP
-	D=M
-	@LCL
-	M=D
-	@Math.divide
-	0;JMP
-(RETURN_ADDRESS_40)
-
-//push local 4
-	@4
-	D=A
-	@LCL
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//push local 0
-	@0
-	D=A
-	@LCL
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//call Math.divide 2
-	@RETURN_ADDRESS_41
-	D=A
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@LCL
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@ARG
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@THIS
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@THAT
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@SP
-	D=M
-	@5
-	D=D-A
-	@2
-	D=D-A
-	@ARG
-	M=D
-	@SP
-	D=M
-	@LCL
-	M=D
-	@Math.divide
-	0;JMP
-(RETURN_ADDRESS_41)
-
-//add
-	@SP
-	AM=M-1
-	D=M
-	A=A-1
-	M=M+D
-
-//push local 1
-	@1
-	D=A
-	@LCL
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//call Math.divide 2
-	@RETURN_ADDRESS_42
-	D=A
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@LCL
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@ARG
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@THIS
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@THAT
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@SP
-	D=M
-	@5
-	D=D-A
-	@2
-	D=D-A
-	@ARG
-	M=D
-	@SP
-	D=M
-	@LCL
-	M=D
-	@Math.divide
-	0;JMP
-(RETURN_ADDRESS_42)
-
-//pop local 8
-	@8
-	D=A
-	@LCL
-	D=M+D
-	@addr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@addr
-	A=M
-	M=D
-
-//push constant 5000
-	@5000
-	D=A
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//push local 6
-	@6
-	D=A
-	@LCL
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//call Memory.poke 2
-	@RETURN_ADDRESS_43
-	D=A
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@LCL
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@ARG
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@THIS
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@THAT
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@SP
-	D=M
-	@5
-	D=D-A
-	@2
-	D=D-A
-	@ARG
-	M=D
-	@SP
-	D=M
-	@LCL
-	M=D
-	@Memory.poke
-	0;JMP
-(RETURN_ADDRESS_43)
-
-//pop temp 0
-	@0
-	D=A
-	@R5
-	D=A+D
-	@addr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@addr
-	A=M
-	M=D
-
-//push constant 5001
-	@5001
-	D=A
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//push local 7
-	@7
-	D=A
-	@LCL
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//call Memory.poke 2
-	@RETURN_ADDRESS_44
-	D=A
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@LCL
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@ARG
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@THIS
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@THAT
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@SP
-	D=M
-	@5
-	D=D-A
-	@2
-	D=D-A
-	@ARG
-	M=D
-	@SP
-	D=M
-	@LCL
-	M=D
-	@Memory.poke
-	0;JMP
-(RETURN_ADDRESS_44)
-
-//pop temp 0
-	@0
-	D=A
-	@R5
-	D=A+D
-	@addr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@addr
-	A=M
-	M=D
-
-//push constant 5002
-	@5002
-	D=A
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//push local 8
-	@8
-	D=A
-	@LCL
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//call Memory.poke 2
-	@RETURN_ADDRESS_45
-	D=A
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@LCL
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@ARG
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@THIS
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@THAT
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@SP
-	D=M
-	@5
-	D=D-A
-	@2
-	D=D-A
-	@ARG
-	M=D
-	@SP
-	D=M
-	@LCL
-	M=D
-	@Memory.poke
-	0;JMP
-(RETURN_ADDRESS_45)
-
-//pop temp 0
-	@0
-	D=A
-	@R5
-	D=A+D
-	@addr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@addr
-	A=M
-	M=D
-
-//push constant 0
-	@0
-	D=A
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//return
-	@LCL
-	D=M
-	@endframe
-	M=D
-	@endframe
-	D=M
-	@5
-	D=D-A
-	A=D
-	D=M
-	@retaddr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@ARG
-	A=M
-	M=D
-	@ARG
-	D=M+1
-	@SP
-	M=D
-	@endframe
-	D=M
-	@1
-	D=D-A
-	A=D
-	D=M
-	@THAT
-	M=D
-	@endframe
-	D=M
-	@2
-	D=D-A
-	A=D
-	D=M
-	@THIS
-	M=D
-	@endframe
-	D=M
-	@3
-	D=D-A
-	A=D
-	D=M
-	@ARG
-	M=D
-	@endframe
-	D=M
-	@4
-	D=D-A
-	A=D
-	D=M
-	@LCL
-	M=D
-	@retaddr
-	A=M
-	0;JMP
-
-//function Sys.init 0
-(Sys.init)
-
-//call Memory.init 0
-	@RETURN_ADDRESS_46
-	D=A
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@LCL
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@ARG
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@THIS
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@THAT
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@SP
-	D=M
-	@5
-	D=D-A
-	@0
-	D=D-A
-	@ARG
-	M=D
-	@SP
-	D=M
-	@LCL
-	M=D
-	@Memory.init
-	0;JMP
-(RETURN_ADDRESS_46)
-
-//pop temp 0
-	@0
-	D=A
-	@R5
-	D=A+D
-	@addr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@addr
-	A=M
-	M=D
-
-//call Math.init 0
-	@RETURN_ADDRESS_47
-	D=A
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@LCL
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@ARG
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@THIS
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@THAT
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@SP
-	D=M
-	@5
-	D=D-A
-	@0
-	D=D-A
-	@ARG
-	M=D
-	@SP
-	D=M
-	@LCL
-	M=D
-	@Math.init
-	0;JMP
-(RETURN_ADDRESS_47)
-
-//pop temp 0
-	@0
-	D=A
-	@R5
-	D=A+D
-	@addr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@addr
-	A=M
-	M=D
-
-//call Main.main 0
-	@RETURN_ADDRESS_48
-	D=A
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@LCL
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@ARG
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@THIS
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@THAT
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@SP
-	D=M
-	@5
-	D=D-A
-	@0
-	D=D-A
-	@ARG
-	M=D
-	@SP
-	D=M
-	@LCL
-	M=D
-	@Main.main
-	0;JMP
-(RETURN_ADDRESS_48)
-
-//pop temp 0
-	@0
-	D=A
-	@R5
-	D=A+D
-	@addr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@addr
-	A=M
-	M=D
-
 //label WHILE_EXP0
 (WHILE_EXP0)
 
@@ -7674,83 +7728,50 @@
 	@0
 	D=A
 	@SP
-	A=M
+	M=M+1
+	A=M-1
 	M=D
+
+//push local 1
+	@1
+	D=A
+	@LCL
+	A=M+D
+	D=M
 	@SP
 	M=M+1
-
-//not
-	@SP
 	A=M-1
-	M=!M
+	M=D
 
-//not
-	@SP
-	A=M-1
-	M=!M
-
-//if-goto WHILE_END0
+//add
 	@SP
 	AM=M-1
 	D=M
-	@WHILE_END0
-	D;JNE
+	A=A-1
+	M=M+D
 
-//goto WHILE_EXP0
-	@WHILE_EXP0
-	0;JMP
-
-//label WHILE_END0
-(WHILE_END0)
-
-//function Sys.halt 0
-(Sys.halt)
-
-//label WHILE_EXP0
-(WHILE_EXP0)
-
-//push constant 0
-	@0
+//pop pointer 1
+	@THAT
 	D=A
-	@SP
-	A=M
+	@addr
 	M=D
-	@SP
-	M=M+1
-
-//not
-	@SP
-	A=M-1
-	M=!M
-
-//not
-	@SP
-	A=M-1
-	M=!M
-
-//if-goto WHILE_END0
 	@SP
 	AM=M-1
 	D=M
-	@WHILE_END0
-	D;JNE
-
-//goto WHILE_EXP0
-	@WHILE_EXP0
-	0;JMP
-
-//label WHILE_END0
-(WHILE_END0)
-
-//function Sys.wait 1
-(Sys.wait)
-	@0
-	D=A
-	@SP
+	@addr
 	A=M
 	M=D
+
+//push that 0
+	@0
+	D=A
+	@THAT
+	A=M+D
+	D=M
 	@SP
 	M=M+1
+	A=M-1
+	M=D
 
 //push argument 0
 	@0
@@ -7759,21 +7780,200 @@
 	A=M+D
 	D=M
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
-
-//push constant 0
-	@0
-	D=A
-	@SP
-	A=M
+	A=M-1
 	M=D
-	@SP
-	M=M+1
 
 //lt
+	@SP
+	A=M-1
+	D=M
+	@FIRST_PLUS_48
+	D;JGT
+	@FIRST_MINUS_48
+	D;JLT
+	@SAME_SIGN_48
+	0;JMP
+(FIRST_PLUS_48)
+	@SP
+	A=M-1
+	A=A-1
+	D=M
+	@DIF_SIGN_LT_48
+	D;JLT
+	@SAME_SIGN_48
+	0;JMP
+(DIF_SIGN_LT_48)
+	@SP
+	AM=M-1
+	A=A-1
+	M=-1
+	@CON_48
+	0;JMP
+(FIRST_MINUS_48)
+	@SP
+	A=M-1
+	A=A-1
+	D=M
+	@DIF_SIGN_GT_48
+	D;JGT
+	@SAME_SIGN_48
+	0;JMP
+(DIF_SIGN_GT_48)
+	@SP
+	AM=M-1
+	A=A-1
+	M=0
+	@CON_48
+	0;JMP
+(SAME_SIGN_48)
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M-D
+	D=M
+	@GRATER_48
+	D;JGT
+	@LOWER_48
+	D;JLT
+	@SP
+	A=M-1
+	M=0
+	@CON_48
+	0;JMP
+(GRATER_48)
+	@SP
+	A=M-1
+	M=0
+	@CON_48
+	0;JMP
+(LOWER_48)
+	@SP
+	A=M-1
+	M=-1
+(CON_48)
+
+//not
+	@SP
+	A=M-1
+	M=!M
+
+//if-goto WHILE_END0
+	@SP
+	AM=M-1
+	D=M
+	@WHILE_END0
+	D;JNE
+
+//push constant 1
+	@1
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//push local 1
+	@1
+	D=A
+	@LCL
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//add
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M+D
+
+//pop pointer 1
+	@THAT
+	D=A
+	@addr
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@addr
+	A=M
+	M=D
+
+//push that 0
+	@0
+	D=A
+	@THAT
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//pop local 1
+	@1
+	D=A
+	@LCL
+	D=M+D
+	@addr
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@addr
+	A=M
+	M=D
+
+//goto WHILE_EXP0
+	@WHILE_EXP0
+	0;JMP
+
+//label WHILE_END0
+(WHILE_END0)
+
+//push local 1
+	@1
+	D=A
+	@LCL
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//push argument 0
+	@0
+	D=A
+	@ARG
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//add
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M+D
+
+//push constant 16379
+	@16379
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//gt
 	@SP
 	A=M-1
 	D=M
@@ -7796,7 +7996,7 @@
 	@SP
 	AM=M-1
 	A=A-1
-	M=-1
+	M=0
 	@CON_49
 	0;JMP
 (FIRST_MINUS_49)
@@ -7812,7 +8012,7 @@
 	@SP
 	AM=M-1
 	A=A-1
-	M=0
+	M=-1
 	@CON_49
 	0;JMP
 (SAME_SIGN_49)
@@ -7834,74 +8034,68 @@
 (GRATER_49)
 	@SP
 	A=M-1
-	M=0
+	M=-1
 	@CON_49
 	0;JMP
 (LOWER_49)
 	@SP
 	A=M-1
-	M=-1
+	M=0
 (CON_49)
 
-//if-goto IF_TRUE0
+//if-goto IF_TRUE1
 	@SP
 	AM=M-1
 	D=M
-	@IF_TRUE0
+	@IF_TRUE1
 	D;JNE
 
-//goto IF_FALSE0
-	@IF_FALSE0
+//goto IF_FALSE1
+	@IF_FALSE1
 	0;JMP
 
-//label IF_TRUE0
-(IF_TRUE0)
+//label IF_TRUE1
+(IF_TRUE1)
 
-//push constant 1
-	@1
+//push constant 6
+	@6
 	D=A
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 
 //call Sys.error 1
 	@RETURN_ADDRESS_50
 	D=A
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 	@LCL
 	D=M
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 	@ARG
 	D=M
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 	@THIS
 	D=M
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 	@THAT
 	D=M
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 	@SP
 	D=M
 	@5
@@ -7932,11 +8126,57 @@
 	A=M
 	M=D
 
-//label IF_FALSE0
-(IF_FALSE0)
+//label IF_FALSE1
+(IF_FALSE1)
 
-//label WHILE_EXP0
-(WHILE_EXP0)
+//push constant 0
+	@0
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//push local 1
+	@1
+	D=A
+	@LCL
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//add
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M+D
+
+//pop pointer 1
+	@THAT
+	D=A
+	@addr
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@addr
+	A=M
+	M=D
+
+//push that 0
+	@0
+	D=A
+	@THAT
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
 
 //push argument 0
 	@0
@@ -7945,19 +8185,24 @@
 	A=M+D
 	D=M
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 
-//push constant 0
-	@0
+//push constant 2
+	@2
 	D=A
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
+
+//add
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M+D
 
 //gt
 	@SP
@@ -8029,31 +8274,187 @@
 	M=0
 (CON_51)
 
-//not
-	@SP
-	A=M-1
-	M=!M
-
-//if-goto WHILE_END0
+//if-goto IF_TRUE2
 	@SP
 	AM=M-1
 	D=M
-	@WHILE_END0
+	@IF_TRUE2
 	D;JNE
 
-//push constant 50
-	@50
-	D=A
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
+//goto IF_FALSE2
+	@IF_FALSE2
+	0;JMP
 
-//pop local 0
+//label IF_TRUE2
+(IF_TRUE2)
+
+//push argument 0
 	@0
 	D=A
+	@ARG
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//push constant 2
+	@2
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//add
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M+D
+
+//push local 1
+	@1
+	D=A
 	@LCL
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//add
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M+D
+
+//push constant 0
+	@0
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//push local 1
+	@1
+	D=A
+	@LCL
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//add
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M+D
+
+//pop pointer 1
+	@THAT
+	D=A
+	@addr
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@addr
+	A=M
+	M=D
+
+//push that 0
+	@0
+	D=A
+	@THAT
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//push argument 0
+	@0
+	D=A
+	@ARG
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//sub
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M-D
+
+//push constant 2
+	@2
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//sub
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M-D
+
+//pop temp 0
+	@0
+	D=A
+	@R5
+	D=A+D
+	@addr
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@addr
+	A=M
+	M=D
+
+//pop pointer 1
+	@THAT
+	D=A
+	@addr
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@addr
+	A=M
+	M=D
+
+//push temp 0
+	@0
+	D=A
+	@R5
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//pop that 0
+	@0
+	D=A
+	@THAT
 	D=M+D
 	@addr
 	M=D
@@ -8064,31 +8465,82 @@
 	A=M
 	M=D
 
-//label WHILE_EXP1
-(WHILE_EXP1)
+//push constant 1
+	@1
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
 
-//push local 0
-	@0
+//push local 1
+	@1
 	D=A
 	@LCL
 	A=M+D
 	D=M
 	@SP
-	A=M
+	M=M+1
+	A=M-1
+	M=D
+
+//add
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M+D
+
+//pop pointer 1
+	@THAT
+	D=A
+	@addr
 	M=D
 	@SP
-	M=M+1
+	AM=M-1
+	D=M
+	@addr
+	A=M
+	M=D
 
-//push constant 0
+//push that 0
 	@0
 	D=A
-	@SP
-	A=M
-	M=D
+	@THAT
+	A=M+D
+	D=M
 	@SP
 	M=M+1
+	A=M-1
+	M=D
 
-//gt
+//push local 1
+	@1
+	D=A
+	@LCL
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//push constant 2
+	@2
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//add
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M+D
+
+//eq
 	@SP
 	A=M-1
 	D=M
@@ -8127,7 +8579,7 @@
 	@SP
 	AM=M-1
 	A=A-1
-	M=-1
+	M=0
 	@CON_52
 	0;JMP
 (SAME_SIGN_52)
@@ -8143,13 +8595,13 @@
 	D;JLT
 	@SP
 	A=M-1
-	M=0
+	M=-1
 	@CON_52
 	0;JMP
 (GRATER_52)
 	@SP
 	A=M-1
-	M=-1
+	M=0
 	@CON_52
 	0;JMP
 (LOWER_52)
@@ -8158,66 +8610,19 @@
 	M=0
 (CON_52)
 
-//not
-	@SP
-	A=M-1
-	M=!M
-
-//if-goto WHILE_END1
+//if-goto IF_TRUE3
 	@SP
 	AM=M-1
 	D=M
-	@WHILE_END1
+	@IF_TRUE3
 	D;JNE
 
-//push local 0
-	@0
-	D=A
-	@LCL
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//push constant 1
-	@1
-	D=A
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//sub
-	@SP
-	AM=M-1
-	D=M
-	A=A-1
-	M=M-D
-
-//pop local 0
-	@0
-	D=A
-	@LCL
-	D=M+D
-	@addr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@addr
-	A=M
-	M=D
-
-//goto WHILE_EXP1
-	@WHILE_EXP1
+//goto IF_FALSE3
+	@IF_FALSE3
 	0;JMP
 
-//label WHILE_END1
-(WHILE_END1)
+//label IF_TRUE3
+(IF_TRUE3)
 
 //push argument 0
 	@0
@@ -8226,196 +8631,17 @@
 	A=M+D
 	D=M
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
-
-//push constant 1
-	@1
-	D=A
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//sub
-	@SP
-	AM=M-1
-	D=M
-	A=A-1
-	M=M-D
-
-//pop argument 0
-	@0
-	D=A
-	@ARG
-	D=M+D
-	@addr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@addr
-	A=M
+	A=M-1
 	M=D
 
-//goto WHILE_EXP0
-	@WHILE_EXP0
-	0;JMP
-
-//label WHILE_END0
-(WHILE_END0)
-
-//push constant 0
-	@0
-	D=A
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//return
-	@LCL
-	D=M
-	@endframe
-	M=D
-	@endframe
-	D=M
-	@5
-	D=D-A
-	A=D
-	D=M
-	@retaddr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@ARG
-	A=M
-	M=D
-	@ARG
-	D=M+1
-	@SP
-	M=D
-	@endframe
-	D=M
-	@1
-	D=D-A
-	A=D
-	D=M
-	@THAT
-	M=D
-	@endframe
-	D=M
-	@2
-	D=D-A
-	A=D
-	D=M
-	@THIS
-	M=D
-	@endframe
-	D=M
+//push constant 3
 	@3
-	D=D-A
-	A=D
-	D=M
-	@ARG
-	M=D
-	@endframe
-	D=M
-	@4
-	D=D-A
-	A=D
-	D=M
-	@LCL
-	M=D
-	@retaddr
-	A=M
-	0;JMP
-
-//function Sys.error 0
-(Sys.error)
-
-//label WHILE_EXP0
-(WHILE_EXP0)
-
-//push constant 0
-	@0
 	D=A
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
-
-//not
-	@SP
 	A=M-1
-	M=!M
-
-//not
-	@SP
-	A=M-1
-	M=!M
-
-//if-goto WHILE_END0
-	@SP
-	AM=M-1
-	D=M
-	@WHILE_END0
-	D;JNE
-
-//goto WHILE_EXP0
-	@WHILE_EXP0
-	0;JMP
-
-//label WHILE_END0
-(WHILE_END0)
-
-//function Memory.init 0
-(Memory.init)
-
-//push constant 0
-	@0
-	D=A
-	@SP
-	A=M
 	M=D
-	@SP
-	M=M+1
-
-//pop static 0
-	@Memory0
-	D=A
-	@addr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@addr
-	A=M
-	M=D
-
-//push constant 2048
-	@2048
-	D=A
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//push static 0
-	@Memory0
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
 
 //add
 	@SP
@@ -8424,14 +8650,67 @@
 	A=A-1
 	M=M+D
 
-//push constant 14334
-	@14334
+//push local 1
+	@1
 	D=A
-	@SP
-	A=M
-	M=D
+	@LCL
+	A=M+D
+	D=M
 	@SP
 	M=M+1
+	A=M-1
+	M=D
+
+//add
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M+D
+
+//push local 1
+	@1
+	D=A
+	@LCL
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//push argument 0
+	@0
+	D=A
+	@ARG
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//add
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M+D
+
+//push constant 4
+	@4
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//add
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M+D
 
 //pop temp 0
 	@0
@@ -8466,10 +8745,9 @@
 	A=M+D
 	D=M
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 
 //pop that 0
 	@0
@@ -8485,162 +8763,12 @@
 	A=M
 	M=D
 
-//push constant 2049
-	@2049
-	D=A
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//push static 0
-	@Memory0
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//add
-	@SP
-	AM=M-1
-	D=M
-	A=A-1
-	M=M+D
-
-//push constant 2050
-	@2050
-	D=A
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//pop temp 0
-	@0
-	D=A
-	@R5
-	D=A+D
-	@addr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@addr
-	A=M
-	M=D
-
-//pop pointer 1
-	@THAT
-	D=A
-	@addr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@addr
-	A=M
-	M=D
-
-//push temp 0
-	@0
-	D=A
-	@R5
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//pop that 0
-	@0
-	D=A
-	@THAT
-	D=M+D
-	@addr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@addr
-	A=M
-	M=D
-
-//push constant 0
-	@0
-	D=A
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//return
-	@LCL
-	D=M
-	@endframe
-	M=D
-	@endframe
-	D=M
-	@5
-	D=D-A
-	A=D
-	D=M
-	@retaddr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@ARG
-	A=M
-	M=D
-	@ARG
-	D=M+1
-	@SP
-	M=D
-	@endframe
-	D=M
-	@1
-	D=D-A
-	A=D
-	D=M
-	@THAT
-	M=D
-	@endframe
-	D=M
-	@2
-	D=D-A
-	A=D
-	D=M
-	@THIS
-	M=D
-	@endframe
-	D=M
-	@3
-	D=D-A
-	A=D
-	D=M
-	@ARG
-	M=D
-	@endframe
-	D=M
-	@4
-	D=D-A
-	A=D
-	D=M
-	@LCL
-	M=D
-	@retaddr
-	A=M
+//goto IF_END3
+	@IF_END3
 	0;JMP
 
-//function Memory.peek 0
-(Memory.peek)
+//label IF_FALSE3
+(IF_FALSE3)
 
 //push argument 0
 	@0
@@ -8649,19 +8777,61 @@
 	A=M+D
 	D=M
 	@SP
-	A=M
+	M=M+1
+	A=M-1
 	M=D
+
+//push constant 3
+	@3
+	D=A
 	@SP
 	M=M+1
+	A=M-1
+	M=D
 
-//push static 0
-	@Memory0
+//add
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M+D
+
+//push local 1
+	@1
+	D=A
+	@LCL
+	A=M+D
 	D=M
 	@SP
-	A=M
+	M=M+1
+	A=M-1
 	M=D
+
+//add
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M+D
+
+//push constant 1
+	@1
+	D=A
 	@SP
 	M=M+1
+	A=M-1
+	M=D
+
+//push local 1
+	@1
+	D=A
+	@LCL
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
 
 //add
 	@SP
@@ -8689,112 +8859,9 @@
 	A=M+D
 	D=M
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
-
-//return
-	@LCL
-	D=M
-	@endframe
+	A=M-1
 	M=D
-	@endframe
-	D=M
-	@5
-	D=D-A
-	A=D
-	D=M
-	@retaddr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@ARG
-	A=M
-	M=D
-	@ARG
-	D=M+1
-	@SP
-	M=D
-	@endframe
-	D=M
-	@1
-	D=D-A
-	A=D
-	D=M
-	@THAT
-	M=D
-	@endframe
-	D=M
-	@2
-	D=D-A
-	A=D
-	D=M
-	@THIS
-	M=D
-	@endframe
-	D=M
-	@3
-	D=D-A
-	A=D
-	D=M
-	@ARG
-	M=D
-	@endframe
-	D=M
-	@4
-	D=D-A
-	A=D
-	D=M
-	@LCL
-	M=D
-	@retaddr
-	A=M
-	0;JMP
-
-//function Memory.poke 0
-(Memory.poke)
-
-//push argument 0
-	@0
-	D=A
-	@ARG
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//push static 0
-	@Memory0
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//add
-	@SP
-	AM=M-1
-	D=M
-	A=A-1
-	M=M+D
-
-//push argument 1
-	@1
-	D=A
-	@ARG
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
 
 //pop temp 0
 	@0
@@ -8829,10 +8896,9 @@
 	A=M+D
 	D=M
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 
 //pop that 0
 	@0
@@ -8848,14 +8914,243 @@
 	A=M
 	M=D
 
+//label IF_END3
+(IF_END3)
+
+//push constant 1
+	@1
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//push local 1
+	@1
+	D=A
+	@LCL
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//add
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M+D
+
+//push local 1
+	@1
+	D=A
+	@LCL
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//push argument 0
+	@0
+	D=A
+	@ARG
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//add
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M+D
+
+//push constant 2
+	@2
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//add
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M+D
+
+//pop temp 0
+	@0
+	D=A
+	@R5
+	D=A+D
+	@addr
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@addr
+	A=M
+	M=D
+
+//pop pointer 1
+	@THAT
+	D=A
+	@addr
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@addr
+	A=M
+	M=D
+
+//push temp 0
+	@0
+	D=A
+	@R5
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//pop that 0
+	@0
+	D=A
+	@THAT
+	D=M+D
+	@addr
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@addr
+	A=M
+	M=D
+
+//label IF_FALSE2
+(IF_FALSE2)
+
 //push constant 0
 	@0
 	D=A
 	@SP
-	A=M
+	M=M+1
+	A=M-1
 	M=D
+
+//push local 1
+	@1
+	D=A
+	@LCL
+	A=M+D
+	D=M
 	@SP
 	M=M+1
+	A=M-1
+	M=D
+
+//add
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M+D
+
+//push constant 0
+	@0
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//pop temp 0
+	@0
+	D=A
+	@R5
+	D=A+D
+	@addr
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@addr
+	A=M
+	M=D
+
+//pop pointer 1
+	@THAT
+	D=A
+	@addr
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@addr
+	A=M
+	M=D
+
+//push temp 0
+	@0
+	D=A
+	@R5
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//pop that 0
+	@0
+	D=A
+	@THAT
+	D=M+D
+	@addr
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@addr
+	A=M
+	M=D
+
+//push local 1
+	@1
+	D=A
+	@LCL
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//push constant 2
+	@2
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//add
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M+D
 
 //return
 	@LCL
@@ -8877,38 +9172,26 @@
 	A=M
 	M=D
 	@ARG
-	D=M+1
-	@SP
-	M=D
-	@endframe
 	D=M
-	@1
-	D=D-A
-	A=D
+	@SP
+	M=D+1
+	@endframe
+	AM=M-1
 	D=M
 	@THAT
 	M=D
 	@endframe
-	D=M
-	@2
-	D=D-A
-	A=D
+	AM=M-1
 	D=M
 	@THIS
 	M=D
 	@endframe
-	D=M
-	@3
-	D=D-A
-	A=D
+	AM=M-1
 	D=M
 	@ARG
 	M=D
 	@endframe
-	D=M
-	@4
-	D=D-A
-	A=D
+	AM=M-1
 	D=M
 	@LCL
 	M=D
@@ -8916,22 +9199,20 @@
 	A=M
 	0;JMP
 
-//function Memory.alloc 2
-(Memory.alloc)
+//function Memory.deAlloc 2
+(Memory.deAlloc)
 	@0
 	D=A
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 	@0
 	D=A
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 
 //push argument 0
 	@0
@@ -8940,21 +9221,160 @@
 	A=M+D
 	D=M
 	@SP
-	A=M
+	M=M+1
+	A=M-1
 	M=D
+
+//push constant 2
+	@2
+	D=A
 	@SP
 	M=M+1
+	A=M-1
+	M=D
+
+//sub
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M-D
+
+//pop local 0
+	@0
+	D=A
+	@LCL
+	D=M+D
+	@addr
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@addr
+	A=M
+	M=D
 
 //push constant 1
 	@1
 	D=A
 	@SP
-	A=M
+	M=M+1
+	A=M-1
 	M=D
+
+//push local 0
+	@0
+	D=A
+	@LCL
+	A=M+D
+	D=M
 	@SP
 	M=M+1
+	A=M-1
+	M=D
 
-//lt
+//add
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M+D
+
+//pop pointer 1
+	@THAT
+	D=A
+	@addr
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@addr
+	A=M
+	M=D
+
+//push that 0
+	@0
+	D=A
+	@THAT
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//pop local 1
+	@1
+	D=A
+	@LCL
+	D=M+D
+	@addr
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@addr
+	A=M
+	M=D
+
+//push constant 0
+	@0
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//push local 1
+	@1
+	D=A
+	@LCL
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//add
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M+D
+
+//pop pointer 1
+	@THAT
+	D=A
+	@addr
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@addr
+	A=M
+	M=D
+
+//push that 0
+	@0
+	D=A
+	@THAT
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//push constant 0
+	@0
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//eq
 	@SP
 	A=M-1
 	D=M
@@ -8977,7 +9397,7 @@
 	@SP
 	AM=M-1
 	A=A-1
-	M=-1
+	M=0
 	@CON_53
 	0;JMP
 (FIRST_MINUS_53)
@@ -9009,7 +9429,7 @@
 	D;JLT
 	@SP
 	A=M-1
-	M=0
+	M=-1
 	@CON_53
 	0;JMP
 (GRATER_53)
@@ -9021,7 +9441,7 @@
 (LOWER_53)
 	@SP
 	A=M-1
-	M=-1
+	M=0
 (CON_53)
 
 //if-goto IF_TRUE0
@@ -9038,66 +9458,113 @@
 //label IF_TRUE0
 (IF_TRUE0)
 
-//push constant 5
-	@5
+//push constant 0
+	@0
 	D=A
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 
-//call Sys.error 1
-	@RETURN_ADDRESS_54
+//push local 0
+	@0
+	D=A
+	@LCL
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//add
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M+D
+
+//push constant 1
+	@1
 	D=A
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
+
+//push local 0
+	@0
+	D=A
 	@LCL
+	A=M+D
 	D=M
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
-	@ARG
+	A=M-1
+	M=D
+
+//add
+	@SP
+	AM=M-1
 	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@THIS
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
+	A=A-1
+	M=M+D
+
+//pop pointer 1
 	@THAT
-	D=M
+	D=A
+	@addr
+	M=D
 	@SP
+	AM=M-1
+	D=M
+	@addr
 	A=M
 	M=D
+
+//push that 0
+	@0
+	D=A
+	@THAT
+	A=M+D
+	D=M
 	@SP
 	M=M+1
-	@SP
-	D=M
-	@5
-	D=D-A
-	@1
-	D=D-A
-	@ARG
+	A=M-1
 	M=D
-	@SP
-	D=M
+
+//push local 0
+	@0
+	D=A
 	@LCL
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
 	M=D
-	@Sys.error
-	0;JMP
-(RETURN_ADDRESS_54)
+
+//sub
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M-D
+
+//push constant 2
+	@2
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//sub
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M-D
 
 //pop temp 0
 	@0
@@ -9113,22 +9580,33 @@
 	A=M
 	M=D
 
-//label IF_FALSE0
-(IF_FALSE0)
-
-//push constant 2048
-	@2048
+//pop pointer 1
+	@THAT
 	D=A
-	@SP
-	A=M
+	@addr
 	M=D
 	@SP
-	M=M+1
+	AM=M-1
+	D=M
+	@addr
+	A=M
+	M=D
 
-//pop local 1
-	@1
+//push temp 0
+	@0
 	D=A
-	@LCL
+	@R5
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//pop that 0
+	@0
+	D=A
+	@THAT
 	D=M+D
 	@addr
 	M=D
@@ -9139,29 +9617,31 @@
 	A=M
 	M=D
 
-//label WHILE_EXP0
-(WHILE_EXP0)
+//goto IF_END0
+	@IF_END0
+	0;JMP
+
+//label IF_FALSE0
+(IF_FALSE0)
 
 //push constant 0
 	@0
 	D=A
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 
-//push local 1
-	@1
+//push local 0
+	@0
 	D=A
 	@LCL
 	A=M+D
 	D=M
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 
 //add
 	@SP
@@ -9169,145 +9649,25 @@
 	D=M
 	A=A-1
 	M=M+D
-
-//pop pointer 1
-	@THAT
-	D=A
-	@addr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@addr
-	A=M
-	M=D
-
-//push that 0
-	@0
-	D=A
-	@THAT
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//push argument 0
-	@0
-	D=A
-	@ARG
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//lt
-	@SP
-	A=M-1
-	D=M
-	@FIRST_PLUS_55
-	D;JGT
-	@FIRST_MINUS_55
-	D;JLT
-	@SAME_SIGN_55
-	0;JMP
-(FIRST_PLUS_55)
-	@SP
-	A=M-1
-	A=A-1
-	D=M
-	@DIF_SIGN_LT_55
-	D;JLT
-	@SAME_SIGN_55
-	0;JMP
-(DIF_SIGN_LT_55)
-	@SP
-	AM=M-1
-	A=A-1
-	M=-1
-	@CON_55
-	0;JMP
-(FIRST_MINUS_55)
-	@SP
-	A=M-1
-	A=A-1
-	D=M
-	@DIF_SIGN_GT_55
-	D;JGT
-	@SAME_SIGN_55
-	0;JMP
-(DIF_SIGN_GT_55)
-	@SP
-	AM=M-1
-	A=A-1
-	M=0
-	@CON_55
-	0;JMP
-(SAME_SIGN_55)
-	@SP
-	AM=M-1
-	D=M
-	A=A-1
-	M=M-D
-	D=M
-	@GRATER_55
-	D;JGT
-	@LOWER_55
-	D;JLT
-	@SP
-	A=M-1
-	M=0
-	@CON_55
-	0;JMP
-(GRATER_55)
-	@SP
-	A=M-1
-	M=0
-	@CON_55
-	0;JMP
-(LOWER_55)
-	@SP
-	A=M-1
-	M=-1
-(CON_55)
-
-//not
-	@SP
-	A=M-1
-	M=!M
-
-//if-goto WHILE_END0
-	@SP
-	AM=M-1
-	D=M
-	@WHILE_END0
-	D;JNE
 
 //push constant 1
 	@1
 	D=A
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 
-//push local 1
-	@1
+//push local 0
+	@0
 	D=A
 	@LCL
 	A=M+D
 	D=M
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 
 //add
 	@SP
@@ -9335,15 +9695,125 @@
 	A=M+D
 	D=M
 	@SP
-	A=M
+	M=M+1
+	A=M-1
 	M=D
+
+//push local 0
+	@0
+	D=A
+	@LCL
+	A=M+D
+	D=M
 	@SP
 	M=M+1
+	A=M-1
+	M=D
 
-//pop local 1
+//sub
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M-D
+
+//push constant 0
+	@0
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//push local 1
 	@1
 	D=A
 	@LCL
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//add
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M+D
+
+//pop pointer 1
+	@THAT
+	D=A
+	@addr
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@addr
+	A=M
+	M=D
+
+//push that 0
+	@0
+	D=A
+	@THAT
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//add
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M+D
+
+//pop temp 0
+	@0
+	D=A
+	@R5
+	D=A+D
+	@addr
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@addr
+	A=M
+	M=D
+
+//pop pointer 1
+	@THAT
+	D=A
+	@addr
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@addr
+	A=M
+	M=D
+
+//push temp 0
+	@0
+	D=A
+	@R5
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//pop that 0
+	@0
+	D=A
+	@THAT
 	D=M+D
 	@addr
 	M=D
@@ -9354,12 +9824,13 @@
 	A=M
 	M=D
 
-//goto WHILE_EXP0
-	@WHILE_EXP0
-	0;JMP
-
-//label WHILE_END0
-(WHILE_END0)
+//push constant 1
+	@1
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
 
 //push local 1
 	@1
@@ -9368,22 +9839,9 @@
 	A=M+D
 	D=M
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
-
-//push argument 0
-	@0
-	D=A
-	@ARG
-	A=M+D
-	D=M
-	@SP
-	A=M
+	A=M-1
 	M=D
-	@SP
-	M=M+1
 
 //add
 	@SP
@@ -9392,84 +9850,124 @@
 	A=A-1
 	M=M+D
 
-//push constant 16379
-	@16379
+//pop pointer 1
+	@THAT
 	D=A
-	@SP
-	A=M
+	@addr
 	M=D
 	@SP
-	M=M+1
+	AM=M-1
+	D=M
+	@addr
+	A=M
+	M=D
 
-//gt
+//push that 0
+	@0
+	D=A
+	@THAT
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//push local 1
+	@1
+	D=A
+	@LCL
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//push constant 2
+	@2
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//add
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M+D
+
+//eq
 	@SP
 	A=M-1
 	D=M
-	@FIRST_PLUS_56
+	@FIRST_PLUS_54
 	D;JGT
-	@FIRST_MINUS_56
+	@FIRST_MINUS_54
 	D;JLT
-	@SAME_SIGN_56
+	@SAME_SIGN_54
 	0;JMP
-(FIRST_PLUS_56)
+(FIRST_PLUS_54)
 	@SP
 	A=M-1
 	A=A-1
 	D=M
-	@DIF_SIGN_LT_56
+	@DIF_SIGN_LT_54
 	D;JLT
-	@SAME_SIGN_56
+	@SAME_SIGN_54
 	0;JMP
-(DIF_SIGN_LT_56)
+(DIF_SIGN_LT_54)
 	@SP
 	AM=M-1
 	A=A-1
 	M=0
-	@CON_56
+	@CON_54
 	0;JMP
-(FIRST_MINUS_56)
+(FIRST_MINUS_54)
 	@SP
 	A=M-1
 	A=A-1
 	D=M
-	@DIF_SIGN_GT_56
+	@DIF_SIGN_GT_54
 	D;JGT
-	@SAME_SIGN_56
+	@SAME_SIGN_54
 	0;JMP
-(DIF_SIGN_GT_56)
+(DIF_SIGN_GT_54)
 	@SP
 	AM=M-1
 	A=A-1
-	M=-1
-	@CON_56
+	M=0
+	@CON_54
 	0;JMP
-(SAME_SIGN_56)
+(SAME_SIGN_54)
 	@SP
 	AM=M-1
 	D=M
 	A=A-1
 	M=M-D
 	D=M
-	@GRATER_56
+	@GRATER_54
 	D;JGT
-	@LOWER_56
+	@LOWER_54
 	D;JLT
 	@SP
 	A=M-1
-	M=0
-	@CON_56
-	0;JMP
-(GRATER_56)
-	@SP
-	A=M-1
 	M=-1
-	@CON_56
+	@CON_54
 	0;JMP
-(LOWER_56)
+(GRATER_54)
 	@SP
 	A=M-1
 	M=0
-(CON_56)
+	@CON_54
+	0;JMP
+(LOWER_54)
+	@SP
+	A=M-1
+	M=0
+(CON_54)
 
 //if-goto IF_TRUE1
 	@SP
@@ -9485,56 +9983,342 @@
 //label IF_TRUE1
 (IF_TRUE1)
 
-//push constant 6
-	@6
+//push constant 1
+	@1
 	D=A
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 
-//call Sys.error 1
-	@RETURN_ADDRESS_57
+//push local 0
+	@0
 	D=A
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
 	@LCL
+	A=M+D
 	D=M
 	@SP
-	A=M
+	M=M+1
+	A=M-1
 	M=D
+
+//add
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M+D
+
+//push local 0
+	@0
+	D=A
+	@LCL
+	A=M+D
+	D=M
 	@SP
 	M=M+1
+	A=M-1
+	M=D
+
+//push constant 2
+	@2
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//add
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M+D
+
+//pop temp 0
+	@0
+	D=A
+	@R5
+	D=A+D
+	@addr
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@addr
+	A=M
+	M=D
+
+//pop pointer 1
+	@THAT
+	D=A
+	@addr
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@addr
+	A=M
+	M=D
+
+//push temp 0
+	@0
+	D=A
+	@R5
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//pop that 0
+	@0
+	D=A
+	@THAT
+	D=M+D
+	@addr
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@addr
+	A=M
+	M=D
+
+//goto IF_END1
+	@IF_END1
+	0;JMP
+
+//label IF_FALSE1
+(IF_FALSE1)
+
+//push constant 1
+	@1
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//push local 0
+	@0
+	D=A
+	@LCL
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//add
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M+D
+
+//push constant 1
+	@1
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//push local 1
+	@1
+	D=A
+	@LCL
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//add
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M+D
+
+//pop pointer 1
+	@THAT
+	D=A
+	@addr
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@addr
+	A=M
+	M=D
+
+//push that 0
+	@0
+	D=A
+	@THAT
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//pop temp 0
+	@0
+	D=A
+	@R5
+	D=A+D
+	@addr
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@addr
+	A=M
+	M=D
+
+//pop pointer 1
+	@THAT
+	D=A
+	@addr
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@addr
+	A=M
+	M=D
+
+//push temp 0
+	@0
+	D=A
+	@R5
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//pop that 0
+	@0
+	D=A
+	@THAT
+	D=M+D
+	@addr
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@addr
+	A=M
+	M=D
+
+//label IF_END1
+(IF_END1)
+
+//label IF_END0
+(IF_END0)
+
+//push constant 0
+	@0
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//return
+	@LCL
+	D=M
+	@endframe
+	M=D
+	@endframe
+	D=M
+	@5
+	D=D-A
+	A=D
+	D=M
+	@retaddr
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@ARG
+	A=M
+	M=D
 	@ARG
 	D=M
 	@SP
-	A=M
+	M=D+1
+	@endframe
+	AM=M-1
+	D=M
+	@THAT
 	M=D
+	@endframe
+	AM=M-1
+	D=M
+	@THIS
+	M=D
+	@endframe
+	AM=M-1
+	D=M
+	@ARG
+	M=D
+	@endframe
+	AM=M-1
+	D=M
+	@LCL
+	M=D
+	@retaddr
+	A=M
+	0;JMP
+
+//function Sys.init 0
+(Sys.init)
+
+//call Memory.init 0
+	@RETURN_ADDRESS_55
+	D=A
 	@SP
 	M=M+1
+	A=M-1
+	M=D
+	@LCL
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@ARG
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
 	@THIS
 	D=M
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 	@THAT
 	D=M
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 	@SP
 	D=M
 	@5
 	D=D-A
-	@1
+	@0
 	D=D-A
 	@ARG
 	M=D
@@ -9542,7 +10326,129 @@
 	D=M
 	@LCL
 	M=D
-	@Sys.error
+	@Memory.init
+	0;JMP
+(RETURN_ADDRESS_55)
+
+//pop temp 0
+	@0
+	D=A
+	@R5
+	D=A+D
+	@addr
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@addr
+	A=M
+	M=D
+
+//call Math.init 0
+	@RETURN_ADDRESS_56
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@LCL
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@ARG
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@THIS
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@THAT
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@SP
+	D=M
+	@5
+	D=D-A
+	@0
+	D=D-A
+	@ARG
+	M=D
+	@SP
+	D=M
+	@LCL
+	M=D
+	@Math.init
+	0;JMP
+(RETURN_ADDRESS_56)
+
+//pop temp 0
+	@0
+	D=A
+	@R5
+	D=A+D
+	@addr
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@addr
+	A=M
+	M=D
+
+//call Main.main 0
+	@RETURN_ADDRESS_57
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@LCL
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@ARG
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@THIS
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@THAT
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@SP
+	D=M
+	@5
+	D=D-A
+	@0
+	D=D-A
+	@ARG
+	M=D
+	@SP
+	D=M
+	@LCL
+	M=D
+	@Main.main
 	0;JMP
 (RETURN_ADDRESS_57)
 
@@ -9560,60 +10466,87 @@
 	A=M
 	M=D
 
-//label IF_FALSE1
-(IF_FALSE1)
+//label WHILE_EXP0
+(WHILE_EXP0)
 
 //push constant 0
 	@0
 	D=A
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
-
-//push local 1
-	@1
-	D=A
-	@LCL
-	A=M+D
-	D=M
-	@SP
-	A=M
+	A=M-1
 	M=D
-	@SP
-	M=M+1
 
-//add
+//not
+	@SP
+	A=M-1
+	M=!M
+
+//not
+	@SP
+	A=M-1
+	M=!M
+
+//if-goto WHILE_END0
 	@SP
 	AM=M-1
 	D=M
-	A=A-1
-	M=M+D
+	@WHILE_END0
+	D;JNE
 
-//pop pointer 1
-	@THAT
-	D=A
-	@addr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@addr
-	A=M
-	M=D
+//goto WHILE_EXP0
+	@WHILE_EXP0
+	0;JMP
 
-//push that 0
+//label WHILE_END0
+(WHILE_END0)
+
+//function Sys.halt 0
+(Sys.halt)
+
+//label WHILE_EXP0
+(WHILE_EXP0)
+
+//push constant 0
 	@0
 	D=A
-	@THAT
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
 	@SP
 	M=M+1
+	A=M-1
+	M=D
+
+//not
+	@SP
+	A=M-1
+	M=!M
+
+//not
+	@SP
+	A=M-1
+	M=!M
+
+//if-goto WHILE_END0
+	@SP
+	AM=M-1
+	D=M
+	@WHILE_END0
+	D;JNE
+
+//goto WHILE_EXP0
+	@WHILE_EXP0
+	0;JMP
+
+//label WHILE_END0
+(WHILE_END0)
+
+//function Sys.wait 1
+(Sys.wait)
+	@0
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
 
 //push argument 0
 	@0
@@ -9622,28 +10555,19 @@
 	A=M+D
 	D=M
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 
-//push constant 2
-	@2
+//push constant 0
+	@0
 	D=A
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 
-//add
-	@SP
-	AM=M-1
-	D=M
-	A=A-1
-	M=M+D
-
-//gt
+//lt
 	@SP
 	A=M-1
 	D=M
@@ -9666,7 +10590,7 @@
 	@SP
 	AM=M-1
 	A=A-1
-	M=0
+	M=-1
 	@CON_58
 	0;JMP
 (FIRST_MINUS_58)
@@ -9682,7 +10606,7 @@
 	@SP
 	AM=M-1
 	A=A-1
-	M=-1
+	M=0
 	@CON_58
 	0;JMP
 (SAME_SIGN_58)
@@ -9704,1008 +10628,103 @@
 (GRATER_58)
 	@SP
 	A=M-1
-	M=-1
+	M=0
 	@CON_58
 	0;JMP
 (LOWER_58)
 	@SP
 	A=M-1
-	M=0
+	M=-1
 (CON_58)
 
-//if-goto IF_TRUE2
+//if-goto IF_TRUE0
 	@SP
 	AM=M-1
 	D=M
-	@IF_TRUE2
+	@IF_TRUE0
 	D;JNE
 
-//goto IF_FALSE2
-	@IF_FALSE2
+//goto IF_FALSE0
+	@IF_FALSE0
 	0;JMP
 
-//label IF_TRUE2
-(IF_TRUE2)
-
-//push argument 0
-	@0
-	D=A
-	@ARG
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//push constant 2
-	@2
-	D=A
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//add
-	@SP
-	AM=M-1
-	D=M
-	A=A-1
-	M=M+D
-
-//push local 1
-	@1
-	D=A
-	@LCL
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//add
-	@SP
-	AM=M-1
-	D=M
-	A=A-1
-	M=M+D
-
-//push constant 0
-	@0
-	D=A
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//push local 1
-	@1
-	D=A
-	@LCL
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//add
-	@SP
-	AM=M-1
-	D=M
-	A=A-1
-	M=M+D
-
-//pop pointer 1
-	@THAT
-	D=A
-	@addr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@addr
-	A=M
-	M=D
-
-//push that 0
-	@0
-	D=A
-	@THAT
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//push argument 0
-	@0
-	D=A
-	@ARG
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//sub
-	@SP
-	AM=M-1
-	D=M
-	A=A-1
-	M=M-D
-
-//push constant 2
-	@2
-	D=A
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//sub
-	@SP
-	AM=M-1
-	D=M
-	A=A-1
-	M=M-D
-
-//pop temp 0
-	@0
-	D=A
-	@R5
-	D=A+D
-	@addr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@addr
-	A=M
-	M=D
-
-//pop pointer 1
-	@THAT
-	D=A
-	@addr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@addr
-	A=M
-	M=D
-
-//push temp 0
-	@0
-	D=A
-	@R5
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//pop that 0
-	@0
-	D=A
-	@THAT
-	D=M+D
-	@addr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@addr
-	A=M
-	M=D
+//label IF_TRUE0
+(IF_TRUE0)
 
 //push constant 1
 	@1
 	D=A
 	@SP
-	A=M
+	M=M+1
+	A=M-1
 	M=D
+
+//call Sys.error 1
+	@RETURN_ADDRESS_59
+	D=A
 	@SP
 	M=M+1
-
-//push local 1
-	@1
-	D=A
+	A=M-1
+	M=D
 	@LCL
-	A=M+D
 	D=M
-	@SP
-	A=M
-	M=D
 	@SP
 	M=M+1
-
-//add
-	@SP
-	AM=M-1
-	D=M
-	A=A-1
-	M=M+D
-
-//pop pointer 1
-	@THAT
-	D=A
-	@addr
+	A=M-1
 	M=D
-	@SP
-	AM=M-1
-	D=M
-	@addr
-	A=M
-	M=D
-
-//push that 0
-	@0
-	D=A
-	@THAT
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//push local 1
-	@1
-	D=A
-	@LCL
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//push constant 2
-	@2
-	D=A
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//add
-	@SP
-	AM=M-1
-	D=M
-	A=A-1
-	M=M+D
-
-//eq
-	@SP
-	A=M-1
-	D=M
-	@FIRST_PLUS_59
-	D;JGT
-	@FIRST_MINUS_59
-	D;JLT
-	@SAME_SIGN_59
-	0;JMP
-(FIRST_PLUS_59)
-	@SP
-	A=M-1
-	A=A-1
-	D=M
-	@DIF_SIGN_LT_59
-	D;JLT
-	@SAME_SIGN_59
-	0;JMP
-(DIF_SIGN_LT_59)
-	@SP
-	AM=M-1
-	A=A-1
-	M=0
-	@CON_59
-	0;JMP
-(FIRST_MINUS_59)
-	@SP
-	A=M-1
-	A=A-1
-	D=M
-	@DIF_SIGN_GT_59
-	D;JGT
-	@SAME_SIGN_59
-	0;JMP
-(DIF_SIGN_GT_59)
-	@SP
-	AM=M-1
-	A=A-1
-	M=0
-	@CON_59
-	0;JMP
-(SAME_SIGN_59)
-	@SP
-	AM=M-1
-	D=M
-	A=A-1
-	M=M-D
-	D=M
-	@GRATER_59
-	D;JGT
-	@LOWER_59
-	D;JLT
-	@SP
-	A=M-1
-	M=-1
-	@CON_59
-	0;JMP
-(GRATER_59)
-	@SP
-	A=M-1
-	M=0
-	@CON_59
-	0;JMP
-(LOWER_59)
-	@SP
-	A=M-1
-	M=0
-(CON_59)
-
-//if-goto IF_TRUE3
-	@SP
-	AM=M-1
-	D=M
-	@IF_TRUE3
-	D;JNE
-
-//goto IF_FALSE3
-	@IF_FALSE3
-	0;JMP
-
-//label IF_TRUE3
-(IF_TRUE3)
-
-//push argument 0
-	@0
-	D=A
 	@ARG
-	A=M+D
 	D=M
-	@SP
-	A=M
-	M=D
 	@SP
 	M=M+1
-
-//push constant 3
-	@3
-	D=A
-	@SP
-	A=M
+	A=M-1
 	M=D
+	@THIS
+	D=M
 	@SP
 	M=M+1
-
-//add
-	@SP
-	AM=M-1
-	D=M
-	A=A-1
-	M=M+D
-
-//push local 1
-	@1
-	D=A
-	@LCL
-	A=M+D
-	D=M
-	@SP
-	A=M
+	A=M-1
 	M=D
-	@SP
-	M=M+1
-
-//add
-	@SP
-	AM=M-1
-	D=M
-	A=A-1
-	M=M+D
-
-//push local 1
-	@1
-	D=A
-	@LCL
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//push argument 0
-	@0
-	D=A
-	@ARG
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//add
-	@SP
-	AM=M-1
-	D=M
-	A=A-1
-	M=M+D
-
-//push constant 4
-	@4
-	D=A
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//add
-	@SP
-	AM=M-1
-	D=M
-	A=A-1
-	M=M+D
-
-//pop temp 0
-	@0
-	D=A
-	@R5
-	D=A+D
-	@addr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@addr
-	A=M
-	M=D
-
-//pop pointer 1
 	@THAT
-	D=A
-	@addr
-	M=D
-	@SP
-	AM=M-1
 	D=M
-	@addr
-	A=M
-	M=D
-
-//push temp 0
-	@0
-	D=A
-	@R5
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
 	@SP
 	M=M+1
-
-//pop that 0
-	@0
-	D=A
-	@THAT
-	D=M+D
-	@addr
+	A=M-1
 	M=D
 	@SP
-	AM=M-1
-	D=M
-	@addr
-	A=M
-	M=D
-
-//goto IF_END3
-	@IF_END3
-	0;JMP
-
-//label IF_FALSE3
-(IF_FALSE3)
-
-//push argument 0
-	@0
-	D=A
-	@ARG
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//push constant 3
-	@3
-	D=A
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//add
-	@SP
-	AM=M-1
-	D=M
-	A=A-1
-	M=M+D
-
-//push local 1
-	@1
-	D=A
-	@LCL
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//add
-	@SP
-	AM=M-1
-	D=M
-	A=A-1
-	M=M+D
-
-//push constant 1
-	@1
-	D=A
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//push local 1
-	@1
-	D=A
-	@LCL
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//add
-	@SP
-	AM=M-1
-	D=M
-	A=A-1
-	M=M+D
-
-//pop pointer 1
-	@THAT
-	D=A
-	@addr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@addr
-	A=M
-	M=D
-
-//push that 0
-	@0
-	D=A
-	@THAT
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//pop temp 0
-	@0
-	D=A
-	@R5
-	D=A+D
-	@addr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@addr
-	A=M
-	M=D
-
-//pop pointer 1
-	@THAT
-	D=A
-	@addr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@addr
-	A=M
-	M=D
-
-//push temp 0
-	@0
-	D=A
-	@R5
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//pop that 0
-	@0
-	D=A
-	@THAT
-	D=M+D
-	@addr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@addr
-	A=M
-	M=D
-
-//label IF_END3
-(IF_END3)
-
-//push constant 1
-	@1
-	D=A
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//push local 1
-	@1
-	D=A
-	@LCL
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//add
-	@SP
-	AM=M-1
-	D=M
-	A=A-1
-	M=M+D
-
-//push local 1
-	@1
-	D=A
-	@LCL
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//push argument 0
-	@0
-	D=A
-	@ARG
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//add
-	@SP
-	AM=M-1
-	D=M
-	A=A-1
-	M=M+D
-
-//push constant 2
-	@2
-	D=A
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//add
-	@SP
-	AM=M-1
-	D=M
-	A=A-1
-	M=M+D
-
-//pop temp 0
-	@0
-	D=A
-	@R5
-	D=A+D
-	@addr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@addr
-	A=M
-	M=D
-
-//pop pointer 1
-	@THAT
-	D=A
-	@addr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@addr
-	A=M
-	M=D
-
-//push temp 0
-	@0
-	D=A
-	@R5
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//pop that 0
-	@0
-	D=A
-	@THAT
-	D=M+D
-	@addr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@addr
-	A=M
-	M=D
-
-//label IF_FALSE2
-(IF_FALSE2)
-
-//push constant 0
-	@0
-	D=A
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//push local 1
-	@1
-	D=A
-	@LCL
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//add
-	@SP
-	AM=M-1
-	D=M
-	A=A-1
-	M=M+D
-
-//push constant 0
-	@0
-	D=A
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//pop temp 0
-	@0
-	D=A
-	@R5
-	D=A+D
-	@addr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@addr
-	A=M
-	M=D
-
-//pop pointer 1
-	@THAT
-	D=A
-	@addr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@addr
-	A=M
-	M=D
-
-//push temp 0
-	@0
-	D=A
-	@R5
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//pop that 0
-	@0
-	D=A
-	@THAT
-	D=M+D
-	@addr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@addr
-	A=M
-	M=D
-
-//push local 1
-	@1
-	D=A
-	@LCL
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//push constant 2
-	@2
-	D=A
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//add
-	@SP
-	AM=M-1
-	D=M
-	A=A-1
-	M=M+D
-
-//return
-	@LCL
-	D=M
-	@endframe
-	M=D
-	@endframe
 	D=M
 	@5
 	D=D-A
-	A=D
+	@1
+	D=D-A
+	@ARG
+	M=D
+	@SP
 	D=M
-	@retaddr
+	@LCL
+	M=D
+	@Sys.error
+	0;JMP
+(RETURN_ADDRESS_59)
+
+//pop temp 0
+	@0
+	D=A
+	@R5
+	D=A+D
+	@addr
 	M=D
 	@SP
 	AM=M-1
 	D=M
-	@ARG
+	@addr
 	A=M
 	M=D
-	@ARG
-	D=M+1
-	@SP
-	M=D
-	@endframe
-	D=M
-	@1
-	D=D-A
-	A=D
-	D=M
-	@THAT
-	M=D
-	@endframe
-	D=M
-	@2
-	D=D-A
-	A=D
-	D=M
-	@THIS
-	M=D
-	@endframe
-	D=M
-	@3
-	D=D-A
-	A=D
-	D=M
-	@ARG
-	M=D
-	@endframe
-	D=M
-	@4
-	D=D-A
-	A=D
-	D=M
-	@LCL
-	M=D
-	@retaddr
-	A=M
-	0;JMP
 
-//function Memory.deAlloc 2
-(Memory.deAlloc)
-	@0
-	D=A
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-	@0
-	D=A
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
+//label IF_FALSE0
+(IF_FALSE0)
+
+//label WHILE_EXP0
+(WHILE_EXP0)
 
 //push argument 0
 	@0
@@ -10714,169 +10733,19 @@
 	A=M+D
 	D=M
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
-
-//push constant 2
-	@2
-	D=A
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//sub
-	@SP
-	AM=M-1
-	D=M
-	A=A-1
-	M=M-D
-
-//pop local 0
-	@0
-	D=A
-	@LCL
-	D=M+D
-	@addr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@addr
-	A=M
-	M=D
-
-//push constant 1
-	@1
-	D=A
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//push local 0
-	@0
-	D=A
-	@LCL
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//add
-	@SP
-	AM=M-1
-	D=M
-	A=A-1
-	M=M+D
-
-//pop pointer 1
-	@THAT
-	D=A
-	@addr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@addr
-	A=M
-	M=D
-
-//push that 0
-	@0
-	D=A
-	@THAT
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//pop local 1
-	@1
-	D=A
-	@LCL
-	D=M+D
-	@addr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@addr
-	A=M
+	A=M-1
 	M=D
 
 //push constant 0
 	@0
 	D=A
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
-
-//push local 1
-	@1
-	D=A
-	@LCL
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//add
-	@SP
-	AM=M-1
-	D=M
-	A=A-1
-	M=M+D
-
-//pop pointer 1
-	@THAT
-	D=A
-	@addr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@addr
-	A=M
+	A=M-1
 	M=D
 
-//push that 0
-	@0
-	D=A
-	@THAT
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//push constant 0
-	@0
-	D=A
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//eq
+//gt
 	@SP
 	A=M-1
 	D=M
@@ -10915,7 +10784,7 @@
 	@SP
 	AM=M-1
 	A=A-1
-	M=0
+	M=-1
 	@CON_60
 	0;JMP
 (SAME_SIGN_60)
@@ -10931,13 +10800,13 @@
 	D;JLT
 	@SP
 	A=M-1
-	M=-1
+	M=0
 	@CON_60
 	0;JMP
 (GRATER_60)
 	@SP
 	A=M-1
-	M=0
+	M=-1
 	@CON_60
 	0;JMP
 (LOWER_60)
@@ -10946,177 +10815,30 @@
 	M=0
 (CON_60)
 
-//if-goto IF_TRUE0
+//not
+	@SP
+	A=M-1
+	M=!M
+
+//if-goto WHILE_END0
 	@SP
 	AM=M-1
 	D=M
-	@IF_TRUE0
+	@WHILE_END0
 	D;JNE
 
-//goto IF_FALSE0
-	@IF_FALSE0
-	0;JMP
-
-//label IF_TRUE0
-(IF_TRUE0)
-
-//push constant 0
-	@0
+//push constant 50
+	@50
 	D=A
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 
-//push local 0
+//pop local 0
 	@0
 	D=A
 	@LCL
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//add
-	@SP
-	AM=M-1
-	D=M
-	A=A-1
-	M=M+D
-
-//push constant 1
-	@1
-	D=A
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//push local 0
-	@0
-	D=A
-	@LCL
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//add
-	@SP
-	AM=M-1
-	D=M
-	A=A-1
-	M=M+D
-
-//pop pointer 1
-	@THAT
-	D=A
-	@addr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@addr
-	A=M
-	M=D
-
-//push that 0
-	@0
-	D=A
-	@THAT
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//push local 0
-	@0
-	D=A
-	@LCL
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//sub
-	@SP
-	AM=M-1
-	D=M
-	A=A-1
-	M=M-D
-
-//push constant 2
-	@2
-	D=A
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//sub
-	@SP
-	AM=M-1
-	D=M
-	A=A-1
-	M=M-D
-
-//pop temp 0
-	@0
-	D=A
-	@R5
-	D=A+D
-	@addr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@addr
-	A=M
-	M=D
-
-//pop pointer 1
-	@THAT
-	D=A
-	@addr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@addr
-	A=M
-	M=D
-
-//push temp 0
-	@0
-	D=A
-	@R5
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//pop that 0
-	@0
-	D=A
-	@THAT
 	D=M+D
 	@addr
 	M=D
@@ -11127,304 +10849,29 @@
 	A=M
 	M=D
 
-//goto IF_END0
-	@IF_END0
-	0;JMP
+//label WHILE_EXP1
+(WHILE_EXP1)
 
-//label IF_FALSE0
-(IF_FALSE0)
+//push local 0
+	@0
+	D=A
+	@LCL
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
 
 //push constant 0
 	@0
 	D=A
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
-
-//push local 0
-	@0
-	D=A
-	@LCL
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//add
-	@SP
-	AM=M-1
-	D=M
-	A=A-1
-	M=M+D
-
-//push constant 1
-	@1
-	D=A
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//push local 0
-	@0
-	D=A
-	@LCL
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//add
-	@SP
-	AM=M-1
-	D=M
-	A=A-1
-	M=M+D
-
-//pop pointer 1
-	@THAT
-	D=A
-	@addr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@addr
-	A=M
+	A=M-1
 	M=D
 
-//push that 0
-	@0
-	D=A
-	@THAT
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//push local 0
-	@0
-	D=A
-	@LCL
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//sub
-	@SP
-	AM=M-1
-	D=M
-	A=A-1
-	M=M-D
-
-//push constant 0
-	@0
-	D=A
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//push local 1
-	@1
-	D=A
-	@LCL
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//add
-	@SP
-	AM=M-1
-	D=M
-	A=A-1
-	M=M+D
-
-//pop pointer 1
-	@THAT
-	D=A
-	@addr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@addr
-	A=M
-	M=D
-
-//push that 0
-	@0
-	D=A
-	@THAT
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//add
-	@SP
-	AM=M-1
-	D=M
-	A=A-1
-	M=M+D
-
-//pop temp 0
-	@0
-	D=A
-	@R5
-	D=A+D
-	@addr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@addr
-	A=M
-	M=D
-
-//pop pointer 1
-	@THAT
-	D=A
-	@addr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@addr
-	A=M
-	M=D
-
-//push temp 0
-	@0
-	D=A
-	@R5
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//pop that 0
-	@0
-	D=A
-	@THAT
-	D=M+D
-	@addr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@addr
-	A=M
-	M=D
-
-//push constant 1
-	@1
-	D=A
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//push local 1
-	@1
-	D=A
-	@LCL
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//add
-	@SP
-	AM=M-1
-	D=M
-	A=A-1
-	M=M+D
-
-//pop pointer 1
-	@THAT
-	D=A
-	@addr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@addr
-	A=M
-	M=D
-
-//push that 0
-	@0
-	D=A
-	@THAT
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//push local 1
-	@1
-	D=A
-	@LCL
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//push constant 2
-	@2
-	D=A
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//add
-	@SP
-	AM=M-1
-	D=M
-	A=A-1
-	M=M+D
-
-//eq
+//gt
 	@SP
 	A=M-1
 	D=M
@@ -11463,7 +10910,7 @@
 	@SP
 	AM=M-1
 	A=A-1
-	M=0
+	M=-1
 	@CON_61
 	0;JMP
 (SAME_SIGN_61)
@@ -11479,13 +10926,13 @@
 	D;JLT
 	@SP
 	A=M-1
-	M=-1
+	M=0
 	@CON_61
 	0;JMP
 (GRATER_61)
 	@SP
 	A=M-1
-	M=0
+	M=-1
 	@CON_61
 	0;JMP
 (LOWER_61)
@@ -11494,118 +10941,48 @@
 	M=0
 (CON_61)
 
-//if-goto IF_TRUE1
+//not
+	@SP
+	A=M-1
+	M=!M
+
+//if-goto WHILE_END1
 	@SP
 	AM=M-1
 	D=M
-	@IF_TRUE1
+	@WHILE_END1
 	D;JNE
 
-//goto IF_FALSE1
-	@IF_FALSE1
-	0;JMP
-
-//label IF_TRUE1
-(IF_TRUE1)
+//push local 0
+	@0
+	D=A
+	@LCL
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
 
 //push constant 1
 	@1
 	D=A
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
-
-//push local 0
-	@0
-	D=A
-	@LCL
-	A=M+D
-	D=M
-	@SP
-	A=M
+	A=M-1
 	M=D
-	@SP
-	M=M+1
 
-//add
+//sub
 	@SP
 	AM=M-1
 	D=M
 	A=A-1
-	M=M+D
+	M=M-D
 
-//push local 0
+//pop local 0
 	@0
 	D=A
 	@LCL
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//push constant 2
-	@2
-	D=A
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//add
-	@SP
-	AM=M-1
-	D=M
-	A=A-1
-	M=M+D
-
-//pop temp 0
-	@0
-	D=A
-	@R5
-	D=A+D
-	@addr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@addr
-	A=M
-	M=D
-
-//pop pointer 1
-	@THAT
-	D=A
-	@addr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@addr
-	A=M
-	M=D
-
-//push temp 0
-	@0
-	D=A
-	@R5
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//pop that 0
-	@0
-	D=A
-	@THAT
 	D=M+D
 	@addr
 	M=D
@@ -11616,135 +10993,43 @@
 	A=M
 	M=D
 
-//goto IF_END1
-	@IF_END1
+//goto WHILE_EXP1
+	@WHILE_EXP1
 	0;JMP
 
-//label IF_FALSE1
-(IF_FALSE1)
+//label WHILE_END1
+(WHILE_END1)
+
+//push argument 0
+	@0
+	D=A
+	@ARG
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
 
 //push constant 1
 	@1
 	D=A
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
-
-//push local 0
-	@0
-	D=A
-	@LCL
-	A=M+D
-	D=M
-	@SP
-	A=M
+	A=M-1
 	M=D
-	@SP
-	M=M+1
 
-//add
+//sub
 	@SP
 	AM=M-1
 	D=M
 	A=A-1
-	M=M+D
+	M=M-D
 
-//push constant 1
-	@1
-	D=A
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//push local 1
-	@1
-	D=A
-	@LCL
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//add
-	@SP
-	AM=M-1
-	D=M
-	A=A-1
-	M=M+D
-
-//pop pointer 1
-	@THAT
-	D=A
-	@addr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@addr
-	A=M
-	M=D
-
-//push that 0
+//pop argument 0
 	@0
 	D=A
-	@THAT
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//pop temp 0
-	@0
-	D=A
-	@R5
-	D=A+D
-	@addr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@addr
-	A=M
-	M=D
-
-//pop pointer 1
-	@THAT
-	D=A
-	@addr
-	M=D
-	@SP
-	AM=M-1
-	D=M
-	@addr
-	A=M
-	M=D
-
-//push temp 0
-	@0
-	D=A
-	@R5
-	A=M+D
-	D=M
-	@SP
-	A=M
-	M=D
-	@SP
-	M=M+1
-
-//pop that 0
-	@0
-	D=A
-	@THAT
+	@ARG
 	D=M+D
 	@addr
 	M=D
@@ -11755,20 +11040,20 @@
 	A=M
 	M=D
 
-//label IF_END1
-(IF_END1)
+//goto WHILE_EXP0
+	@WHILE_EXP0
+	0;JMP
 
-//label IF_END0
-(IF_END0)
+//label WHILE_END0
+(WHILE_END0)
 
 //push constant 0
 	@0
 	D=A
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 
 //return
 	@LCL
@@ -11790,42 +11075,68 @@
 	A=M
 	M=D
 	@ARG
-	D=M+1
-	@SP
-	M=D
-	@endframe
 	D=M
-	@1
-	D=D-A
-	A=D
+	@SP
+	M=D+1
+	@endframe
+	AM=M-1
 	D=M
 	@THAT
 	M=D
 	@endframe
-	D=M
-	@2
-	D=D-A
-	A=D
+	AM=M-1
 	D=M
 	@THIS
 	M=D
 	@endframe
-	D=M
-	@3
-	D=D-A
-	A=D
+	AM=M-1
 	D=M
 	@ARG
 	M=D
 	@endframe
-	D=M
-	@4
-	D=D-A
-	A=D
+	AM=M-1
 	D=M
 	@LCL
 	M=D
 	@retaddr
 	A=M
 	0;JMP
+
+//function Sys.error 0
+(Sys.error)
+
+//label WHILE_EXP0
+(WHILE_EXP0)
+
+//push constant 0
+	@0
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//not
+	@SP
+	A=M-1
+	M=!M
+
+//not
+	@SP
+	A=M-1
+	M=!M
+
+//if-goto WHILE_END0
+	@SP
+	AM=M-1
+	D=M
+	@WHILE_END0
+	D;JNE
+
+//goto WHILE_EXP0
+	@WHILE_EXP0
+	0;JMP
+
+//label WHILE_END0
+(WHILE_END0)
 

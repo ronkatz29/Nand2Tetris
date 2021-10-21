@@ -6,38 +6,33 @@
 	@RETURN_ADDRESS_0
 	D=A
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 	@LCL
 	D=M
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 	@ARG
 	D=M
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 	@THIS
 	D=M
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 	@THAT
 	D=M
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 	@SP
 	D=M
 	@5
@@ -60,38 +55,33 @@
 	@RETURN_ADDRESS_1
 	D=A
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 	@LCL
 	D=M
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 	@ARG
 	D=M
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 	@THIS
 	D=M
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 	@THAT
 	D=M
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 	@SP
 	D=M
 	@5
@@ -112,38 +102,33 @@
 	@RETURN_ADDRESS_2
 	D=A
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 	@LCL
 	D=M
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 	@ARG
 	D=M
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 	@THIS
 	D=M
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 	@THAT
 	D=M
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 	@SP
 	D=M
 	@5
@@ -164,38 +149,33 @@
 	@RETURN_ADDRESS_3
 	D=A
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 	@LCL
 	D=M
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 	@ARG
 	D=M
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 	@THIS
 	D=M
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 	@THAT
 	D=M
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 	@SP
 	D=M
 	@5
@@ -216,38 +196,33 @@
 	@RETURN_ADDRESS_4
 	D=A
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 	@LCL
 	D=M
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 	@ARG
 	D=M
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 	@THIS
 	D=M
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 	@THAT
 	D=M
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 	@SP
 	D=M
 	@5
@@ -291,38 +266,26 @@
 	A=M
 	M=D
 	@ARG
-	D=M+1
-	@SP
-	M=D
-	@endframe
 	D=M
-	@1
-	D=D-A
-	A=D
+	@SP
+	M=D+1
+	@endframe
+	AM=M-1
 	D=M
 	@THAT
 	M=D
 	@endframe
-	D=M
-	@2
-	D=D-A
-	A=D
+	AM=M-1
 	D=M
 	@THIS
 	M=D
 	@endframe
-	D=M
-	@3
-	D=D-A
-	A=D
+	AM=M-1
 	D=M
 	@ARG
 	M=D
 	@endframe
-	D=M
-	@4
-	D=D-A
-	A=D
+	AM=M-1
 	D=M
 	@LCL
 	M=D
@@ -337,10 +300,9 @@
 	@32767
 	D=A
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 
 //neg
 	@SP
@@ -354,10 +316,9 @@
 	@1
 	D=A
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 
 //sub
 	@SP
@@ -370,10 +331,9 @@
 	@32767
 	D=A
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 
 //lt
 	@SP
@@ -465,38 +425,26 @@
 	A=M
 	M=D
 	@ARG
-	D=M+1
-	@SP
-	M=D
-	@endframe
 	D=M
-	@1
-	D=D-A
-	A=D
+	@SP
+	M=D+1
+	@endframe
+	AM=M-1
 	D=M
 	@THAT
 	M=D
 	@endframe
-	D=M
-	@2
-	D=D-A
-	A=D
+	AM=M-1
 	D=M
 	@THIS
 	M=D
 	@endframe
-	D=M
-	@3
-	D=D-A
-	A=D
+	AM=M-1
 	D=M
 	@ARG
 	M=D
 	@endframe
-	D=M
-	@4
-	D=D-A
-	A=D
+	AM=M-1
 	D=M
 	@LCL
 	M=D
@@ -511,19 +459,17 @@
 	@32767
 	D=A
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 
 //push constant 32767
 	@32767
 	D=A
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 
 //neg
 	@SP
@@ -537,10 +483,9 @@
 	@1
 	D=A
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 
 //sub
 	@SP
@@ -639,38 +584,26 @@
 	A=M
 	M=D
 	@ARG
-	D=M+1
-	@SP
-	M=D
-	@endframe
 	D=M
-	@1
-	D=D-A
-	A=D
+	@SP
+	M=D+1
+	@endframe
+	AM=M-1
 	D=M
 	@THAT
 	M=D
 	@endframe
-	D=M
-	@2
-	D=D-A
-	A=D
+	AM=M-1
 	D=M
 	@THIS
 	M=D
 	@endframe
-	D=M
-	@3
-	D=D-A
-	A=D
+	AM=M-1
 	D=M
 	@ARG
 	M=D
 	@endframe
-	D=M
-	@4
-	D=D-A
-	A=D
+	AM=M-1
 	D=M
 	@LCL
 	M=D
@@ -685,10 +618,9 @@
 	@20000
 	D=A
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 
 //neg
 	@SP
@@ -702,10 +634,9 @@
 	@1
 	D=A
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 
 //sub
 	@SP
@@ -718,10 +649,9 @@
 	@30000
 	D=A
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 
 //gt
 	@SP
@@ -813,38 +743,26 @@
 	A=M
 	M=D
 	@ARG
-	D=M+1
-	@SP
-	M=D
-	@endframe
 	D=M
-	@1
-	D=D-A
-	A=D
+	@SP
+	M=D+1
+	@endframe
+	AM=M-1
 	D=M
 	@THAT
 	M=D
 	@endframe
-	D=M
-	@2
-	D=D-A
-	A=D
+	AM=M-1
 	D=M
 	@THIS
 	M=D
 	@endframe
-	D=M
-	@3
-	D=D-A
-	A=D
+	AM=M-1
 	D=M
 	@ARG
 	M=D
 	@endframe
-	D=M
-	@4
-	D=D-A
-	A=D
+	AM=M-1
 	D=M
 	@LCL
 	M=D
@@ -859,19 +777,17 @@
 	@20000
 	D=A
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 
 //push constant 30000
 	@30000
 	D=A
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 
 //neg
 	@SP
@@ -885,10 +801,9 @@
 	@1
 	D=A
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 
 //sub
 	@SP
@@ -987,38 +902,26 @@
 	A=M
 	M=D
 	@ARG
-	D=M+1
-	@SP
-	M=D
-	@endframe
 	D=M
-	@1
-	D=D-A
-	A=D
+	@SP
+	M=D+1
+	@endframe
+	AM=M-1
 	D=M
 	@THAT
 	M=D
 	@endframe
-	D=M
-	@2
-	D=D-A
-	A=D
+	AM=M-1
 	D=M
 	@THIS
 	M=D
 	@endframe
-	D=M
-	@3
-	D=D-A
-	A=D
+	AM=M-1
 	D=M
 	@ARG
 	M=D
 	@endframe
-	D=M
-	@4
-	D=D-A
-	A=D
+	AM=M-1
 	D=M
 	@LCL
 	M=D
@@ -1033,38 +936,33 @@
 	@RETURN_ADDRESS_9
 	D=A
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 	@LCL
 	D=M
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 	@ARG
 	D=M
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 	@THIS
 	D=M
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 	@THAT
 	D=M
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 	@SP
 	D=M
 	@5
