@@ -36,6 +36,10 @@ EQUALS = '='
 GOTO = '@'
 SP = 'SP'
 
+R13 = "@R13"
+R14 = "@R14"
+R15 = "@R15"
+
 TRUE = "-1"
 FALSE = "0"
 
@@ -54,6 +58,7 @@ class CodeWriter:
         self.out_file = output_stream
         self.counter = 0  # counter for the jump commands
         self.file_name_ = ""
+        self.func = ""
 
     def set_file_name(self, filename: str) -> None:
         """Informs the code writer that the translation of a new VM file is 
@@ -70,7 +75,8 @@ class CodeWriter:
         self.out_file.write(TAB + "@256" + NEWLINE)
         self.out_file.write(TAB + "D=A" + NEWLINE)
         self.out_file.write(TAB + "@" +SP + NEWLINE)
-        self.out_file.write(TAB + "M=D" + NEWLINE)
+        self.out_file.write(TAB + "M=D" + NEWLINE+ NEWLINE)
+        self.out_file.write("//call init function" + NEWLINE)
         self.write_call_function('Sys.init', '0')
 
     def write_shift(self, command):
@@ -202,9 +208,9 @@ class CodeWriter:
         self.out_file.write(TAB + "@SP" + NEWLINE)
         self.out_file.write(TAB + "A=M-1" + NEWLINE)
         self.out_file.write(TAB + "M=-M" + NEWLINE)
-        self.out_file.write(TAB + "D=A+1" + NEWLINE)
-        self.out_file.write(TAB + "@SP" + NEWLINE)
-        self.out_file.write(TAB + "M=D" + NEWLINE)
+        # self.out_file.write(TAB + "D=A+1" + NEWLINE) elad
+        # self.out_file.write(TAB + "@SP" + NEWLINE)
+        # self.out_file.write(TAB + "M=D" + NEWLINE)
 
     def add_sub_or_and_to_asm(self, sign):
         self.out_file.write(TAB + "@SP" + NEWLINE)
@@ -240,7 +246,10 @@ class CodeWriter:
                 self.out_file.write(TAB + "D=A" + NEWLINE)
                 if segment != "constant":
                     self.out_file.write(TAB + "@" + seg + NEWLINE)
-                    self.out_file.write(TAB + "A=M+D" + NEWLINE)
+                    if segment != "temp":
+                        self.out_file.write(TAB + "A=M+D" + NEWLINE)
+                    else:
+                        self.out_file.write(TAB + "A=A+D" + NEWLINE)
                     self.out_file.write(TAB + "D=M" + NEWLINE)
                 self.push_to_stack()
 
@@ -249,9 +258,10 @@ class CodeWriter:
                 self.out_file.write(TAB + "D=A" + NEWLINE)
                 self.out_file.write(TAB + "@" + seg + NEWLINE)
                 if segment != "temp":
-                    self.out_file.write(TAB + "D=M+D" + NEWLINE)
+                    self.out_file.write(TAB + "A=M+D" + NEWLINE)
                 else:
-                    self.out_file.write(TAB + "D=A+D" + NEWLINE)
+                    self.out_file.write(TAB + "A=A+D" + NEWLINE)
+                self.out_file.write(TAB + "D=A" + NEWLINE)
                 self.pop_to_segment()
 
     def pointer_push_pop(self, command, seg):
@@ -282,30 +292,31 @@ class CodeWriter:
 
 
     def pop_to_segment(self):
-        self.out_file.write(TAB + "@addr" + NEWLINE)
+        self.out_file.write(TAB + R13 + NEWLINE)
         self.out_file.write(TAB + "M=D" + NEWLINE)
         self.out_file.write(TAB + "@" + SP + NEWLINE)
         self.out_file.write(TAB + "AM=M-1" + NEWLINE)
         self.out_file.write(TAB + "D=M" + NEWLINE)
-        self.out_file.write(TAB + "@addr" + NEWLINE)
+        self.out_file.write(TAB + R13 + NEWLINE)
         self.out_file.write(TAB + "A=M" + NEWLINE)
         self.out_file.write(TAB + "M=D" + NEWLINE)
 
     def write_branching_command(self, command, label):
         if command == "goto":
-            self.out_file.write(TAB + "@" + label + NEWLINE)
+            self.out_file.write(TAB + "@" +self.func +"." + label + NEWLINE)
             self.out_file.write(TAB + "0;JMP" + NEWLINE)
         elif command == "if-goto":
             self.out_file.write(TAB + "@" + SP + NEWLINE)
             self.out_file.write(TAB + "AM=M-1" + NEWLINE)
             self.out_file.write(TAB + "D=M" + NEWLINE)
-            self.out_file.write(TAB + "@" + label + NEWLINE)
+            self.out_file.write(TAB + "@" + self.func + "." + label +
+                                NEWLINE)
             self.out_file.write(TAB + "D;JNE" + NEWLINE)
         elif command == "label":
-            self.out_file.write("(" + label + ")" + NEWLINE)
+            self.out_file.write("(" + self.func + "." + label +")" + NEWLINE)
 
     def write_call_function(self, func_name, num_arguments):
-        dic = ["RETURN_ADDRESS_" + str(self.counter), LCL, ARG, THIS, THAT]
+        dic = [func_name + '&ret.' + str(self.counter), LCL, ARG, THIS, THAT]
         flag = 0
         # saving the call frame
         for address in dic:
@@ -355,12 +366,16 @@ class CodeWriter:
         # endframe = LCL
         self.out_file.write(TAB + "@" + LCL + NEWLINE)
         self.out_file.write(TAB + "D=M" + NEWLINE)
-        self.out_file.write(TAB + "@" + "endframe" + NEWLINE)
+        self.out_file.write(TAB + R14 + NEWLINE)
         self.out_file.write(TAB + "M=D" + NEWLINE)
 
         # get the return address
+
+
         # retAddr = *(endFream - 5)
-        self.out_file.write(TAB + "@" + "endframe" + NEWLINE)
+        # endFream = R14
+        # retAddr = R15
+        self.out_file.write(TAB + R14 + NEWLINE)
         self.out_file.write(TAB + "D=M" + NEWLINE)
 
         self.out_file.write(TAB + "@" + FRAME_SIZE + NEWLINE)
@@ -368,7 +383,7 @@ class CodeWriter:
 
         self.out_file.write(TAB + "A=D" + NEWLINE)
         self.out_file.write(TAB + "D=M" + NEWLINE)
-        self.out_file.write(TAB + "@" + "retaddr" + NEWLINE)
+        self.out_file.write(TAB + R15 + NEWLINE)
         self.out_file.write(TAB + "M=D" + NEWLINE)
 
         # *ARG = POP()
@@ -389,29 +404,18 @@ class CodeWriter:
         dic = [THAT, THIS, ARG, LCL]
         counter = 1
         for address in dic:
-            self.out_file.write(TAB + "@" + "endframe" + NEWLINE)
-            # AM = M-1
-            # D= M
-            # @THAT
-            # M=D
-            self.out_file.write(TAB + "AM=M-1" + NEWLINE)
+            self.out_file.write(TAB + R14 + NEWLINE)
             self.out_file.write(TAB + "D=M" + NEWLINE)
-
-            # self.out_file.write(TAB + "AM=M-1" + address + NEWLINE)
-            # self.out_file.write(TAB + "D=M" + address + NEWLINE)
-
-            # self.out_file.write(TAB + "D=M" + NEWLINE)
-            # self.out_file.write(TAB + "@" + str(counter) + NEWLINE)
-            # self.out_file.write(TAB + "D=D-A" + NEWLINE)
-            # self.out_file.write(TAB + "A=D" + NEWLINE)
-            # self.out_file.write(TAB + "D=M" + NEWLINE)
-
+            self.out_file.write(TAB + "@" + str(counter) + NEWLINE)
+            self.out_file.write(TAB + "D=D-A" + NEWLINE)
+            self.out_file.write(TAB + "A=D" + NEWLINE)
+            self.out_file.write(TAB + "D=M" + NEWLINE)
             self.out_file.write(TAB + "@" + address + NEWLINE)
             self.out_file.write(TAB + "M=D" + NEWLINE)
             counter += 1
 
         # goto return address
-        self.out_file.write(TAB + "@" + "retaddr" + NEWLINE)
+        self.out_file.write(TAB + R15 + NEWLINE)
         self.out_file.write(TAB + "A=M" + NEWLINE)
         self.out_file.write(TAB + "0;JMP" + NEWLINE)
 

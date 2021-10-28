@@ -43,6 +43,7 @@ def translate_file(
             code_writer.write_branching_command(parser.arg1(),
                                                 parser.arg2_branch())
         elif command == "FUNCTION_CALL":
+            code_writer.func = parser.arg1()
             code_writer.write_call_function(parser.arg1(), parser.arg2())
         elif command == "FUNCTION_START":
             code_writer.write_start_function(parser.arg1(), parser.arg2())

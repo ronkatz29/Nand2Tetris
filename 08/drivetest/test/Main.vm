@@ -1,16 +1,29 @@
 function Main.main 12
+// let lcl0 = 1;
 push constant 1
 pop local 0
+
+// let lcl1 = 2;
 push constant 2
 pop local 1
+
+// let lcl2 = 3;
 push constant 3
 pop local 2
+
+// let lcl3 = 4;
 push constant 4
 pop local 3
+
+// let lcl4 = 5;
 push constant 5
 pop local 4
+
+// let lcl5 = 6;
 push constant 6
 pop local 5
+
+//  lcl6 = lcl0+...+lcl5 = 16
 push local 0
 push local 1
 add
@@ -26,6 +39,8 @@ pop local 6
 push local 0
 push local 1
 call Math.multiply 2
+label stam
+goto stam
 push local 2
 push local 3
 call Math.multiply 2
