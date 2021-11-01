@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="0258518d-008f-49ca-824d-ceaaea14ff47" name="Changes" comment="123">
+      <change beforePath="$PROJECT_DIR$/ArrayTest/Main.jack" beforeDir="false" afterPath="$PROJECT_DIR$/ArrayTest/Main.jack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ArrayTest/Main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ArrayTest/Main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ArrayTest/MainT.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ArrayTest/MainT.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ArrayTest/desktop.ini" beforeDir="false" afterPath="$PROJECT_DIR$/ArrayTest/desktop.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ExpressionLessSquare/Main.jack" beforeDir="false" afterPath="$PROJECT_DIR$/ExpressionLessSquare/Main.jack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ExpressionLessSquare/Main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ExpressionLessSquare/Main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ExpressionLessSquare/MainT.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ExpressionLessSquare/MainT.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ExpressionLessSquare/Square.jack" beforeDir="false" afterPath="$PROJECT_DIR$/ExpressionLessSquare/Square.jack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ExpressionLessSquare/Square.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ExpressionLessSquare/Square.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ExpressionLessSquare/SquareGame.jack" beforeDir="false" afterPath="$PROJECT_DIR$/ExpressionLessSquare/SquareGame.jack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ExpressionLessSquare/SquareGame.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ExpressionLessSquare/SquareGame.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ExpressionLessSquare/SquareGameT.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ExpressionLessSquare/SquareGameT.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ExpressionLessSquare/SquareT.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ExpressionLessSquare/SquareT.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ExpressionLessSquare/desktop.ini" beforeDir="false" afterPath="$PROJECT_DIR$/ExpressionLessSquare/desktop.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JackAnalyzer" beforeDir="false" afterPath="$PROJECT_DIR$/JackAnalyzer" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JackTokenizer.py" beforeDir="false" afterPath="$PROJECT_DIR$/JackTokenizer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README" beforeDir="false" afterPath="$PROJECT_DIR$/README" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Square/Main.jack" beforeDir="false" afterPath="$PROJECT_DIR$/Square/Main.jack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Square/Main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Square/Main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Square/MainT.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Square/MainT.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Square/Square.jack" beforeDir="false" afterPath="$PROJECT_DIR$/Square/Square.jack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Square/Square.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Square/Square.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Square/SquareGame.jack" beforeDir="false" afterPath="$PROJECT_DIR$/Square/SquareGame.jack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Square/SquareGameT.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Square/SquareGameT.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Square/SquareT.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Square/SquareT.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Square/desktop.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Square/desktop.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktop.ini" beforeDir="false" afterPath="$PROJECT_DIR$/desktop.ini" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="20GLjfC12doQdai9i774qmDPh2j" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="0258518d-008f-49ca-824d-ceaaea14ff47" name="Changes" comment="" />
+      <created>1635666115696</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1635666115696</updated>
+      <workItem from="1635666120985" duration="28430000" />
+    </task>
+    <task id="LOCAL-00001" summary="123">
+      <created>1635668060806</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1635668060806</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="123" />
+    <option name="LAST_COMMIT_MESSAGE" value="123" />
+  </component>
+</project>
