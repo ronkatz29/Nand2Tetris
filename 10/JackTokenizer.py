@@ -6,6 +6,71 @@ Unported License (https://creativecommons.org/licenses/by-nc-sa/3.0/).
 """
 import typing
 
+ROUND_BRACKETS_LEFT = '('
+ROUND_BRACKETS_RIGHT = ')'
+SQUARE_BRACKETS_LEFT = '['
+SQUARE_BRACKETS_RIGHT = ']'
+CURLY_BRACKETS_LEFT = '{'
+CURLY_BRACKETS_RIGHT = '}'
+ANGEL_BRACKETS_LEFT = '<'
+ANGEL_BRACKETS_RIGHT = '>'
+DOT = '.'
+COMMA = ','
+SEMICOLON = ';'
+PLUS = '+'
+MINUS = '-'
+ASTERISK = '*'
+BACKLASH = '/'
+AMPERSAND = '&'
+PIPE = '|'
+EQUAL = '='
+APPROXIMATELY = '~'
+SPACE = ' '
+
+CLASS = "class"
+CONSTRUCTOR = "constructor"
+FUNCTION = "function"
+METHOD = "method"
+FIELD = "field"
+STATIC = "static"
+VAR = "var"
+VAR_UP = "VAR"
+INT = "int"
+CHAR = "char"
+BOOLEAN = "boolean"
+VOID = "void"
+TRUE = "true"
+FALSE = "false"
+NULL = "null"
+THIS = "this"
+LET = "let"
+LET_UP = "LET"
+DO = "do"
+DO_UP = "DO"
+IF = "if"
+IF_UP = "IF"
+ELSE = "else"
+WHILE = "while"
+WHILE_UP = "WHILE"
+RETURN = "return"
+RETURN_UP = "RETURN"
+OP_SYMBOLS_XML_DIC = {"<": "&lt;", ">": "&gt;", '"': "quot;", "&": "&amp;"}
+
+KEYWORD = "KEYWORD"
+SYMBOL = "SYMBOL"
+STRING_CONST = "STRING_CONST"
+INT_CONST = "INT_CONST"
+IDENTIFIER = "IDENTIFIER"
+
+SYMBOL_SET = {ROUND_BRACKETS_LEFT, ROUND_BRACKETS_RIGHT, SQUARE_BRACKETS_LEFT,
+              SQUARE_BRACKETS_RIGHT, CURLY_BRACKETS_LEFT, CURLY_BRACKETS_RIGHT,
+              ANGEL_BRACKETS_LEFT, ANGEL_BRACKETS_RIGHT, DOT, COMMA, SEMICOLON,
+              PLUS, MINUS, ASTERISK, SEMICOLON, AMPERSAND, PIPE, EQUAL,
+              APPROXIMATELY, SPACE, BACKLASH}
+KEYWORD_SET = {CLASS, CONSTRUCTOR, FUNCTION, METHOD, FIELD, STATIC, VAR, INT,
+               CHAR, BOOLEAN, VOID, TRUE, FALSE, NULL, THIS, LET, DO, IF,
+               ELSE, WHILE, RETURN, TRUE, FALSE, NULL, THIS}
+
 
 class JackTokenizer:
     """Removes all comments from the input stream and breaks it
@@ -18,10 +83,29 @@ class JackTokenizer:
         Args:
             input_stream (typing.TextIO): input stream.
         """
-        # Your code goes here!
-        # A good place to start is:
-        # input_lines = input_stream.read().splitlines()
-        pass
+        self.clean_lines = []
+        input_lines = input_stream.read().rstrip('\n').splitlines()
+        input_lines = [name for name in input_lines if name.strip()]
+        for line in input_lines:
+            line = ' '.join((line.split('//')[0]).split())
+            if line.startswith(('*', '//', '/**', '/*')):
+                continue
+            if line:
+                self.clean_lines.append(line)
+
+        self.next_token = None
+        
+        self.counter_line = 0
+        self.counter_char_in_line = 0
+        self.is_string_next = False
+        self.is_string_cur = False
+
+        self.flag_last_token = False
+
+        self.advance()
+        self.cur_token = self.next_token
+        self.advance()
+
 
     def has_more_tokens(self) -> bool:
         """Do we have more tokens in the input?
@@ -29,25 +113,75 @@ class JackTokenizer:
         Returns:
             bool: True if there are more tokens, False otherwise.
         """
-        # Your code goes here!
-        pass
+        # TODO: SEE IF WI NEED TO TO -1 IN THE LEN
+        if self.flag_last_token:
+            return False
+        if self.counter_line == len(
+                self.clean_lines) and self.next_token == CURLY_BRACKETS_RIGHT:
+            self.flag_last_token = True
+        return True
 
     def advance(self) -> None:
         """Gets the next token from the input and makes it the current token. 
         This method should be called if has_more_tokens() is true. 
         Initially there is no current token.
         """
-        # Your code goes here!
-        pass
+        self.next_token = ''
+        cur_line = self.clean_lines[self.counter_line]
+        self.is_string_next = False
+
+        # string handling
+
+        if cur_line[self.counter_char_in_line] == '"':
+            self.is_string_next = True
+            self.counter_char_in_line += 1
+            while self.counter_char_in_line != len(cur_line) and \
+                    cur_line[self.counter_char_in_line] != '"':
+                self.next_token += cur_line[self.counter_char_in_line]
+                self.counter_char_in_line += 1
+            self.counter_char_in_line += 1
+
+
+
+        # check if the next char is a symbol
+        elif cur_line[self.counter_char_in_line] in SYMBOL_SET:
+            self.next_token = cur_line[self.counter_char_in_line]
+            self.counter_char_in_line += 1
+
+        else:
+            while cur_line[self.counter_char_in_line] not in SYMBOL_SET:
+                self.next_token += cur_line[self.counter_char_in_line]
+                self.counter_char_in_line += 1
+
+
+
+        #     check if we got to the end of a line
+        if self.counter_char_in_line == len(cur_line):
+            self.counter_line += 1
+            self.counter_char_in_line = 0
+
+        while self.next_token == SPACE:
+            self.advance()
+
 
     def token_type(self) -> str:
         """
         Returns:
-            str: the type of the current token, can be
+            str: the symbol_type of the current token, can be
             "KEYWORD", "SYMBOL", "IDENTIFIER", "INT_CONST", "STRING_CONST"
         """
-        # Your code goes here!
-        pass
+        token_type = ""
+        if self.cur_token in KEYWORD_SET:
+            token_type = KEYWORD
+        elif self.cur_token in SYMBOL_SET:
+            token_type = SYMBOL
+        elif self.is_string_cur:
+            token_type = STRING_CONST
+        elif self.cur_token.isdigit():
+            token_type = INT_CONST
+        else:
+            token_type = IDENTIFIER
+        return token_type
 
     def keyword(self) -> str:
         """
@@ -58,8 +192,8 @@ class JackTokenizer:
             "BOOLEAN", "CHAR", "VOID", "VAR", "STATIC", "FIELD", "LET", "DO", 
             "IF", "ELSE", "WHILE", "RETURN", "TRUE", "FALSE", "NULL", "THIS"
         """
-        # Your code goes here!
-        pass
+
+        return self.cur_token.upper()
 
     def symbol(self) -> str:
         """
@@ -67,8 +201,9 @@ class JackTokenizer:
             str: the character which is the current token.
             Should be called only when token_type() is "SYMBOL".
         """
-        # Your code goes here!
-        pass
+        if self.cur_token in OP_SYMBOLS_XML_DIC:
+            return OP_SYMBOLS_XML_DIC[self.cur_token]
+        return self.cur_token
 
     def identifier(self) -> str:
         """
@@ -76,8 +211,7 @@ class JackTokenizer:
             str: the identifier which is the current token.
             Should be called only when token_type() is "IDENTIFIER".
         """
-        # Your code goes here!
-        pass
+        return self.cur_token
 
     def int_val(self) -> int:
         """
@@ -85,8 +219,7 @@ class JackTokenizer:
             str: the integer value of the current token.
             Should be called only when token_type() is "INT_CONST".
         """
-        # Your code goes here!
-        pass
+        return int(self.cur_token)
 
     def string_val(self) -> str:
         """
@@ -94,5 +227,4 @@ class JackTokenizer:
             str: the string value of the current token, without the double 
             quotes. Should be called only when token_type() is "STRING_CONST".
         """
-        # Your code goes here!
-        pass
+        return self.cur_token

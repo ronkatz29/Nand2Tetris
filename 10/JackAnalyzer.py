@@ -8,7 +8,7 @@ import os
 import sys
 import typing
 from CompilationEngine import CompilationEngine
-from JackTokenizer import JackTokenizer
+
 
 
 def analyze_file(
@@ -19,12 +19,15 @@ def analyze_file(
         input_file (typing.TextIO): the file to analyze.
         output_file (typing.TextIO): writes all output to this file.
     """
-    # Your code goes here!
-    pass
-
+    compilation_engine = CompilationEngine(input_file, output_file)
+    compilation_engine.compile_class()
 
 if "__main__" == __name__:
-    # Parses the input path and calls assemble_file on each input file
+    # Parses the input path and calls analyze_file on each input file.
+    # This opens both the input and the output files!
+    # Both are closed automatically when the code finishes running.
+    # If the output file does not exist, it is created automatically in the
+    # correct path, using the correct filename.
     if not len(sys.argv) == 2:
         sys.exit("Invalid usage, please use: JackAnalyzer <input path>")
     argument_path = os.path.abspath(sys.argv[1])
