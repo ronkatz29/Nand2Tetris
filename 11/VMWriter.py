@@ -100,8 +100,3 @@ class VMWriter:
         """Writes a VM return command."""
         # Your code goes here!
         pass
-
-    def close(self) -> None:
-        """Closes the output file."""
-        # Your code goes here!
-        pass
