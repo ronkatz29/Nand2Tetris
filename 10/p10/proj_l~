@@ -1,0 +1,33 @@
+
+
+bargam81: \ 
+ 	 no_ClassIden_xml(max) {You failed to crate this xml file} \ 
+ 	 no_FunBegin_xml(max) {You failed to crate this xml file} \ 
+ 	 no_OpCheck_xml(max) {You failed to crate this xml file} \ 
+ 	 no_Unary_xml(max) {You failed to crate this xml file} \ 
+ 	 no_Close_xml(max) {You failed to crate this xml file} \ 
+ 	 no_IfDo_xml(max) {You failed to crate this xml file} \ 
+ 	 no_PrintString_xml(max) {You failed to crate this xml file} \ 
+ 	 no_UnderScore_xml(max) {You failed to crate this xml file} \ 
+ 	 no_EmptyIf_xml(max) {You failed to crate this xml file} \ 
+ 	 no_Minus_xml(max) {You failed to crate this xml file} \ 
+ 	 no_StringConstant_xml(max) {You failed to crate this xml file} \ 
+ 	 no_ExpreList_xml(max) {You failed to crate this xml file} \ 
+ 	 no_OpAndOp_xml(max) {You failed to crate this xml file} \ 
+ 	 no_StringPar_xml(max) {You failed to crate this xml file} \ 
+ 	 no_IfLong_xml(max) {You failed to crate this xml file} \ 
+ 	 no_Static_xml(max) {You failed to crate this xml file} \ 
+ 	 no_WhileIf_xml(max) {You failed to crate this xml file} \ 
+ 	 no_symbolName_xml(max) {You failed to crate this xml file} \ 
+ 	 no_StringComment_xml(max) {You failed to crate this xml file} \ 
+ 	 no_Comment_xml(max) {You failed to crate this xml file} \ 
+ 	 no_MethCall_xml(max) {You failed to crate this xml file} \ 
+ 	 no_StringTab_xml(max) {You failed to crate this xml file} \ 
+ 	 no_WhiteSpace_xml(max) {You failed to crate this xml file} \ 
+ 	 diff_with_ComplexArrays(max) {The diff failed on the file ComplexArrays} 
+
+haimdreyfuss, elkbrs: \ 
+ 	 diff_with_symbolName(max) {The diff failed on the file symbolName} \ 
+ 	 diff_with_MethCall(max) {The diff failed on the file MethCall} \ 
+ 	 diff_with_ComplexArrays(max) {The diff failed on the file ComplexArrays} \ 
+ 	 diff_with_test5(max) {The diff failed on the file test5} 

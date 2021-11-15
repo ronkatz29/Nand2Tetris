@@ -1,0 +1,78 @@
+#!/bin/bash
+
+# $1 is the student
+
+if test $# -lt 1 ; then
+    echo "missing parameter"
+    exit 1
+fi
+
+stud=$1
+THIS=`pwd`
+HACK=/cs/course/current/nand2tet/check/HACK
+EXEC=JackAnalyzer
+STUD=$THIS/stud/${stud}
+TEST_DIR=test
+echo "  checking ${stud}"
+
+cd ${STUD}
+make 
+if [ $? -ne 0 ]
+then
+  cd ${THIS}
+  ./err2.sh Makefile "faild while running make"
+fi
+
+cd ${THIS}
+if [ ! -r ${STUD}/${EXEC} ] ; then
+  for BEXEC in JackAnalizer analyzer JackTokenizer JackAnalyzer.sh JackCompiler ; do
+    if [ -r ${STUD}/${BEXEC} ] ; then
+      cp ${STUD}/${BEXEC} ${STUD}/${EXEC}
+      cd ${THIS}
+      ./err2.sh script "${BEXEC} is not JackAnalyzer" 
+      break
+    fi
+  done
+fi
+if [ ! -r ${STUD}/${EXEC} ] ; then
+  cd ${THIS}
+  ./err2.sh JackAnalyzer "Couldn't find JackAnalyzer"
+  exit
+fi
+
+for TEST in Average ComplexArrays ConvertToBin Seven test1 test2 test3 test4 test5 test6
+do
+  cd ${STUD}
+  ./checkcom.pl $EXEC $TEST_DIR/Test11/$TEST
+  if [ $? -ne 0 ] 
+  then
+      rm -f  $TEST_DIR/Test11/$TEST/*.xml
+    cd ${THIS}
+    ./err2.sh loop "The JackAnalyzer entered an infinite loop when analyzing ${TEST}"
+  else
+    if [ ! -r $TEST_DIR/Test11/$TEST/Main.xml ] ;then
+      if [ -r Main.xml ] ; then
+        mv *.xml $TEST_DIR/Test11/$TEST/
+        cd ${THIS}
+        ./err2.sh working_dir_${TEST} "The xml's of test ${TEST} were not created in the ${TEST} dir"
+        cd ${STUD}
+      else
+        cd ${THIS}
+        ./err2.sh no_Main_xml_${TEST} "No Main.xml was found for: ${TEST}"
+        cd ${STUD}
+      fi
+    fi
+    if [ -r $TEST_DIR/Test11/$TEST/Main.xml ] ;then 
+      rm -f  $TEST_DIR/Test11/$TEST/*T.xml
+      for XML in $TEST_DIR/Test11/$TEST/*.xml ; do
+        cd ${STUD}
+        ERR=`diff -w ${XML}{,\.cmp}`
+        if [ $? -ne 0 ]
+        then
+          cd ${THIS}
+          ./err2.sh diff_with_${TEST} "The diff failed on the file ${TEST}"   
+        fi      
+      done
+    fi
+  fi
+done

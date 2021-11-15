@@ -1,0 +1,19 @@
+#!/bin/sh
+#this script adds an error to the given student.
+ERRFILE=proj3
+ERROR=$1
+REMARK=$2
+NUM=$3
+if [ ! -z "$REMARK" ]; then
+  REMARK="{${REMARK}}"
+fi
+if [ "a" ==  "a${NUM}" ]; then
+  NUM="max"
+else
+  NUM="max/${NUM}"
+fi
+
+echo -ne "\\ \n \t ${ERROR}(${NUM}) ${REMARK} " >> ${ERRFILE}
+
+
+

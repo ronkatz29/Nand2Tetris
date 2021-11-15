@@ -1,0 +1,478 @@
+
+
+bettykin,onsyman: \ 
+ 	 diff_with_EmptyIf(max) {The diff failed on the file EmptyIf} \ 
+ 	 diff_with_OpAndOp(max) {The diff failed on the file OpAndOp} \ 
+      	 loop_WhiteSpace(max) {The JackAnalyzer entered an infinite loop when analyzing WhiteSpace} \ 
+ 	 diff_with_ComplexArrays(max) {The diff failed on the file ComplexArrays} \ 
+ 	 diff_with_ConvertToBin(max) {The diff failed on the file ConvertToBin} \ 
+ 	 diff_with_test4(max) {The diff failed on the file test4} \ 
+
+jangomakayes, oriram: \ 
+              -10 {Bad script file} \
+ 	 diff_with_IfDo(max) {Mishandled if statements} \ 
+ 	 diff_with_StringComment(max) {The diff failed on the file StringComment} \ 
+ 	 diff_with_WhiteSpace(max) {The diff failed on the file WhiteSpace} \ 
+ 	 -10 {Mishandled while statements.}
+
+roishneor, acgull: 
+
+adam_al12, michaelbond: 
+
+yanivoliver,adierteschik: \ 
+ 	 diff_with_FunBegin(max) {The diff failed on the file FunBegin} \ 
+ 	 diff_with_Static(5) {You weren't case sensitive when parsing keywords/identifiers} \ 
+ 	 diff_with_WhiteSpace(3) {You failed to handle tabs} \ 
+
+
+adikadoche,eladguttel: 
+
+
+adoron1: 
+
+airzamir, eylonami: \ 
+ 	 diff_with_EmptyIf(max) {The diff failed on the file EmptyIf} \ 
+ 	 diff_with_WhiteSpace(max) {The diff failed on the file WhiteSpace} 
+
+alonbs, gilgil28: \ 
+ 	 loop_WhiteSpace(max) {The JackAnalyzer entered an infinite loop when analyzing WhiteSpace} 
+
+aloush, aln37: \ 
+ 	 diff_with_StringTab(max) {The diff failed on the file StringTab} \ 
+ 	 diff_with_WhiteSpace(max) {The diff failed on the file WhiteSpace} 
+
+amity04, zahit: 
+
+amity99,ophirarie: \ 
+ 	 diff_with_WhiteSpace(max) {The diff failed on the file WhiteSpace} 
+
+noashin, barnon87 : 
+
+avitalzi, bben: 
+
+bergden, galsha92: \ 
+ 	 diff_with_Comment(max) {The diff failed on the file Comment} \ 
+ 	 diff_with_WhiteSpace(max) {The diff failed on the file WhiteSpace} 
+
+bnoam: 
+
+boarik,mattans121:  
+
+arielabs, diklac03: 
+
+drorcohe: 
+ 
+
+orenpeer,efratj: 
+
+elad94, egozy: \
+        -10 {Late submission without requesting an extension.} 
+
+noamdahan, gaigutherz: \ 
+ 	 diff_with_Comment(max) {The diff failed on the file Comment} \ 
+ 	 diff_with_WhiteSpace(max) {The diff failed on the file WhiteSpace} \
+         -10 {Late submission without requesting an extension.}
+         
+galorpaz,eliadbs: \  
+                  -5 {Mishandling of comments.} \
+                  -5 {Mishandling of string constants.} 	 
+
+golanb7108,asafliv: 
+
+gsp0, shaikv: 
+
+dor08, hahnyaar: 
+
+nirmo, ilialev: 
+
+wonko, itaydal: 
+
+
+yoninu, jonalumot: 
+
+leash: \ 
+ 	 Makefile(max) {faild while running make} \ 
+ 	 diff_with_FunBegin(3) {The diff failed on the file FunBegin} \ 
+ 	 -5 {Mishandling of identifiers containing keywords.} \
+         -5 {Didn't handle tabs.} \ 
+         -10 {Late submission without requesting an extension.}
+
+lresisi, ricorico: \ 
+ 	 diff_with_WhiteSpace(3) {The diff failed on the file WhiteSpace} 
+
+oritcohavi, maayanerlich: \ 
+ 	 Makefile(max) {faild while running make} 
+
+
+matanby, nir2002: 
+ 
+
+shanidodge, mosheeliyahu: 
+
+romdudk, navegeri: 
+
+navehraz, nimrod30050: \ 
+ 	 -5 {You do not handle else statements correctly} \ 
+ 	 diff_with_Comment(max) {The diff failed on the file Comment} 
+ 	 diff_with_ConvertToBin_test/Test11/ConvertToBin/Main.xml(max) {The diff failed on the file ConvertToBin_test/Test11/ConvertToBin/Main.xml} \ 
+ 	
+neturm: 
+
+nitzak01: 
+
+mayaizart, nitzyo: 
+
+noam_b, eladex: \ 
+ 	 diff_with_Static(5) {The diff failed on the file Static} 
+
+dvardyzer,ofireps: 
+
+ohadeilam: \ 
+ 	 diff_with_UnderScore(max) {The diff failed on the file UnderScore} \ 
+ 	 diff_with_StringTab(max) {The diff failed on the file StringTab} 
+
+bettykin,onsyman: \ 
+         -100 {You failed to create all XML files. Please find the problem and appeal your grade.}
+ 	 no_Main_xml_ArrayTest(0) {No Main.xml was found for: ArrayTest} \ 
+ 	 no_Main_xml_Square(0) {No Main.xml was found for: Square} \ 
+ 	 no_ClassIden_xml(0) {You failed to crate this xml file} \ 
+ 	 no_FunBegin_xml(0) {You failed to crate this xml file} \ 
+ 	 no_OpCheck_xml(0) {You failed to crate this xml file} \ 
+ 	 no_Unary_xml(0) {You failed to crate this xml file} \ 
+ 	 no_Close_xml(0) {You failed to crate this xml file} \ 
+ 	 no_IfDo_xml(0) {You failed to crate this xml file} \ 
+ 	 no_PrintString_xml(0) {You failed to crate this xml file} \ 
+ 	 no_UnderScore_xml(0) {You failed to crate this xml file} \ 
+ 	 no_EmptyIf_xml(0) {You failed to crate this xml file} \ 
+ 	 no_Minus_xml(0) {You failed to crate this xml file} \ 
+ 	 no_StringConstant_xml(0) {You failed to crate this xml file} \ 
+ 	 no_ExpreList_xml(0) {You failed to crate this xml file} \ 
+ 	 no_OpAndOp_xml(0) {You failed to crate this xml file} \ 
+ 	 no_StringPar_xml(0) {You failed to crate this xml file} \ 
+ 	 no_IfLong_xml(0) {You failed to crate this xml file} \ 
+ 	 no_Static_xml(0) {You failed to crate this xml file} \ 
+ 	 no_WhileIf_xml(0) {You failed to crate this xml file} \ 
+ 	 no_symbolName_xml(0) {You failed to crate this xml file} \ 
+ 	 no_StringComment_xml(0) {You failed to crate this xml file} \ 
+ 	 no_Comment_xml(0) {You failed to crate this xml file} \ 
+ 	 no_MethCall_xml(0) {You failed to crate this xml file} \ 
+ 	 no_StringTab_xml(0) {You failed to crate this xml file} \ 
+ 	 no_WhiteSpace_xml(0) {You failed to crate this xml file} 
+
+orbarya: \ 
+ 	 diff_with_StringTab(max) {The diff failed on the file StringTab} 
+
+romig, orensam: \ 
+ 	 diff_with_EmptyIf(max) {The diff failed on the file EmptyIf} 
+
+orenstal, zahi200: 
+
+itaibibi, orimo: 
+
+ranielam, yotam319: \ 
+ 	 loop_WhiteSpace(max) {The JackAnalyzer entered an infinite loop when analyzing WhiteSpace} \
+         -3 {Error in parsing lines in which '/' appeared outside a comment} 
+
+roeimm, orenshauly: 
+
+roiebe: 
+
+roniy02: \ 
+ 	 loop_FunBegin(max) {The JackAnalyzer entered an infinite loop when analyzing FunBegin} 
+
+ruzz, saritip: 
+
+vondiplo, shahames: \ 
+ 	 diff_with_WhiteSpace(max) {The diff failed on the file WhiteSpace} 
+
+shaitubul15,ofirha: \ 
+ 	 diff_with_WhiteSpace(max) {The diff failed on the file WhiteSpace} 
+
+shakedsha: 
+
+simadin, ariavk1: 
+
+talaviel, marknarez: 
+
+tamarl02, nitzanwerber: \ 
+ 	 diff_with_FunBegin(max) {The diff failed on the file FunBegin} \ 
+ 	 no_StringComment_xml(max) {You failed to crate this xml file} \ 
+ 	 diff_with_WhiteSpace(max) {The diff failed on the file WhiteSpace} 
+
+tharam74, guycorn: 
+
+tsivia.sara: \ 
+ 	 bad_tar(max)  
+
+tzaboo, ifryed: 
+
+nimrob02,tzafrirharaz: 
+
+vafels, danka_: 
+
+valeriya, niryosef: 
+
+mikab4, vk1986: 
+
+yadid: 
+
+yaelkhalman: \ 
+ 	 script(10) {JackCompiler is not JackAnalyzer} \ 
+ 	 -5 {Bad handling of comments} 
+
+yahavi, liorba: \ 
+ 	 diff_with_Static(max) {The diff failed on the file Static} 
+
+yarden_mor,stav_levi: \ 
+ 	 diff_with_FunBegin(max) {The diff failed on the file FunBegin} 
+
+oryonatan, yishaio: 
+
+ylevian, yonikasten: 
+
+zoharvit, yotamsand: 
+
+
+zivlevin: \ 
+ 	 diff_with_FunBegin(max) {The diff failed on the file FunBegin} \ 
+ 	 diff_with_Static(max) {The diff failed on the file Static} \ 
+ 	 diff_with_StringComment(max) {The diff failed on the file StringComment} \
+
+bronznick, ronytal70:\
+           -10 {Late submission.} 
+            
+
+nahump, ehudbarniv: \
+        -10 {Various errors in the original submission.} \
+ 	 diff_with_FunBegin(max) {The diff failed on the file FunBegin} \ 
+ 	 diff_with_PrintString(max) {The diff failed on the file PrintString} \ 
+ 	 diff_with_WhiteSpace(max) {The diff failed on the file WhiteSpace} \ 
+
+shlomo, yairsterman: \
+        -5 {Mishandling of comments.} \
+ 	 diff_with_test/Square/Square.xml(max) {The diff failed on the file Square/Square.xml} \ 
+ 	 diff_with_Close(max) {The diff failed on the file Close} \ 
+ 	 diff_with_WhiteSpace(max) {The diff failed on the file WhiteSpace} \ 
+ 	 diff_with_Average_test/Test11/Average/Main.xml(max) {The diff failed on the file Average} 
+
+bargam81: \ 
+          -100 {You failed to create all XML files. Please find the problem and appeal your grade.} \
+ 	 no_ClassIden_xml(0) {You failed to crate this xml file} \ 
+ 	 no_FunBegin_xml(0) {You failed to crate this xml file} \ 
+ 	 no_OpCheck_xml(0) {You failed to crate this xml file} \ 
+ 	 no_Unary_xml(0) {You failed to crate this xml file} \ 
+ 	 no_Close_xml(0) {You failed to crate this xml file} \ 
+ 	 no_IfDo_xml(0) {You failed to crate this xml file} \ 
+ 	 no_PrintString_xml(0) {You failed to crate this xml file} \ 
+ 	 no_UnderScore_xml(0) {You failed to crate this xml file} \ 
+ 	 no_EmptyIf_xml(0) {You failed to crate this xml file} \ 
+ 	 no_Minus_xml(0) {You failed to crate this xml file} \ 
+ 	 no_StringConstant_xml(0) {You failed to crate this xml file} \ 
+ 	 no_ExpreList_xml(0) {You failed to crate this xml file} \ 
+ 	 no_OpAndOp_xml(0) {You failed to crate this xml file} \ 
+ 	 no_StringPar_xml(0) {You failed to crate this xml file} \ 
+ 	 no_IfLong_xml(0) {You failed to crate this xml file} \ 
+ 	 no_Static_xml(0) {You failed to crate this xml file} \ 
+ 	 no_WhileIf_xml(0) {You failed to crate this xml file} \ 
+ 	 no_symbolName_xml(0) {You failed to crate this xml file} \ 
+ 	 no_StringComment_xml(0) {You failed to crate this xml file} \ 
+ 	 no_Comment_xml(0) {You failed to crate this xml file} \ 
+ 	 no_MethCall_xml(0) {You failed to crate this xml file} \ 
+ 	 no_StringTab_xml(0) {You failed to crate this xml file} \ 
+ 	 no_WhiteSpace_xml(0) {You failed to crate this xml file} \ 
+ 	 diff_with_ComplexArrays_test/Test11/ComplexArrays/Main.xml(0) {The diff failed on the file ComplexArrays} 
+
+
+danieldahan1, shanieinav: \
+              -100 {You failed to create many XML files. It looks like the problem might be in handling the directory structure of the input.} \ 
+ 	 no_ClassIden_xml(0) {You failed to crate this xml file} \ 
+ 	 no_FunBegin_xml(0) {You failed to crate this xml file} \ 
+ 	 no_OpCheck_xml(0) {You failed to crate this xml file} \ 
+ 	 no_Unary_xml(0) {You failed to crate this xml file} \ 
+ 	 no_Close_xml(0) {You failed to crate this xml file} \ 
+ 	 no_IfDo_xml(0) {You failed to crate this xml file} \ 
+ 	 no_PrintString_xml(0) {You failed to crate this xml file} \ 
+ 	 no_UnderScore_xml(0) {You failed to crate this xml file} \ 
+ 	 no_EmptyIf_xml(0) {You failed to crate this xml file} \ 
+ 	 no_Minus_xml(0) {You failed to crate this xml file} \ 
+ 	 no_StringConstant_xml(0) {You failed to crate this xml file} \ 
+ 	 no_ExpreList_xml(0) {You failed to crate this xml file} \ 
+ 	 no_OpAndOp_xml(0) {You failed to crate this xml file} \ 
+ 	 no_StringPar_xml(0) {You failed to crate this xml file} \ 
+ 	 no_IfLong_xml(0) {You failed to crate this xml file} \ 
+ 	 no_Static_xml(0) {You failed to crate this xml file} \ 
+ 	 no_WhileIf_xml(0) {You failed to crate this xml file} \ 
+ 	 no_symbolName_xml(0) {You failed to crate this xml file} \ 
+ 	 no_StringComment_xml(0) {You failed to crate this xml file} \ 
+ 	 no_Comment_xml(0) {You failed to crate this xml file} \ 
+ 	 no_MethCall_xml(0) {You failed to crate this xml file} \ 
+ 	 no_StringTab_xml(0) {You failed to crate this xml file} \ 
+ 	 no_WhiteSpace_xml(0) {You failed to crate this xml file} 
+
+daniku, yehonse03: \
+        -5 {Saved the ouput file in the wrong directory.}
+
+galron: \
+        -5 {Script was in Windows format instead of linux format.} \ 
+ 	 diff_with_WhiteSpace(max) {The diff failed on the file WhiteSpace} 
+
+adiengelhard, gilkor: \
+              -5 {Handed in the wrong tar file.} \ 
+ 	 diff_with_FunBegin(max) {The diff failed on the file FunBegin} \ 
+ 	 diff_with_Comment(max) {The diff failed on the file Comment} \ 
+ 	 diff_with_WhiteSpace(max) {The diff failed on the file WhiteSpace} 
+
+michael25, aryehf: \ 
+           -10 {Late submission.} \
+ 	 diff_with_StringTab(max) {The diff failed on the file StringTab} 
+
+noak06, mmanevitz: \ 
+ 	 diff_with_Static(max) {The diff failed on the file Static} 
+
+ravidziv, yairde: \ 
+ 	 diff_with_Static(5) {The diff failed on the file Static} \ 
+ 	 diff_with_WhiteSpace(max) {The diff failed on the file WhiteSpace} 
+
+sefimintzer, ronirasnic: 
+
+mayba2, talarian: \ 
+ 	 diff_with_Static(max) {The diff failed on the file Static} \ 
+ 	 diff_with_WhiteSpace(max) {The diff failed on the file WhiteSpace} 
+\ 
+
+shimonb89, rootm: \
+           -3 {Skipped the last character in string constants.} \
+           -7 {Mishandled functions like 'doS'.}
+
+stasgr, yoavya: \
+        -5 {Didn't handle input correctly when it was a single file.} \ 
+ 	
+urielsinger, itai443:
+             -5 {Bad script.} \
+             -5 {Mishandled identifiers containing keywords.}
+
+yuvalmiron:              \
+         -5 {Saved output files under the wrong names.} \
+         -5 {Incorrect parsing of strings.} \  
+ 	 diff_with_OpAndOp(max) {The diff failed on the file OpAndOp} \ 
+ 	 
+
+pazbu, gdafna97:
+
+eavidan: \
+         -10 {Bad script.} \ 
+         -10 {Problems with tar packaging.}
+
+adamfrank, itamaryo: 
+           -5 {Didn't handle certain primitive types.} \
+           -3 {Didn't handle special characters in strings correctly.}
+
+davidb09: \
+          -3 {Didn't handle the keyword 'else'} \ 
+ 	 diff_with_StringTab(max) {The diff failed on the file StringTab} 
+
+
+hadar_goro, liorlevtov: \ 
+ 	 no_Comment_xml(max) {You failed to crate this xml file} \ 
+         -5 {Saved output to files with the wrong names.} 
+
+naamab02, arielnaim: \ 
+ 	 -5 {Bad script in resubmission.} \
+         -5 {Mishandled case in which there was only one file in the input folder.} 
+
+nadavzing,sadehb: \
+         -5 {Files incompatible with Linux.}                  
+
+netanelevi: \
+            -3 {Didn't handle identifiers beginning with '_'} \
+            -3 {Didn't handle all keywords.} \ 
+ 	 diff_with_WhiteSpace(max) {The diff failed on the file WhiteSpace} 
+
+
+adir89, fried_oded: \ 
+        -10 {Bad makefile.  Your makefile should change the permissions of the executable script so that it can be run.}
+barakyoresh, barros: 
+             -5 {Bad comment handling.} \
+             -3 {Problem with identifying separations between terms} \
+             -3 {Problem with nested function calls with parameters}
+
+chelicopter, tflom: \
+             -5 {Saved output files in the wrong locations.} \ 
+ 	 diff_with_Close(max) {The diff failed on the file Close} \ 
+ 	 diff_with_Average_test/Test11/Average/Main.xml(max) {The diff failed on the file Average} 
+
+masha_os: \ 
+          -3 {Bad handling of parameter lists with non-primitive types} \
+          -3 {Bad handling of terms with multiple operators} \
+          -5 {Bad handling of subroutine calls without the class name}
+ 	 no_StringComment_xml(max) {You failed to crate this xml file} \ 
+ 	 diff_with_WhiteSpace(max) {The diff failed on the file WhiteSpace} 
+
+noampa, omerzaks: \
+        -5 {Unnecessary import in the code.}
+
+gweizm86, taldim1: \ 
+          -5 {Incorrect parsing of input file names.}
+
+itayrav, tommymordo: \ 
+         -5 {Bad handling of comments} \
+ 	 loop_WhileIf(max) {The JackAnalyzer entered an infinite loop when analyzing WhileIf} \ 
+ 	 loop_WhiteSpace(max) {The JackAnalyzer entered an infinite loop when analyzing WhiteSpace} 
+
+tamarka:\
+        -7 {Problem running project in original submission.} \ 
+ 	 diff_with_StringComment(max) {The diff failed on the file StringComment} 
+
+cppdoron, morshoam: \ 
+          -10 {Problem with tar file.}
+ 	 diff_with_StringTab(max) {The diff failed on the file StringTab} 
+
+danieh02, michaz13: \
+          -7 {Bad handling of input arguments.} \ 
+ 	 diff_with_FunBegin(max) {The diff failed on the file FunBegin} \ 
+ 	 diff_with_PrintString(max) {The diff failed on the file PrintString} \ 
+ 	 diff_with_StringComment(max) {The diff failed on the file StringComment} \ 
+ 	 diff_with_Comment(max) {The diff failed on the file Comment} 
+
+shirihaim, leah4kosh: \
+           -10 {Bad script file.}
+
+liran22: \ 
+         -5 {Saved output files under the wrong name.} \
+ 	 diff_with_FunBegin(max) {The diff failed on the file FunBegin} \ 
+ 	 diff_with_IfDo(max) {The diff failed on the file IfDo} \ 
+ 	 diff_with_EmptyIf(max) {The diff failed on the file EmptyIf} \ 
+ 	 diff_with_Minus(max) {The diff failed on the file Minus} \ 
+ 	 diff_with_OpAndOp(max) {The diff failed on the file OpAndOp} \ 
+ 	 diff_with_StringComment(max) {The diff failed on the file StringComment} \ 
+ 	 diff_with_Comment(max) {The diff failed on the file Comment} \ 
+ 	 diff_with_ComplexArrays_test/Test11/ComplexArrays/Main.xml(max) {The diff failed on the file ComplexArrays} \ 
+ 	 diff_with_ConvertToBin_test/Test11/ConvertToBin/Main.xml(max) {The diff failed on the file ConvertToBin} \ 
+ 	 diff_with_test2_test/Test11/test2/Main.xml(max) {The diff failed on the file test2} \ 
+ 	 diff_with_test3_test/Test11/test3/Main.xml(max) {The diff failed on the file test3} 
+
+aloneuhaus, tom_ferster: \ 
+            -5 {Read input arguments incorrectly.} \
+ 	 diff_with_FunBegin(max) {The diff failed on the file FunBegin} \ 
+ 	 diff_with_PrintString(max) {The diff failed on the file PrintString} \ 
+ 	 diff_with_StringConstant(max) {The diff failed on the file StringConstant} \ 
+ 	 diff_with_StringComment(max) {The diff failed on the file StringComment} \ 
+ 	 loop_Comment(max) {The JackAnalyzer entered an infinite loop when analyzing Comment} \ 
+ 	 diff_with_StringTab(max) {The diff failed on the file StringTab} \ 
+ 	 loop(56) {The JackAnalyzer entered an infinite loop when analyzing test5} \ 
+ 
+
+ayeletmb,ataras: \
+                 -10 {Missing makefile.} \
+                 -10 {Missing script file.} \ 
+                 -5 {Didn't close output files after writing to them.} \
+                 -5 {Problem with handling comments.} \ 
+ 	 loop_StringComment(max) {The JackAnalyzer entered an infinite loop when analyzing StringComment} \ 
+ 	 diff_with_Comment(max) {The diff failed on the file Comment} \  
+
+nir08:\ 
+        -10 {Couldn't run the exercise - misnamed script file, and you didn't change the permissions of the files.}
+         -5 {Mishandling of comments.}
+         -2 {Problems parsing else statements.}
+         -3 {Mishandling of identifiers containing keywords in the name.}
+         -5 {Mishandling of Strings.}\ 

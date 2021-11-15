@@ -1,0 +1,116 @@
+no_readme		-10	No readme file submitted.
+bad_readme		-10	Problems with the readme.
+bad_tar			-100	The tar file could not be opened.
+loop            	-100    JackAnalyzer didn't finish for 90 seconds.
+diff            	-70     Failed on few diff's.
+dir			-10	Failed to run on a directory as input.
+working_dir     	-10     Failed to create files in working directory.
+no_Main_xml     	-30     Failed to create Main.xml for few tests.
+Executable		-10	The project could not be operated through the executable file.
+JackAnalyzer    	-100    Problems with JackAnalyzer
+Makefile        	-10     Problems with Makefile
+reSubmit		-100	This is not your first version
+late_submission 	-100    There is no late submission in this course.
+script          	-10     You did not test your project with the given script.
+temp_file       	-5      You did not remove all your temp file.
+second_submission       -100    This is not your first submission.
+no_ClassIden_xml	-10	You Failed to translate a file with "var className c";	
+no_FunBegin_xml		-10	You do not handle comments correctly
+no_Comment_xml          -5      You do not handle comments correctly /* */ in the same line
+no_OpCheck_xml		-10	You do not handle one of the comparison operators correctly
+no_Unary_xml		-10	You do not handle Unary operators correctly
+no_Close_xml		-5	You do not parse correct the line when the character are tight- "let i=j+1;"
+no_IfDo_xml		-10	You do not handle if else and then do correctly
+no_PrintString		-7	You have problems in printing String  such "do Output.printString("W---");	
+no_UnderScore_xml	-5	You have problems parsing underscore _
+no_EmptyIf_xml		-5	You do handle empty if correctly
+no_IfLong_xml           -5      You do not handle correctly 'if' commmand with a long condition.
+no_Minus_xml		-10	You do not handle one of the Operators correctly
+no_StringConstant_xml	-10	You have problems with string constant	
+no_WhiteSpace_xml      	-5      You have problems with white spaces
+no_ExpreList_xml	-10	You have problems with calling functions
+no_OpAndOp_xml		-10	You have problems with dealing with long boolean equations including parentheses
+no_StringPar_xml	-10	You have problem with String as parameter "method void bla(String s)"
+no_Static_xml		-10	You do not handle static variable correctly
+no_WhileIf_xml		-10	You do not handle if inside a while correctly
+no_StringComment_xml    -5      You do not handle correctly sign such as  // /* inside a String
+no_StringTab_xml        -5      You did not translated correctly String with \t
+no_PrintString_xml	-7	You have problems in printing String do Output.printString("W");
+no_symbolName_xml	-10	You do handle properly the case that method is called doS etc
+no_MethCall_xml         	-5      You did not handle correctly calling a method from an object.
+diff_with_ClassIden		-10	You Failed to translate correctly a file with "var className c";	
+diff_with_FunBegin		-10	You do not handle comments correctly
+diff_with_Comment          	-5      You do not handle comments correctly /* */ in the same line
+diff_with_OpCheck		-10	You do not handle one of the comparison operators correctly
+diff_with_Unary			-10	You do not handle Unary operators correctly
+diff_with_Close			-5	You do not parse correct the line when the character are tight- "let i=j+1;"
+diff_with_IfDo			-10	You do not handle if else and then do correctly
+diff_with_IfLong                -5      You do not handle correctly if with a long condition.
+diff_with_PrintString		-7	You have problems in printing String "do Output.printString("W");		
+diff_with_UnderScore		-5	You have problems parsing underscore _
+diff_with_EmptyIf		-5	You do not handle empty if correctly "if(i>0){}else{let i = 5;}"
+diff_with_Minus			-10	You do not handle one of the Operators correctly
+diff_with_StringConstant	-10	You have problems with string constant	"let s = "www";"
+diff_with_ExpreList		-10	You have problems with calling functions "do d(c(i),f);"
+diff_with_OpAndOp		-10	You have problems with dealing with long boolean equations "let t = ((~(i < j)) & (~(e = i)));"
+diff_with_StringPar		-10	You have problem with String as parameter
+diff_StringPar_xml		-10	You have problem with String as parameter "method void bla(String s)"
+diff_with_Static		-10	You do not handle static variable correctly
+diff_with_WhileIf		-10	You do not handle if inside a while correctly
+diff_with_symbolName		-10	You do handle properly the case that method is called doS etc
+diff_with_StringComment    	-5      You do not handle correctly sign such as // /* inside a String
+diff_with_StringTab        	-2      You did not translated correctly String with \t
+diff_with_MethCall         	-5      You did not handle correctly calling a method from an object.
+diff_with_test/ArrayTest/Main.xml   -10   Failed with diff file
+diff_with_test/Square/Square.xml   -10   Failed with diff file
+diff_with_test/Square/SquareGame.xml   -10   Failed with diff file
+diff_with_test/Square/Main.xml   -10   Failed with diff file
+diff_with_ComplexArrays_test/Test11/ComplexArrays/Main.xml      -10     Failed with diff file
+diff_with_test5_test/Test11/test5/Main.xml                      -10     Failed with diff file
+diff_with_ConvertToBin_test/Test11/ConvertToBin/Main.xml        -10     Failed with diff file
+diff_with_Average_test/Test11/Average/Main.xml                  -10     Failed with diff file
+diff_with_test4_test/Test11/test4/Stata.xml                     -10     Failed with diff file
+diff_with_test4_test/Test11/test4/Statb.xml                     -10     Failed with diff file
+diff_with_test4_test/Test11/test4/Main.xml                      -10     Failed with diff file
+diff_with_Seven_test/Test11/Seven/Main.xml                      -10     Failed with diff file
+diff_with_test2_test/Test11/test2/Main.xml                      -10     Failed with diff file
+diff_with_test3_test/Test11/test3/Main.xml                      -10     Failed with diff file
+
+loop_MethCall         	-5      You did not handle correctly calling a method from an object.
+loop_ClassIden		-10	You Failed to translate a file with "var className c";	
+loop_FunBegin		-10	You do not handle comments correctly
+loop_Comment            -5      You do not handle comments correctly /* */ in the same line
+loop_OpCheck		-10	You do not handle one of the comparison operators correctly
+loop_Unary		-10	You do not handle Unary operators correctly
+loop_Close		-5	You do not parse correct the line when the character are tight- "let i=j+1;"
+loop_IfDo		-10	You do not handle if else and then do correctly
+loop_PrintString	-7	You have problems in printing String "do Output.printString("W");		
+loop_UnderScore		-5	You have problems parsing underscore _
+loop_EmptyIf		-5	You do handle empty if correctly
+loop_Minus		-10	You do not handle one of the Operators correctly
+loop_StringConstant	-10	You have problems with string constant	
+loop_ExpreList		-10	You have problems with calling functions
+loop_OpAndOp		-10	You have problems with dealing with long boolean equations
+loop_StringPar		-10	You have problem with String as parameter
+loop_Static_xml		-10	You do not handle static variable correctly
+loop_WhileIf		-10	You do not handle if inside a while correctly
+loop_IfLong       	-10   	You do not handle if correctly
+loop_StringComment    	-5      You do not handle correctly sign such as // /* inside a String
+loop_WhiteSpace      	-5      You failed to handle White Space correctly
+loop_StringTab          -2      You didn't correctly translate Strings with \t in it.
+loop_symbolName		-10	You do handle properly the case that method is called doS etc
+loop_Static		-10	You do not handle static variable correctly
+no_Main_xml_ArrayTest   -20     Failed to create Main.xml
+no_Main_xml_Square   	-20     Failed to create Main.xml
+no_Main_xml_Average     -20     Failed to create Main.xml
+no_Main_xml_ComplexArrays  -20  Failed to create Main.xml
+no_Main_xml_ConvertToBin   -20  Failed to create Main.xml
+no_Main_xml_Seven          -20 Failed to create Main.xml
+no_Main_xml_test3          -20 Failed to create Main.xml
+no_Main_xml_test5          -20  Failed to create Main.xml
+no_Main_xml_test1          -20  Failed to create Main.xml
+no_Main_xml_test2          -20  Failed to create Main.xml
+no_Main_xml_test4          -20  Failed to create Main.xml
+If                   	-15     You failed to translate all if statements
+String               	-15     You failed to translate a string.
+diff_with_WhiteSpace	-5	You failed to handle white Spaces correctly

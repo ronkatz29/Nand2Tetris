@@ -1,0 +1,25 @@
+#!/bin/sh
+
+#backup the proj file
+cat proj > proj_b
+
+#make a new proj file
+rm -f proj
+touch proj
+
+for STUD in `ls late`
+do
+    echo "********************"
+    preparelate.sh $STUD
+    if [ "$?" -eq "0" ]; then 
+        newCheck.sh $STUD
+    fi
+    echo "********************"
+done
+
+#add the new info to proj
+cat proj > proj_l
+cat proj_b > proj
+rm -f proj_b
+
+echo "###FINISHED###"

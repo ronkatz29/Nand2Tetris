@@ -1,0 +1,9 @@
+#!/bin/bash
+
+for STUD in `ls tars`
+do
+    prepare.sh $STUD 
+    if [ $? == 0 ]; then 
+      check.sh $STUD 
+    fi
+done
