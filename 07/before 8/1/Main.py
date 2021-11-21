@@ -9,12 +9,10 @@ import sys
 import typing
 from Parser import Parser
 from CodeWriter import CodeWriter
-from os.path import isdir
 
 
 def translate_file(
-        input_file: typing.TextIO, output_file: typing.TextIO,
-        code_writer) -> None:
+        input_file: typing.TextIO, output_file: typing.TextIO) -> None:
     """Translates a single file.
 
     Args:
@@ -24,30 +22,19 @@ def translate_file(
     # Your code goes here!
     # Note: you can get the input file's name using:
     # input_filename, input_extension = os.path.splitext(os.path.basename(input_file.name))
-
     real_commends = 0
-    parser = Parser(input_file)
-    # //need to see how to do the init function just one time in the start of the program
-    while parser.has_more_commands():
-        parser.advance()
-        output_file.write("//" + parser.get_current_command() + "\n")
-        command = parser.command_type()
+    p_one = Parser(input_file)
+    w = CodeWriter(output_file)
+    while p_one.has_more_commands():
+        p_one.advance()
+        output_file.write("//" + p_one.get_current_command() + "\n")
+        command = p_one.command_type()
         if command == "C_ARITHMETIC":
-            code_writer.write_arithmetic(parser.arg1())
+            w.write_arithmetic(p_one.arg1())
         elif command == "C_POP" or command == "C_PUSH":
-            code_writer.write_push_pop(parser.command_type(), parser.arg1(),
-                                       parser.arg2())
+            w.write_push_pop(p_one.command_type(), p_one.arg1(), p_one.arg2())
         elif command == "<<" or command == ">>":
-            code_writer.write_shift(command)
-        elif command == "BRANCHING_COMMAND":
-            code_writer.write_branching_command(parser.arg1(),
-                                                parser.arg2_branch())
-        elif command == "FUNCTION_CALL":
-            code_writer.write_call_function(parser.arg1(), parser.arg2())
-        elif command == "FUNCTION_START":
-            code_writer.write_start_function(parser.arg1(), parser.arg2())
-        elif command == "RETURN":
-            code_writer.write_return()
+            w.write_shift(command)
         output_file.write("\n")
         real_commends += 1
 
@@ -70,14 +57,9 @@ if "__main__" == __name__:
     output_path += ".asm"
 
     with open(output_path, 'w') as output_file:
-        code_writer = CodeWriter(output_file)
-        # code_writer.write_init()
-
         for input_path in files_to_translate:
             filename, extension = os.path.splitext(input_path)
             if extension.lower() != ".vm":
                 continue
             with open(input_path, 'r') as input_file:
-                name, ext = os.path.splitext(os.path.basename(input_file.name))
-                code_writer.set_file_name(name)
-                translate_file(input_file, output_file, code_writer)
+                translate_file(input_file, output_file)

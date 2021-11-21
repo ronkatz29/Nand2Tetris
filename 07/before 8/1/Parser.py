@@ -62,7 +62,6 @@ class Parser:
         self.input_lines[self.counter] = \
             ' '.join((self.input_lines[self.counter].split('//')[0]).split())
 
-
     def command_type(self) -> str:
         """
         Returns:
@@ -76,23 +75,14 @@ class Parser:
                           "gt", "lt", "and", "or", "not"}
         mem_set = {"pop": "C_POP", "push": "C_PUSH"}
         shift_set = {"shiftleft": "<<", "shiftright": ">>"}
-        branching_set = {"goto", "if-goto", "label"}
 
-        first_word = self.input_lines[self.counter].split()[0]
-        if first_word in arithmetic_set:
+        cur_line = self.input_lines[self.counter].split()[0]
+        if cur_line in arithmetic_set:
             return "C_ARITHMETIC"
-        elif first_word in mem_set:
-            return mem_set[first_word]
-        elif first_word in shift_set:
-            return shift_set[first_word]
-        elif first_word in branching_set:
-            return "BRANCHING_COMMAND"
-        elif first_word == "call":
-            return "FUNCTION_CALL"
-        elif first_word == "function":
-            return "FUNCTION_START"
-        elif first_word == "return":
-            return "RETURN"
+        elif cur_line in mem_set:
+            return mem_set[cur_line]
+        elif cur_line in shift_set:
+            return shift_set[cur_line]
 
     def arg1(self) -> str:
         """
@@ -101,8 +91,7 @@ class Parser:
             "C_ARITHMETIC", the command itself (add, sub, etc.) is returned.
             Should not be called if the current command is "C_RETURN".
         """
-        if self.command_type() == "C_ARITHMETIC" or \
-                self.command_type() == "BRANCHING_COMMAND":
+        if self.command_type() == "C_ARITHMETIC":
             return self.input_lines[self.counter].split()[0]
         return self.input_lines[self.counter].split()[1]
 
@@ -114,12 +103,3 @@ class Parser:
             "C_FUNCTION" or "C_CALL".
         """
         return int(self.input_lines[self.counter].split()[-1])
-
-    def arg2_branch(self):
-        """
-        Returns:
-            int: the second argument of the current command. Should be
-            called only if the current command is "C_PUSH", "C_POP",
-            "C_FUNCTION" or "C_CALL".
-        """
-        return self.input_lines[self.counter].split()[-1]
