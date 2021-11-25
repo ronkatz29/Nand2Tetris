@@ -27,6 +27,8 @@ PIPE = '|'
 EQUAL = '='
 APPROXIMATELY = '~'
 SPACE = ' '
+SHIFT_LEFT = '^'
+SHIFT_RIGHT = '#'
 
 CLASS = "class"
 CONSTRUCTOR = "constructor"
