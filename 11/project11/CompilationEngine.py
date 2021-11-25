@@ -88,7 +88,7 @@ OP_TABLE = {"+": "add", "-": "sub", "&amp;": "and", "|": "or", "&lt;": "lt",
 
 OP_TABLE_DIVIDE_MULT = {"*": "Math.multiply",  "/": "Math.divide"}
 
-UNARY_OP = { "~": "not", "-": "neg"}
+UNARY_OP = { "~": "not", "-": "neg", "^": "shiftleft", "#": "shiftright"}
 VAR_DEC_BEGINNING_SET = {"STATIC", "FIELD"}
 
 METHOD = "METHOD"
@@ -125,18 +125,13 @@ class CompilationEngine:
         while self.jack_tokenizer.has_more_tokens() and \
                 self.jack_tokenizer.token_type() == KEYWORD and \
                 self.jack_tokenizer.keyword() in VAR_DEC_BEGINNING_SET:
-            # print(self.jack_tokenizer.cur_token)
             self.compile_var_line()
             self.advance()  # ; -> next var or methode
-        #
-        # for x in self.symbol_table.class_scope.values():
-        #     print(x)
 
         # class methods\functions\constructors
         while self.jack_tokenizer.has_more_tokens() and \
                 self.jack_tokenizer.token_type() == KEYWORD and \
                 self.jack_tokenizer.keyword() in SUB_ROUTINE_DEC_SET:
-            # print(self.jack_tokenizer.cur_token)
             self.compile_subroutine()
             self.symbol_table.start_subroutine()
             self.if_counter = -1
@@ -158,7 +153,6 @@ class CompilationEngine:
 
     def compile_subroutine(self) -> None:
         """Compiles a complete method, function, or constructor."""
-        # print(self.jack_tokenizer.cur_token)
         sub_kind = self.jack_tokenizer.cur_token
         self.advance()  # CONSTRUCTOR/METHOD/FUNCTION ---> return type
         if sub_kind == CONSTRUCTOR.lower():
@@ -223,21 +217,6 @@ class CompilationEngine:
         self.vm_writer.write_function(self.class_name + DOT + func_name,
                                       self.symbol_table.var_count(VAR))
         self.compile_statements()
-    # def class_begin(self):
-    #     self.output.write(TAB * self.tab + CLASS_XML_START + NEWLINE)
-    #     self.add_tab()
-    #     self.write_keyword()
-    #     self.advance()
-    #     self.write_identifier()
-    #     self.advance()
-    #     self.write_symbol()
-    #     self.advance()
-    #
-    # def add_tab(self):
-    #     self.tab += 1
-    #
-    # def dec_tab(self):
-    #     self.tab -= 1
 
     def compile_parameter_list(self) -> None:
         """Compiles a (possibly empty) parameter list, not including the
@@ -255,45 +234,6 @@ class CompilationEngine:
 
         self.advance()  # ) ----> {
         self.advance()  # { ----> var| statmentes
-
-    #
-    #
-    #
-    # def write_keyword(self):
-    #     self.output.write(TAB * self.tab + KEYWORD_XML_START +
-    #                       self.jack_tokenizer.cur_token +
-    #                       KEYWORD_XML_END + NEWLINE)
-    #
-    # def write_symbol(self):
-    #     self.output.write(TAB * self.tab + SYMBOL_XML_START +
-    #                       self.jack_tokenizer.symbol() +
-    #                       SYMBOL_XML_END + NEWLINE)
-    #
-    # def write_identifier(self):
-    #     self.output.write(TAB * self.tab + IDENTIFIER_XML_START +
-    #                       self.jack_tokenizer.identifier() +
-    #                       IDENTIFIER_XML_END + NEWLINE)
-    #
-    # def write_string(self):
-    #     self.output.write(TAB * self.tab + STRING_CONST_XML_START +
-    #                       self.jack_tokenizer.string_val() +
-    #                       STRING_CONST_XML_END + NEWLINE)
-    #
-    # def write_int(self):
-    #     self.output.write(TAB * self.tab + INT_CONST_XML_START +
-    #                       string(self.jack_tokenizer.int_val()) +
-    #                       INT_CONST_XML_END + NEWLINE)
-    #
-    #
-
-    # def compile_var_dec(self) -> None:
-    #     """Compiles a var declaration."""
-    #
-    #         # print(self.jack_tokenizer.cur_token)
-    #         self.compile_class_var_dec()
-    #         self.advance()  # ; -> next var or methode
-    #
-    #
 
     def compile_statements(self) -> None:
         """Compiles a sequence of statements, not including the enclosing 
@@ -339,10 +279,7 @@ class CompilationEngine:
 
         cur_var_index = self.symbol_table.index_of(cur_var_name) #saving the current variable sement index
 
-
-
         # # HANDLE  "["
-
         flag = False
         if self.jack_tokenizer.is_next_symbol() and \
                 self.jack_tokenizer.next_token == SQUARE_BRACKETS_LEFT:
@@ -354,9 +291,11 @@ class CompilationEngine:
                                       self.symbol_table.index_of(cur_token))
             self.vm_writer.write_arithmetic("ADD")
             flag = True
+
         self.advance() # identifier\] ----> =
         self.advance() # = ----> EXPRESSION
         self.compile_expression()
+
         if flag:
             self.vm_writer.write_pop("temp", 0)
             self.vm_writer.write_pop("pointer", 1)
@@ -366,9 +305,6 @@ class CompilationEngine:
         else:
             self.vm_writer.write_pop(cur_var_seg, cur_var_index)
         self.advance() #; ----> next statement
-
-
-
 
     def compile_return(self) -> None:
         """Compiles a return statement."""
@@ -413,7 +349,6 @@ class CompilationEngine:
 
     def compile_while(self) -> None:
         """Compiles a while statement."""
-        # print(self.jack_tokenizer.cur_token)
 
         inside_while_counter = self.while_counter
         self.vm_writer.write_label("WHILE_EXP" + str(inside_while_counter))
@@ -432,28 +367,6 @@ class CompilationEngine:
         self.vm_writer.write_label("WHILE_END" + str(inside_while_counter))
 
         self.advance() # } ------> next statement \ }
-        # print(self.jack_tokenizer.cur_token)
-
-
-
-    #
-    # def if_beginning_while(self):
-    #     self.add_tab()
-    #     self.token_func_dic[self.jack_tokenizer.token_type()]()  # While/ if
-    #     self.advance()
-    #     self.token_func_dic[self.jack_tokenizer.token_type()]()  # (
-    #     self.advance()
-    #     self.compile_expression()
-    #
-    #
-    #
-    #     self.token_func_dic[self.jack_tokenizer.token_type()]()  # )
-    #     self.advance()
-    #     self.token_func_dic[self.jack_tokenizer.token_type()]()  # {
-    #     self.advance()
-    #     self.compile_statements()
-    #     # self.advance()
-    #     self.token_func_dic[self.jack_tokenizer.token_type()]()  # }
 
     def compile_expression(self) -> None:
         """Compiles an expression."""
@@ -470,7 +383,6 @@ class CompilationEngine:
                 self.vm_writer.write_arithmetic(OP_TABLE[op_symbol])
             else:
                 self.vm_writer.write_call(OP_TABLE_DIVIDE_MULT[op_symbol], 2)
-
 
     def compile_term(self) -> None:
         """Compiles a term.
@@ -562,8 +474,6 @@ class CompilationEngine:
             self.advance() #class\var name -----> .
             self.advance() #. -----> subroutine name
             func_name += "." + self.jack_tokenizer.cur_token
-
-
 
         else:
             func_name = self.class_name + DOT + func_name
