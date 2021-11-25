@@ -138,7 +138,6 @@ class CompilationEngine:
             self.while_counter = -1
             self.advance() #} ------> next methode|function or }
 
-
     def compile_var_line(self) -> None:
         """Compiles a static declaration or a field declaration."""
         kind = self.jack_tokenizer.cur_token  # kind = field\static\local
@@ -280,6 +279,7 @@ class CompilationEngine:
         cur_var_index = self.symbol_table.index_of(cur_var_name) #saving the current variable sement index
 
         # # HANDLE  "["
+
         flag = False
         if self.jack_tokenizer.is_next_symbol() and \
                 self.jack_tokenizer.next_token == SQUARE_BRACKETS_LEFT:
@@ -291,11 +291,9 @@ class CompilationEngine:
                                       self.symbol_table.index_of(cur_token))
             self.vm_writer.write_arithmetic("ADD")
             flag = True
-
         self.advance() # identifier\] ----> =
         self.advance() # = ----> EXPRESSION
         self.compile_expression()
-
         if flag:
             self.vm_writer.write_pop("temp", 0)
             self.vm_writer.write_pop("pointer", 1)
@@ -349,6 +347,7 @@ class CompilationEngine:
 
     def compile_while(self) -> None:
         """Compiles a while statement."""
+        # print(self.jack_tokenizer.cur_token)
 
         inside_while_counter = self.while_counter
         self.vm_writer.write_label("WHILE_EXP" + str(inside_while_counter))
@@ -383,6 +382,7 @@ class CompilationEngine:
                 self.vm_writer.write_arithmetic(OP_TABLE[op_symbol])
             else:
                 self.vm_writer.write_call(OP_TABLE_DIVIDE_MULT[op_symbol], 2)
+
 
     def compile_term(self) -> None:
         """Compiles a term.
@@ -474,6 +474,8 @@ class CompilationEngine:
             self.advance() #class\var name -----> .
             self.advance() #. -----> subroutine name
             func_name += "." + self.jack_tokenizer.cur_token
+
+
 
         else:
             func_name = self.class_name + DOT + func_name
