@@ -11,7 +11,10 @@ class Main {
         var Array a;
         var int length;
         var int i, sum;
-	
+
+    let i = ^(sum+3);
+    let i = #i;
+
 	let length = Keyboard.readInt("HOW MANY NUMBERS? ");
 	let a = Array.new(length);
 	let i = 0;
