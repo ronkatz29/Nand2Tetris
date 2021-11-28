@@ -15,12 +15,18 @@
  * as a small filled square, indicates where the next character will be displayed.
  */
 class Output {
-
+    static int curs_x, curs_y;
     // Character map for displaying characters
     static Array charMaps; 
+    static Array screen; 
 
     /** Initializes the screen, and locates the cursor at the screen's top-left. */
     function void init() {
+        let curs_x = 0;
+        let curs_y = 0;
+        let screen = 16384;
+        do Output.initMap();
+        return;
     }
 
     // Initializes the character map array
@@ -176,6 +182,14 @@ class Output {
     /** Moves the cursor to the j-th column of the i-th row,
      *  and erases the character displayed there. */
     function void moveCursor(int i, int j) {
+        if ((i < 0) | ( j<0) | (i>22) | (j > 63)) {
+        
+        }
+        else{
+            let curs_x = j;
+            let curs_y = i;
+        }
+        return;
     }
 
     /** Displays the given character at the cursor location,

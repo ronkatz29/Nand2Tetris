@@ -92,13 +92,19 @@ class String {
         }
         
         while(i < len){
-            let d = charAt(i); 
-            let val = ((^(val) + ^(^(^(val))))); // val * 10 == val << 1 + val << 3
+            if(str[i] > 57){
+                if(str[i] < 48){
+                    let i = len;
+                }
+            }
+            else{
+                let d = charAt(i); 
+                let val = ((^(val) + ^(^(^(val))))); // val * 10 == val << 1 + val << 3
 
-            let val = val + (d - 48);
-            let i = i + 1;
+                let val = val + (d - 48);
+                let i = i + 1;
+            }
         }
-
         if(is_neg){
             let val = -(val);
         }
