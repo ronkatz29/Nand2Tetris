@@ -10,7 +10,7 @@ class Main {
     function void main() {
         var String s;
         var String i;
-        
+
         let s = String.new(0); // a zero-capacity string should be supported
         do s.dispose();
 
