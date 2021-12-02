@@ -3,17 +3,15 @@
 	@0
 	D=A
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 	@0
 	D=A
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 
 //push local 0
 	@0
@@ -22,10 +20,9 @@
 	A=M+D
 	D=M
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 
 //push local 1
 	@1
@@ -34,10 +31,9 @@
 	A=M+D
 	D=M
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 
 //add
 	@SP
@@ -58,10 +54,9 @@
 	A=M+D
 	D=M
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 
 //add
 	@SP
@@ -77,10 +72,9 @@
 	A=M+D
 	D=M
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 
 //sub
 	@SP
@@ -92,15 +86,15 @@
 //return
 	@LCL
 	D=M
-	@endframe
+	@R14
 	M=D
-	@endframe
+	@R14
 	D=M
 	@5
 	D=D-A
 	A=D
 	D=M
-	@retaddr
+	@R15
 	M=D
 	@SP
 	AM=M-1
@@ -109,10 +103,10 @@
 	A=M
 	M=D
 	@ARG
-	D=M+1
+	D=M
 	@SP
-	M=D
-	@endframe
+	M=D+1
+	@R14
 	D=M
 	@1
 	D=D-A
@@ -120,7 +114,7 @@
 	D=M
 	@THAT
 	M=D
-	@endframe
+	@R14
 	D=M
 	@2
 	D=D-A
@@ -128,7 +122,7 @@
 	D=M
 	@THIS
 	M=D
-	@endframe
+	@R14
 	D=M
 	@3
 	D=D-A
@@ -136,7 +130,7 @@
 	D=M
 	@ARG
 	M=D
-	@endframe
+	@R14
 	D=M
 	@4
 	D=D-A
@@ -144,7 +138,7 @@
 	D=M
 	@LCL
 	M=D
-	@retaddr
+	@R15
 	A=M
 	0;JMP
 

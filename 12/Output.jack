@@ -182,36 +182,72 @@ class Output {
     /** Moves the cursor to the j-th column of the i-th row,
      *  and erases the character displayed there. */
     function void moveCursor(int i, int j) {
-        if ((i < 0) | ( j<0) | (i>22) | (j > 63)) {
-        
-        }
-        else{
-            let curs_x = j;
-            let curs_y = i;
-        }
+        let curs_x = j;
+        let curs_y = i;
+        prin
         return;
     }
 
     /** Displays the given character at the cursor location,
      *  and advances the cursor one column forward. */
     function void printChar(char c) {
+        var Array charmap;
+        var int curser_pos;
+        
+        let curser_pos = ((x_pos / 2) + (y_pos * 11 * 32));
+        let char_map = Output.getMap(c);
+        if (c = String.newLine()){
+            do Output.println();
+        }
+        if (c = String.backSpace()){
+            do Output.backSpace();
+            let charmap = Output.getMap(32);
+        }
+        
     }
 
     /** displays the given string starting at the cursor location,
      *  and advances the cursor appropriately. */
     function void printString(String s) {
+        var int str_len, i;
+        let str_len = s.length();
+        let i = 0;
+        while (i < str_len){
+            do Output.printChar(s.charAt(i));
+            let i = i + 1;
+        }
+        return;
     }
 
     /** Displays the given integer starting at the cursor location,
      *  and advances the cursor appropriately. */
     function void printInt(int i) {
+        var String num;
+        let num = String.new(6);
+        do num.setInt(i);
+        do Output.printString(num);
+        return;
     }
 
     /** Advances the cursor to the beginning of the next line. */
     function void println() {
+        let curs_x = 0;
+        if (curs_y < 22) {
+            let cur = y_pos + 1;
+            }
+        //what to do if cur_y = 22
+        returnl
     }
 
     /** Moves the cursor one column back. */
     function void backSpace() {
+      if ((curs_x > 0)){
+        let curs_x = curs_x - 1;
+        }
+      else{
+        let curs_x = 63;
+        let curs_y = curs_y - 1;
+      }
+      return;
     }
 }

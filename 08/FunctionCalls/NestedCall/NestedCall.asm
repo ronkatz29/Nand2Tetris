@@ -3,41 +3,38 @@
 	D=A
 	@SP
 	M=D
-	@RETURN_ADDRESS_0
+
+//call init function
+	@Sys.init&ret.0
 	D=A
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 	@LCL
 	D=M
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 	@ARG
 	D=M
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 	@THIS
 	D=M
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 	@THAT
 	D=M
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 	@SP
 	D=M
 	@5
@@ -52,7 +49,7 @@
 	M=D
 	@Sys.init
 	0;JMP
-(RETURN_ADDRESS_0)
+(Sys.init&ret.0)
 //function Sys.init 0
 (Sys.init)
 
@@ -60,20 +57,19 @@
 	@4000
 	D=A
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 
 //pop pointer 0
 	@THIS
 	D=A
-	@addr
+	@R13
 	M=D
 	@SP
 	AM=M-1
 	D=M
-	@addr
+	@R13
 	A=M
 	M=D
 
@@ -81,59 +77,53 @@
 	@5000
 	D=A
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 
 //pop pointer 1
 	@THAT
 	D=A
-	@addr
+	@R13
 	M=D
 	@SP
 	AM=M-1
 	D=M
-	@addr
+	@R13
 	A=M
 	M=D
 
 //call Sys.main 0
-	@RETURN_ADDRESS_1
+	@Sys.main&ret.1
 	D=A
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 	@LCL
 	D=M
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 	@ARG
 	D=M
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 	@THIS
 	D=M
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 	@THAT
 	D=M
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 	@SP
 	D=M
 	@5
@@ -148,27 +138,28 @@
 	M=D
 	@Sys.main
 	0;JMP
-(RETURN_ADDRESS_1)
+(Sys.main&ret.1)
 
 //pop temp 1
 	@1
 	D=A
 	@R5
-	D=A+D
-	@addr
+	A=A+D
+	D=A
+	@R13
 	M=D
 	@SP
 	AM=M-1
 	D=M
-	@addr
+	@R13
 	A=M
 	M=D
 
 //label LOOP
-(LOOP)
+(Sys.main.LOOP)
 
 //goto LOOP
-	@LOOP
+	@Sys.main.LOOP
 	0;JMP
 
 //function Sys.main 5
@@ -176,57 +167,51 @@
 	@0
 	D=A
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 	@0
 	D=A
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 	@0
 	D=A
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 	@0
 	D=A
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 	@0
 	D=A
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 
 //push constant 4001
 	@4001
 	D=A
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 
 //pop pointer 0
 	@THIS
 	D=A
-	@addr
+	@R13
 	M=D
 	@SP
 	AM=M-1
 	D=M
-	@addr
+	@R13
 	A=M
 	M=D
 
@@ -234,20 +219,19 @@
 	@5001
 	D=A
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 
 //pop pointer 1
 	@THAT
 	D=A
-	@addr
+	@R13
 	M=D
 	@SP
 	AM=M-1
 	D=M
-	@addr
+	@R13
 	A=M
 	M=D
 
@@ -255,22 +239,22 @@
 	@200
 	D=A
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 
 //pop local 1
 	@1
 	D=A
 	@LCL
-	D=M+D
-	@addr
+	A=M+D
+	D=A
+	@R13
 	M=D
 	@SP
 	AM=M-1
 	D=M
-	@addr
+	@R13
 	A=M
 	M=D
 
@@ -278,22 +262,22 @@
 	@40
 	D=A
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 
 //pop local 2
 	@2
 	D=A
 	@LCL
-	D=M+D
-	@addr
+	A=M+D
+	D=A
+	@R13
 	M=D
 	@SP
 	AM=M-1
 	D=M
-	@addr
+	@R13
 	A=M
 	M=D
 
@@ -301,22 +285,22 @@
 	@6
 	D=A
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 
 //pop local 3
 	@3
 	D=A
 	@LCL
-	D=M+D
-	@addr
+	A=M+D
+	D=A
+	@R13
 	M=D
 	@SP
 	AM=M-1
 	D=M
-	@addr
+	@R13
 	A=M
 	M=D
 
@@ -324,47 +308,41 @@
 	@123
 	D=A
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 
 //call Sys.add12 1
-	@RETURN_ADDRESS_2
+	@Sys.add12&ret.2
 	D=A
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 	@LCL
 	D=M
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 	@ARG
 	D=M
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 	@THIS
 	D=M
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 	@THAT
 	D=M
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 	@SP
 	D=M
 	@5
@@ -379,19 +357,20 @@
 	M=D
 	@Sys.add12
 	0;JMP
-(RETURN_ADDRESS_2)
+(Sys.add12&ret.2)
 
 //pop temp 0
 	@0
 	D=A
 	@R5
-	D=A+D
-	@addr
+	A=A+D
+	D=A
+	@R13
 	M=D
 	@SP
 	AM=M-1
 	D=M
-	@addr
+	@R13
 	A=M
 	M=D
 
@@ -402,10 +381,9 @@
 	A=M+D
 	D=M
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 
 //push local 1
 	@1
@@ -414,10 +392,9 @@
 	A=M+D
 	D=M
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 
 //push local 2
 	@2
@@ -426,10 +403,9 @@
 	A=M+D
 	D=M
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 
 //push local 3
 	@3
@@ -438,10 +414,9 @@
 	A=M+D
 	D=M
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 
 //push local 4
 	@4
@@ -450,10 +425,9 @@
 	A=M+D
 	D=M
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 
 //add
 	@SP
@@ -486,15 +460,15 @@
 //return
 	@LCL
 	D=M
-	@endframe
+	@R14
 	M=D
-	@endframe
+	@R14
 	D=M
 	@5
 	D=D-A
 	A=D
 	D=M
-	@retaddr
+	@R15
 	M=D
 	@SP
 	AM=M-1
@@ -503,10 +477,10 @@
 	A=M
 	M=D
 	@ARG
-	D=M+1
+	D=M
 	@SP
-	M=D
-	@endframe
+	M=D+1
+	@R14
 	D=M
 	@1
 	D=D-A
@@ -514,7 +488,7 @@
 	D=M
 	@THAT
 	M=D
-	@endframe
+	@R14
 	D=M
 	@2
 	D=D-A
@@ -522,7 +496,7 @@
 	D=M
 	@THIS
 	M=D
-	@endframe
+	@R14
 	D=M
 	@3
 	D=D-A
@@ -530,7 +504,7 @@
 	D=M
 	@ARG
 	M=D
-	@endframe
+	@R14
 	D=M
 	@4
 	D=D-A
@@ -538,7 +512,7 @@
 	D=M
 	@LCL
 	M=D
-	@retaddr
+	@R15
 	A=M
 	0;JMP
 
@@ -549,20 +523,19 @@
 	@4002
 	D=A
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 
 //pop pointer 0
 	@THIS
 	D=A
-	@addr
+	@R13
 	M=D
 	@SP
 	AM=M-1
 	D=M
-	@addr
+	@R13
 	A=M
 	M=D
 
@@ -570,20 +543,19 @@
 	@5002
 	D=A
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 
 //pop pointer 1
 	@THAT
 	D=A
-	@addr
+	@R13
 	M=D
 	@SP
 	AM=M-1
 	D=M
-	@addr
+	@R13
 	A=M
 	M=D
 
@@ -594,19 +566,17 @@
 	A=M+D
 	D=M
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 
 //push constant 12
 	@12
 	D=A
 	@SP
-	A=M
-	M=D
-	@SP
 	M=M+1
+	A=M-1
+	M=D
 
 //add
 	@SP
@@ -618,15 +588,15 @@
 //return
 	@LCL
 	D=M
-	@endframe
+	@R14
 	M=D
-	@endframe
+	@R14
 	D=M
 	@5
 	D=D-A
 	A=D
 	D=M
-	@retaddr
+	@R15
 	M=D
 	@SP
 	AM=M-1
@@ -635,10 +605,10 @@
 	A=M
 	M=D
 	@ARG
-	D=M+1
+	D=M
 	@SP
-	M=D
-	@endframe
+	M=D+1
+	@R14
 	D=M
 	@1
 	D=D-A
@@ -646,7 +616,7 @@
 	D=M
 	@THAT
 	M=D
-	@endframe
+	@R14
 	D=M
 	@2
 	D=D-A
@@ -654,7 +624,7 @@
 	D=M
 	@THIS
 	M=D
-	@endframe
+	@R14
 	D=M
 	@3
 	D=D-A
@@ -662,7 +632,7 @@
 	D=M
 	@ARG
 	M=D
-	@endframe
+	@R14
 	D=M
 	@4
 	D=D-A
@@ -670,7 +640,7 @@
 	D=M
 	@LCL
 	M=D
-	@retaddr
+	@R15
 	A=M
 	0;JMP
 

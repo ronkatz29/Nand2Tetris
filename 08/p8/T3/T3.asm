@@ -1,0 +1,1038 @@
+//Init command
+	@256
+	D=A
+	@SP
+	M=D
+
+//call init function
+	@Sys.init&ret.0
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@LCL
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@ARG
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@THIS
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@THAT
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@SP
+	D=M
+	@5
+	D=D-A
+	@0
+	D=D-A
+	@ARG
+	M=D
+	@SP
+	D=M
+	@LCL
+	M=D
+	@Sys.init
+	0;JMP
+(Sys.init&ret.0)
+//function Main.T3 0
+(Main.T3)
+
+//call Main.t1 0
+	@Main.t1&ret.1
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@LCL
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@ARG
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@THIS
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@THAT
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@SP
+	D=M
+	@5
+	D=D-A
+	@0
+	D=D-A
+	@ARG
+	M=D
+	@SP
+	D=M
+	@LCL
+	M=D
+	@Main.t1
+	0;JMP
+(Main.t1&ret.1)
+
+//call Main.t2 0
+	@Main.t2&ret.2
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@LCL
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@ARG
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@THIS
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@THAT
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@SP
+	D=M
+	@5
+	D=D-A
+	@0
+	D=D-A
+	@ARG
+	M=D
+	@SP
+	D=M
+	@LCL
+	M=D
+	@Main.t2
+	0;JMP
+(Main.t2&ret.2)
+
+//call Main.t3 0
+	@Main.t3&ret.3
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@LCL
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@ARG
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@THIS
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@THAT
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@SP
+	D=M
+	@5
+	D=D-A
+	@0
+	D=D-A
+	@ARG
+	M=D
+	@SP
+	D=M
+	@LCL
+	M=D
+	@Main.t3
+	0;JMP
+(Main.t3&ret.3)
+
+//call Main.t4 0
+	@Main.t4&ret.4
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@LCL
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@ARG
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@THIS
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@THAT
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@SP
+	D=M
+	@5
+	D=D-A
+	@0
+	D=D-A
+	@ARG
+	M=D
+	@SP
+	D=M
+	@LCL
+	M=D
+	@Main.t4
+	0;JMP
+(Main.t4&ret.4)
+
+//label WHILE
+(Main.t4.WHILE)
+
+//goto WHILE
+	@Main.t4.WHILE
+	0;JMP
+
+//return
+	@LCL
+	D=M
+	@R14
+	M=D
+	@R14
+	D=M
+	@5
+	D=D-A
+	A=D
+	D=M
+	@R15
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@ARG
+	A=M
+	M=D
+	@ARG
+	D=M
+	@SP
+	M=D+1
+	@R14
+	D=M
+	@1
+	D=D-A
+	A=D
+	D=M
+	@THAT
+	M=D
+	@R14
+	D=M
+	@2
+	D=D-A
+	A=D
+	D=M
+	@THIS
+	M=D
+	@R14
+	D=M
+	@3
+	D=D-A
+	A=D
+	D=M
+	@ARG
+	M=D
+	@R14
+	D=M
+	@4
+	D=D-A
+	A=D
+	D=M
+	@LCL
+	M=D
+	@R15
+	A=M
+	0;JMP
+
+//function Main.t1 0
+(Main.t1)
+
+//push constant 32767
+	@32767
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//neg
+	@SP
+	A=M-1
+	M=-M
+
+//push constant 1
+	@1
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//sub
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M-D
+
+//push constant 32767
+	@32767
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//lt
+	@SP
+	A=M-1
+	D=M
+	@FIRST_PLUS_0
+	D;JGT
+	@FIRST_MINUS_0
+	D;JLT
+	@SAME_SIGN_0
+	0;JMP
+(FIRST_PLUS_0)
+	@SP
+	A=M-1
+	A=A-1
+	D=M
+	@DIF_SIGN_LT_0
+	D;JLT
+	@SAME_SIGN_0
+	0;JMP
+(DIF_SIGN_LT_0)
+	@SP
+	AM=M-1
+	A=A-1
+	M=-1
+	@CON_0
+	0;JMP
+(FIRST_MINUS_0)
+	@SP
+	A=M-1
+	A=A-1
+	D=M
+	@DIF_SIGN_GT_0
+	D;JGT
+	@SAME_SIGN_0
+	0;JMP
+(DIF_SIGN_GT_0)
+	@SP
+	AM=M-1
+	A=A-1
+	M=0
+	@CON_0
+	0;JMP
+(SAME_SIGN_0)
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M-D
+	D=M
+	@GRATER_0
+	D;JGT
+	@LOWER_0
+	D;JLT
+	@SP
+	A=M-1
+	M=0
+	@CON_0
+	0;JMP
+(GRATER_0)
+	@SP
+	A=M-1
+	M=0
+	@CON_0
+	0;JMP
+(LOWER_0)
+	@SP
+	A=M-1
+	M=-1
+(CON_0)
+
+//return
+	@LCL
+	D=M
+	@R14
+	M=D
+	@R14
+	D=M
+	@5
+	D=D-A
+	A=D
+	D=M
+	@R15
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@ARG
+	A=M
+	M=D
+	@ARG
+	D=M
+	@SP
+	M=D+1
+	@R14
+	D=M
+	@1
+	D=D-A
+	A=D
+	D=M
+	@THAT
+	M=D
+	@R14
+	D=M
+	@2
+	D=D-A
+	A=D
+	D=M
+	@THIS
+	M=D
+	@R14
+	D=M
+	@3
+	D=D-A
+	A=D
+	D=M
+	@ARG
+	M=D
+	@R14
+	D=M
+	@4
+	D=D-A
+	A=D
+	D=M
+	@LCL
+	M=D
+	@R15
+	A=M
+	0;JMP
+
+//function Main.t2 0
+(Main.t2)
+
+//push constant 32767
+	@32767
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//push constant 32767
+	@32767
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//neg
+	@SP
+	A=M-1
+	M=-M
+
+//push constant 1
+	@1
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//sub
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M-D
+
+//gt
+	@SP
+	A=M-1
+	D=M
+	@FIRST_PLUS_1
+	D;JGT
+	@FIRST_MINUS_1
+	D;JLT
+	@SAME_SIGN_1
+	0;JMP
+(FIRST_PLUS_1)
+	@SP
+	A=M-1
+	A=A-1
+	D=M
+	@DIF_SIGN_LT_1
+	D;JLT
+	@SAME_SIGN_1
+	0;JMP
+(DIF_SIGN_LT_1)
+	@SP
+	AM=M-1
+	A=A-1
+	M=0
+	@CON_1
+	0;JMP
+(FIRST_MINUS_1)
+	@SP
+	A=M-1
+	A=A-1
+	D=M
+	@DIF_SIGN_GT_1
+	D;JGT
+	@SAME_SIGN_1
+	0;JMP
+(DIF_SIGN_GT_1)
+	@SP
+	AM=M-1
+	A=A-1
+	M=-1
+	@CON_1
+	0;JMP
+(SAME_SIGN_1)
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M-D
+	D=M
+	@GRATER_1
+	D;JGT
+	@LOWER_1
+	D;JLT
+	@SP
+	A=M-1
+	M=0
+	@CON_1
+	0;JMP
+(GRATER_1)
+	@SP
+	A=M-1
+	M=-1
+	@CON_1
+	0;JMP
+(LOWER_1)
+	@SP
+	A=M-1
+	M=0
+(CON_1)
+
+//return
+	@LCL
+	D=M
+	@R14
+	M=D
+	@R14
+	D=M
+	@5
+	D=D-A
+	A=D
+	D=M
+	@R15
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@ARG
+	A=M
+	M=D
+	@ARG
+	D=M
+	@SP
+	M=D+1
+	@R14
+	D=M
+	@1
+	D=D-A
+	A=D
+	D=M
+	@THAT
+	M=D
+	@R14
+	D=M
+	@2
+	D=D-A
+	A=D
+	D=M
+	@THIS
+	M=D
+	@R14
+	D=M
+	@3
+	D=D-A
+	A=D
+	D=M
+	@ARG
+	M=D
+	@R14
+	D=M
+	@4
+	D=D-A
+	A=D
+	D=M
+	@LCL
+	M=D
+	@R15
+	A=M
+	0;JMP
+
+//function Main.t3 0
+(Main.t3)
+
+//push constant 20000
+	@20000
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//neg
+	@SP
+	A=M-1
+	M=-M
+
+//push constant 1
+	@1
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//sub
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M-D
+
+//push constant 30000
+	@30000
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//gt
+	@SP
+	A=M-1
+	D=M
+	@FIRST_PLUS_2
+	D;JGT
+	@FIRST_MINUS_2
+	D;JLT
+	@SAME_SIGN_2
+	0;JMP
+(FIRST_PLUS_2)
+	@SP
+	A=M-1
+	A=A-1
+	D=M
+	@DIF_SIGN_LT_2
+	D;JLT
+	@SAME_SIGN_2
+	0;JMP
+(DIF_SIGN_LT_2)
+	@SP
+	AM=M-1
+	A=A-1
+	M=0
+	@CON_2
+	0;JMP
+(FIRST_MINUS_2)
+	@SP
+	A=M-1
+	A=A-1
+	D=M
+	@DIF_SIGN_GT_2
+	D;JGT
+	@SAME_SIGN_2
+	0;JMP
+(DIF_SIGN_GT_2)
+	@SP
+	AM=M-1
+	A=A-1
+	M=-1
+	@CON_2
+	0;JMP
+(SAME_SIGN_2)
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M-D
+	D=M
+	@GRATER_2
+	D;JGT
+	@LOWER_2
+	D;JLT
+	@SP
+	A=M-1
+	M=0
+	@CON_2
+	0;JMP
+(GRATER_2)
+	@SP
+	A=M-1
+	M=-1
+	@CON_2
+	0;JMP
+(LOWER_2)
+	@SP
+	A=M-1
+	M=0
+(CON_2)
+
+//return
+	@LCL
+	D=M
+	@R14
+	M=D
+	@R14
+	D=M
+	@5
+	D=D-A
+	A=D
+	D=M
+	@R15
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@ARG
+	A=M
+	M=D
+	@ARG
+	D=M
+	@SP
+	M=D+1
+	@R14
+	D=M
+	@1
+	D=D-A
+	A=D
+	D=M
+	@THAT
+	M=D
+	@R14
+	D=M
+	@2
+	D=D-A
+	A=D
+	D=M
+	@THIS
+	M=D
+	@R14
+	D=M
+	@3
+	D=D-A
+	A=D
+	D=M
+	@ARG
+	M=D
+	@R14
+	D=M
+	@4
+	D=D-A
+	A=D
+	D=M
+	@LCL
+	M=D
+	@R15
+	A=M
+	0;JMP
+
+//function Main.t4 0
+(Main.t4)
+
+//push constant 20000
+	@20000
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//push constant 30000
+	@30000
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//neg
+	@SP
+	A=M-1
+	M=-M
+
+//push constant 1
+	@1
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//sub
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M-D
+
+//gt
+	@SP
+	A=M-1
+	D=M
+	@FIRST_PLUS_3
+	D;JGT
+	@FIRST_MINUS_3
+	D;JLT
+	@SAME_SIGN_3
+	0;JMP
+(FIRST_PLUS_3)
+	@SP
+	A=M-1
+	A=A-1
+	D=M
+	@DIF_SIGN_LT_3
+	D;JLT
+	@SAME_SIGN_3
+	0;JMP
+(DIF_SIGN_LT_3)
+	@SP
+	AM=M-1
+	A=A-1
+	M=0
+	@CON_3
+	0;JMP
+(FIRST_MINUS_3)
+	@SP
+	A=M-1
+	A=A-1
+	D=M
+	@DIF_SIGN_GT_3
+	D;JGT
+	@SAME_SIGN_3
+	0;JMP
+(DIF_SIGN_GT_3)
+	@SP
+	AM=M-1
+	A=A-1
+	M=-1
+	@CON_3
+	0;JMP
+(SAME_SIGN_3)
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M-D
+	D=M
+	@GRATER_3
+	D;JGT
+	@LOWER_3
+	D;JLT
+	@SP
+	A=M-1
+	M=0
+	@CON_3
+	0;JMP
+(GRATER_3)
+	@SP
+	A=M-1
+	M=-1
+	@CON_3
+	0;JMP
+(LOWER_3)
+	@SP
+	A=M-1
+	M=0
+(CON_3)
+
+//return
+	@LCL
+	D=M
+	@R14
+	M=D
+	@R14
+	D=M
+	@5
+	D=D-A
+	A=D
+	D=M
+	@R15
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@ARG
+	A=M
+	M=D
+	@ARG
+	D=M
+	@SP
+	M=D+1
+	@R14
+	D=M
+	@1
+	D=D-A
+	A=D
+	D=M
+	@THAT
+	M=D
+	@R14
+	D=M
+	@2
+	D=D-A
+	A=D
+	D=M
+	@THIS
+	M=D
+	@R14
+	D=M
+	@3
+	D=D-A
+	A=D
+	D=M
+	@ARG
+	M=D
+	@R14
+	D=M
+	@4
+	D=D-A
+	A=D
+	D=M
+	@LCL
+	M=D
+	@R15
+	A=M
+	0;JMP
+
+//function Sys.init 0
+(Sys.init)
+
+//call Main.T3 0
+	@Main.T3&ret.5
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@LCL
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@ARG
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@THIS
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@THAT
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+	@SP
+	D=M
+	@5
+	D=D-A
+	@0
+	D=D-A
+	@ARG
+	M=D
+	@SP
+	D=M
+	@LCL
+	M=D
+	@Main.T3
+	0;JMP
+(Main.T3&ret.5)
+
+//label WHILE
+(Main.T3.WHILE)
+
+//goto WHILE
+	@Main.T3.WHILE
+	0;JMP
+
