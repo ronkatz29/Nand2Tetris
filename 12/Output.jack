@@ -77,7 +77,7 @@ class Output {
         do Output.create(64,30,51,51,59,59,59,27,3,30,0,0);  // @
         do Output.create(63,30,51,51,24,12,12,0,12,12,0,0);  // ?
 
-        do Output.create(65,0,0,0,0,0,0,0,0,0,0,0);          // A ** TO BE FILLED **
+        do Output.create(65,12,30,51,51,63,51,51,51,51,0,0);          // A ** TO BE FILLED **
         do Output.create(66,31,51,51,51,31,51,51,51,31,0,0); // B
         do Output.create(67,28,54,35,3,3,3,35,54,28,0,0);    // C
         do Output.create(68,15,27,51,51,51,51,51,27,15,0,0); // D
@@ -122,7 +122,7 @@ class Output {
         do Output.create(105,12,12,0,14,12,12,12,12,30,0,0);   // i
         do Output.create(106,48,48,0,56,48,48,48,48,51,30,0);  // j
         do Output.create(107,3,3,3,51,27,15,15,27,51,0,0);     // k
-        do Output.create(108,14,12,12,12,12,12,12,12,30,0,0);  // l
+        do Output.create(108, );  // l
         do Output.create(109,0,0,0,29,63,43,43,43,43,0,0);     // m
         do Output.create(110,0,0,0,29,51,51,51,51,51,0,0);     // n
         do Output.create(111,0,0,0,30,51,51,51,51,30,0,0);     // o
@@ -184,7 +184,6 @@ class Output {
     function void moveCursor(int i, int j) {
         let curs_x = j;
         let curs_y = i;
-        prin
         return;
     }
 
@@ -192,16 +191,23 @@ class Output {
      *  and advances the cursor one column forward. */
     function void printChar(char c) {
         var Array charmap;
-        var int curser_pos;
+        var int screen_add, i;
         
-        let curser_pos = ((x_pos / 2) + (y_pos * 11 * 32));
+        let screen_add = ((curs_x / 2) + (curs_y * 11 * 32));
         let char_map = Output.getMap(c);
-        if (c = String.newLine()){
-            do Output.println();
+        if( curs_x & 1){//if x is odd we want to write on the last 8 bits
+            while( i < 11){
+                let s
+            }        
         }
-        if (c = String.backSpace()){
-            do Output.backSpace();
-            let charmap = Output.getMap(32);
+        else{
+            while( i < 11){
+
+
+            }
+
+        }
+
         }
         
     }
@@ -235,8 +241,10 @@ class Output {
         if (curs_y < 22) {
             let cur = y_pos + 1;
             }
-        //what to do if cur_y = 22
-        returnl
+        else{
+            let curs_y = 0;
+        }
+        return;
     }
 
     /** Moves the cursor one column back. */
