@@ -115,11 +115,16 @@
 (Array.new&ret.1)
 
 //pop static 1
-@SP
-AM=M-1
-D=M
-@Math.1
-M=D
+	@Math1
+	D=A
+	@R13
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@R13
+	A=M
+	M=D
 
 //push constant 16
 	@16
@@ -177,11 +182,16 @@ M=D
 (Array.new&ret.2)
 
 //pop static 0
-@SP
-AM=M-1
-D=M
-@Math.0
-M=D
+	@Math0
+	D=A
+	@R13
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@R13
+	A=M
+	M=D
 
 //push constant 0
 	@0
@@ -192,7 +202,7 @@ M=D
 	M=D
 
 //push static 0
-	@Math.0
+	@Math0
 	D=M
 	@SP
 	M=M+1
@@ -424,7 +434,7 @@ M=D
 	M=D
 
 //push static 0
-	@Math.0
+	@Math0
 	D=M
 	@SP
 	M=M+1
@@ -465,7 +475,7 @@ M=D
 	M=M-D
 
 //push static 0
-	@Math.0
+	@Math0
 	D=M
 	@SP
 	M=M+1
@@ -529,7 +539,7 @@ M=D
 	M=M-D
 
 //push static 0
-	@Math.0
+	@Math0
 	D=M
 	@SP
 	M=M+1
@@ -1787,7 +1797,7 @@ M=D
 	M=D
 
 //push static 0
-	@Math.0
+	@Math0
 	D=M
 	@SP
 	M=M+1
@@ -2001,7 +2011,7 @@ M=D
 	M=D
 
 //push static 0
-	@Math.0
+	@Math0
 	D=M
 	@SP
 	M=M+1
@@ -2224,13 +2234,6 @@ M=D
 	M=M+1
 	A=M-1
 	M=D
-
-//label stam
-(Math.abs.stam)
-
-//goto stam
-	@Math.abs.stam
-	0;JMP
 
 //return
 	@LCL
@@ -2895,7 +2898,7 @@ M=D
 	M=D
 
 //push static 1
-	@Math.1
+	@Math1
 	D=M
 	@SP
 	M=M+1
@@ -3144,7 +3147,7 @@ M=D
 	M=D
 
 //push static 1
-	@Math.1
+	@Math1
 	D=M
 	@SP
 	M=M+1
@@ -3200,7 +3203,7 @@ M=D
 	M=D
 
 //push static 1
-	@Math.1
+	@Math1
 	D=M
 	@SP
 	M=M+1
@@ -3379,7 +3382,7 @@ M=D
 	M=M+D
 
 //push static 1
-	@Math.1
+	@Math1
 	D=M
 	@SP
 	M=M+1
@@ -3405,7 +3408,7 @@ M=D
 	M=D
 
 //push static 1
-	@Math.1
+	@Math1
 	D=M
 	@SP
 	M=M+1
@@ -3454,7 +3457,7 @@ M=D
 	M=D
 
 //push static 1
-	@Math.1
+	@Math1
 	D=M
 	@SP
 	M=M+1
@@ -3578,7 +3581,7 @@ M=D
 	M=M+D
 
 //push static 1
-	@Math.1
+	@Math1
 	D=M
 	@SP
 	M=M+1
@@ -3916,7 +3919,7 @@ M=D
 	M=D
 
 //push static 1
-	@Math.1
+	@Math1
 	D=M
 	@SP
 	M=M+1
@@ -4076,7 +4079,7 @@ M=D
 	M=D
 
 //push static 0
-	@Math.0
+	@Math0
 	D=M
 	@SP
 	M=M+1
@@ -4158,7 +4161,7 @@ M=D
 	M=D
 
 //push static 1
-	@Math.1
+	@Math1
 	D=M
 	@SP
 	M=M+1
@@ -4743,7 +4746,7 @@ M=D
 	M=D
 
 //push static 0
-	@Math.0
+	@Math0
 	D=M
 	@SP
 	M=M+1
@@ -4810,7 +4813,7 @@ M=D
 	M=D
 
 //push static 0
-	@Math.0
+	@Math0
 	D=M
 	@SP
 	M=M+1
@@ -5024,7 +5027,7 @@ M=D
 	M=D
 
 //push static 0
-	@Math.0
+	@Math0
 	D=M
 	@SP
 	M=M+1
@@ -6435,22 +6438,6 @@ M=D
 	A=M-1
 	M=D
 
-//push constant 1
-	@1
-	D=A
-	@SP
-	M=M+1
-	A=M-1
-	M=D
-
-//push constant 1
-	@1
-	D=A
-	@SP
-	M=M+1
-	A=M-1
-	M=D
-
 //call Math.multiply 2
 	@Math.multiply&ret.37
 	D=A
@@ -6497,21 +6484,6 @@ M=D
 	@Math.multiply
 	0;JMP
 (Math.multiply&ret.37)
-
-//push constant 5
-	@5
-	D=A
-	@SP
-	M=M+1
-	A=M-1
-	M=D
-
-//label stam
-(Math.multiply.stam)
-
-//goto stam
-	@Math.multiply.stam
-	0;JMP
 
 //push local 2
 	@2
@@ -8099,11 +8071,16 @@ M=D
 	M=D
 
 //pop static 0
-@SP
-AM=M-1
-D=M
-@Memory.0
-M=D
+	@Memory0
+	D=A
+	@R13
+	M=D
+	@SP
+	AM=M-1
+	D=M
+	@R13
+	A=M
+	M=D
 
 //push constant 2048
 	@2048
@@ -8114,7 +8091,7 @@ M=D
 	M=D
 
 //push static 0
-	@Memory.0
+	@Memory0
 	D=M
 	@SP
 	M=M+1
@@ -8198,7 +8175,7 @@ M=D
 	M=D
 
 //push static 0
-	@Memory.0
+	@Memory0
 	D=M
 	@SP
 	M=M+1
@@ -8355,7 +8332,7 @@ M=D
 	M=D
 
 //push static 0
-	@Memory.0
+	@Memory0
 	D=M
 	@SP
 	M=M+1
@@ -8466,7 +8443,7 @@ M=D
 	M=D
 
 //push static 0
-	@Memory.0
+	@Memory0
 	D=M
 	@SP
 	M=M+1

@@ -303,71 +303,71 @@
 	@SP
 	A=M-1
 	D=M
-	@FIRST_PLUS_0
+	@FIRST_PLUS_3
 	D;JGT
-	@FIRST_MINUS_0
+	@FIRST_MINUS_3
 	D;JLT
-	@SAME_SIGN_0
+	@SAME_SIGN_3
 	0;JMP
-(FIRST_PLUS_0)
+(FIRST_PLUS_3)
 	@SP
 	A=M-1
 	A=A-1
 	D=M
-	@DIF_SIGN_LT_0
+	@DIF_SIGN_LT_3
 	D;JLT
-	@SAME_SIGN_0
+	@SAME_SIGN_3
 	0;JMP
-(DIF_SIGN_LT_0)
+(DIF_SIGN_LT_3)
 	@SP
 	AM=M-1
 	A=A-1
 	M=-1
-	@CON_0
+	@CON_3
 	0;JMP
-(FIRST_MINUS_0)
+(FIRST_MINUS_3)
 	@SP
 	A=M-1
 	A=A-1
 	D=M
-	@DIF_SIGN_GT_0
+	@DIF_SIGN_GT_3
 	D;JGT
-	@SAME_SIGN_0
+	@SAME_SIGN_3
 	0;JMP
-(DIF_SIGN_GT_0)
+(DIF_SIGN_GT_3)
 	@SP
 	AM=M-1
 	A=A-1
 	M=0
-	@CON_0
+	@CON_3
 	0;JMP
-(SAME_SIGN_0)
+(SAME_SIGN_3)
 	@SP
 	AM=M-1
 	D=M
 	A=A-1
 	M=M-D
 	D=M
-	@GRATER_0
+	@GRATER_3
 	D;JGT
-	@LOWER_0
+	@LOWER_3
 	D;JLT
 	@SP
 	A=M-1
 	M=0
-	@CON_0
+	@CON_3
 	0;JMP
-(GRATER_0)
+(GRATER_3)
 	@SP
 	A=M-1
 	M=0
-	@CON_0
+	@CON_3
 	0;JMP
-(LOWER_0)
+(LOWER_3)
 	@SP
 	A=M-1
 	M=-1
-(CON_0)
+(CON_3)
 
 //not
 	@SP
@@ -736,71 +736,71 @@
 	@SP
 	A=M-1
 	D=M
-	@FIRST_PLUS_1
+	@FIRST_PLUS_4
 	D;JGT
-	@FIRST_MINUS_1
+	@FIRST_MINUS_4
 	D;JLT
-	@SAME_SIGN_1
+	@SAME_SIGN_4
 	0;JMP
-(FIRST_PLUS_1)
+(FIRST_PLUS_4)
 	@SP
 	A=M-1
 	A=A-1
 	D=M
-	@DIF_SIGN_LT_1
+	@DIF_SIGN_LT_4
 	D;JLT
-	@SAME_SIGN_1
+	@SAME_SIGN_4
 	0;JMP
-(DIF_SIGN_LT_1)
+(DIF_SIGN_LT_4)
 	@SP
 	AM=M-1
 	A=A-1
 	M=-1
-	@CON_1
+	@CON_4
 	0;JMP
-(FIRST_MINUS_1)
+(FIRST_MINUS_4)
 	@SP
 	A=M-1
 	A=A-1
 	D=M
-	@DIF_SIGN_GT_1
+	@DIF_SIGN_GT_4
 	D;JGT
-	@SAME_SIGN_1
+	@SAME_SIGN_4
 	0;JMP
-(DIF_SIGN_GT_1)
+(DIF_SIGN_GT_4)
 	@SP
 	AM=M-1
 	A=A-1
 	M=0
-	@CON_1
+	@CON_4
 	0;JMP
-(SAME_SIGN_1)
+(SAME_SIGN_4)
 	@SP
 	AM=M-1
 	D=M
 	A=A-1
 	M=M-D
 	D=M
-	@GRATER_1
+	@GRATER_4
 	D;JGT
-	@LOWER_1
+	@LOWER_4
 	D;JLT
 	@SP
 	A=M-1
 	M=0
-	@CON_1
+	@CON_4
 	0;JMP
-(GRATER_1)
+(GRATER_4)
 	@SP
 	A=M-1
 	M=0
-	@CON_1
+	@CON_4
 	0;JMP
-(LOWER_1)
+(LOWER_4)
 	@SP
 	A=M-1
 	M=-1
-(CON_1)
+(CON_4)
 
 //if-goto IF_TRUE0
 	@SP
@@ -976,280 +976,6 @@
 	@SP
 	A=M-1
 	D=M
-	@FIRST_PLUS_2
-	D;JGT
-	@FIRST_MINUS_2
-	D;JLT
-	@SAME_SIGN_2
-	0;JMP
-(FIRST_PLUS_2)
-	@SP
-	A=M-1
-	A=A-1
-	D=M
-	@DIF_SIGN_LT_2
-	D;JLT
-	@SAME_SIGN_2
-	0;JMP
-(DIF_SIGN_LT_2)
-	@SP
-	AM=M-1
-	A=A-1
-	M=-1
-	@CON_2
-	0;JMP
-(FIRST_MINUS_2)
-	@SP
-	A=M-1
-	A=A-1
-	D=M
-	@DIF_SIGN_GT_2
-	D;JGT
-	@SAME_SIGN_2
-	0;JMP
-(DIF_SIGN_GT_2)
-	@SP
-	AM=M-1
-	A=A-1
-	M=0
-	@CON_2
-	0;JMP
-(SAME_SIGN_2)
-	@SP
-	AM=M-1
-	D=M
-	A=A-1
-	M=M-D
-	D=M
-	@GRATER_2
-	D;JGT
-	@LOWER_2
-	D;JLT
-	@SP
-	A=M-1
-	M=0
-	@CON_2
-	0;JMP
-(GRATER_2)
-	@SP
-	A=M-1
-	M=0
-	@CON_2
-	0;JMP
-(LOWER_2)
-	@SP
-	A=M-1
-	M=-1
-(CON_2)
-
-//push argument 1
-	@1
-	D=A
-	@ARG
-	A=M+D
-	D=M
-	@SP
-	M=M+1
-	A=M-1
-	M=D
-
-//push constant 0
-	@0
-	D=A
-	@SP
-	M=M+1
-	A=M-1
-	M=D
-
-//gt
-	@SP
-	A=M-1
-	D=M
-	@FIRST_PLUS_3
-	D;JGT
-	@FIRST_MINUS_3
-	D;JLT
-	@SAME_SIGN_3
-	0;JMP
-(FIRST_PLUS_3)
-	@SP
-	A=M-1
-	A=A-1
-	D=M
-	@DIF_SIGN_LT_3
-	D;JLT
-	@SAME_SIGN_3
-	0;JMP
-(DIF_SIGN_LT_3)
-	@SP
-	AM=M-1
-	A=A-1
-	M=0
-	@CON_3
-	0;JMP
-(FIRST_MINUS_3)
-	@SP
-	A=M-1
-	A=A-1
-	D=M
-	@DIF_SIGN_GT_3
-	D;JGT
-	@SAME_SIGN_3
-	0;JMP
-(DIF_SIGN_GT_3)
-	@SP
-	AM=M-1
-	A=A-1
-	M=-1
-	@CON_3
-	0;JMP
-(SAME_SIGN_3)
-	@SP
-	AM=M-1
-	D=M
-	A=A-1
-	M=M-D
-	D=M
-	@GRATER_3
-	D;JGT
-	@LOWER_3
-	D;JLT
-	@SP
-	A=M-1
-	M=0
-	@CON_3
-	0;JMP
-(GRATER_3)
-	@SP
-	A=M-1
-	M=-1
-	@CON_3
-	0;JMP
-(LOWER_3)
-	@SP
-	A=M-1
-	M=0
-(CON_3)
-
-//and
-	@SP
-	AM=M-1
-	D=M
-	A=A-1
-	M=M&D
-
-//push argument 0
-	@0
-	D=A
-	@ARG
-	A=M+D
-	D=M
-	@SP
-	M=M+1
-	A=M-1
-	M=D
-
-//push constant 0
-	@0
-	D=A
-	@SP
-	M=M+1
-	A=M-1
-	M=D
-
-//gt
-	@SP
-	A=M-1
-	D=M
-	@FIRST_PLUS_4
-	D;JGT
-	@FIRST_MINUS_4
-	D;JLT
-	@SAME_SIGN_4
-	0;JMP
-(FIRST_PLUS_4)
-	@SP
-	A=M-1
-	A=A-1
-	D=M
-	@DIF_SIGN_LT_4
-	D;JLT
-	@SAME_SIGN_4
-	0;JMP
-(DIF_SIGN_LT_4)
-	@SP
-	AM=M-1
-	A=A-1
-	M=0
-	@CON_4
-	0;JMP
-(FIRST_MINUS_4)
-	@SP
-	A=M-1
-	A=A-1
-	D=M
-	@DIF_SIGN_GT_4
-	D;JGT
-	@SAME_SIGN_4
-	0;JMP
-(DIF_SIGN_GT_4)
-	@SP
-	AM=M-1
-	A=A-1
-	M=-1
-	@CON_4
-	0;JMP
-(SAME_SIGN_4)
-	@SP
-	AM=M-1
-	D=M
-	A=A-1
-	M=M-D
-	D=M
-	@GRATER_4
-	D;JGT
-	@LOWER_4
-	D;JLT
-	@SP
-	A=M-1
-	M=0
-	@CON_4
-	0;JMP
-(GRATER_4)
-	@SP
-	A=M-1
-	M=-1
-	@CON_4
-	0;JMP
-(LOWER_4)
-	@SP
-	A=M-1
-	M=0
-(CON_4)
-
-//push argument 1
-	@1
-	D=A
-	@ARG
-	A=M+D
-	D=M
-	@SP
-	M=M+1
-	A=M-1
-	M=D
-
-//push constant 0
-	@0
-	D=A
-	@SP
-	M=M+1
-	A=M-1
-	M=D
-
-//lt
-	@SP
-	A=M-1
-	D=M
 	@FIRST_PLUS_5
 	D;JGT
 	@FIRST_MINUS_5
@@ -1316,6 +1042,280 @@
 	M=-1
 (CON_5)
 
+//push argument 1
+	@1
+	D=A
+	@ARG
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//push constant 0
+	@0
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//gt
+	@SP
+	A=M-1
+	D=M
+	@FIRST_PLUS_6
+	D;JGT
+	@FIRST_MINUS_6
+	D;JLT
+	@SAME_SIGN_6
+	0;JMP
+(FIRST_PLUS_6)
+	@SP
+	A=M-1
+	A=A-1
+	D=M
+	@DIF_SIGN_LT_6
+	D;JLT
+	@SAME_SIGN_6
+	0;JMP
+(DIF_SIGN_LT_6)
+	@SP
+	AM=M-1
+	A=A-1
+	M=0
+	@CON_6
+	0;JMP
+(FIRST_MINUS_6)
+	@SP
+	A=M-1
+	A=A-1
+	D=M
+	@DIF_SIGN_GT_6
+	D;JGT
+	@SAME_SIGN_6
+	0;JMP
+(DIF_SIGN_GT_6)
+	@SP
+	AM=M-1
+	A=A-1
+	M=-1
+	@CON_6
+	0;JMP
+(SAME_SIGN_6)
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M-D
+	D=M
+	@GRATER_6
+	D;JGT
+	@LOWER_6
+	D;JLT
+	@SP
+	A=M-1
+	M=0
+	@CON_6
+	0;JMP
+(GRATER_6)
+	@SP
+	A=M-1
+	M=-1
+	@CON_6
+	0;JMP
+(LOWER_6)
+	@SP
+	A=M-1
+	M=0
+(CON_6)
+
+//and
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M&D
+
+//push argument 0
+	@0
+	D=A
+	@ARG
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//push constant 0
+	@0
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//gt
+	@SP
+	A=M-1
+	D=M
+	@FIRST_PLUS_7
+	D;JGT
+	@FIRST_MINUS_7
+	D;JLT
+	@SAME_SIGN_7
+	0;JMP
+(FIRST_PLUS_7)
+	@SP
+	A=M-1
+	A=A-1
+	D=M
+	@DIF_SIGN_LT_7
+	D;JLT
+	@SAME_SIGN_7
+	0;JMP
+(DIF_SIGN_LT_7)
+	@SP
+	AM=M-1
+	A=A-1
+	M=0
+	@CON_7
+	0;JMP
+(FIRST_MINUS_7)
+	@SP
+	A=M-1
+	A=A-1
+	D=M
+	@DIF_SIGN_GT_7
+	D;JGT
+	@SAME_SIGN_7
+	0;JMP
+(DIF_SIGN_GT_7)
+	@SP
+	AM=M-1
+	A=A-1
+	M=-1
+	@CON_7
+	0;JMP
+(SAME_SIGN_7)
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M-D
+	D=M
+	@GRATER_7
+	D;JGT
+	@LOWER_7
+	D;JLT
+	@SP
+	A=M-1
+	M=0
+	@CON_7
+	0;JMP
+(GRATER_7)
+	@SP
+	A=M-1
+	M=-1
+	@CON_7
+	0;JMP
+(LOWER_7)
+	@SP
+	A=M-1
+	M=0
+(CON_7)
+
+//push argument 1
+	@1
+	D=A
+	@ARG
+	A=M+D
+	D=M
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//push constant 0
+	@0
+	D=A
+	@SP
+	M=M+1
+	A=M-1
+	M=D
+
+//lt
+	@SP
+	A=M-1
+	D=M
+	@FIRST_PLUS_8
+	D;JGT
+	@FIRST_MINUS_8
+	D;JLT
+	@SAME_SIGN_8
+	0;JMP
+(FIRST_PLUS_8)
+	@SP
+	A=M-1
+	A=A-1
+	D=M
+	@DIF_SIGN_LT_8
+	D;JLT
+	@SAME_SIGN_8
+	0;JMP
+(DIF_SIGN_LT_8)
+	@SP
+	AM=M-1
+	A=A-1
+	M=-1
+	@CON_8
+	0;JMP
+(FIRST_MINUS_8)
+	@SP
+	A=M-1
+	A=A-1
+	D=M
+	@DIF_SIGN_GT_8
+	D;JGT
+	@SAME_SIGN_8
+	0;JMP
+(DIF_SIGN_GT_8)
+	@SP
+	AM=M-1
+	A=A-1
+	M=0
+	@CON_8
+	0;JMP
+(SAME_SIGN_8)
+	@SP
+	AM=M-1
+	D=M
+	A=A-1
+	M=M-D
+	D=M
+	@GRATER_8
+	D;JGT
+	@LOWER_8
+	D;JLT
+	@SP
+	A=M-1
+	M=0
+	@CON_8
+	0;JMP
+(GRATER_8)
+	@SP
+	A=M-1
+	M=0
+	@CON_8
+	0;JMP
+(LOWER_8)
+	@SP
+	A=M-1
+	M=-1
+(CON_8)
+
 //and
 	@SP
 	AM=M-1
@@ -1357,7 +1357,7 @@
 	M=D
 
 //call Math.abs 1
-	@Math.abs&ret.3
+	@Math.abs&ret.9
 	D=A
 	@SP
 	M=M+1
@@ -1401,7 +1401,7 @@
 	M=D
 	@Math.abs
 	0;JMP
-(Math.abs&ret.3)
+(Math.abs&ret.9)
 
 //pop argument 0
 	@0
@@ -1430,7 +1430,7 @@
 	M=D
 
 //call Math.abs 1
-	@Math.abs&ret.4
+	@Math.abs&ret.10
 	D=A
 	@SP
 	M=M+1
@@ -1474,7 +1474,7 @@
 	M=D
 	@Math.abs
 	0;JMP
-(Math.abs&ret.4)
+(Math.abs&ret.10)
 
 //pop argument 1
 	@1
@@ -1517,71 +1517,71 @@
 	@SP
 	A=M-1
 	D=M
-	@FIRST_PLUS_6
+	@FIRST_PLUS_11
 	D;JGT
-	@FIRST_MINUS_6
+	@FIRST_MINUS_11
 	D;JLT
-	@SAME_SIGN_6
+	@SAME_SIGN_11
 	0;JMP
-(FIRST_PLUS_6)
+(FIRST_PLUS_11)
 	@SP
 	A=M-1
 	A=A-1
 	D=M
-	@DIF_SIGN_LT_6
+	@DIF_SIGN_LT_11
 	D;JLT
-	@SAME_SIGN_6
+	@SAME_SIGN_11
 	0;JMP
-(DIF_SIGN_LT_6)
+(DIF_SIGN_LT_11)
 	@SP
 	AM=M-1
 	A=A-1
 	M=-1
-	@CON_6
+	@CON_11
 	0;JMP
-(FIRST_MINUS_6)
+(FIRST_MINUS_11)
 	@SP
 	A=M-1
 	A=A-1
 	D=M
-	@DIF_SIGN_GT_6
+	@DIF_SIGN_GT_11
 	D;JGT
-	@SAME_SIGN_6
+	@SAME_SIGN_11
 	0;JMP
-(DIF_SIGN_GT_6)
+(DIF_SIGN_GT_11)
 	@SP
 	AM=M-1
 	A=A-1
 	M=0
-	@CON_6
+	@CON_11
 	0;JMP
-(SAME_SIGN_6)
+(SAME_SIGN_11)
 	@SP
 	AM=M-1
 	D=M
 	A=A-1
 	M=M-D
 	D=M
-	@GRATER_6
+	@GRATER_11
 	D;JGT
-	@LOWER_6
+	@LOWER_11
 	D;JLT
 	@SP
 	A=M-1
 	M=0
-	@CON_6
+	@CON_11
 	0;JMP
-(GRATER_6)
+(GRATER_11)
 	@SP
 	A=M-1
 	M=0
-	@CON_6
+	@CON_11
 	0;JMP
-(LOWER_6)
+(LOWER_11)
 	@SP
 	A=M-1
 	M=-1
-(CON_6)
+(CON_11)
 
 //if-goto IF_TRUE0
 	@SP
@@ -1707,71 +1707,71 @@
 	@SP
 	A=M-1
 	D=M
-	@FIRST_PLUS_7
+	@FIRST_PLUS_12
 	D;JGT
-	@FIRST_MINUS_7
+	@FIRST_MINUS_12
 	D;JLT
-	@SAME_SIGN_7
+	@SAME_SIGN_12
 	0;JMP
-(FIRST_PLUS_7)
+(FIRST_PLUS_12)
 	@SP
 	A=M-1
 	A=A-1
 	D=M
-	@DIF_SIGN_LT_7
+	@DIF_SIGN_LT_12
 	D;JLT
-	@SAME_SIGN_7
+	@SAME_SIGN_12
 	0;JMP
-(DIF_SIGN_LT_7)
+(DIF_SIGN_LT_12)
 	@SP
 	AM=M-1
 	A=A-1
 	M=-1
-	@CON_7
+	@CON_12
 	0;JMP
-(FIRST_MINUS_7)
+(FIRST_MINUS_12)
 	@SP
 	A=M-1
 	A=A-1
 	D=M
-	@DIF_SIGN_GT_7
+	@DIF_SIGN_GT_12
 	D;JGT
-	@SAME_SIGN_7
+	@SAME_SIGN_12
 	0;JMP
-(DIF_SIGN_GT_7)
+(DIF_SIGN_GT_12)
 	@SP
 	AM=M-1
 	A=A-1
 	M=0
-	@CON_7
+	@CON_12
 	0;JMP
-(SAME_SIGN_7)
+(SAME_SIGN_12)
 	@SP
 	AM=M-1
 	D=M
 	A=A-1
 	M=M-D
 	D=M
-	@GRATER_7
+	@GRATER_12
 	D;JGT
-	@LOWER_7
+	@LOWER_12
 	D;JLT
 	@SP
 	A=M-1
 	M=0
-	@CON_7
+	@CON_12
 	0;JMP
-(GRATER_7)
+(GRATER_12)
 	@SP
 	A=M-1
 	M=0
-	@CON_7
+	@CON_12
 	0;JMP
-(LOWER_7)
+(LOWER_12)
 	@SP
 	A=M-1
 	M=-1
-(CON_7)
+(CON_12)
 
 //not
 	@SP
@@ -1864,71 +1864,71 @@
 	@SP
 	A=M-1
 	D=M
-	@FIRST_PLUS_8
+	@FIRST_PLUS_13
 	D;JGT
-	@FIRST_MINUS_8
+	@FIRST_MINUS_13
 	D;JLT
-	@SAME_SIGN_8
+	@SAME_SIGN_13
 	0;JMP
-(FIRST_PLUS_8)
+(FIRST_PLUS_13)
 	@SP
 	A=M-1
 	A=A-1
 	D=M
-	@DIF_SIGN_LT_8
+	@DIF_SIGN_LT_13
 	D;JLT
-	@SAME_SIGN_8
+	@SAME_SIGN_13
 	0;JMP
-(DIF_SIGN_LT_8)
+(DIF_SIGN_LT_13)
 	@SP
 	AM=M-1
 	A=A-1
 	M=0
-	@CON_8
+	@CON_13
 	0;JMP
-(FIRST_MINUS_8)
+(FIRST_MINUS_13)
 	@SP
 	A=M-1
 	A=A-1
 	D=M
-	@DIF_SIGN_GT_8
+	@DIF_SIGN_GT_13
 	D;JGT
-	@SAME_SIGN_8
+	@SAME_SIGN_13
 	0;JMP
-(DIF_SIGN_GT_8)
+(DIF_SIGN_GT_13)
 	@SP
 	AM=M-1
 	A=A-1
 	M=-1
-	@CON_8
+	@CON_13
 	0;JMP
-(SAME_SIGN_8)
+(SAME_SIGN_13)
 	@SP
 	AM=M-1
 	D=M
 	A=A-1
 	M=M-D
 	D=M
-	@GRATER_8
+	@GRATER_13
 	D;JGT
-	@LOWER_8
+	@LOWER_13
 	D;JLT
 	@SP
 	A=M-1
 	M=0
-	@CON_8
+	@CON_13
 	0;JMP
-(GRATER_8)
+(GRATER_13)
 	@SP
 	A=M-1
 	M=-1
-	@CON_8
+	@CON_13
 	0;JMP
-(LOWER_8)
+(LOWER_13)
 	@SP
 	A=M-1
 	M=0
-(CON_8)
+(CON_13)
 
 //if-goto IF_TRUE1
 	@SP
@@ -2344,71 +2344,71 @@
 	@SP
 	A=M-1
 	D=M
-	@FIRST_PLUS_9
+	@FIRST_PLUS_14
 	D;JGT
-	@FIRST_MINUS_9
+	@FIRST_MINUS_14
 	D;JLT
-	@SAME_SIGN_9
+	@SAME_SIGN_14
 	0;JMP
-(FIRST_PLUS_9)
+(FIRST_PLUS_14)
 	@SP
 	A=M-1
 	A=A-1
 	D=M
-	@DIF_SIGN_LT_9
+	@DIF_SIGN_LT_14
 	D;JLT
-	@SAME_SIGN_9
+	@SAME_SIGN_14
 	0;JMP
-(DIF_SIGN_LT_9)
+(DIF_SIGN_LT_14)
 	@SP
 	AM=M-1
 	A=A-1
 	M=0
-	@CON_9
+	@CON_14
 	0;JMP
-(FIRST_MINUS_9)
+(FIRST_MINUS_14)
 	@SP
 	A=M-1
 	A=A-1
 	D=M
-	@DIF_SIGN_GT_9
+	@DIF_SIGN_GT_14
 	D;JGT
-	@SAME_SIGN_9
+	@SAME_SIGN_14
 	0;JMP
-(DIF_SIGN_GT_9)
+(DIF_SIGN_GT_14)
 	@SP
 	AM=M-1
 	A=A-1
 	M=0
-	@CON_9
+	@CON_14
 	0;JMP
-(SAME_SIGN_9)
+(SAME_SIGN_14)
 	@SP
 	AM=M-1
 	D=M
 	A=A-1
 	M=M-D
 	D=M
-	@GRATER_9
+	@GRATER_14
 	D;JGT
-	@LOWER_9
+	@LOWER_14
 	D;JLT
 	@SP
 	A=M-1
 	M=-1
-	@CON_9
+	@CON_14
 	0;JMP
-(GRATER_9)
+(GRATER_14)
 	@SP
 	A=M-1
 	M=0
-	@CON_9
+	@CON_14
 	0;JMP
-(LOWER_9)
+(LOWER_14)
 	@SP
 	A=M-1
 	M=0
-(CON_9)
+(CON_14)
 
 //if-goto IF_TRUE0
 	@SP
@@ -2433,7 +2433,7 @@
 	M=D
 
 //call Sys.error 1
-	@Sys.error&ret.5
+	@Sys.error&ret.15
 	D=A
 	@SP
 	M=M+1
@@ -2477,7 +2477,7 @@
 	M=D
 	@Sys.error
 	0;JMP
-(Sys.error&ret.5)
+(Sys.error&ret.15)
 
 //pop temp 0
 	@0
@@ -2520,71 +2520,71 @@
 	@SP
 	A=M-1
 	D=M
-	@FIRST_PLUS_10
+	@FIRST_PLUS_16
 	D;JGT
-	@FIRST_MINUS_10
+	@FIRST_MINUS_16
 	D;JLT
-	@SAME_SIGN_10
+	@SAME_SIGN_16
 	0;JMP
-(FIRST_PLUS_10)
+(FIRST_PLUS_16)
 	@SP
 	A=M-1
 	A=A-1
 	D=M
-	@DIF_SIGN_LT_10
+	@DIF_SIGN_LT_16
 	D;JLT
-	@SAME_SIGN_10
+	@SAME_SIGN_16
 	0;JMP
-(DIF_SIGN_LT_10)
+(DIF_SIGN_LT_16)
 	@SP
 	AM=M-1
 	A=A-1
 	M=-1
-	@CON_10
+	@CON_16
 	0;JMP
-(FIRST_MINUS_10)
+(FIRST_MINUS_16)
 	@SP
 	A=M-1
 	A=A-1
 	D=M
-	@DIF_SIGN_GT_10
+	@DIF_SIGN_GT_16
 	D;JGT
-	@SAME_SIGN_10
+	@SAME_SIGN_16
 	0;JMP
-(DIF_SIGN_GT_10)
+(DIF_SIGN_GT_16)
 	@SP
 	AM=M-1
 	A=A-1
 	M=0
-	@CON_10
+	@CON_16
 	0;JMP
-(SAME_SIGN_10)
+(SAME_SIGN_16)
 	@SP
 	AM=M-1
 	D=M
 	A=A-1
 	M=M-D
 	D=M
-	@GRATER_10
+	@GRATER_16
 	D;JGT
-	@LOWER_10
+	@LOWER_16
 	D;JLT
 	@SP
 	A=M-1
 	M=0
-	@CON_10
+	@CON_16
 	0;JMP
-(GRATER_10)
+(GRATER_16)
 	@SP
 	A=M-1
 	M=0
-	@CON_10
+	@CON_16
 	0;JMP
-(LOWER_10)
+(LOWER_16)
 	@SP
 	A=M-1
 	M=-1
-(CON_10)
+(CON_16)
 
 //push argument 1
 	@1
@@ -2609,71 +2609,71 @@
 	@SP
 	A=M-1
 	D=M
-	@FIRST_PLUS_11
+	@FIRST_PLUS_17
 	D;JGT
-	@FIRST_MINUS_11
+	@FIRST_MINUS_17
 	D;JLT
-	@SAME_SIGN_11
+	@SAME_SIGN_17
 	0;JMP
-(FIRST_PLUS_11)
+(FIRST_PLUS_17)
 	@SP
 	A=M-1
 	A=A-1
 	D=M
-	@DIF_SIGN_LT_11
+	@DIF_SIGN_LT_17
 	D;JLT
-	@SAME_SIGN_11
+	@SAME_SIGN_17
 	0;JMP
-(DIF_SIGN_LT_11)
+(DIF_SIGN_LT_17)
 	@SP
 	AM=M-1
 	A=A-1
 	M=0
-	@CON_11
+	@CON_17
 	0;JMP
-(FIRST_MINUS_11)
+(FIRST_MINUS_17)
 	@SP
 	A=M-1
 	A=A-1
 	D=M
-	@DIF_SIGN_GT_11
+	@DIF_SIGN_GT_17
 	D;JGT
-	@SAME_SIGN_11
+	@SAME_SIGN_17
 	0;JMP
-(DIF_SIGN_GT_11)
+(DIF_SIGN_GT_17)
 	@SP
 	AM=M-1
 	A=A-1
 	M=-1
-	@CON_11
+	@CON_17
 	0;JMP
-(SAME_SIGN_11)
+(SAME_SIGN_17)
 	@SP
 	AM=M-1
 	D=M
 	A=A-1
 	M=M-D
 	D=M
-	@GRATER_11
+	@GRATER_17
 	D;JGT
-	@LOWER_11
+	@LOWER_17
 	D;JLT
 	@SP
 	A=M-1
 	M=0
-	@CON_11
+	@CON_17
 	0;JMP
-(GRATER_11)
+(GRATER_17)
 	@SP
 	A=M-1
 	M=-1
-	@CON_11
+	@CON_17
 	0;JMP
-(LOWER_11)
+(LOWER_17)
 	@SP
 	A=M-1
 	M=0
-(CON_11)
+(CON_17)
 
 //and
 	@SP
@@ -2705,71 +2705,71 @@
 	@SP
 	A=M-1
 	D=M
-	@FIRST_PLUS_12
+	@FIRST_PLUS_18
 	D;JGT
-	@FIRST_MINUS_12
+	@FIRST_MINUS_18
 	D;JLT
-	@SAME_SIGN_12
+	@SAME_SIGN_18
 	0;JMP
-(FIRST_PLUS_12)
+(FIRST_PLUS_18)
 	@SP
 	A=M-1
 	A=A-1
 	D=M
-	@DIF_SIGN_LT_12
+	@DIF_SIGN_LT_18
 	D;JLT
-	@SAME_SIGN_12
+	@SAME_SIGN_18
 	0;JMP
-(DIF_SIGN_LT_12)
+(DIF_SIGN_LT_18)
 	@SP
 	AM=M-1
 	A=A-1
 	M=0
-	@CON_12
+	@CON_18
 	0;JMP
-(FIRST_MINUS_12)
+(FIRST_MINUS_18)
 	@SP
 	A=M-1
 	A=A-1
 	D=M
-	@DIF_SIGN_GT_12
+	@DIF_SIGN_GT_18
 	D;JGT
-	@SAME_SIGN_12
+	@SAME_SIGN_18
 	0;JMP
-(DIF_SIGN_GT_12)
+(DIF_SIGN_GT_18)
 	@SP
 	AM=M-1
 	A=A-1
 	M=-1
-	@CON_12
+	@CON_18
 	0;JMP
-(SAME_SIGN_12)
+(SAME_SIGN_18)
 	@SP
 	AM=M-1
 	D=M
 	A=A-1
 	M=M-D
 	D=M
-	@GRATER_12
+	@GRATER_18
 	D;JGT
-	@LOWER_12
+	@LOWER_18
 	D;JLT
 	@SP
 	A=M-1
 	M=0
-	@CON_12
+	@CON_18
 	0;JMP
-(GRATER_12)
+(GRATER_18)
 	@SP
 	A=M-1
 	M=-1
-	@CON_12
+	@CON_18
 	0;JMP
-(LOWER_12)
+(LOWER_18)
 	@SP
 	A=M-1
 	M=0
-(CON_12)
+(CON_18)
 
 //push argument 1
 	@1
@@ -2794,71 +2794,71 @@
 	@SP
 	A=M-1
 	D=M
-	@FIRST_PLUS_13
+	@FIRST_PLUS_19
 	D;JGT
-	@FIRST_MINUS_13
+	@FIRST_MINUS_19
 	D;JLT
-	@SAME_SIGN_13
+	@SAME_SIGN_19
 	0;JMP
-(FIRST_PLUS_13)
+(FIRST_PLUS_19)
 	@SP
 	A=M-1
 	A=A-1
 	D=M
-	@DIF_SIGN_LT_13
+	@DIF_SIGN_LT_19
 	D;JLT
-	@SAME_SIGN_13
+	@SAME_SIGN_19
 	0;JMP
-(DIF_SIGN_LT_13)
+(DIF_SIGN_LT_19)
 	@SP
 	AM=M-1
 	A=A-1
 	M=-1
-	@CON_13
+	@CON_19
 	0;JMP
-(FIRST_MINUS_13)
+(FIRST_MINUS_19)
 	@SP
 	A=M-1
 	A=A-1
 	D=M
-	@DIF_SIGN_GT_13
+	@DIF_SIGN_GT_19
 	D;JGT
-	@SAME_SIGN_13
+	@SAME_SIGN_19
 	0;JMP
-(DIF_SIGN_GT_13)
+(DIF_SIGN_GT_19)
 	@SP
 	AM=M-1
 	A=A-1
 	M=0
-	@CON_13
+	@CON_19
 	0;JMP
-(SAME_SIGN_13)
+(SAME_SIGN_19)
 	@SP
 	AM=M-1
 	D=M
 	A=A-1
 	M=M-D
 	D=M
-	@GRATER_13
+	@GRATER_19
 	D;JGT
-	@LOWER_13
+	@LOWER_19
 	D;JLT
 	@SP
 	A=M-1
 	M=0
-	@CON_13
+	@CON_19
 	0;JMP
-(GRATER_13)
+(GRATER_19)
 	@SP
 	A=M-1
 	M=0
-	@CON_13
+	@CON_19
 	0;JMP
-(LOWER_13)
+(LOWER_19)
 	@SP
 	A=M-1
 	M=-1
-(CON_13)
+(CON_19)
 
 //and
 	@SP
@@ -2924,7 +2924,7 @@
 	M=D
 
 //call Math.abs 1
-	@Math.abs&ret.6
+	@Math.abs&ret.20
 	D=A
 	@SP
 	M=M+1
@@ -2968,7 +2968,7 @@
 	M=D
 	@Math.abs
 	0;JMP
-(Math.abs&ret.6)
+(Math.abs&ret.20)
 
 //pop temp 0
 	@0
@@ -3035,7 +3035,7 @@
 	M=D
 
 //call Math.abs 1
-	@Math.abs&ret.7
+	@Math.abs&ret.21
 	D=A
 	@SP
 	M=M+1
@@ -3079,7 +3079,7 @@
 	M=D
 	@Math.abs
 	0;JMP
-(Math.abs&ret.7)
+(Math.abs&ret.21)
 
 //pop argument 0
 	@0
@@ -3244,71 +3244,71 @@
 	@SP
 	A=M-1
 	D=M
-	@FIRST_PLUS_14
+	@FIRST_PLUS_22
 	D;JGT
-	@FIRST_MINUS_14
+	@FIRST_MINUS_22
 	D;JLT
-	@SAME_SIGN_14
+	@SAME_SIGN_22
 	0;JMP
-(FIRST_PLUS_14)
+(FIRST_PLUS_22)
 	@SP
 	A=M-1
 	A=A-1
 	D=M
-	@DIF_SIGN_LT_14
+	@DIF_SIGN_LT_22
 	D;JLT
-	@SAME_SIGN_14
+	@SAME_SIGN_22
 	0;JMP
-(DIF_SIGN_LT_14)
+(DIF_SIGN_LT_22)
 	@SP
 	AM=M-1
 	A=A-1
 	M=-1
-	@CON_14
+	@CON_22
 	0;JMP
-(FIRST_MINUS_14)
+(FIRST_MINUS_22)
 	@SP
 	A=M-1
 	A=A-1
 	D=M
-	@DIF_SIGN_GT_14
+	@DIF_SIGN_GT_22
 	D;JGT
-	@SAME_SIGN_14
+	@SAME_SIGN_22
 	0;JMP
-(DIF_SIGN_GT_14)
+(DIF_SIGN_GT_22)
 	@SP
 	AM=M-1
 	A=A-1
 	M=0
-	@CON_14
+	@CON_22
 	0;JMP
-(SAME_SIGN_14)
+(SAME_SIGN_22)
 	@SP
 	AM=M-1
 	D=M
 	A=A-1
 	M=M-D
 	D=M
-	@GRATER_14
+	@GRATER_22
 	D;JGT
-	@LOWER_14
+	@LOWER_22
 	D;JLT
 	@SP
 	A=M-1
 	M=0
-	@CON_14
+	@CON_22
 	0;JMP
-(GRATER_14)
+(GRATER_22)
 	@SP
 	A=M-1
 	M=0
-	@CON_14
+	@CON_22
 	0;JMP
-(LOWER_14)
+(LOWER_22)
 	@SP
 	A=M-1
 	M=-1
-(CON_14)
+(CON_22)
 
 //pop local 3
 	@3
@@ -3633,71 +3633,71 @@
 	@SP
 	A=M-1
 	D=M
-	@FIRST_PLUS_15
+	@FIRST_PLUS_23
 	D;JGT
-	@FIRST_MINUS_15
+	@FIRST_MINUS_23
 	D;JLT
-	@SAME_SIGN_15
+	@SAME_SIGN_23
 	0;JMP
-(FIRST_PLUS_15)
+(FIRST_PLUS_23)
 	@SP
 	A=M-1
 	A=A-1
 	D=M
-	@DIF_SIGN_LT_15
+	@DIF_SIGN_LT_23
 	D;JLT
-	@SAME_SIGN_15
+	@SAME_SIGN_23
 	0;JMP
-(DIF_SIGN_LT_15)
+(DIF_SIGN_LT_23)
 	@SP
 	AM=M-1
 	A=A-1
 	M=0
-	@CON_15
+	@CON_23
 	0;JMP
-(FIRST_MINUS_15)
+(FIRST_MINUS_23)
 	@SP
 	A=M-1
 	A=A-1
 	D=M
-	@DIF_SIGN_GT_15
+	@DIF_SIGN_GT_23
 	D;JGT
-	@SAME_SIGN_15
+	@SAME_SIGN_23
 	0;JMP
-(DIF_SIGN_GT_15)
+(DIF_SIGN_GT_23)
 	@SP
 	AM=M-1
 	A=A-1
 	M=-1
-	@CON_15
+	@CON_23
 	0;JMP
-(SAME_SIGN_15)
+(SAME_SIGN_23)
 	@SP
 	AM=M-1
 	D=M
 	A=A-1
 	M=M-D
 	D=M
-	@GRATER_15
+	@GRATER_23
 	D;JGT
-	@LOWER_15
+	@LOWER_23
 	D;JLT
 	@SP
 	A=M-1
 	M=0
-	@CON_15
+	@CON_23
 	0;JMP
-(GRATER_15)
+(GRATER_23)
 	@SP
 	A=M-1
 	M=-1
-	@CON_15
+	@CON_23
 	0;JMP
-(LOWER_15)
+(LOWER_23)
 	@SP
 	A=M-1
 	M=0
-(CON_15)
+(CON_23)
 
 //pop local 3
 	@3
@@ -3829,71 +3829,71 @@
 	@SP
 	A=M-1
 	D=M
-	@FIRST_PLUS_16
+	@FIRST_PLUS_24
 	D;JGT
-	@FIRST_MINUS_16
+	@FIRST_MINUS_24
 	D;JLT
-	@SAME_SIGN_16
+	@SAME_SIGN_24
 	0;JMP
-(FIRST_PLUS_16)
+(FIRST_PLUS_24)
 	@SP
 	A=M-1
 	A=A-1
 	D=M
-	@DIF_SIGN_LT_16
+	@DIF_SIGN_LT_24
 	D;JLT
-	@SAME_SIGN_16
+	@SAME_SIGN_24
 	0;JMP
-(DIF_SIGN_LT_16)
+(DIF_SIGN_LT_24)
 	@SP
 	AM=M-1
 	A=A-1
 	M=0
-	@CON_16
+	@CON_24
 	0;JMP
-(FIRST_MINUS_16)
+(FIRST_MINUS_24)
 	@SP
 	A=M-1
 	A=A-1
 	D=M
-	@DIF_SIGN_GT_16
+	@DIF_SIGN_GT_24
 	D;JGT
-	@SAME_SIGN_16
+	@SAME_SIGN_24
 	0;JMP
-(DIF_SIGN_GT_16)
+(DIF_SIGN_GT_24)
 	@SP
 	AM=M-1
 	A=A-1
 	M=-1
-	@CON_16
+	@CON_24
 	0;JMP
-(SAME_SIGN_16)
+(SAME_SIGN_24)
 	@SP
 	AM=M-1
 	D=M
 	A=A-1
 	M=M-D
 	D=M
-	@GRATER_16
+	@GRATER_24
 	D;JGT
-	@LOWER_16
+	@LOWER_24
 	D;JLT
 	@SP
 	A=M-1
 	M=0
-	@CON_16
+	@CON_24
 	0;JMP
-(GRATER_16)
+(GRATER_24)
 	@SP
 	A=M-1
 	M=-1
-	@CON_16
+	@CON_24
 	0;JMP
-(LOWER_16)
+(LOWER_24)
 	@SP
 	A=M-1
 	M=0
-(CON_16)
+(CON_24)
 
 //not
 	@SP
@@ -3971,71 +3971,71 @@
 	@SP
 	A=M-1
 	D=M
-	@FIRST_PLUS_17
+	@FIRST_PLUS_25
 	D;JGT
-	@FIRST_MINUS_17
+	@FIRST_MINUS_25
 	D;JLT
-	@SAME_SIGN_17
+	@SAME_SIGN_25
 	0;JMP
-(FIRST_PLUS_17)
+(FIRST_PLUS_25)
 	@SP
 	A=M-1
 	A=A-1
 	D=M
-	@DIF_SIGN_LT_17
+	@DIF_SIGN_LT_25
 	D;JLT
-	@SAME_SIGN_17
+	@SAME_SIGN_25
 	0;JMP
-(DIF_SIGN_LT_17)
+(DIF_SIGN_LT_25)
 	@SP
 	AM=M-1
 	A=A-1
 	M=0
-	@CON_17
+	@CON_25
 	0;JMP
-(FIRST_MINUS_17)
+(FIRST_MINUS_25)
 	@SP
 	A=M-1
 	A=A-1
 	D=M
-	@DIF_SIGN_GT_17
+	@DIF_SIGN_GT_25
 	D;JGT
-	@SAME_SIGN_17
+	@SAME_SIGN_25
 	0;JMP
-(DIF_SIGN_GT_17)
+(DIF_SIGN_GT_25)
 	@SP
 	AM=M-1
 	A=A-1
 	M=-1
-	@CON_17
+	@CON_25
 	0;JMP
-(SAME_SIGN_17)
+(SAME_SIGN_25)
 	@SP
 	AM=M-1
 	D=M
 	A=A-1
 	M=M-D
 	D=M
-	@GRATER_17
+	@GRATER_25
 	D;JGT
-	@LOWER_17
+	@LOWER_25
 	D;JLT
 	@SP
 	A=M-1
 	M=0
-	@CON_17
+	@CON_25
 	0;JMP
-(GRATER_17)
+(GRATER_25)
 	@SP
 	A=M-1
 	M=-1
-	@CON_17
+	@CON_25
 	0;JMP
-(LOWER_17)
+(LOWER_25)
 	@SP
 	A=M-1
 	M=0
-(CON_17)
+(CON_25)
 
 //not
 	@SP
@@ -4438,71 +4438,71 @@
 	@SP
 	A=M-1
 	D=M
-	@FIRST_PLUS_18
+	@FIRST_PLUS_26
 	D;JGT
-	@FIRST_MINUS_18
+	@FIRST_MINUS_26
 	D;JLT
-	@SAME_SIGN_18
+	@SAME_SIGN_26
 	0;JMP
-(FIRST_PLUS_18)
+(FIRST_PLUS_26)
 	@SP
 	A=M-1
 	A=A-1
 	D=M
-	@DIF_SIGN_LT_18
+	@DIF_SIGN_LT_26
 	D;JLT
-	@SAME_SIGN_18
+	@SAME_SIGN_26
 	0;JMP
-(DIF_SIGN_LT_18)
+(DIF_SIGN_LT_26)
 	@SP
 	AM=M-1
 	A=A-1
 	M=-1
-	@CON_18
+	@CON_26
 	0;JMP
-(FIRST_MINUS_18)
+(FIRST_MINUS_26)
 	@SP
 	A=M-1
 	A=A-1
 	D=M
-	@DIF_SIGN_GT_18
+	@DIF_SIGN_GT_26
 	D;JGT
-	@SAME_SIGN_18
+	@SAME_SIGN_26
 	0;JMP
-(DIF_SIGN_GT_18)
+(DIF_SIGN_GT_26)
 	@SP
 	AM=M-1
 	A=A-1
 	M=0
-	@CON_18
+	@CON_26
 	0;JMP
-(SAME_SIGN_18)
+(SAME_SIGN_26)
 	@SP
 	AM=M-1
 	D=M
 	A=A-1
 	M=M-D
 	D=M
-	@GRATER_18
+	@GRATER_26
 	D;JGT
-	@LOWER_18
+	@LOWER_26
 	D;JLT
 	@SP
 	A=M-1
 	M=0
-	@CON_18
+	@CON_26
 	0;JMP
-(GRATER_18)
+(GRATER_26)
 	@SP
 	A=M-1
 	M=0
-	@CON_18
+	@CON_26
 	0;JMP
-(LOWER_18)
+(LOWER_26)
 	@SP
 	A=M-1
 	M=-1
-(CON_18)
+(CON_26)
 
 //if-goto IF_TRUE0
 	@SP
@@ -4527,7 +4527,7 @@
 	M=D
 
 //call Sys.error 1
-	@Sys.error&ret.8
+	@Sys.error&ret.27
 	D=A
 	@SP
 	M=M+1
@@ -4571,7 +4571,7 @@
 	M=D
 	@Sys.error
 	0;JMP
-(Sys.error&ret.8)
+(Sys.error&ret.27)
 
 //pop temp 0
 	@0
@@ -4645,71 +4645,71 @@
 	@SP
 	A=M-1
 	D=M
-	@FIRST_PLUS_19
+	@FIRST_PLUS_28
 	D;JGT
-	@FIRST_MINUS_19
+	@FIRST_MINUS_28
 	D;JLT
-	@SAME_SIGN_19
+	@SAME_SIGN_28
 	0;JMP
-(FIRST_PLUS_19)
+(FIRST_PLUS_28)
 	@SP
 	A=M-1
 	A=A-1
 	D=M
-	@DIF_SIGN_LT_19
+	@DIF_SIGN_LT_28
 	D;JLT
-	@SAME_SIGN_19
+	@SAME_SIGN_28
 	0;JMP
-(DIF_SIGN_LT_19)
+(DIF_SIGN_LT_28)
 	@SP
 	AM=M-1
 	A=A-1
 	M=0
-	@CON_19
+	@CON_28
 	0;JMP
-(FIRST_MINUS_19)
+(FIRST_MINUS_28)
 	@SP
 	A=M-1
 	A=A-1
 	D=M
-	@DIF_SIGN_GT_19
+	@DIF_SIGN_GT_28
 	D;JGT
-	@SAME_SIGN_19
+	@SAME_SIGN_28
 	0;JMP
-(DIF_SIGN_GT_19)
+(DIF_SIGN_GT_28)
 	@SP
 	AM=M-1
 	A=A-1
 	M=-1
-	@CON_19
+	@CON_28
 	0;JMP
-(SAME_SIGN_19)
+(SAME_SIGN_28)
 	@SP
 	AM=M-1
 	D=M
 	A=A-1
 	M=M-D
 	D=M
-	@GRATER_19
+	@GRATER_28
 	D;JGT
-	@LOWER_19
+	@LOWER_28
 	D;JLT
 	@SP
 	A=M-1
 	M=0
-	@CON_19
+	@CON_28
 	0;JMP
-(GRATER_19)
+(GRATER_28)
 	@SP
 	A=M-1
 	M=-1
-	@CON_19
+	@CON_28
 	0;JMP
-(LOWER_19)
+(LOWER_28)
 	@SP
 	A=M-1
 	M=0
-(CON_19)
+(CON_28)
 
 //not
 	@SP
@@ -4858,7 +4858,7 @@
 	M=M+D
 
 //call Math.multiply 2
-	@Math.multiply&ret.9
+	@Math.multiply&ret.29
 	D=A
 	@SP
 	M=M+1
@@ -4902,7 +4902,7 @@
 	M=D
 	@Math.multiply
 	0;JMP
-(Math.multiply&ret.9)
+(Math.multiply&ret.29)
 
 //push argument 0
 	@0
@@ -4919,71 +4919,71 @@
 	@SP
 	A=M-1
 	D=M
-	@FIRST_PLUS_20
+	@FIRST_PLUS_30
 	D;JGT
-	@FIRST_MINUS_20
+	@FIRST_MINUS_30
 	D;JLT
-	@SAME_SIGN_20
+	@SAME_SIGN_30
 	0;JMP
-(FIRST_PLUS_20)
+(FIRST_PLUS_30)
 	@SP
 	A=M-1
 	A=A-1
 	D=M
-	@DIF_SIGN_LT_20
+	@DIF_SIGN_LT_30
 	D;JLT
-	@SAME_SIGN_20
+	@SAME_SIGN_30
 	0;JMP
-(DIF_SIGN_LT_20)
+(DIF_SIGN_LT_30)
 	@SP
 	AM=M-1
 	A=A-1
 	M=0
-	@CON_20
+	@CON_30
 	0;JMP
-(FIRST_MINUS_20)
+(FIRST_MINUS_30)
 	@SP
 	A=M-1
 	A=A-1
 	D=M
-	@DIF_SIGN_GT_20
+	@DIF_SIGN_GT_30
 	D;JGT
-	@SAME_SIGN_20
+	@SAME_SIGN_30
 	0;JMP
-(DIF_SIGN_GT_20)
+(DIF_SIGN_GT_30)
 	@SP
 	AM=M-1
 	A=A-1
 	M=-1
-	@CON_20
+	@CON_30
 	0;JMP
-(SAME_SIGN_20)
+(SAME_SIGN_30)
 	@SP
 	AM=M-1
 	D=M
 	A=A-1
 	M=M-D
 	D=M
-	@GRATER_20
+	@GRATER_30
 	D;JGT
-	@LOWER_20
+	@LOWER_30
 	D;JLT
 	@SP
 	A=M-1
 	M=0
-	@CON_20
+	@CON_30
 	0;JMP
-(GRATER_20)
+(GRATER_30)
 	@SP
 	A=M-1
 	M=-1
-	@CON_20
+	@CON_30
 	0;JMP
-(LOWER_20)
+(LOWER_30)
 	@SP
 	A=M-1
 	M=0
-(CON_20)
+(CON_30)
 
 //not
 	@SP
@@ -5236,71 +5236,71 @@
 	@SP
 	A=M-1
 	D=M
-	@FIRST_PLUS_21
+	@FIRST_PLUS_31
 	D;JGT
-	@FIRST_MINUS_21
+	@FIRST_MINUS_31
 	D;JLT
-	@SAME_SIGN_21
+	@SAME_SIGN_31
 	0;JMP
-(FIRST_PLUS_21)
+(FIRST_PLUS_31)
 	@SP
 	A=M-1
 	A=A-1
 	D=M
-	@DIF_SIGN_LT_21
+	@DIF_SIGN_LT_31
 	D;JLT
-	@SAME_SIGN_21
+	@SAME_SIGN_31
 	0;JMP
-(DIF_SIGN_LT_21)
+(DIF_SIGN_LT_31)
 	@SP
 	AM=M-1
 	A=A-1
 	M=0
-	@CON_21
+	@CON_31
 	0;JMP
-(FIRST_MINUS_21)
+(FIRST_MINUS_31)
 	@SP
 	A=M-1
 	A=A-1
 	D=M
-	@DIF_SIGN_GT_21
+	@DIF_SIGN_GT_31
 	D;JGT
-	@SAME_SIGN_21
+	@SAME_SIGN_31
 	0;JMP
-(DIF_SIGN_GT_21)
+(DIF_SIGN_GT_31)
 	@SP
 	AM=M-1
 	A=A-1
 	M=-1
-	@CON_21
+	@CON_31
 	0;JMP
-(SAME_SIGN_21)
+(SAME_SIGN_31)
 	@SP
 	AM=M-1
 	D=M
 	A=A-1
 	M=M-D
 	D=M
-	@GRATER_21
+	@GRATER_31
 	D;JGT
-	@LOWER_21
+	@LOWER_31
 	D;JLT
 	@SP
 	A=M-1
 	M=0
-	@CON_21
+	@CON_31
 	0;JMP
-(GRATER_21)
+(GRATER_31)
 	@SP
 	A=M-1
 	M=-1
-	@CON_21
+	@CON_31
 	0;JMP
-(LOWER_21)
+(LOWER_31)
 	@SP
 	A=M-1
 	M=0
-(CON_21)
+(CON_31)
 
 //if-goto IF_TRUE0
 	@SP
@@ -5444,71 +5444,71 @@
 	@SP
 	A=M-1
 	D=M
-	@FIRST_PLUS_22
+	@FIRST_PLUS_32
 	D;JGT
-	@FIRST_MINUS_22
+	@FIRST_MINUS_32
 	D;JLT
-	@SAME_SIGN_22
+	@SAME_SIGN_32
 	0;JMP
-(FIRST_PLUS_22)
+(FIRST_PLUS_32)
 	@SP
 	A=M-1
 	A=A-1
 	D=M
-	@DIF_SIGN_LT_22
+	@DIF_SIGN_LT_32
 	D;JLT
-	@SAME_SIGN_22
+	@SAME_SIGN_32
 	0;JMP
-(DIF_SIGN_LT_22)
+(DIF_SIGN_LT_32)
 	@SP
 	AM=M-1
 	A=A-1
 	M=-1
-	@CON_22
+	@CON_32
 	0;JMP
-(FIRST_MINUS_22)
+(FIRST_MINUS_32)
 	@SP
 	A=M-1
 	A=A-1
 	D=M
-	@DIF_SIGN_GT_22
+	@DIF_SIGN_GT_32
 	D;JGT
-	@SAME_SIGN_22
+	@SAME_SIGN_32
 	0;JMP
-(DIF_SIGN_GT_22)
+(DIF_SIGN_GT_32)
 	@SP
 	AM=M-1
 	A=A-1
 	M=0
-	@CON_22
+	@CON_32
 	0;JMP
-(SAME_SIGN_22)
+(SAME_SIGN_32)
 	@SP
 	AM=M-1
 	D=M
 	A=A-1
 	M=M-D
 	D=M
-	@GRATER_22
+	@GRATER_32
 	D;JGT
-	@LOWER_22
+	@LOWER_32
 	D;JLT
 	@SP
 	A=M-1
 	M=0
-	@CON_22
+	@CON_32
 	0;JMP
-(GRATER_22)
+(GRATER_32)
 	@SP
 	A=M-1
 	M=0
-	@CON_22
+	@CON_32
 	0;JMP
-(LOWER_22)
+(LOWER_32)
 	@SP
 	A=M-1
 	M=-1
-(CON_22)
+(CON_32)
 
 //if-goto IF_TRUE0
 	@SP
@@ -5649,71 +5649,71 @@
 	@SP
 	A=M-1
 	D=M
-	@FIRST_PLUS_23
+	@FIRST_PLUS_33
 	D;JGT
-	@FIRST_MINUS_23
+	@FIRST_MINUS_33
 	D;JLT
-	@SAME_SIGN_23
+	@SAME_SIGN_33
 	0;JMP
-(FIRST_PLUS_23)
+(FIRST_PLUS_33)
 	@SP
 	A=M-1
 	A=A-1
 	D=M
-	@DIF_SIGN_LT_23
+	@DIF_SIGN_LT_33
 	D;JLT
-	@SAME_SIGN_23
+	@SAME_SIGN_33
 	0;JMP
-(DIF_SIGN_LT_23)
+(DIF_SIGN_LT_33)
 	@SP
 	AM=M-1
 	A=A-1
 	M=0
-	@CON_23
+	@CON_33
 	0;JMP
-(FIRST_MINUS_23)
+(FIRST_MINUS_33)
 	@SP
 	A=M-1
 	A=A-1
 	D=M
-	@DIF_SIGN_GT_23
+	@DIF_SIGN_GT_33
 	D;JGT
-	@SAME_SIGN_23
+	@SAME_SIGN_33
 	0;JMP
-(DIF_SIGN_GT_23)
+(DIF_SIGN_GT_33)
 	@SP
 	AM=M-1
 	A=A-1
 	M=-1
-	@CON_23
+	@CON_33
 	0;JMP
-(SAME_SIGN_23)
+(SAME_SIGN_33)
 	@SP
 	AM=M-1
 	D=M
 	A=A-1
 	M=M-D
 	D=M
-	@GRATER_23
+	@GRATER_33
 	D;JGT
-	@LOWER_23
+	@LOWER_33
 	D;JLT
 	@SP
 	A=M-1
 	M=0
-	@CON_23
+	@CON_33
 	0;JMP
-(GRATER_23)
+(GRATER_33)
 	@SP
 	A=M-1
 	M=-1
-	@CON_23
+	@CON_33
 	0;JMP
-(LOWER_23)
+(LOWER_33)
 	@SP
 	A=M-1
 	M=0
-(CON_23)
+(CON_33)
 
 //not
 	@SP
@@ -5743,7 +5743,7 @@
 	M=D
 
 //call Sys.error 1
-	@Sys.error&ret.10
+	@Sys.error&ret.34
 	D=A
 	@SP
 	M=M+1
@@ -5787,7 +5787,7 @@
 	M=D
 	@Sys.error
 	0;JMP
-(Sys.error&ret.10)
+(Sys.error&ret.34)
 
 //pop temp 0
 	@0
@@ -5819,7 +5819,7 @@
 	M=D
 
 //call Memory.alloc 1
-	@Memory.alloc&ret.11
+	@Memory.alloc&ret.35
 	D=A
 	@SP
 	M=M+1
@@ -5863,7 +5863,7 @@
 	M=D
 	@Memory.alloc
 	0;JMP
-(Memory.alloc&ret.11)
+(Memory.alloc&ret.35)
 
 //return
 	@LCL
@@ -5959,7 +5959,7 @@
 	M=D
 
 //call Memory.deAlloc 1
-	@Memory.deAlloc&ret.12
+	@Memory.deAlloc&ret.36
 	D=A
 	@SP
 	M=M+1
@@ -6003,7 +6003,7 @@
 	M=D
 	@Memory.deAlloc
 	0;JMP
-(Memory.deAlloc&ret.12)
+(Memory.deAlloc&ret.36)
 
 //pop temp 0
 	@0
@@ -6148,7 +6148,7 @@
 	M=D
 
 //call Memory.poke 2
-	@Memory.poke&ret.13
+	@Memory.poke&ret.37
 	D=A
 	@SP
 	M=M+1
@@ -6192,7 +6192,7 @@
 	M=D
 	@Memory.poke
 	0;JMP
-(Memory.poke&ret.13)
+(Memory.poke&ret.37)
 
 //pop temp 0
 	@0
@@ -6226,7 +6226,7 @@
 	M=D
 
 //call Memory.poke 2
-	@Memory.poke&ret.14
+	@Memory.poke&ret.38
 	D=A
 	@SP
 	M=M+1
@@ -6270,7 +6270,7 @@
 	M=D
 	@Memory.poke
 	0;JMP
-(Memory.poke&ret.14)
+(Memory.poke&ret.38)
 
 //pop temp 0
 	@0
@@ -6313,71 +6313,71 @@
 	@SP
 	A=M-1
 	D=M
-	@FIRST_PLUS_24
+	@FIRST_PLUS_39
 	D;JGT
-	@FIRST_MINUS_24
+	@FIRST_MINUS_39
 	D;JLT
-	@SAME_SIGN_24
+	@SAME_SIGN_39
 	0;JMP
-(FIRST_PLUS_24)
+(FIRST_PLUS_39)
 	@SP
 	A=M-1
 	A=A-1
 	D=M
-	@DIF_SIGN_LT_24
+	@DIF_SIGN_LT_39
 	D;JLT
-	@SAME_SIGN_24
+	@SAME_SIGN_39
 	0;JMP
-(DIF_SIGN_LT_24)
+(DIF_SIGN_LT_39)
 	@SP
 	AM=M-1
 	A=A-1
 	M=-1
-	@CON_24
+	@CON_39
 	0;JMP
-(FIRST_MINUS_24)
+(FIRST_MINUS_39)
 	@SP
 	A=M-1
 	A=A-1
 	D=M
-	@DIF_SIGN_GT_24
+	@DIF_SIGN_GT_39
 	D;JGT
-	@SAME_SIGN_24
+	@SAME_SIGN_39
 	0;JMP
-(DIF_SIGN_GT_24)
+(DIF_SIGN_GT_39)
 	@SP
 	AM=M-1
 	A=A-1
 	M=0
-	@CON_24
+	@CON_39
 	0;JMP
-(SAME_SIGN_24)
+(SAME_SIGN_39)
 	@SP
 	AM=M-1
 	D=M
 	A=A-1
 	M=M-D
 	D=M
-	@GRATER_24
+	@GRATER_39
 	D;JGT
-	@LOWER_24
+	@LOWER_39
 	D;JLT
 	@SP
 	A=M-1
 	M=0
-	@CON_24
+	@CON_39
 	0;JMP
-(GRATER_24)
+(GRATER_39)
 	@SP
 	A=M-1
 	M=0
-	@CON_24
+	@CON_39
 	0;JMP
-(LOWER_24)
+(LOWER_39)
 	@SP
 	A=M-1
 	M=-1
-(CON_24)
+(CON_39)
 
 //not
 	@SP
@@ -6433,7 +6433,7 @@
 	M=M-D
 
 //call Memory.peek 1
-	@Memory.peek&ret.15
+	@Memory.peek&ret.40
 	D=A
 	@SP
 	M=M+1
@@ -6477,7 +6477,7 @@
 	M=D
 	@Memory.peek
 	0;JMP
-(Memory.peek&ret.15)
+(Memory.peek&ret.40)
 
 //pop local 1
 	@1
@@ -6536,7 +6536,7 @@
 	M=M-D
 
 //call Memory.peek 1
-	@Memory.peek&ret.16
+	@Memory.peek&ret.41
 	D=A
 	@SP
 	M=M+1
@@ -6580,7 +6580,7 @@
 	M=D
 	@Memory.peek
 	0;JMP
-(Memory.peek&ret.16)
+(Memory.peek&ret.41)
 
 //pop local 2
 	@2
@@ -6653,7 +6653,7 @@
 	M=M+D
 
 //call Memory.poke 2
-	@Memory.poke&ret.17
+	@Memory.poke&ret.42
 	D=A
 	@SP
 	M=M+1
@@ -6697,7 +6697,7 @@
 	M=D
 	@Memory.poke
 	0;JMP
-(Memory.poke&ret.17)
+(Memory.poke&ret.42)
 
 //pop temp 0
 	@0
@@ -6833,7 +6833,7 @@
 (Sys.init)
 
 //call Memory.init 0
-	@Memory.init&ret.18
+	@Memory.init&ret.43
 	D=A
 	@SP
 	M=M+1
@@ -6877,7 +6877,7 @@
 	M=D
 	@Memory.init
 	0;JMP
-(Memory.init&ret.18)
+(Memory.init&ret.43)
 
 //pop temp 0
 	@0
@@ -6895,7 +6895,7 @@
 	M=D
 
 //call Math.init 0
-	@Math.init&ret.19
+	@Math.init&ret.44
 	D=A
 	@SP
 	M=M+1
@@ -6939,7 +6939,7 @@
 	M=D
 	@Math.init
 	0;JMP
-(Math.init&ret.19)
+(Math.init&ret.44)
 
 //pop temp 0
 	@0
@@ -6957,7 +6957,7 @@
 	M=D
 
 //call Main.main 0
-	@Main.main&ret.20
+	@Main.main&ret.45
 	D=A
 	@SP
 	M=M+1
@@ -7001,7 +7001,7 @@
 	M=D
 	@Main.main
 	0;JMP
-(Main.main&ret.20)
+(Main.main&ret.45)
 
 //pop temp 0
 	@0
@@ -7123,71 +7123,71 @@
 	@SP
 	A=M-1
 	D=M
-	@FIRST_PLUS_25
+	@FIRST_PLUS_46
 	D;JGT
-	@FIRST_MINUS_25
+	@FIRST_MINUS_46
 	D;JLT
-	@SAME_SIGN_25
+	@SAME_SIGN_46
 	0;JMP
-(FIRST_PLUS_25)
+(FIRST_PLUS_46)
 	@SP
 	A=M-1
 	A=A-1
 	D=M
-	@DIF_SIGN_LT_25
+	@DIF_SIGN_LT_46
 	D;JLT
-	@SAME_SIGN_25
+	@SAME_SIGN_46
 	0;JMP
-(DIF_SIGN_LT_25)
+(DIF_SIGN_LT_46)
 	@SP
 	AM=M-1
 	A=A-1
 	M=-1
-	@CON_25
+	@CON_46
 	0;JMP
-(FIRST_MINUS_25)
+(FIRST_MINUS_46)
 	@SP
 	A=M-1
 	A=A-1
 	D=M
-	@DIF_SIGN_GT_25
+	@DIF_SIGN_GT_46
 	D;JGT
-	@SAME_SIGN_25
+	@SAME_SIGN_46
 	0;JMP
-(DIF_SIGN_GT_25)
+(DIF_SIGN_GT_46)
 	@SP
 	AM=M-1
 	A=A-1
 	M=0
-	@CON_25
+	@CON_46
 	0;JMP
-(SAME_SIGN_25)
+(SAME_SIGN_46)
 	@SP
 	AM=M-1
 	D=M
 	A=A-1
 	M=M-D
 	D=M
-	@GRATER_25
+	@GRATER_46
 	D;JGT
-	@LOWER_25
+	@LOWER_46
 	D;JLT
 	@SP
 	A=M-1
 	M=0
-	@CON_25
+	@CON_46
 	0;JMP
-(GRATER_25)
+(GRATER_46)
 	@SP
 	A=M-1
 	M=0
-	@CON_25
+	@CON_46
 	0;JMP
-(LOWER_25)
+(LOWER_46)
 	@SP
 	A=M-1
 	M=-1
-(CON_25)
+(CON_46)
 
 //if-goto IF_TRUE0
 	@SP
@@ -7212,7 +7212,7 @@
 	M=D
 
 //call Sys.error 1
-	@Sys.error&ret.21
+	@Sys.error&ret.47
 	D=A
 	@SP
 	M=M+1
@@ -7256,7 +7256,7 @@
 	M=D
 	@Sys.error
 	0;JMP
-(Sys.error&ret.21)
+(Sys.error&ret.47)
 
 //pop temp 0
 	@0
@@ -7302,71 +7302,71 @@
 	@SP
 	A=M-1
 	D=M
-	@FIRST_PLUS_26
+	@FIRST_PLUS_48
 	D;JGT
-	@FIRST_MINUS_26
+	@FIRST_MINUS_48
 	D;JLT
-	@SAME_SIGN_26
+	@SAME_SIGN_48
 	0;JMP
-(FIRST_PLUS_26)
+(FIRST_PLUS_48)
 	@SP
 	A=M-1
 	A=A-1
 	D=M
-	@DIF_SIGN_LT_26
+	@DIF_SIGN_LT_48
 	D;JLT
-	@SAME_SIGN_26
+	@SAME_SIGN_48
 	0;JMP
-(DIF_SIGN_LT_26)
+(DIF_SIGN_LT_48)
 	@SP
 	AM=M-1
 	A=A-1
 	M=0
-	@CON_26
+	@CON_48
 	0;JMP
-(FIRST_MINUS_26)
+(FIRST_MINUS_48)
 	@SP
 	A=M-1
 	A=A-1
 	D=M
-	@DIF_SIGN_GT_26
+	@DIF_SIGN_GT_48
 	D;JGT
-	@SAME_SIGN_26
+	@SAME_SIGN_48
 	0;JMP
-(DIF_SIGN_GT_26)
+(DIF_SIGN_GT_48)
 	@SP
 	AM=M-1
 	A=A-1
 	M=-1
-	@CON_26
+	@CON_48
 	0;JMP
-(SAME_SIGN_26)
+(SAME_SIGN_48)
 	@SP
 	AM=M-1
 	D=M
 	A=A-1
 	M=M-D
 	D=M
-	@GRATER_26
+	@GRATER_48
 	D;JGT
-	@LOWER_26
+	@LOWER_48
 	D;JLT
 	@SP
 	A=M-1
 	M=0
-	@CON_26
+	@CON_48
 	0;JMP
-(GRATER_26)
+(GRATER_48)
 	@SP
 	A=M-1
 	M=-1
-	@CON_26
+	@CON_48
 	0;JMP
-(LOWER_26)
+(LOWER_48)
 	@SP
 	A=M-1
 	M=0
-(CON_26)
+(CON_48)
 
 //not
 	@SP
@@ -7429,71 +7429,71 @@
 	@SP
 	A=M-1
 	D=M
-	@FIRST_PLUS_27
+	@FIRST_PLUS_49
 	D;JGT
-	@FIRST_MINUS_27
+	@FIRST_MINUS_49
 	D;JLT
-	@SAME_SIGN_27
+	@SAME_SIGN_49
 	0;JMP
-(FIRST_PLUS_27)
+(FIRST_PLUS_49)
 	@SP
 	A=M-1
 	A=A-1
 	D=M
-	@DIF_SIGN_LT_27
+	@DIF_SIGN_LT_49
 	D;JLT
-	@SAME_SIGN_27
+	@SAME_SIGN_49
 	0;JMP
-(DIF_SIGN_LT_27)
+(DIF_SIGN_LT_49)
 	@SP
 	AM=M-1
 	A=A-1
 	M=0
-	@CON_27
+	@CON_49
 	0;JMP
-(FIRST_MINUS_27)
+(FIRST_MINUS_49)
 	@SP
 	A=M-1
 	A=A-1
 	D=M
-	@DIF_SIGN_GT_27
+	@DIF_SIGN_GT_49
 	D;JGT
-	@SAME_SIGN_27
+	@SAME_SIGN_49
 	0;JMP
-(DIF_SIGN_GT_27)
+(DIF_SIGN_GT_49)
 	@SP
 	AM=M-1
 	A=A-1
 	M=-1
-	@CON_27
+	@CON_49
 	0;JMP
-(SAME_SIGN_27)
+(SAME_SIGN_49)
 	@SP
 	AM=M-1
 	D=M
 	A=A-1
 	M=M-D
 	D=M
-	@GRATER_27
+	@GRATER_49
 	D;JGT
-	@LOWER_27
+	@LOWER_49
 	D;JLT
 	@SP
 	A=M-1
 	M=0
-	@CON_27
+	@CON_49
 	0;JMP
-(GRATER_27)
+(GRATER_49)
 	@SP
 	A=M-1
 	M=-1
-	@CON_27
+	@CON_49
 	0;JMP
-(LOWER_27)
+(LOWER_49)
 	@SP
 	A=M-1
 	M=0
-(CON_27)
+(CON_49)
 
 //not
 	@SP
@@ -8275,71 +8275,71 @@
 	@SP
 	A=M-1
 	D=M
-	@FIRST_PLUS_28
+	@FIRST_PLUS_50
 	D;JGT
-	@FIRST_MINUS_28
+	@FIRST_MINUS_50
 	D;JLT
-	@SAME_SIGN_28
+	@SAME_SIGN_50
 	0;JMP
-(FIRST_PLUS_28)
+(FIRST_PLUS_50)
 	@SP
 	A=M-1
 	A=A-1
 	D=M
-	@DIF_SIGN_LT_28
+	@DIF_SIGN_LT_50
 	D;JLT
-	@SAME_SIGN_28
+	@SAME_SIGN_50
 	0;JMP
-(DIF_SIGN_LT_28)
+(DIF_SIGN_LT_50)
 	@SP
 	AM=M-1
 	A=A-1
 	M=-1
-	@CON_28
+	@CON_50
 	0;JMP
-(FIRST_MINUS_28)
+(FIRST_MINUS_50)
 	@SP
 	A=M-1
 	A=A-1
 	D=M
-	@DIF_SIGN_GT_28
+	@DIF_SIGN_GT_50
 	D;JGT
-	@SAME_SIGN_28
+	@SAME_SIGN_50
 	0;JMP
-(DIF_SIGN_GT_28)
+(DIF_SIGN_GT_50)
 	@SP
 	AM=M-1
 	A=A-1
 	M=0
-	@CON_28
+	@CON_50
 	0;JMP
-(SAME_SIGN_28)
+(SAME_SIGN_50)
 	@SP
 	AM=M-1
 	D=M
 	A=A-1
 	M=M-D
 	D=M
-	@GRATER_28
+	@GRATER_50
 	D;JGT
-	@LOWER_28
+	@LOWER_50
 	D;JLT
 	@SP
 	A=M-1
 	M=0
-	@CON_28
+	@CON_50
 	0;JMP
-(GRATER_28)
+(GRATER_50)
 	@SP
 	A=M-1
 	M=0
-	@CON_28
+	@CON_50
 	0;JMP
-(LOWER_28)
+(LOWER_50)
 	@SP
 	A=M-1
 	M=-1
-(CON_28)
+(CON_50)
 
 //if-goto IF_TRUE0
 	@SP
@@ -8364,7 +8364,7 @@
 	M=D
 
 //call Sys.error 1
-	@Sys.error&ret.22
+	@Sys.error&ret.51
 	D=A
 	@SP
 	M=M+1
@@ -8408,7 +8408,7 @@
 	M=D
 	@Sys.error
 	0;JMP
-(Sys.error&ret.22)
+(Sys.error&ret.51)
 
 //pop temp 0
 	@0
@@ -8518,71 +8518,71 @@
 	@SP
 	A=M-1
 	D=M
-	@FIRST_PLUS_29
+	@FIRST_PLUS_52
 	D;JGT
-	@FIRST_MINUS_29
+	@FIRST_MINUS_52
 	D;JLT
-	@SAME_SIGN_29
+	@SAME_SIGN_52
 	0;JMP
-(FIRST_PLUS_29)
+(FIRST_PLUS_52)
 	@SP
 	A=M-1
 	A=A-1
 	D=M
-	@DIF_SIGN_LT_29
+	@DIF_SIGN_LT_52
 	D;JLT
-	@SAME_SIGN_29
+	@SAME_SIGN_52
 	0;JMP
-(DIF_SIGN_LT_29)
+(DIF_SIGN_LT_52)
 	@SP
 	AM=M-1
 	A=A-1
 	M=-1
-	@CON_29
+	@CON_52
 	0;JMP
-(FIRST_MINUS_29)
+(FIRST_MINUS_52)
 	@SP
 	A=M-1
 	A=A-1
 	D=M
-	@DIF_SIGN_GT_29
+	@DIF_SIGN_GT_52
 	D;JGT
-	@SAME_SIGN_29
+	@SAME_SIGN_52
 	0;JMP
-(DIF_SIGN_GT_29)
+(DIF_SIGN_GT_52)
 	@SP
 	AM=M-1
 	A=A-1
 	M=0
-	@CON_29
+	@CON_52
 	0;JMP
-(SAME_SIGN_29)
+(SAME_SIGN_52)
 	@SP
 	AM=M-1
 	D=M
 	A=A-1
 	M=M-D
 	D=M
-	@GRATER_29
+	@GRATER_52
 	D;JGT
-	@LOWER_29
+	@LOWER_52
 	D;JLT
 	@SP
 	A=M-1
 	M=0
-	@CON_29
+	@CON_52
 	0;JMP
-(GRATER_29)
+(GRATER_52)
 	@SP
 	A=M-1
 	M=0
-	@CON_29
+	@CON_52
 	0;JMP
-(LOWER_29)
+(LOWER_52)
 	@SP
 	A=M-1
 	M=-1
-(CON_29)
+(CON_52)
 
 //not
 	@SP
@@ -8708,71 +8708,71 @@
 	@SP
 	A=M-1
 	D=M
-	@FIRST_PLUS_30
+	@FIRST_PLUS_53
 	D;JGT
-	@FIRST_MINUS_30
+	@FIRST_MINUS_53
 	D;JLT
-	@SAME_SIGN_30
+	@SAME_SIGN_53
 	0;JMP
-(FIRST_PLUS_30)
+(FIRST_PLUS_53)
 	@SP
 	A=M-1
 	A=A-1
 	D=M
-	@DIF_SIGN_LT_30
+	@DIF_SIGN_LT_53
 	D;JLT
-	@SAME_SIGN_30
+	@SAME_SIGN_53
 	0;JMP
-(DIF_SIGN_LT_30)
+(DIF_SIGN_LT_53)
 	@SP
 	AM=M-1
 	A=A-1
 	M=0
-	@CON_30
+	@CON_53
 	0;JMP
-(FIRST_MINUS_30)
+(FIRST_MINUS_53)
 	@SP
 	A=M-1
 	A=A-1
 	D=M
-	@DIF_SIGN_GT_30
+	@DIF_SIGN_GT_53
 	D;JGT
-	@SAME_SIGN_30
+	@SAME_SIGN_53
 	0;JMP
-(DIF_SIGN_GT_30)
+(DIF_SIGN_GT_53)
 	@SP
 	AM=M-1
 	A=A-1
 	M=-1
-	@CON_30
+	@CON_53
 	0;JMP
-(SAME_SIGN_30)
+(SAME_SIGN_53)
 	@SP
 	AM=M-1
 	D=M
 	A=A-1
 	M=M-D
 	D=M
-	@GRATER_30
+	@GRATER_53
 	D;JGT
-	@LOWER_30
+	@LOWER_53
 	D;JLT
 	@SP
 	A=M-1
 	M=0
-	@CON_30
+	@CON_53
 	0;JMP
-(GRATER_30)
+(GRATER_53)
 	@SP
 	A=M-1
 	M=-1
-	@CON_30
+	@CON_53
 	0;JMP
-(LOWER_30)
+(LOWER_53)
 	@SP
 	A=M-1
 	M=0
-(CON_30)
+(CON_53)
 
 //if-goto IF_TRUE1
 	@SP
@@ -8797,7 +8797,7 @@
 	M=D
 
 //call Sys.error 1
-	@Sys.error&ret.23
+	@Sys.error&ret.54
 	D=A
 	@SP
 	M=M+1
@@ -8841,7 +8841,7 @@
 	M=D
 	@Sys.error
 	0;JMP
-(Sys.error&ret.23)
+(Sys.error&ret.54)
 
 //pop temp 0
 	@0
@@ -8940,71 +8940,71 @@
 	@SP
 	A=M-1
 	D=M
-	@FIRST_PLUS_31
+	@FIRST_PLUS_55
 	D;JGT
-	@FIRST_MINUS_31
+	@FIRST_MINUS_55
 	D;JLT
-	@SAME_SIGN_31
+	@SAME_SIGN_55
 	0;JMP
-(FIRST_PLUS_31)
+(FIRST_PLUS_55)
 	@SP
 	A=M-1
 	A=A-1
 	D=M
-	@DIF_SIGN_LT_31
+	@DIF_SIGN_LT_55
 	D;JLT
-	@SAME_SIGN_31
+	@SAME_SIGN_55
 	0;JMP
-(DIF_SIGN_LT_31)
+(DIF_SIGN_LT_55)
 	@SP
 	AM=M-1
 	A=A-1
 	M=0
-	@CON_31
+	@CON_55
 	0;JMP
-(FIRST_MINUS_31)
+(FIRST_MINUS_55)
 	@SP
 	A=M-1
 	A=A-1
 	D=M
-	@DIF_SIGN_GT_31
+	@DIF_SIGN_GT_55
 	D;JGT
-	@SAME_SIGN_31
+	@SAME_SIGN_55
 	0;JMP
-(DIF_SIGN_GT_31)
+(DIF_SIGN_GT_55)
 	@SP
 	AM=M-1
 	A=A-1
 	M=-1
-	@CON_31
+	@CON_55
 	0;JMP
-(SAME_SIGN_31)
+(SAME_SIGN_55)
 	@SP
 	AM=M-1
 	D=M
 	A=A-1
 	M=M-D
 	D=M
-	@GRATER_31
+	@GRATER_55
 	D;JGT
-	@LOWER_31
+	@LOWER_55
 	D;JLT
 	@SP
 	A=M-1
 	M=0
-	@CON_31
+	@CON_55
 	0;JMP
-(GRATER_31)
+(GRATER_55)
 	@SP
 	A=M-1
 	M=-1
-	@CON_31
+	@CON_55
 	0;JMP
-(LOWER_31)
+(LOWER_55)
 	@SP
 	A=M-1
 	M=0
-(CON_31)
+(CON_55)
 
 //if-goto IF_TRUE2
 	@SP
@@ -9278,71 +9278,71 @@
 	@SP
 	A=M-1
 	D=M
-	@FIRST_PLUS_32
+	@FIRST_PLUS_56
 	D;JGT
-	@FIRST_MINUS_32
+	@FIRST_MINUS_56
 	D;JLT
-	@SAME_SIGN_32
+	@SAME_SIGN_56
 	0;JMP
-(FIRST_PLUS_32)
+(FIRST_PLUS_56)
 	@SP
 	A=M-1
 	A=A-1
 	D=M
-	@DIF_SIGN_LT_32
+	@DIF_SIGN_LT_56
 	D;JLT
-	@SAME_SIGN_32
+	@SAME_SIGN_56
 	0;JMP
-(DIF_SIGN_LT_32)
+(DIF_SIGN_LT_56)
 	@SP
 	AM=M-1
 	A=A-1
 	M=0
-	@CON_32
+	@CON_56
 	0;JMP
-(FIRST_MINUS_32)
+(FIRST_MINUS_56)
 	@SP
 	A=M-1
 	A=A-1
 	D=M
-	@DIF_SIGN_GT_32
+	@DIF_SIGN_GT_56
 	D;JGT
-	@SAME_SIGN_32
+	@SAME_SIGN_56
 	0;JMP
-(DIF_SIGN_GT_32)
+(DIF_SIGN_GT_56)
 	@SP
 	AM=M-1
 	A=A-1
 	M=0
-	@CON_32
+	@CON_56
 	0;JMP
-(SAME_SIGN_32)
+(SAME_SIGN_56)
 	@SP
 	AM=M-1
 	D=M
 	A=A-1
 	M=M-D
 	D=M
-	@GRATER_32
+	@GRATER_56
 	D;JGT
-	@LOWER_32
+	@LOWER_56
 	D;JLT
 	@SP
 	A=M-1
 	M=-1
-	@CON_32
+	@CON_56
 	0;JMP
-(GRATER_32)
+(GRATER_56)
 	@SP
 	A=M-1
 	M=0
-	@CON_32
+	@CON_56
 	0;JMP
-(LOWER_32)
+(LOWER_56)
 	@SP
 	A=M-1
 	M=0
-(CON_32)
+(CON_56)
 
 //if-goto IF_TRUE3
 	@SP
@@ -10134,71 +10134,71 @@
 	@SP
 	A=M-1
 	D=M
-	@FIRST_PLUS_33
+	@FIRST_PLUS_57
 	D;JGT
-	@FIRST_MINUS_33
+	@FIRST_MINUS_57
 	D;JLT
-	@SAME_SIGN_33
+	@SAME_SIGN_57
 	0;JMP
-(FIRST_PLUS_33)
+(FIRST_PLUS_57)
 	@SP
 	A=M-1
 	A=A-1
 	D=M
-	@DIF_SIGN_LT_33
+	@DIF_SIGN_LT_57
 	D;JLT
-	@SAME_SIGN_33
+	@SAME_SIGN_57
 	0;JMP
-(DIF_SIGN_LT_33)
+(DIF_SIGN_LT_57)
 	@SP
 	AM=M-1
 	A=A-1
 	M=0
-	@CON_33
+	@CON_57
 	0;JMP
-(FIRST_MINUS_33)
+(FIRST_MINUS_57)
 	@SP
 	A=M-1
 	A=A-1
 	D=M
-	@DIF_SIGN_GT_33
+	@DIF_SIGN_GT_57
 	D;JGT
-	@SAME_SIGN_33
+	@SAME_SIGN_57
 	0;JMP
-(DIF_SIGN_GT_33)
+(DIF_SIGN_GT_57)
 	@SP
 	AM=M-1
 	A=A-1
 	M=0
-	@CON_33
+	@CON_57
 	0;JMP
-(SAME_SIGN_33)
+(SAME_SIGN_57)
 	@SP
 	AM=M-1
 	D=M
 	A=A-1
 	M=M-D
 	D=M
-	@GRATER_33
+	@GRATER_57
 	D;JGT
-	@LOWER_33
+	@LOWER_57
 	D;JLT
 	@SP
 	A=M-1
 	M=-1
-	@CON_33
+	@CON_57
 	0;JMP
-(GRATER_33)
+(GRATER_57)
 	@SP
 	A=M-1
 	M=0
-	@CON_33
+	@CON_57
 	0;JMP
-(LOWER_33)
+(LOWER_57)
 	@SP
 	A=M-1
 	M=0
-(CON_33)
+(CON_57)
 
 //if-goto IF_TRUE0
 	@SP
@@ -10663,71 +10663,71 @@
 	@SP
 	A=M-1
 	D=M
-	@FIRST_PLUS_34
+	@FIRST_PLUS_58
 	D;JGT
-	@FIRST_MINUS_34
+	@FIRST_MINUS_58
 	D;JLT
-	@SAME_SIGN_34
+	@SAME_SIGN_58
 	0;JMP
-(FIRST_PLUS_34)
+(FIRST_PLUS_58)
 	@SP
 	A=M-1
 	A=A-1
 	D=M
-	@DIF_SIGN_LT_34
+	@DIF_SIGN_LT_58
 	D;JLT
-	@SAME_SIGN_34
+	@SAME_SIGN_58
 	0;JMP
-(DIF_SIGN_LT_34)
+(DIF_SIGN_LT_58)
 	@SP
 	AM=M-1
 	A=A-1
 	M=0
-	@CON_34
+	@CON_58
 	0;JMP
-(FIRST_MINUS_34)
+(FIRST_MINUS_58)
 	@SP
 	A=M-1
 	A=A-1
 	D=M
-	@DIF_SIGN_GT_34
+	@DIF_SIGN_GT_58
 	D;JGT
-	@SAME_SIGN_34
+	@SAME_SIGN_58
 	0;JMP
-(DIF_SIGN_GT_34)
+(DIF_SIGN_GT_58)
 	@SP
 	AM=M-1
 	A=A-1
 	M=0
-	@CON_34
+	@CON_58
 	0;JMP
-(SAME_SIGN_34)
+(SAME_SIGN_58)
 	@SP
 	AM=M-1
 	D=M
 	A=A-1
 	M=M-D
 	D=M
-	@GRATER_34
+	@GRATER_58
 	D;JGT
-	@LOWER_34
+	@LOWER_58
 	D;JLT
 	@SP
 	A=M-1
 	M=-1
-	@CON_34
+	@CON_58
 	0;JMP
-(GRATER_34)
+(GRATER_58)
 	@SP
 	A=M-1
 	M=0
-	@CON_34
+	@CON_58
 	0;JMP
-(LOWER_34)
+(LOWER_58)
 	@SP
 	A=M-1
 	M=0
-(CON_34)
+(CON_58)
 
 //if-goto IF_TRUE1
 	@SP

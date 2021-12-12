@@ -45,7 +45,6 @@ FALSE = "0"
 
 
 
-
 class CodeWriter:
     """Translates VM commands into Hack assembly code."""
 
@@ -234,7 +233,7 @@ class CodeWriter:
         seg = ram_p[segment]
 
         if segment == "static":
-            self.static_push_pop(command,  str(index))
+            self.static_push_pop(command, str(index))
 
         elif segment == "pointer":
             if index == 1:

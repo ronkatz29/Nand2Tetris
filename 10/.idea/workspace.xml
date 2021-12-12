@@ -2,17 +2,229 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0258518d-008f-49ca-824d-ceaaea14ff47" name="Changes" comment="123">
-      <change afterPath="$PROJECT_DIR$/../11/p11/Average/Average.cmp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../11/p11/Average/Average.tst" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../11/p11/Average/Main.jack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/08.asm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/Main.asm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/Main.jack" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/Main.vm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/Sys.vm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/avivtest.asm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/p8/Main.jack" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/p8/Main.vm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/p8/Math.vm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/p8/Memory.vm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/p8/Sys.vm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/p8/T3/T3.asm" beforeDir="false" afterPath="$PROJECT_DIR$/../08/p8/T3/T3.asm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/p8/p8.asm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/p8/test/test.asm" beforeDir="false" afterPath="$PROJECT_DIR$/../08/p8/test/test.asm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/p8/test/test.out" beforeDir="false" afterPath="$PROJECT_DIR$/../08/p8/test/test.out" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/p8/test1/test1.asm" beforeDir="false" afterPath="$PROJECT_DIR$/../08/p8/test1/test1.asm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/p8/test2/test2.asm" beforeDir="false" afterPath="$PROJECT_DIR$/../08/p8/test2/test2.asm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/p8/test3/Math.vm" beforeDir="false" afterPath="$PROJECT_DIR$/../08/p8/test3/Math.vm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/p8/test3/test3.asm" beforeDir="false" afterPath="$PROJECT_DIR$/../08/p8/test3/test3.asm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/p8/test3/test3.out" beforeDir="false" afterPath="$PROJECT_DIR$/../08/p8/test3/test3.out" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/p8/test4/test4.asm" beforeDir="false" afterPath="$PROJECT_DIR$/../08/p8/test4/test4.asm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/project8/CodeWriter.py" beforeDir="false" afterPath="$PROJECT_DIR$/../08/project8/CodeWriter.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/project8/project8.tar" beforeDir="false" afterPath="$PROJECT_DIR$/../08/project8/project8.tar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/test3/Array.vm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/test3/Main.jack" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/test3/Main.vm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/test3/Math.vm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/test3/Memory.vm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/test3/Sys.vm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/test3/s.asm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/test3/test3.cmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/test3/test3.tar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/test3/test3.tst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../08/testpush500.asm" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ArrayTest/Main.jack" beforeDir="false" afterPath="$PROJECT_DIR$/ArrayTest/Main.jack" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ArrayTest/Main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ArrayTest/Main.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ExpressionLessSquare/Main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ExpressionLessSquare/Main.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JackTokenizer.py" beforeDir="false" afterPath="$PROJECT_DIR$/JackTokenizer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../11/JackCompiler.py" beforeDir="false" afterPath="$PROJECT_DIR$/../11/JackCompiler.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../11/SymbolTable.py" beforeDir="false" afterPath="$PROJECT_DIR$/../11/SymbolTable.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../11/VMWriter.py" beforeDir="false" afterPath="$PROJECT_DIR$/../11/VMWriter.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/ArrayTest/Main.jack" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/ArrayTest/Main.xml.cmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/Game1/Bomb.jack" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/Game1/Bomb.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/Game1/Bomb.xml.cmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/Game1/Main.jack" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/Game1/Main.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/Game1/Main.xml.cmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/Game1/Opening.jack" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/Game1/Opening.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/Game1/Opening.xml.cmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/Game1/Opening.xmlx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/Game1/Sea.jack" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/Game1/Sea.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/Game1/Sea.xml.cmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/Game1/Ship.jack" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/Game1/Ship.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/Game1/Ship.xml.cmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/Game1/SubMarine.jack" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/Game1/SubMarine.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/Game1/SubMarine.xml.cmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/Game2/Bullet.jack" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/Game2/Bullet.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/Game2/Bullet.xml.cmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/Game2/Main.jack" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/Game2/Main.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/Game2/Main.xml.cmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/Game2/Shcortz.jack" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/Game2/Shcortz.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/Game2/Shcortz.xml.cmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/Game2/Tank.jack" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/Game2/Tank.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/Game2/Tank.xml.cmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/Game2/Terrain.jack" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/Game2/Terrain.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/Game2/Terrain.xml.cmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/Game2/Trigo.jack" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/Game2/Trigo.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/Game2/Trigo.xml.cmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/Game3/#RushHourGraphics.jack#" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/Game3/Board.jack" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/Game3/Board.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/Game3/Board.xml.cmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/Game3/Game.jack" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/Game3/Game.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/Game3/Game.xml.cmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/Game3/Game3.tar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/Game3/Graphics.jack" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/Game3/Graphics.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/Game3/Graphics.xml.cmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/Game3/Main.jack" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/Game3/Main.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/Game3/Main.xml.cmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/Game3/Presets.jack" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/Game3/Presets.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/Game3/Presets.xml.cmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/Game3/RushHourGraphics.jack" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/Game3/RushHourGraphics.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/Game3/RushHourGraphics.xml.cmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/IfDo/ClassIden.jack" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/IfDo/ClassIden.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/IfDo/ClassIden.xml.cmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/IfDo/Close.jack" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/IfDo/Close.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/IfDo/Close.xml.cmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/IfDo/Comment.jack" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/IfDo/Comment.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/IfDo/Comment.xml.cmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/IfDo/EmptyIf.jack" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/IfDo/EmptyIf.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/IfDo/EmptyIf.xml.cmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/IfDo/ExpreList.jack" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/IfDo/ExpreList.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/IfDo/ExpreList.xml.cmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/IfDo/FunBegin.jack" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/IfDo/FunBegin.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/IfDo/FunBegin.xml.cmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/IfDo/IfDo.jack" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/IfDo/IfDo.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/IfDo/IfDo.xml.cmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/IfDo/IfElse.jack" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/IfDo/IfElse.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/IfDo/IfElse.xml.cmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/IfDo/IfLong.jack" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/IfDo/IfLong.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/IfDo/IfLong.xml.cmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/IfDo/Main.jack" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/IfDo/Main.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/IfDo/MethCall.jack" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/IfDo/MethCall.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/IfDo/MethCall.xml.cmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/IfDo/Minus.jack" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/IfDo/Minus.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/IfDo/Minus.xml.cmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/IfDo/OpAndOp.jack" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/IfDo/OpAndOp.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/IfDo/OpAndOp.xml.cmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/IfDo/OpCheck.jack" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/IfDo/OpCheck.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/IfDo/OpCheck.xml.cmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/IfDo/PrintString.jack" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/IfDo/PrintString.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/IfDo/PrintString.xml.cmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/IfDo/Static.jack" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/IfDo/Static.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/IfDo/Static.xml.cmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/IfDo/StringComment.jack" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/IfDo/StringComment.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/IfDo/StringComment.xml.cmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/IfDo/StringConstant.jack" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/IfDo/StringConstant.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/IfDo/StringConstant.xml.cmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/IfDo/StringPar.jack" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/IfDo/StringPar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/IfDo/StringPar.xml.cmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/IfDo/StringTab.jack" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/IfDo/StringTab.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/IfDo/StringTab.xml.cmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/IfDo/Unary.jack" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/IfDo/Unary.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/IfDo/Unary.xml.cmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/IfDo/UnderScore.jack" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/IfDo/UnderScore.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/IfDo/UnderScore.xml.cmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/IfDo/WhileIf.jack" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/IfDo/WhileIf.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/IfDo/WhileIf.xml.cmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/IfDo/WhiteSpace.jack" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/IfDo/WhiteSpace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/IfDo/WhiteSpace.xml.cmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/IfDo/symbolName.jack" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/IfDo/symbolName.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/IfDo/symbolName.xml.cmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/Square/Main.jack" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/Square/Main.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/Square/Main.xml.cmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/Square/Square.jack" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/Square/Square.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/Square/Square.xml.cmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/Square/SquareGame.jack" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/Square/SquareGame.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/Square/SquareGame.xml.cmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/Test11/Average/Main.jack" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/Test11/Average/Main.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/Test11/Average/Main.xml.cmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/Test11/ComplexArrays/ComplexArrays.tar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/Test11/ComplexArrays/Main.jack" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/Test11/ComplexArrays/Main.xml.cmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/Test11/ConvertToBin/Main.jack" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/Test11/ConvertToBin/Main.xml.cmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/Test11/Seven/Main.jack" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/Test11/Seven/Main.xml.cmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/Test11/test1/Main.jack" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/Test11/test1/Main.xml.cmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/Test11/test2/Main.jack" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/Test11/test2/Main.xml.cmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/Test11/test3/Main.jack" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/Test11/test3/Main.xml.cmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/Test11/test4/Main.jack" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/Test11/test4/Main.xml.cmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/Test11/test4/Stata.jack" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/Test11/test4/Stata.xml.cmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/Test11/test4/Statb.jack" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/Test11/test4/Statb.xml.cmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/Test11/test5/Main.jack" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/Test11/test5/Main.xml.cmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/Test11/test5/T.jack" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/Test11/test5/T.xml.cmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/Test11/test6/Main.jack" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/Test11/test6/Main.xml.cmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/Test11/test6/T.jack" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/Test11/test6/T.xml.cmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/c.pl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/checkcom.pl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/for_exam/Main.jack" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/for_exam/Main.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/yannai/Builder.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/yannai/Grammar.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/yannai/Helpers.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/yannai/InputElements.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/yannai/JackAnalyzer" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/yannai/JackGrammar.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/yannai/Main.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/yannai/Makefile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/yannai/README" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/yannai/StateMachine.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/yannai/Tokenizer.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/p10/yannai/orip.tar" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,7 +270,7 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/JackAnalyzer.py" />
-      <option name="PARAMETERS" value="ArrayTest/Main.jack" />
+      <option name="PARAMETERS" value="tests/SquareUpdated" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -85,6 +297,8 @@
       <workItem from="1636792066692" duration="5244000" />
       <workItem from="1636878798331" duration="93000" />
       <workItem from="1637842862908" duration="305000" />
+      <workItem from="1638781959673" duration="441000" />
+      <workItem from="1638782996728" duration="159000" />
     </task>
     <task id="LOCAL-00001" summary="123">
       <created>1635668060806</created>
@@ -128,6 +342,6 @@
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/10$JackAnalyzer.coverage" NAME="JackAnalyzer Coverage Results" MODIFIED="1637843075956" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/10$JackAnalyzer.coverage" NAME="JackAnalyzer Coverage Results" MODIFIED="1638782657526" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

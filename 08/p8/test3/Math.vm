@@ -62,8 +62,6 @@ pop argument 0
 label IF_FALSE0
 push argument 0
 return
-
-
 function Math.multiply 5
 push argument 0
 push constant 0
@@ -151,7 +149,6 @@ pop local 0
 label IF_FALSE2
 push local 0
 return
-
 function Math.divide 4
 push argument 1
 push constant 0

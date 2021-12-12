@@ -1,8 +1,0 @@
-class Main {
-    function void main() {
-        var Array a;
-        let a = 5000;
-        let a[0] = 4;
-        return;
-    }
-} 
