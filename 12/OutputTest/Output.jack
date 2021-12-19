@@ -191,9 +191,9 @@ class Output {
      *  and advances the cursor one column forward. */
     function void printChar(char c) {
         var Array char_map;
-        var int screen_add, i, cur_bit_map;
-        
-        let screen_add = ((curs_x / 2) + (curs_y * 11 * 32));
+        var int screen_add, i, cur_bit_map, find_cur_add;
+        let find_cur_add = ((^(^(^(^(^curs_y)))))); // y*32
+        let screen_add = ((#(curs_x)) + ((^(^(^(find_cur_add)))) + (^(find_cur_add)) + find_cur_add)); //x/2 + y*32*11
         let char_map = Output.getMap(c);
         let i = 0;
 
@@ -208,21 +208,22 @@ class Output {
         if((curs_x & 1) = 1){//if x is odd we want to write on the last 8 bits
             while( i < 11){
                 let cur_bit_map = (^(^(^(^(^(^(^(^char_map[i])))))))) ; //shift left 8 times
-                let screen[screen_add] = cur_bit_map & screen[screen_add] | 255; 
+                //let cur_bit_map = char_map[i] * 256;
+                let screen[screen_add] =  screen[screen_add] & 255 | cur_bit_map; 
                 let screen_add = screen_add + 32;
                 let i = i + 1;
             }        
         }
         else{
             while( i < 11){
-                let screen[screen_add] = char_map[i] & screen[screen_add] | -256; 
+                let screen[screen_add] =  screen[screen_add] & -256 | char_map[i]; 
                 let screen_add = screen_add + 32;
                 let i = i + 1;
             }
 
         }
-        if(~(c = 129) & ~(curs_x = 63){ // its not backspack and we are not at the end of line
-                do Output.moveCursor(curs_x + 1, curs_y);
+        if(~(c = 129) & ~(curs_x = 63)){ // its not backspack and we are not at the end of line
+                do Output.moveCursor(curs_y, curs_x + 1);
             }
         else{
             do Output.println();
@@ -260,7 +261,7 @@ class Output {
     function void println() {
         let curs_x = 0;
         if (curs_y < 22) {
-            let cur = y_pos + 1;
+            let curs_y = curs_y + 1;
             }
         else{
             let curs_y = 0;

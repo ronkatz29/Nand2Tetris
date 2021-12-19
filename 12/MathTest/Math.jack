@@ -9,6 +9,7 @@
  */
 class Math {
     static Array bit_check_array;
+    static int div_remain;
 
     /** Initializes the library. */
     function void init() {
@@ -72,7 +73,7 @@ class Math {
      *  the Jack expressions x/y and divide(x,y) return the same value.
      */
     function int divide(int x, int y) {
-    var int is_x_neg , is_y_neg , func_x , func_y , q , ret ;
+    var int is_x_neg , is_y_neg , func_x , func_y;
 
     if (y = 0){
         do Sys.error(3);
@@ -96,21 +97,67 @@ class Math {
      if (func_y > func_x ){
         return 0;
         }
-
-     let q = Math.divide(func_x, ^(func_y));
-     if ((func_x - (2 * q * func_y)) < func_y){
-        let ret =  ^(q);
-     }
-
-     else{
-        let ret = ^(q) + 1 ;
-     }
-
+    let div_remain = 0;
      if (~(is_x_neg = is_y_neg)){
-        let ret = -ret;
+         return -Math.div_helper(func_x, func_y);
         }
-    return ret;
+    return Math.div_helper(func_x, func_y);
     }
+
+    function int div_helper(int x, int y) {
+    var int q;
+    if (y > x | y < 0){
+        return 0;
+        }
+    let q = Math.div_helper(x, y+y);
+    if (y > (x - div_remain)){
+        return ^(q);
+        }
+    else{
+        let div_remain = div_remain + y;
+        return ^(q) + 1;
+        }
+    }
+    // function int divide(int x, int y) {
+    // var int is_x_neg , is_y_neg , func_x , func_y , q , ret ;
+
+    // if (y = 0){
+    //     do Sys.error(3);
+    // }
+
+    // let is_x_neg = 0;
+    // let is_y_neg = 0;
+    // let func_x = x;
+    // let func_y = y;
+
+    // if (y < 0){
+    //     let func_y = -y;
+    //     let is_y_neg = 1;
+    // }
+
+    //  if (x < 0){
+    //     let func_x = -x;
+    //     let is_x_neg = 1 ;
+    // }
+
+    //  if (func_y > func_x ){
+    //     return 0;
+    //     }
+
+    //  let q = Math.divide(func_x, ^(func_y));
+    //  if ((func_x - (2 * q * func_y)) < func_y){
+    //     let ret =  ^(q);
+    //  }
+
+    //  else{
+    //     let ret = ^(q) + 1 ;
+    //  }
+
+    //  if (~(is_x_neg = is_y_neg)){
+    //     let ret = -ret;
+    //     }
+    // return ret;
+    // }
 
     /** Returns the integer part of the square root of x. */
     function int sqrt(int x) {

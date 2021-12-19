@@ -193,7 +193,7 @@ push constant 0
 eq
 not
 return
-function Math.divide 6
+function Math.divide 4
 push argument 1
 push constant 0
 eq
@@ -245,47 +245,68 @@ label IF_TRUE3
 push constant 0
 return
 label IF_FALSE3
-push local 2
-push local 3
-shiftleft
-call Math.divide 2
-pop local 4
-push local 2
-push constant 2
-push local 4
-call Math.multiply 2
-push local 3
-call Math.multiply 2
-sub
-push local 3
-lt
-if-goto IF_TRUE4
-goto IF_FALSE4
-label IF_TRUE4
-push local 4
-shiftleft
-pop local 5
-goto IF_END4
-label IF_FALSE4
-push local 4
-shiftleft
-push constant 1
-add
-pop local 5
-label IF_END4
+push constant 0
+pop static 1
 push local 0
 push local 1
 eq
 not
-if-goto IF_TRUE5
-goto IF_FALSE5
-label IF_TRUE5
-push local 5
+if-goto IF_TRUE4
+goto IF_FALSE4
+label IF_TRUE4
+push local 2
+push local 3
+call Math.div_helper 2
 neg
-pop local 5
-label IF_FALSE5
-push local 5
 return
+label IF_FALSE4
+push local 2
+push local 3
+call Math.div_helper 2
+return
+function Math.div_helper 1
+push argument 1
+push argument 0
+gt
+push argument 1
+or
+push constant 0
+lt
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push constant 0
+return
+label IF_FALSE0
+push argument 0
+push argument 1
+push argument 1
+add
+call Math.div_helper 2
+pop local 0
+push argument 1
+push argument 0
+push static 1
+sub
+gt
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push local 0
+shiftleft
+return
+goto IF_END1
+label IF_FALSE1
+push static 1
+push argument 1
+add
+pop static 1
+push local 0
+shiftleft
+push constant 1
+add
+return
+label IF_END1
 function Math.sqrt 3
 push constant 0
 pop local 0

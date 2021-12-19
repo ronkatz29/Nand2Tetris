@@ -92,13 +92,19 @@ class String {
         }
         
         while(i < len){
-            let d = charAt(i); 
-            let val = ((^(val) + ^(^(^(val))))); // val * 10 == val << 1 + val << 3
+            if(str[i] > 57){
+                if(str[i] < 48){
+                    let i = len;
+                }
+            }
+            else{
+                let d = charAt(i); 
+                let val = ((^(val) + ^(^(^(val))))); // val * 10 == val << 1 + val << 3
 
-            let val = val + (d - 48);
-            let i = i + 1;
+                let val = val + (d - 48);
+                let i = i + 1;
+            }
         }
-
         if(is_neg){
             let val = -(val);
         }
@@ -142,14 +148,13 @@ class String {
                 do appendChar(last_dig + 48 );
             }
 
-
-
             let i = len ; 
             let last_dig = 0 ;
             
             if(is_neg){
                 let last_dig = last_dig + 1;
             }
+            //flip the string
             while (last_dig < i)
             {   
                 let j = len - last_dig - 1;
@@ -166,26 +171,6 @@ class String {
 
 
             return; 
-
-
-        // var int value, dig_to_append, div_ten, q, r;
-        // let value = val;
-		// if (value > 0){
-        //     // let div_ten = value / 10;
-        //     let q = #(value) + #(#(value));
-        //     let q = q + #(#(#(#(q))));
-        //     let q = q + #(#(#(#(#(#(#(#(q))))))));
-        //     let q = q + #(#(#(#(#(#(#(#(#(#(#(#(#(#(#(#(q))))))))))))))));
-        //     let q = #(#(#(q)));
-        //     let r = val - (^((^(^(q))) + q));
-        //     let div_ten = q + (r > 9);
-
-		// 	let dig_to_append = (value - ((^(div_ten) + ^(^(^(div_ten))))));  // same as mod
-		// 	let value = div_ten;
-		// 	do str_two_int(value);
-		// 	do appendChar(dig_to_append + 48); 
-		// }
-		// return;
     }
 
     /** Returns the new line character. */
