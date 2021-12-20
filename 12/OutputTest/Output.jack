@@ -196,7 +196,7 @@ class Output {
         let screen_add = ((#(curs_x)) + ((^(^(^(find_cur_add)))) + (^(find_cur_add)) + find_cur_add)); //x/2 + y*32*11
         let char_map = Output.getMap(c);
         let i = 0;
-
+    
         if(c = 129){
             do Output.backSpace();
             let char_map = Output.getMap(32); //set to empty char
@@ -208,7 +208,6 @@ class Output {
         if((curs_x & 1) = 1){//if x is odd we want to write on the last 8 bits
             while( i < 11){
                 let cur_bit_map = (^(^(^(^(^(^(^(^char_map[i])))))))) ; //shift left 8 times
-                //let cur_bit_map = char_map[i] * 256;
                 let screen[screen_add] =  screen[screen_add] & 255 | cur_bit_map; 
                 let screen_add = screen_add + 32;
                 let i = i + 1;
