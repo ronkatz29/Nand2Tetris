@@ -1,0 +1,233 @@
+function Obstacle.new 0
+push constant 3
+call Memory.alloc 1
+pop pointer 0
+push argument 0
+pop this 0
+push constant 510
+pop this 1
+push pointer 0
+return
+function Obstacle.print 0
+push argument 0
+pop pointer 0
+push this 1
+push constant 505
+gt
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push constant 0
+call Screen.setColor 1
+pop temp 0
+push this 1
+push constant 1
+add
+push constant 0
+push constant 511
+push this 0
+push constant 40
+sub
+call Screen.drawRectangle 4
+pop temp 0
+push this 1
+push constant 1
+add
+push this 0
+push constant 40
+add
+push constant 511
+push constant 255
+call Screen.drawRectangle 4
+pop temp 0
+push constant 0
+not
+call Screen.setColor 1
+pop temp 0
+push this 1
+push constant 0
+push constant 511
+push this 0
+push constant 40
+sub
+call Screen.drawRectangle 4
+pop temp 0
+push this 1
+push this 0
+push constant 40
+add
+push constant 511
+push constant 255
+call Screen.drawRectangle 4
+pop temp 0
+goto IF_END0
+label IF_FALSE0
+push this 1
+push constant 3
+neg
+lt
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push constant 0
+call Screen.setColor 1
+pop temp 0
+push constant 0
+push constant 0
+push this 1
+push constant 6
+add
+push this 0
+push constant 40
+sub
+call Screen.drawRectangle 4
+pop temp 0
+push constant 0
+push this 0
+push constant 40
+add
+push this 1
+push constant 6
+add
+push constant 255
+call Screen.drawRectangle 4
+pop temp 0
+push pointer 0
+call Obstacle.dispose 1
+pop temp 0
+push constant 0
+not
+return
+label IF_FALSE1
+push this 1
+push constant 0
+lt
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+push constant 0
+call Screen.setColor 1
+pop temp 0
+push constant 0
+push constant 0
+push this 1
+push constant 6
+add
+push this 0
+push constant 40
+sub
+call Screen.drawRectangle 4
+pop temp 0
+push constant 0
+push this 0
+push constant 40
+add
+push this 1
+push constant 6
+add
+push constant 255
+call Screen.drawRectangle 4
+pop temp 0
+push constant 0
+not
+call Screen.setColor 1
+pop temp 0
+push constant 0
+push constant 0
+push this 1
+push constant 5
+add
+push this 0
+push constant 40
+sub
+call Screen.drawRectangle 4
+pop temp 0
+push constant 0
+push this 0
+push constant 40
+add
+push this 1
+push constant 5
+add
+push constant 255
+call Screen.drawRectangle 4
+pop temp 0
+goto IF_END2
+label IF_FALSE2
+push constant 0
+call Screen.setColor 1
+pop temp 0
+push this 1
+push constant 1
+add
+push constant 0
+push this 1
+push constant 6
+add
+push this 0
+push constant 40
+sub
+call Screen.drawRectangle 4
+pop temp 0
+push this 1
+push constant 1
+add
+push this 0
+push constant 40
+add
+push this 1
+push constant 6
+add
+push constant 255
+call Screen.drawRectangle 4
+pop temp 0
+push constant 0
+not
+call Screen.setColor 1
+pop temp 0
+push this 1
+push constant 0
+push this 1
+push constant 5
+add
+push this 0
+push constant 40
+sub
+call Screen.drawRectangle 4
+pop temp 0
+push this 1
+push this 0
+push constant 40
+add
+push this 1
+push constant 5
+add
+push constant 255
+call Screen.drawRectangle 4
+pop temp 0
+label IF_END2
+label IF_END0
+push this 1
+push constant 1
+sub
+pop this 1
+push constant 0
+return
+function Obstacle.dispose 0
+push argument 0
+pop pointer 0
+push pointer 0
+call Memory.deAlloc 1
+pop temp 0
+push constant 0
+return
+function Obstacle.getX 0
+push argument 0
+pop pointer 0
+push this 1
+return
+function Obstacle.getHole 0
+push argument 0
+pop pointer 0
+push this 0
+return

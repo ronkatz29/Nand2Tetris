@@ -13,69 +13,6 @@ EQUAL = "="
 NEWLINE = "\n"
 SEMICOLON = ";"
 
-EXPRESSION_LIST_XML_START = "<expressionList>"
-EXPRESSION_LIST_XML_END = "</expressionList>"
-
-SUBROUTINE_BODY_XML_START = "<subroutineBody>"
-SUBROUTINE_BODY_XM_END = "</subroutineBody>"
-
-LET_XML_START = "<letStatement>"
-LET_XML_END = "</letStatement>"
-
-CLASS_VAR_XML_START = "<classVarDec>"
-CLASS_VAR_XML_END = "</classVarDec>"
-
-SYMBOL_XML_START = "<symbol> "
-SYMBOL_XML_END = " </symbol>"
-
-VAR_DEC_XML_START = "<varDec>"
-VAR_DEC_XML_END = "</varDec>"
-
-CLASS_XML_START = "<class>"
-CLASS_XML_END = "</class>"
-
-KEYWORD_XML_START = "<keyword> "
-KEYWORD_XML_END = " </keyword>"
-
-IDENTIFIER_XML_START = "<identifier> "
-IDENTIFIER_XML_END = " </identifier>"
-
-INT_CONST_XML_START = "<integerConstant> "
-INT_CONST_XML_END = " </integerConstant>"
-
-STRING_CONST_XML_START = "<stringConstant> "
-STRING_CONST_XML_END = " </stringConstant>"
-
-CLASS_VAR_DEC_XML_START = "<classVarDec>"
-CLASS_VAR_DEC_XML_END = "</classVarDec>"
-
-DO_BEG_XML_START = "<doStatement>"
-DO_XML_END = "</doStatement>"
-
-EXPRESSION_XML_START = "<expression>"
-EXPRESSION_XML_END = "</expression>"
-
-TERM_XML_START = "<term>"
-TERM_XML_END = "</term>"
-
-WHILE_XML_START = "<whileStatement>"
-WHILE_XML_END = "</whileStatement>"
-
-STATEMENT_XML_START = "<statements>"
-STATEMENT_XML_END = "</statements>"
-
-RETURN_XML_START = "<returnStatement>"
-RETURN_XML_END = "</returnStatement>"
-
-IF_XML_START = "<ifStatement>"
-IF_XML_END = "</ifStatement>"
-
-SUBROUTINE_DEC_XML_START = "<subroutineDec>"
-SUBROUTINE_DEC_XML_END = "</subroutineDec>"
-
-PARAMETERS_LIST_XML_START = "<parameterList>"
-PARAMETERS_LIST_XML_END = "</parameterList>"
-
 STATEMENTS = [LET, DO, IF, WHILE, RETURN]
 STATEMENTS_UP = [LET_UP, DO_UP, IF_UP, WHILE_UP, RETURN_UP]
 

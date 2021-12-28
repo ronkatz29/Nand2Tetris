@@ -1,0 +1,59 @@
+class Obstacle {
+	field int hole, xPos, holeSize;
+	
+	constructor Obstacle new(int holeToUse) {
+		let hole = holeToUse;
+		let xPos = 510;
+		return this;
+	}
+		
+	method boolean print() {
+		
+		if (xPos > 505) {
+			do Screen.setColor(false);
+			do Screen.drawRectangle(xPos+1, 0, 511, hole - 40);
+			do Screen.drawRectangle(xPos+1, hole + 40, 511, 255);
+			do Screen.setColor(true);
+			do Screen.drawRectangle(xPos, 0, 511, hole - 40);
+			do Screen.drawRectangle(xPos, hole + 40, 511, 255);
+		}
+		else {
+			if (xPos < -3) {
+				do Screen.setColor(false);
+				do Screen.drawRectangle(0, 0, xPos + 6, hole - 40);
+				do Screen.drawRectangle(0, hole + 40, xPos + 6, 255);
+				do dispose();
+				return true;
+			}
+		
+			if (xPos  < 0) {
+				do Screen.setColor(false);
+				do Screen.drawRectangle(0, 0, xPos + 6, hole - 40);
+				do Screen.drawRectangle(0, hole + 40, xPos + 6, 255);
+				do Screen.setColor(true);
+				do Screen.drawRectangle(0, 0, xPos + 5, hole - 40);
+				do Screen.drawRectangle(0, hole + 40, xPos + 5, 255);
+			}
+			
+			else {
+			do Screen.setColor(false);
+			do Screen.drawRectangle(xPos+1, 0, xPos + 6, hole - 40);
+			do Screen.drawRectangle(xPos+1, hole + 40, xPos + 6, 255);
+			do Screen.setColor(true);
+			do Screen.drawRectangle(xPos, 0, xPos + 5, hole - 40);
+			do Screen.drawRectangle(xPos, hole + 40, xPos + 5, 255);
+			}
+		}
+		let xPos = xPos - 1;
+		return false;
+	}
+	
+	method void dispose() {
+		do Memory.deAlloc(this);
+		return;
+	}
+	
+	method int getX(){ return xPos;}
+	
+	method int getHole() { return hole; }
+}
