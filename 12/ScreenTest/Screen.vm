@@ -2,6 +2,9 @@ function Screen.init 0
 push constant 16384
 pop static 0
 push constant 0
+not
+pop static 1
+push constant 0
 return
 function Screen.clearScreen 1
 push constant 0

@@ -6,7 +6,7 @@ pop static 1
 push static 1
 push static 0
 add
-push constant 14336
+push constant 0
 pop temp 0
 pop pointer 1
 push temp 0
@@ -16,7 +16,7 @@ push constant 1
 add
 push static 0
 add
-push constant 0
+push constant 14335
 pop temp 0
 pop pointer 1
 push temp 0
@@ -41,25 +41,9 @@ push temp 0
 pop that 0
 push constant 0
 return
-function Memory.alloc 3
+function Memory.BlockFinder 1
 push static 1
 pop local 0
-push constant 1
-neg
-pop local 2
-push argument 0
-push constant 1
-lt
-if-goto IF_TRUE0
-goto IF_FALSE0
-label IF_TRUE0
-push constant 5
-call Sys.error 1
-pop temp 0
-push constant 1
-neg
-return
-label IF_FALSE0
 label WHILE_EXP0
 push local 0
 push constant 0
@@ -72,57 +56,17 @@ push static 0
 add
 pop pointer 1
 push that 0
-pop local 1
-push local 1
 push argument 0
-gt
-if-goto IF_TRUE1
-goto IF_FALSE1
-label IF_TRUE1
-push local 0
-push local 0
-push static 0
-add
-pop pointer 1
-push that 0
-add
-push argument 0
-sub
-push constant 1
-sub
-pop local 2
-push local 2
-push static 0
-add
-push argument 0
+lt
 push constant 1
 add
-pop temp 0
-pop pointer 1
-push temp 0
-pop that 0
+not
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
 push local 0
-push static 0
-add
-push local 0
-push static 0
-add
-pop pointer 1
-push that 0
-push argument 0
-sub
-push constant 1
-sub
-pop temp 0
-pop pointer 1
-push temp 0
-pop that 0
-push local 2
-push constant 1
-add
 return
-goto IF_END1
-label IF_FALSE1
+label IF_FALSE0
 push local 0
 push constant 1
 add
@@ -131,11 +75,96 @@ add
 pop pointer 1
 push that 0
 pop local 0
-label IF_END1
 goto WHILE_EXP0
 label WHILE_END0
-push local 2
+push constant 1
+neg
 return
+function Memory.alloc 1
+push argument 0
+call Memory.BlockFinder 1
+pop local 0
+push local 0
+push constant 1
+neg
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push local 0
+return
+goto IF_END0
+label IF_FALSE0
+push local 0
+push static 0
+add
+pop pointer 1
+push that 0
+push argument 0
+lt
+push constant 1
+add
+not
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push local 0
+push static 0
+add
+push argument 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push local 0
+push argument 0
+add
+push constant 1
+add
+pop static 1
+push static 1
+push constant 1
+add
+push static 0
+add
+push local 0
+push constant 1
+add
+push static 0
+add
+pop pointer 1
+push that 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push static 1
+push static 0
+add
+push local 0
+push static 0
+add
+pop pointer 1
+push that 0
+push argument 0
+sub
+push constant 1
+sub
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push local 0
+push constant 1
+add
+return
+goto IF_END1
+label IF_FALSE1
+push constant 1
+neg
+return
+label IF_END1
+label IF_END0
 function Memory.deAlloc 0
 push constant 0
 push argument 0
@@ -151,27 +180,28 @@ sub
 pop static 1
 push constant 0
 return
-function Memory.max 3
-push argument 0
+function Memory.max 2
 push constant 1
-sub
-push static 0
+pop local 0
+push constant 0
+push argument 0
 add
 pop pointer 1
 push that 0
-pop local 0
-push constant 1
 pop local 1
-push constant 5
-pop local 2
 label WHILE_EXP0
-push local 1
 push local 0
+push constant 1
+neg
+push argument 0
+add
+pop pointer 1
+push that 0
 lt
 not
 if-goto WHILE_END0
-push local 2
 push local 1
+push local 0
 push argument 0
 add
 pop pointer 1
@@ -180,18 +210,18 @@ lt
 if-goto IF_TRUE0
 goto IF_FALSE0
 label IF_TRUE0
-push local 1
+push local 0
 push argument 0
 add
 pop pointer 1
 push that 0
-pop local 2
+pop local 1
 label IF_FALSE0
-push local 1
+push local 0
 push constant 1
 add
-pop local 1
+pop local 0
 goto WHILE_EXP0
 label WHILE_END0
-push local 2
+push local 1
 return
