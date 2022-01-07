@@ -148,6 +148,31 @@ push this 0
 lt
 not
 if-goto WHILE_END0
+push local 1
+push this 2
+add
+pop pointer 1
+push that 0
+push constant 57
+gt
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push local 1
+push this 2
+add
+pop pointer 1
+push that 0
+push constant 48
+lt
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+push this 0
+pop local 1
+label IF_FALSE2
+goto IF_END1
+label IF_FALSE1
 push pointer 0
 push local 1
 call String.charAt 2
@@ -170,16 +195,17 @@ push local 1
 push constant 1
 add
 pop local 1
+label IF_END1
 goto WHILE_EXP0
 label WHILE_END0
 push local 3
-if-goto IF_TRUE1
-goto IF_FALSE1
-label IF_TRUE1
+if-goto IF_TRUE3
+goto IF_FALSE3
+label IF_TRUE3
 push local 0
 neg
 pop local 0
-label IF_FALSE1
+label IF_FALSE3
 push local 0
 return
 function String.setInt 2
@@ -227,71 +253,8 @@ gt
 not
 if-goto WHILE_END0
 push local 0
-shiftright
-push local 0
-shiftright
-shiftright
-add
-pop local 4
-push local 4
-push local 4
-shiftright
-shiftright
-shiftright
-shiftright
-add
-pop local 4
-push local 4
-push local 4
-shiftright
-shiftright
-shiftright
-shiftright
-shiftright
-shiftright
-shiftright
-shiftright
-add
-pop local 4
-push local 4
-push local 4
-shiftright
-shiftright
-shiftright
-shiftright
-shiftright
-shiftright
-shiftright
-shiftright
-shiftright
-shiftright
-shiftright
-shiftright
-shiftright
-shiftright
-shiftright
-shiftright
-add
-pop local 4
-push local 4
-shiftright
-shiftright
-shiftright
-pop local 4
-push local 0
-push local 4
-shiftleft
-shiftleft
-push local 4
-add
-shiftleft
-sub
-pop local 5
-push local 4
-push local 5
-push constant 9
-gt
-add
+push constant 10
+call Math.divide 2
 pop local 6
 push local 0
 push local 6

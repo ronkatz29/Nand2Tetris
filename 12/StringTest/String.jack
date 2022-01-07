@@ -133,17 +133,8 @@ class String {
             let value = val;
             while(value > 0  )
             {
-                // let div_ten = value / 10;
-                let q = #(value) + #(#(value));
-                let q = q + #(#(#(#(q))));
-                let q = q + #(#(#(#(#(#(#(#(q))))))));
-                let q = q + #(#(#(#(#(#(#(#(#(#(#(#(#(#(#(#(q))))))))))))))));
-                let q = #(#(#(q)));
-                let r = value - (^((^(^(q))) + q));
-                let div_ten = q + (r > 9);
-
+                let div_ten = value / 10;
                 let last_dig = (value - ((^(div_ten) + ^(^(^(div_ten))))));  // same as mod
-
                 let value = div_ten;
                 do appendChar(last_dig + 48 );
             }

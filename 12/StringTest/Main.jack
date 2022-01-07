@@ -81,3 +81,20 @@ class Main {
         return;
     }
 }
+
+
+    // method void str_two_int(int val, bool is_neg){
+    //         var int value, i, last_dig, j, q, r, div_ten;
+    //         var char temp; 
+    //         let value = val;
+    //         if(value > 0)
+    //         {
+    //             let div_ten = value / 10;
+
+    //             let last_dig = (value - ((^(div_ten) + ^(^(^(div_ten))))));  // same as mod
+    //             let value = div_ten;
+    //             do str_two_int(value, is_neg);
+    //             do appendChar(last_dig + 48);
+    //         }
+    //         return; 
+    // }

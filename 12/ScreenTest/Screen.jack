@@ -10,13 +10,30 @@
  * the screen is indexed (0,0).
  */
 class Screen {
-    static Array screen;
+    static Array screen,powers;
     static bool color;
 
     /** Initializes the Screen. */
     function void init() {
         let screen = 16384;
         let color = true;
+        let powers = Array.new(16);
+        let powers[0] = 1;
+        let powers[1] = 2;
+        let powers[2] = 4;
+        let powers[3] = 8;
+        let powers[4] = 16;
+        let powers[5] = 32;
+        let powers[6] = 64;
+        let powers[7] = 128;
+        let powers[8] = 256;
+        let powers[9] = 512;
+        let powers[10] = 1024;
+        let powers[11] = 2048;
+        let powers[12] = 4096;
+        let powers[13] = 8192;
+        let powers[14] = 16384;
+        let powers[15] = 16384 + 16384;
         return;
     }
 
@@ -40,14 +57,10 @@ class Screen {
 
     /** Draws the (x,y) pixel, using the current color. */
     function void drawPixel(int x, int y) {
-        var int cur_address, bit_to_fill, mod_16;
+        var int cur_address, mod_16,bit_to_fill;
         let cur_address = (^(^(^(^(^(y)))))) + (#(#(#(#(x))))); // 32*y + x/16
         let mod_16 = x & 15;
-        let bit_to_fill = 0;
-        while(mod_16 > 0){
-            let bit_to_fill = ^(bit_to_fill);
-            let mod_16 = mod_16 - 1;
-        }
+        let bit_to_fill = powers[mod_16];
         if (color){
             let screen[cur_address] = screen[cur_address] | bit_to_fill; //set black
             }
@@ -75,6 +88,95 @@ class Screen {
 
     /** Draws a line from pixel (x1,y1) to pixel (x2,y2), using the current color. */
     function void drawLine(int x1, int y1, int x2, int y2) {
+        // var int minY, maxY, minX, maxX, idx, dx, dy, a, b, bdx, ady;
+        // let minX = Math.min(x1,x2);
+        // let maxX = Math.max(x1,x2);
+        // let minY = Math.min(y1,y2);
+        // let maxY = Math.max(y1,y2);
+        // if (x1 = x2) {
+        //     let idx = minY;
+        //     while (~(idx > maxY)) {
+        //         do Screen.drawPixel(x1, idx);
+        //         let idx = idx + 1;
+        //     }
+        //     return;
+        // }
+
+        // if (y1 = y2) {
+        //     let idx = minX;
+        //     while (~(idx > maxX)) {
+        //         do Screen.drawPixel(idx, y1);
+        //         let idx = idx + 1;
+        //     }
+        //     return;
+        // }
+
+        // let dx = x2 - x1;
+        // let dy = y2 - y1;
+        // let a = 0;
+        // let b = 0;
+        // let ady = 0;
+        // let bdx = 0;
+
+        // if((dx > 0) & (dy > 0)) {
+        //     while( (~((a+x1) > x2)) & (~((b+y1) > y2))) {
+        //         do Screen.drawPixel(x1 + a, y1 + b);
+        //         if (Math.abs(ady) < Math.abs(bdx)) {
+        //             let a = a + 1;
+        //             let ady = ady + dy;
+        //         }
+        //         else {
+        //             let b = b + 1;
+        //             let bdx = bdx + dx;
+        //         }
+        //     }
+        //     return;
+        // }
+
+        // if((dx < 0) & (dy < 0)) {
+        //     while( (~((a+x1) < x2)) & (~((b+y1) < y2))) {
+        //         do Screen.drawPixel(x1 + a, y1 + b);
+        //         if (ady > bdx) {
+        //             let a = a - 1;
+        //             let ady = ady + dy;
+        //         }
+        //         else {
+        //             let b = b - 1;
+        //             let bdx = bdx + dx;
+        //         }
+        //     }
+        //     return;
+        // }
+
+        // if((dx > 0) & (dy < 0)) {
+        //     while( (~((a+x1) > x2)) & (~((b+y1) < y2)) ) {
+        //         do Screen.drawPixel(x1 + a, y1 + b);
+        //         if (ady < bdx) {
+        //             let b = b - 1;
+        //             let bdx = bdx - dx;
+        //         }
+        //         else {
+        //             let a = a + 1;
+        //             let ady = ady + dy;
+        //         }
+        //     }
+        //     return;
+        // }
+        // if((dx < 0) & (dy > 0)) {
+        //     while( (~((a+x1) < x2)) & (~((b+y1) > y2)) ) {
+        //         do Screen.drawPixel(x1 + a, y1 + b);
+        //         if (ady < bdx) {
+        //             let b = b + 1;
+        //             let bdx = bdx + dx;
+        //         }
+        //         else {
+        //             let a = a - 1;
+        //             let ady = ady - dy;
+        //         }
+        //     }
+        //     return;
+        // }
+        // return;
         var int a,b,dy,dx,diff;
         if (x1 = x2 & y1 = y2){
             do Screen.drawPixel(x1,y2);
@@ -135,10 +237,12 @@ class Screen {
     /** Draws a filled rectangle whose top left corner is (x1, y1)
      * and bottom right corner is (x2,y2), using the current color. */
     function void drawRectangle(int x1, int y1, int x2, int y2) {
-        //check if need minimum;
-        while(y2 < y1 + 1){
-            do Screen.drawLine(x1, y2, x2 ,y2);
-            let y2 = y2 + 1;
+        var int diff,i;
+        let diff = Math.abs(y1-y2);
+        let i = 0;
+        while(i < diff){
+            do Screen.drawLine(x1, y1+i, x2 ,y1+i);
+            let i = i + 1;
         }
         return;
     }
