@@ -70,168 +70,107 @@ class Screen {
       return;
     }
 
-    function void drawLineHorizintal(int x1, int y1, int x2){
-        while (x1 < x2 + 1){
-            do Screen.drawPixel(x1,y1);
-            let x1 = x1 + 1;
-        }
-        return;
+    function void drawLineHorizontal(int minX, int y1, int maxX){
+        while (~(minX > maxX)) {
+           do Screen.drawPixel(minX, y1);
+           let minX = minX + 1;
+           }
+           return;
     }
     
     function void drawLineVertical(int x1, int y1, int y2){
-        while (y1 < y2 + 1){
-            do Screen.drawPixel(x1,y1);
-            let y1 = y1 + 1;
-        }
-        return;
+         var int minY, maxY;
+         let minY = y1;
+         let maxY = y2;
+         if (minY > maxY)
+            {
+                let minY = minY + maxY;
+                let maxY = minY - maxY;
+                let minY = minY - maxY;
+            }
+
+         while (~(minY > maxY)) {
+               do Screen.drawPixel(x1, minY);
+               let minY = minY + 1;
+           }
+           return;
     }
 
     /** Draws a line from pixel (x1,y1) to pixel (x2,y2), using the current color. */
     function void drawLine(int x1, int y1, int x2, int y2) {
-        // var int minY, maxY, minX, maxX, idx, dx, dy, a, b, bdx, ady;
-        // let minX = Math.min(x1,x2);
-        // let maxX = Math.max(x1,x2);
-        // let minY = Math.min(y1,y2);
-        // let maxY = Math.max(y1,y2);
-        // if (x1 = x2) {
-        //     let idx = minY;
-        //     while (~(idx > maxY)) {
-        //         do Screen.drawPixel(x1, idx);
-        //         let idx = idx + 1;
-        //     }
-        //     return;
-        // }
+         var int leftY, rightY, leftX, rightX, dX, dY, a, b, difX, difY ;
 
-        // if (y1 = y2) {
-        //     let idx = minX;
-        //     while (~(idx > maxX)) {
-        //         do Screen.drawPixel(idx, y1);
-        //         let idx = idx + 1;
-        //     }
-        //     return;
-        // }
+         var int minY, maxY, minX, maxX, idx, dx, dy, a, b, bdx, ady;
 
-        // let dx = x2 - x1;
-        // let dy = y2 - y1;
-        // let a = 0;
-        // let b = 0;
-        // let ady = 0;
-        // let bdx = 0;
 
-        // if((dx > 0) & (dy > 0)) {
-        //     while( (~((a+x1) > x2)) & (~((b+y1) > y2))) {
-        //         do Screen.drawPixel(x1 + a, y1 + b);
-        //         if (Math.abs(ady) < Math.abs(bdx)) {
-        //             let a = a + 1;
-        //             let ady = ady + dy;
-        //         }
-        //         else {
-        //             let b = b + 1;
-        //             let bdx = bdx + dx;
-        //         }
-        //     }
-        //     return;
-        // }
+         let leftX = x1;
+         let rightX = x2;
 
-        // if((dx < 0) & (dy < 0)) {
-        //     while( (~((a+x1) < x2)) & (~((b+y1) < y2))) {
-        //         do Screen.drawPixel(x1 + a, y1 + b);
-        //         if (ady > bdx) {
-        //             let a = a - 1;
-        //             let ady = ady + dy;
-        //         }
-        //         else {
-        //             let b = b - 1;
-        //             let bdx = bdx + dx;
-        //         }
-        //     }
-        //     return;
-        // }
+         let leftY = y1;
+         let rightY = y2;
 
-        // if((dx > 0) & (dy < 0)) {
-        //     while( (~((a+x1) > x2)) & (~((b+y1) < y2)) ) {
-        //         do Screen.drawPixel(x1 + a, y1 + b);
-        //         if (ady < bdx) {
-        //             let b = b - 1;
-        //             let bdx = bdx - dx;
-        //         }
-        //         else {
-        //             let a = a + 1;
-        //             let ady = ady + dy;
-        //         }
-        //     }
-        //     return;
-        // }
-        // if((dx < 0) & (dy > 0)) {
-        //     while( (~((a+x1) < x2)) & (~((b+y1) > y2)) ) {
-        //         do Screen.drawPixel(x1 + a, y1 + b);
-        //         if (ady < bdx) {
-        //             let b = b + 1;
-        //             let bdx = bdx + dx;
-        //         }
-        //         else {
-        //             let a = a - 1;
-        //             let ady = ady - dy;
-        //         }
-        //     }
-        //     return;
-        // }
-        // return;
-        var int a,b,dy,dx,diff;
-        if (x1 = x2 & y1 = y2){
-            do Screen.drawPixel(x1,y2);
+         //Swap if needed
+         if(leftX > rightX){
+            let leftX = leftX + rightX;
+            let rightX = leftX - rightX;
+            let leftX = leftX - rightX;
+            //keep the dots to be together.
+            let leftY = leftY + rightY;
+             let rightY = leftY - rightY;
+             let leftY = leftY - rightY;
+         }
+
+        if (leftX = rightX) {
+            do Screen.drawLineVertical(leftX,  leftY, rightY);
             return;
         }
-        if(x1 > x2){ // swap
-            let x2 = x1 + x2;
-            let x1 = x2 - x1;
-            let x2 = x2 - x1;
 
-            let y2 = y1 + y2;
-            let y1 = y2 - y1;
-            let y2 = y2 - y1;
-        }
-        if(y1 = y2){ // handle harozontal line
-           do Screen.drawLineHorizintal(x1, y1, x2);
-           return;
-        }
-        if(x1 = x2){ // handle harozontal line
-            do Screen.drawLineVertical(x1, y1, y2);
+        if (leftY = rightY) {
+           do Screen.drawLineHorizontal(leftX,  leftY, rightX);
             return;
         }
+
         let a = 0;
         let b = 0;
-        let diff = 0;
-        let dx = x2 - x1;
-        let dy = Math.abs(y2 - y1);
-        if (y2 > y1){ // goint right and up
-            while((a < dx + 1) & (b < dy + 1)){
-                do Screen.drawPixel(x1 + a, y1 + b);
-                if (diff < 0){
+
+        let dX = rightX - leftX;
+        let dY = rightY - leftY;
+
+        let difY = 0;
+        let difX = 0;
+
+        if(leftY < rightY) {
+            while( (~((a+leftX) > rightX)) & (~((b+leftY) > rightY))) {
+                do Screen.drawPixel(leftX + a, leftY + b);
+                if (Math.abs(difY) < Math.abs(difX)) {
                     let a = a + 1;
-                    let diff = diff + dy;
+                    let difY = difY + dY;
                 }
-                else{
+                else {
                     let b = b + 1;
-                    let diff = diff -  dx;
+                    let difX = difX + dX;
                 }
             }
+            return;
         }
-        else{ // doing right and down
-            while((a < dx + 1) & (b < dy + 1)){
-                do Screen.drawPixel(x1 + a, y1 - b);
-                if (diff < 0){
-                    let a = a + 1;
-                    let diff = diff + dy;
+
+
+        if(rightY < leftY ) {
+            while( (~((a+leftX) > rightX)) & (~((b+leftY) < rightY)) ) {
+                do Screen.drawPixel(leftX + a, leftY + b);
+                if (difY < difX) {
+                    let b = b - 1;
+                    let difX = difX - dX;
                 }
-                else{
-                    let b = b + 1;
-                    let diff = diff - dx;
+                else {
+                    let a = a + 1;
+                    let difY = difY + dY;
                 }
             }
+            return;
         }
+
         return;
-        
     }
 
     /** Draws a filled rectangle whose top left corner is (x1, y1)
