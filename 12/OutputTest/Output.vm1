@@ -1733,15 +1733,6 @@ push static 1
 push constant 1
 sub
 pop static 1
-push static 1
-push constant 0
-lt
-if-goto IF_TRUE1
-goto IF_FALSE1
-label IF_TRUE1
-push constant 22
-pop static 1
-label IF_FALSE1
 label IF_END0
 push constant 0
 return

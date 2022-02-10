@@ -71,12 +71,44 @@ class Screen {
     }
 
     function void drawLineHorizontal(int minX, int y1, int maxX){
-        while (~(minX > maxX)) {
-           do Screen.drawPixel(minX, y1);
-           let minX = minX + 1;
-           }
-           return;
+        // while (~(minX > maxX)) {
+        //    do Screen.drawPixel(minX, y1);
+        //    let minX = minX + 1;
+        //    }
+        //    return;
+        var int cur_address_start, mod_16,bit_to_fill, cur_address_end, i;
+        let i = 0;
+        let cur_address_start = (^(^(^(^(^(y1)))))) + (#(#(#(#(minX))))); // 32*y + x/16
+        let cur_address_end = (^(^(^(^(^(y1)))))) + (#(#(#(#(maxX)))));
+        let mod_16 = minX & 15;
+        while((mod_16 < 16)){ //left address pixcels
+            if (color){
+                let screen[cur_address_start] = screen[cur_address_start] | powers[mod_16]; //set black
+            }
+            else{
+                let screen[cur_address_start] = screen[cur_address_start] & (~powers[mod_16]); //set white
+            }
+            let mod_16 = mod_16 + 1;
+        }
+        let cur_address_start = cur_address_start + 1;
+        while(cur_address_start < cur_address_end){ //middle
+            let screen[cur_address_start] = color;
+            let cur_address_start = cur_address_start + 1;
+        }
+        let mod_16 = maxX & 15;
+        while(i < mod_16 + 10) //right address pixcels
+        {
+            if (color){
+                let screen[cur_address_end] = screen[cur_address_end] | powers[i]; //set black
+            }
+            else{
+                let screen[cur_address_end] = screen[cur_address_end] & (~powers[i]); //set white
+            }
+            let i = i + 1;
+        }
+        return;
     }
+    
     
     function void drawLineVertical(int x1, int y1, int y2){
          var int minY, maxY;

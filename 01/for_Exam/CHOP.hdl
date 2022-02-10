@@ -2,10 +2,7 @@ CHIP CHOP {
     IN a, b;
     OUT out;
     PARTS:
-    // Your code goes here
-    // Not(in = a, out = nota);
-    // And(a = a, b = b, out = aandb);
-    // Or(a = nota, b = aandb, out=out);
-    Nand(a = a, b= b, out = outnand);
+
+    Nand(a = a, b= b, out[0] = outnand);
     Nand(a=a, b=outnand, out = out );
 }

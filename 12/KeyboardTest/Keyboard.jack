@@ -52,7 +52,6 @@ class Keyboard {
         while(~(Keyboard.keyPressed() = 0)){
 
         }
-        // do Output.printChar(c);
         return c;
     }
 

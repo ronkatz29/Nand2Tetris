@@ -276,6 +276,11 @@ class Output {
       else{
         let curs_x = 63;
         let curs_y = curs_y - 1;
+        //if we are at the first line, we want to just to the last line
+        if (curs_y < 0){
+            let curs_y = 22;
+        }
+
       }
       return;
     }
